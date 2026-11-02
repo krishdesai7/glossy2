@@ -180,3 +180,54 @@ def test_prompt_gives_feature_values_and_conventions():
     ctx, _ = context({})
     text = prompt(build_messages([InputWord("lande")], ctx))
     assert "Declension=Str" in text and "NMLZ" in text and "fixed stem meaning still" in text
+
+
+def test_same_split_in_different_spelling_is_not_a_conflict():
+    response = word(segments=[{"form": "sǣ", "gloss": "say"}, {"form": "d", "gloss": "PST"}, {"form": "e", "gloss": "IND.3SG"}])
+    ctx, _ = context({"words": [response]}, ycoe=FakeYcoe(), dictionary=FakeDictionary())
+    result = analyze_sentence([InputWord("sæ-d-e", segments=["sæ", "d", "e"])], ctx)[0]
+    assert "hint_conflict" not in [f.code for f in result.flags]
+    assert [s.form for s in result.segments] == ["sæ", "d", "e"]
+
+
+def test_tironian_note_is_flagged_not_skipped():
+    ctx, _ = context({"words": [word()]})
+    result = analyze_sentence([InputWord("⁊"), InputWord("lande")], ctx)
+    assert result[0].flags[0].code == "unknown_form"
+
+
+def test_leading_punctuation_survives_and_is_not_sent_as_part_of_the_word():
+    ctx, calls = context({"words": [word()]})
+    result = analyze_sentence([InputWord("lande", lead='"')], ctx)[0]
+    assert result.lead == '"' and result.form == "lande"
+    assert '0. lande' in calls[0][-1]["content"]
+
+
+def test_non_string_fields_become_a_failure_not_a_crash():
+    for bad in [{"upos": ["PRON"]}, {"lemma": 123}, {"meaning": {"a": 1}}, {"feats": ["x"]}, {"segments": "nope"}]:
+        ctx, _ = context({"words": [{**word(), **bad}]})
+        assert analyze_sentence([InputWord("lande")], ctx)[0].flags[0].code == "analysis_failed"
+
+
+def test_failed_analysis_through_the_real_cache_is_retried_next_time(tmp_path):
+    from types import SimpleNamespace as NS
+
+    from glossy2 import llm
+
+    calls = []
+
+    def create(**kwargs):
+        calls.append(kwargs)
+        message = NS(content='{"words": []}')
+        return NS(choices=[NS(message=message, finish_reason="stop")], usage=NS(prompt_tokens=1, completion_tokens=1))
+
+    client = NS(chat=NS(completions=NS(create=create)))
+    ctx = Context(
+        FakeYcoe(), FakeDictionary(), [],
+        lambda messages: llm.complete_json(messages, client=client, cache_dir=tmp_path),
+        forget=lambda messages: llm.forget_cached(messages, cache_dir=tmp_path),
+    )
+    assert analyze_sentence([InputWord("lande")], ctx)[0].flags[0].code == "analysis_failed"
+    assert len(calls) == 2
+    analyze_sentence([InputWord("lande")], ctx)
+    assert len(calls) == 4

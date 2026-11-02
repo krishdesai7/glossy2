@@ -44,7 +44,7 @@ Hē cwæð þæt hē būde on þǣm lande[noun,neuter].
 Hē sǣ-d-e his hlāford-e[lord].
 ```
 
-Labels include `noun`, `verb`, `adj`, `neuter`, `dat`, `sg`, `past`, `sjv` and `strong`. A gloss ending in `?` was flagged, and the reason is listed beneath the sentence.
+Labels include `noun`, `verb`, `adj`, `neuter`, `dat`, `sg`, `pst`, `sjv` and `str`. A few English words could be either grammar or a meaning, such as `strong`, `first` and `present`. The tool won't guess: write `str` for the label or `=strong` for the meaning. A gloss ending in `?` was flagged, and the reason is listed beneath the sentence.
 
 ### Flags
 
@@ -68,7 +68,7 @@ No flag doesn't mean correct: see the flag section of the report for how often u
 
 ### Evaluating
 
-`glossy2 eval` hides parts of a human gloss and scores what comes back. It asks before spending, except on a small trial of the tuning set with `--limit`. Responses are cached in `.llm-cache/`, so repeat runs are free.
+`glossy2 eval` hides parts of a human gloss and scores what comes back. It shows an estimate and asks before spending, except on a trial of up to 3 tuning sentences at one hint level. Responses are cached in `.llm-cache/`, so repeat runs are free. `--cache-only` guarantees no paid calls: it stops rather than pay for a response that isn't cached. Use it to regenerate a report.
 
 To test a new human-glossed `gb4e` file, use `glossy2 eval --hints all --gold path/to/text.tex --name text`.
 

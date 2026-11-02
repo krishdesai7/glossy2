@@ -27,6 +27,7 @@ class InputWord:
     hint_upos: str | None = None
     hint_stem: str | None = None
     hint_conflicts: list[str] = field(default_factory=list)
+    lead: str = ""
 
 
 @dataclass
@@ -40,6 +41,7 @@ class WordAnalysis:
     meaning: str | None = None
     wiktionary_url: str | None = None
     flags: list[Flag] = field(default_factory=list)
+    lead: str = ""
 
 
 @dataclass

@@ -159,3 +159,86 @@ def test_missing_key_clean_exit(harness, monkeypatch, capsys):
     monkeypatch.setattr(cli, "_complete", complete)
     assert cli.main(["eval", "--hints", "none", "--limit", "1"]) == 2
     assert ".env" in capsys.readouterr().err
+
+
+def test_large_limit_still_asks(harness, monkeypatch):
+    asked = []
+    monkeypatch.setattr("builtins.input", lambda prompt: asked.append(prompt) or "n")
+    assert cli.main(["eval", "--hints", "none", "--limit", "99"]) == 0
+    assert asked and harness["calls"] == 0
+
+
+def test_limit_with_all_levels_still_asks(harness, monkeypatch):
+    asked = []
+    monkeypatch.setattr("builtins.input", lambda prompt: asked.append(prompt) or "n")
+    cli.main(["eval", "--hints", "all", "--limit", "1"])
+    assert asked and harness["calls"] == 0
+
+
+def test_non_positive_limit_rejected(harness, capsys):
+    assert cli.main(["eval", "--hints", "none", "--limit", "0", "--yes"]) == 2
+    assert cli.main(["eval", "--hints", "none", "--limit", "-1", "--yes"]) == 2
+    assert harness["calls"] == 0
+
+
+def test_estimate_allows_for_retries(harness, monkeypatch, capsys):
+    monkeypatch.setattr("builtins.input", lambda prompt: "n")
+    cli.main(["eval", "--hints", "none"])
+    assert "could run higher" in capsys.readouterr().out
+
+
+def test_unknown_model_cost_says_unknown(harness, monkeypatch, capsys):
+    monkeypatch.setenv("MOONSHOT_MODEL", "mystery")
+    monkeypatch.setattr("builtins.input", lambda prompt: "n")
+    cli.main(["eval", "--hints", "none"])
+    out = capsys.readouterr().out
+    assert "unknown" in out and "nan" not in out
+
+
+def test_failed_run_does_not_replace_a_good_one(harness, monkeypatch, tmp_path, capsys):
+    from glossy2.llm import LLMError
+
+    cli.main(["eval", "--hints", "none", "--yes"])
+    path = tmp_path / "reports" / "eval-dev.json"
+    before = path.read_text(encoding="utf-8")
+
+    def failing(messages):
+        raise LLMError("no credit")
+
+    monkeypatch.setattr(cli, "_complete", failing)
+    assert cli.main(["eval", "--hints", "none", "--yes"]) == 0
+    assert path.read_text(encoding="utf-8") == before
+    assert "kept" in capsys.readouterr().out
+
+
+def test_cache_only_miss_stops_cleanly(harness, monkeypatch, tmp_path, capsys):
+    from glossy2.llm import CacheMiss
+
+    def miss(messages):
+        raise CacheMiss()
+
+    monkeypatch.setattr(cli, "_complete_cached", miss)
+    assert cli.main(["eval", "--hints", "none", "--split", "test", "--cache-only"]) == 2
+    assert "Nothing was sent" in capsys.readouterr().err
+    assert not (tmp_path / "reports" / "eval.md").exists()
+
+
+def test_cache_only_does_not_ask_and_makes_no_paid_calls(harness, monkeypatch):
+    def boom(prompt):
+        raise AssertionError("should not ask")
+
+    monkeypatch.setattr("builtins.input", boom)
+    monkeypatch.setattr(cli, "_complete_cached", echo)
+    assert cli.main(["eval", "--hints", "none", "--split", "test", "--cache-only"]) == 0
+    assert harness["calls"] == 0
+
+
+def test_missing_ycoe_is_a_clean_error(harness, monkeypatch, capsys):
+    from glossy2.ycoe import YcoeMissing
+
+    def missing(exclude):
+        raise YcoeMissing("No YCOE files found")
+
+    monkeypatch.setattr(cli, "_eval_sources", missing)
+    assert cli.main(["eval", "--hints", "none", "--limit", "1"]) == 2
+    assert "YCOE" in capsys.readouterr().err

@@ -36,3 +36,21 @@ def test_features_compound_and_adverb_suffixes():
     assert ycoe_features("PRO$^N") == ("PRON", {"Poss": "Yes", "Case": "Nom"})
     assert ycoe_features("VB") == ("VERB", {"VerbForm": "Inf"})
     assert ycoe_features("VBN") == ("VERB", {"VerbForm": "Part", "Tense": "Past"})
+
+
+def test_missing_folder_is_an_error(tmp_path):
+    import pytest
+
+    from glossy2.ycoe import YcoeMissing
+
+    with pytest.raises(YcoeMissing):
+        YcoeIndex.load(tmp_path)
+
+
+def test_excluding_a_file_that_does_not_exist_is_an_error():
+    import pytest
+
+    from glossy2.ycoe import YcoeMissing
+
+    with pytest.raises(YcoeMissing):
+        YcoeIndex.load(FIXTURES, exclude={"typo.pos"})

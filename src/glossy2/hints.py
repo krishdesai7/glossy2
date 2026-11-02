@@ -35,7 +35,13 @@ HINT_LABELS: dict[str, tuple[str, str]] = {
 }
 _TOKEN = re.compile(r"[^\s\[]*(?:\[[^\]]*\]?)?[^\s\[]*")
 _SHAPE = re.compile(r"^(?P<word>[^\[\]]*)(?:\[(?P<hint>[^\]]*)(?P<close>\]?))?(?P<after>.*)$")
-_PUNCT = re.compile(r"[.,;:!?\"'’”)]+$")
+_PUNCT = re.compile(r"[.,;:!?\"'’”)·]+$")
+_LEAD = re.compile(r"^[\"'“‘(·]+")
+# English words that are both grammar labels and likely stem meanings. Never guess.
+_AMBIGUOUS = {
+    "strong": "str", "weak": "wk", "first": "1", "second": "2", "third": "3",
+    "present": "prs", "past": "pst", "name": "propn", "proper": "propn",
+}
 
 
 class HintError(ValueError):
@@ -52,7 +58,17 @@ def _apply_hint(word: InputWord, hint: str) -> None:
     stems = []
     for label in labels:
         lowered = label.lower()
-        if lowered in _NOUNLIKE:
+        if label.startswith("="):
+            if not label[1:].strip():
+                raise HintError(word.form, "= needs a meaning after it")
+            stems.append(label[1:].strip())
+        elif lowered in _AMBIGUOUS:
+            raise HintError(
+                word.form,
+                f"'{label}' could be grammar or a meaning. Write {_AMBIGUOUS[lowered]} for the grammar "
+                f"label, or ={label} for the meaning",
+            )
+        elif lowered in _NOUNLIKE:
             upos = _NOUNLIKE[lowered]
             if word.hint_upos and word.hint_upos != upos:
                 word.hint_conflicts.append(f"part of speech: {word.hint_upos} or {upos}")
@@ -69,21 +85,34 @@ def _apply_hint(word: InputWord, hint: str) -> None:
     word.hint_stem = stems[0] if stems else None
 
 
+def _parse_token(raw: str) -> InputWord:
+    shape = _SHAPE.match(raw)
+    text, after = shape["word"], shape["after"]
+    has_hint = shape["hint"] is not None
+    if not text and has_hint:
+        raise HintError(raw, "a hint goes straight after its word, with no space, and one bracket per word")
+    lead_match = _LEAD.match(text)
+    lead = lead_match[0] if lead_match else ""
+    form = text[len(lead) :]
+    found = _PUNCT.search(form)
+    punct = found[0] if found else ""
+    if punct:
+        form = form[: -len(punct)]
+    if not form:
+        if has_hint:
+            raise HintError(raw, "a hint goes straight after its word")
+        return InputWord(raw)
+    if after and not _PUNCT.fullmatch(after):
+        raise HintError(form, f"unexpected text after the hint: {after}")
+    word = InputWord(form, punct=punct + after, lead=lead)
+    if "-" in form:
+        word.segments = [part for part in form.split("-") if part]
+    if has_hint:
+        if not shape["close"]:
+            raise HintError(form, "the hint has no closing bracket")
+        _apply_hint(word, shape["hint"])
+    return word
+
+
 def parse_line(line: str) -> list[InputWord]:
-    words = []
-    for raw in filter(None, (m[0] for m in _TOKEN.finditer(line))):
-        shape = _SHAPE.match(raw)
-        form, after = shape["word"], shape["after"]
-        found = _PUNCT.search(form)
-        punct = found[0] if found else ""
-        if punct:
-            form = form[: -len(punct)]
-        word = InputWord(form, punct=punct + after)
-        if "-" in form:
-            word.segments = [part for part in form.split("-") if part]
-        if shape["hint"] is not None:
-            if not shape["close"]:
-                raise HintError(form, "the hint has no closing bracket")
-            _apply_hint(word, shape["hint"])
-        words.append(word)
-    return words
+    return [_parse_token(raw) for raw in filter(None, (m[0] for m in _TOKEN.finditer(line)))]

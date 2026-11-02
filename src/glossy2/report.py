@@ -12,11 +12,19 @@ _CAVEATS = """## Read this first
 - **What was tuned on what.** The prompt was tuned on 15 sentences (`dev`), which also supply the model's worked examples. The numbers below come from text that was not used for either, unless this report says it is the `dev` report.
 - **The model may remember this text.** Ohthere is famous, so the model may have seen it in training. Scores here may run higher than on text it has never seen.
 - **YCOE's copy was removed.** YCOE's Orosius contains this passage, so that file was left out of the evidence.
-- **What counts as right.** Only what the hints withheld is scored, so a hint echoed back can't raise a score. A feature counts only where the human marked it, so these numbers show recall of what the human marked. An extra feature the human left unmarked is ignored rather than counted wrong.
+- **What counts as right.** Words with nothing withheld aren't scored. A feature counts only where the human marked it, so these numbers show recall of what the human marked. An extra feature the human left unmarked is ignored rather than counted wrong. Per-feature and meaning scores really are limited to what was withheld. Whole-gloss scores compare the entire gloss, so a word with some features hinted can match partly because of those hints.
 - **Lemma numbers are a small, harder-than-average sample.** They use only the human Tina corrections, which are mostly words the old engine got wrong.
 - **Settings.** Model reasoning was turned off to keep cost and time down, and Moonshot doesn't allow a fixed temperature on this model. Cached responses make a rerun reproducible, but a rerun without the cache could differ slightly.
 - **Sources.** York-Toronto-Helsinki Parsed Corpus of Old English Prose (YCOE), used under its conditions for scholarly research. Dictionary data from Wiktionary (CC BY-SA) via wiktextract and kaikki.org.
 """
+
+
+# Features each baseline can produce at all. Anything else is "n/a", not a failure.
+_BASELINE_FEATURES = {
+    "YCOE most-common tag": {"Case", "Mood", "Tense", "VerbForm", "Degree", "Polarity"},
+    "CLTK Stanza": {"Case", "Number", "Gender", "Person", "Tense", "Mood", "VerbForm", "Degree", "Polarity", "PronType", "Definite", "Voice"},
+}
+_NO_LEMMA_BASELINES = {"YCOE most-common tag"}
 
 
 def _percent(tally: Tally) -> str:
@@ -59,12 +67,15 @@ def _accuracy_table(runs: list[dict]) -> list[str]:
 
 
 def _feature_table(runs: list[dict], baselines: dict[str, list[TokenScore]]) -> list[str]:
-    columns = [(f"{run['level']} / memory {run['memory']}", aggregate(run["scores"])) for run in runs]
-    columns += [(name, aggregate(scores)) for name, scores in baselines.items()]
-    keys = sorted({key for _, s in columns for key in s.features})
-    lines = ["| Feature | " + " | ".join(name for name, _ in columns) + " |", "|---" * (len(columns) + 1) + "|"]
+    columns = [(f"{run['level']} / memory {run['memory']}", aggregate(run["scores"]), None) for run in runs]
+    columns += [(name, aggregate(scores), _BASELINE_FEATURES.get(name)) for name, scores in baselines.items()]
+    keys = sorted({key for _, s, _ in columns for key in s.features})
+    lines = ["| Feature | " + " | ".join(name for name, _, _ in columns) + " |", "|---" * (len(columns) + 1) + "|"]
     for key in keys:
-        cells = [_percent(s.features.get(key, (0, 0))) for _, s in columns]
+        cells = [
+            "n/a" if produces is not None and key not in produces else _percent(s.features.get(key, (0, 0)))
+            for _, s, produces in columns
+        ]
         lines.append(f"| {key} | " + " | ".join(cells) + " |")
     return lines
 
@@ -80,9 +91,10 @@ def _flag_table(runs: list[dict]) -> list[str]:
 def _baseline_table(baselines: dict[str, list[TokenScore]], notes: dict[str, str]) -> list[str]:
     lines = ["| Baseline | Whole gloss exact | Segmentation | Lemma |", "|---|---|---|---|"]
     for name, scores in baselines.items():
-        lines.append(f"| {name} | n/a | n/a | {_percent(aggregate(scores).lemma)} |")
+        lemma = "n/a" if name in _NO_LEMMA_BASELINES else _percent(aggregate(scores).lemma)
+        lines.append(f"| {name} | n/a | n/a | {lemma} |")
     lines.append("")
-    lines.append("Neither baseline produces glosses or morpheme splits. Compare them on the features above.")
+    lines.append("Neither baseline produces glosses or morpheme splits. Compare them on the features above, where `n/a` means the baseline can't produce that feature at all.")
     lines.extend(f"\n{name}: {note}." for name, note in notes.items())
     return lines
 
@@ -92,8 +104,8 @@ def _memory_section(runs: list[dict]) -> list[str]:
     if not rows:
         return []
     lines = [
-        "## Memory: did earlier glosses help?", "",
-        "Accuracy on words already in memory against words that aren't. The last column is the cost: where the remembered reading was wrong for this word, how often the model repeated it.", "",
+        "## Words in memory against words not in memory", "",
+        "This is not a measure of memory's effect. Words in memory are mostly frequent function words, which are easier anyway, and the comparison run with no memory wasn't run. The last column does show a real cost: where the remembered reading was wrong for this word, how often the model repeated it.", "",
         "| Hints | Memory | In memory, exact | Not in memory, exact | Wrong remembered reading | Model misled |",
         "|---|---|---|---|---|---|",
     ]
@@ -104,6 +116,15 @@ def _memory_section(runs: list[dict]) -> list[str]:
             f"{_percent(tuple(e['not_in_memory']))} | {e['wrong_top']} | {e['misled']} |"
         )
     return lines + [""]
+
+
+def _unflagged_errors(runs: list[dict]) -> list[str]:
+    lines = []
+    for run in runs:
+        wrong = [score for score in run["scores"] if score.exact is False]
+        unflagged = sum(not score.flagged for score in wrong)
+        lines.append(f"At `{run['level']}`, {unflagged} of the {len(wrong)} wrong glosses carried no flag.")
+    return lines + ["", "No flag doesn't mean correct. Some of these are convention differences rather than wrong analyses, which the error sample below shows.", ""]
 
 
 def _error_sample(runs: list[dict]) -> list[str]:
@@ -120,11 +141,15 @@ def _error_sample(runs: list[dict]) -> list[str]:
 def render_report(*, name, split, sentences, runs, baselines, baseline_notes, cost_note) -> str:
     failed = sum(aggregate(run["scores"]).failed for run in runs)
     parts = [f"# Evaluation: {name}", "", f"Split: `{split}`. {sentences} sentences. {cost_note}.", ""]
-    parts += [_CAVEATS, "## Accuracy by hint level", "", *_accuracy_table(runs), ""]
-    parts += ["Use the first accuracy column to compare hint levels. It scores the same words each time, though at hint levels with features given, a word can match partly because its hints were given. The second column drops words with nothing withheld, so its word set changes per level and easy function words leave it at `stem`.", ""]
+    caveats = _CAVEATS
+    if any(run["memory"] != "none" for run in runs):
+        caveats += "- **Memory.** The worked-example sentences were also supplied as memory in runs marked `dev`. No scored sentence was in memory.\n"
+    parts += [caveats, "## Accuracy by hint level", "", *_accuracy_table(runs), ""]
+    parts += ["Use the first accuracy column to compare hint levels, because it scores the same words each time. The second drops words with nothing withheld, so its word set changes per level and easy function words leave it at `stem`. In both, a word can match partly because of its hints, so don't read the rise across levels as pure gain.", ""]
     parts += [f"{failed} token analyses failed outright (bad or missing model response). They count as wrong.", ""]
     parts += ["## Per feature", "", *_feature_table(runs, baselines), ""]
     parts += ["## Do flags mean anything?", "", "Flags only earn trust if unflagged words are clearly more accurate.", "", *_flag_table(runs), ""]
+    parts += _unflagged_errors(runs)
     parts += _memory_section(runs)
     parts += ["## Baselines", "", *_baseline_table(baselines, baseline_notes), ""]
     parts += ["## Sample of real errors", "", *_error_sample(runs), ""]

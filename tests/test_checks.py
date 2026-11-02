@@ -1,6 +1,7 @@
 from glossy2.checks import apply_checks, segments_rejoin
 from glossy2.dictionary import Entry
 from glossy2.models import InputWord, Segment, WordAnalysis
+from glossy2.tags import render_gloss
 from tests.fakes import FakeDictionary, FakeYcoe
 
 
@@ -136,3 +137,58 @@ def test_hyphenated_stem_on_one_segment_stays_whole():
     segments = [Segment("norþmon", "northman"), Segment("a", "GEN.PL")]
     result = apply_checks(word, proposed(form="norþmona", segments=segments), FakeYcoe(), DICTIONARY)
     assert result.segments[0].gloss == "north-person"
+
+
+def test_unknown_form_never_gets_a_link():
+    dictionary = FakeDictionary({"land": [LAND]}, ["land"])
+    result = apply_checks(InputWord("Beormas"), proposed(form="Beormas", lemma="land"), FakeYcoe(), dictionary)
+    assert "unknown_form" in codes(result) and result.wiktionary_url is None
+
+
+def test_stem_hint_keeps_tags_in_a_hyphenated_single_segment():
+    word = InputWord("sǣde", hint_stem="speak")
+    segments = [Segment("sǣde", "say-PST-IND.3SG")]
+    result = apply_checks(word, proposed(form="sǣde", segments=segments), FakeYcoe(), DICTIONARY)
+    assert result.segments[0].gloss == "speak-PST-IND.3SG"
+
+
+def test_stem_hint_replaces_every_stem_part():
+    word = InputWord("forbærned", hint_stem="burn")
+    segments = [Segment("forbærned", "for-burn-PART")]
+    result = apply_checks(word, proposed(form="forbærned", segments=segments), FakeYcoe(), DICTIONARY)
+    assert result.segments[0].gloss == "burn-PART"
+
+
+def test_stem_hint_over_several_segments_leaves_no_duplicate():
+    word = InputWord("forbærned", hint_stem="burn")
+    segments = [Segment("for", "for"), Segment("bærn", "burn"), Segment("ed", "PART")]
+    result = apply_checks(word, proposed(form="forbærned", segments=segments), FakeYcoe(), DICTIONARY)
+    assert render_gloss(result).rstrip("?") == "burn-PART"
+
+
+def test_stem_hint_keeps_prefix_tag():
+    word = InputWord("gesiglan", hint_stem="sail")
+    segments = [Segment("gesiglan", "PFX-sail-THM-INF")]
+    result = apply_checks(word, proposed(form="gesiglan", segments=segments), FakeYcoe(), DICTIONARY)
+    assert result.segments[0].gloss == "PFX-sail-THM-INF"
+
+
+def test_hint_impossible_in_the_paradigm_is_flagged():
+    entry = Entry("land", "noun", ["land"], LAND.url, [["dative", "singular"]])
+    dictionary = FakeDictionary({"lande": [entry], "land": [entry]}, ["land"])
+    word = InputWord("lande", hint_feats={"Case": "Gen"})
+    result = apply_checks(word, proposed(feats={"Case": "Gen"}), FakeYcoe(), dictionary)
+    assert result.feats["Case"] == "Gen"
+    assert any(f.code == "hint_conflict" and "Case=Gen" in f.detail for f in result.flags)
+
+
+def test_hint_allowed_by_the_paradigm_is_not_flagged():
+    entry = Entry("land", "noun", ["land"], LAND.url, [["dative", "singular"]])
+    dictionary = FakeDictionary({"lande": [entry], "land": [entry]}, ["land"])
+    word = InputWord("lande", hint_feats={"Case": "Dat"})
+    assert codes(apply_checks(word, proposed(), FakeYcoe(), dictionary)) == []
+
+
+def test_no_paradigm_data_means_no_hint_flag():
+    word = InputWord("lande", hint_feats={"Case": "Gen"})
+    assert "hint_conflict" not in codes(apply_checks(word, proposed(feats={"Case": "Gen"}), FakeYcoe(), DICTIONARY))

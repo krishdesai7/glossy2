@@ -54,3 +54,18 @@ def test_gb4e_flagged_marked():
 def test_gb4e_blank_translation():
     assert "\\glt ``" not in render_gb4e([word("x", "y")])
     assert "\\glt" in render_gb4e([word("x", "y")])
+
+
+def test_gb4e_multiword_gloss_is_one_group():
+    assert "{to go.\\textsc{inf}}" in render_gb4e([word("gān", "to go.INF")])
+
+
+def test_lead_is_displayed():
+    analysis = WordAnalysis("Hē", ",", [Segment("Hē", "3SG")], lead='"')
+    assert render_text([analysis]).splitlines()[0].startswith('"Hē,')
+    assert '"Hē,' in render_gb4e([analysis])
+
+
+def test_stem_replaced_segment_leaves_no_double_hyphen():
+    analysis = WordAnalysis("for", "", [Segment("f", "burn"), Segment("or", ""), Segment("x", "PART")])
+    assert "burn-PART" in render_text([analysis])

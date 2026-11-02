@@ -38,6 +38,10 @@ class LLMError(RuntimeError):
         self.reason = reason
 
 
+class CacheMiss(RuntimeError):
+    """A cache-only run needed a response that isn't cached. Nothing was sent."""
+
+
 class MissingKeyError(RuntimeError):
     def __init__(self):
         super().__init__(_KEY_HELP)
@@ -91,6 +95,8 @@ def _attempt(client, model: str, messages: list[dict]) -> dict:
         with _usage_lock:
             _usage[0] += usage.prompt_tokens or 0
             _usage[1] += usage.completion_tokens or 0
+    if not response.choices:
+        raise LLMError("the response had no content")
     choice = response.choices[0]
     if choice.finish_reason == "length":
         raise LLMError("the response was cut off")
@@ -103,11 +109,19 @@ def _attempt(client, model: str, messages: list[dict]) -> dict:
     return parsed
 
 
-def complete_json(messages: list[dict], *, client=None, cache_dir: Path = Path(".llm-cache")) -> dict:
+def forget_cached(messages: list[dict], *, cache_dir: Path = Path(".llm-cache")) -> None:
+    _cache_path(cache_dir, current_model(), messages).unlink(missing_ok=True)
+
+
+def complete_json(
+    messages: list[dict], *, client=None, cache_dir: Path = Path(".llm-cache"), cache_only: bool = False
+) -> dict:
     model = current_model()
     path = _cache_path(cache_dir, model, messages)
     if path.exists():
         return json.loads(path.read_text(encoding="utf-8"))
+    if cache_only:
+        raise CacheMiss()
     client = client or _make_client()
     reason = "no attempts made"
     for attempt in range(MAX_ATTEMPTS):
@@ -130,7 +144,7 @@ def complete_json(messages: list[dict], *, client=None, cache_dir: Path = Path("
 
 
 def estimate_cost(prompt_tokens: int, completion_tokens: int, model: str) -> float:
-    """Assumes no cached input, so it runs high. Unknown models give NaN."""
+    """Full list price with no cached input. Unknown models give NaN."""
     if model not in PRICES:
         return float("nan")
     input_price, output_price, _ = PRICES[model]

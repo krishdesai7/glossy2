@@ -141,3 +141,38 @@ def test_reasoning_turned_off(tmp_path):
     client.chat.completions.create = lambda **kw: (seen.update(kw), original(**kw))[1]
     llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path)
     assert seen["extra_body"] == {"thinking": {"type": "disabled"}}
+
+
+def test_empty_choices_is_an_llm_error(tmp_path):
+    client = FakeClient(SimpleNamespace(choices=[], usage=None))
+    with pytest.raises(llm.LLMError):
+        llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path)
+
+
+def test_cache_only_miss_never_calls(tmp_path):
+    client = FakeClient(reply())
+    with pytest.raises(llm.CacheMiss):
+        llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path, cache_only=True)
+    assert client.calls == 0
+
+
+def test_cache_only_hit(tmp_path):
+    client = FakeClient(reply())
+    llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path)
+    assert llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path, cache_only=True) == {"ok": True}
+    assert client.calls == 1
+
+
+def test_cache_only_needs_no_key(tmp_path, monkeypatch):
+    monkeypatch.delenv("MOONSHOT_API_KEY", raising=False)
+    monkeypatch.chdir(tmp_path)
+    with pytest.raises(llm.CacheMiss):
+        llm.complete_json(MESSAGES, cache_dir=tmp_path, cache_only=True)
+
+
+def test_forget_cached(tmp_path):
+    client = FakeClient(reply())
+    llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path)
+    llm.forget_cached(MESSAGES, cache_dir=tmp_path)
+    llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path)
+    assert client.calls == 2

@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 
 from glossy2.checks import apply_checks, segments_rejoin
 from glossy2.dictionary import Dictionary
-from glossy2.llm import LLMError, complete_json
+from glossy2.llm import LLMError, complete_json, forget_cached
 from glossy2.memory import Memory
 from glossy2.models import Flag, GoldSentence, InputWord, Segment, WordAnalysis
 from glossy2.normalize import normalize
@@ -52,6 +52,7 @@ class Context:
     examples: list[GoldSentence] = field(default_factory=list)
     complete: Callable[[list[dict]], dict] = complete_json
     memory: Memory | None = None
+    forget: Callable[[list[dict]], None] = forget_cached
 
 
 def _has_letters(form: str) -> bool:
@@ -101,7 +102,7 @@ def build_messages(words: list[InputWord], ctx: Context) -> list[dict]:
     examples = [_format_example(s) for s in ctx.examples if not _is_same_sentence(s, words)]
     example_text = "\n\n".join(examples)
     described = "\n".join(_describe_word(i, word, ctx) for i, word in enumerate(words))
-    sentence = " ".join(word.form.replace("-", "") + word.punct for word in words)
+    sentence = " ".join(word.lead + word.form.replace("-", "") + word.punct for word in words)
     return [
         {"role": "system", "content": f"{system}\n\nWorked examples:\n\n{example_text}"},
         {"role": "user", "content": f"Sentence: {sentence}\n\nWords:\n{described}"},
@@ -110,11 +111,18 @@ def build_messages(words: list[InputWord], ctx: Context) -> list[dict]:
 
 def _failed(word: InputWord, reason: str) -> WordAnalysis:
     return WordAnalysis(
-        word.form, word.punct, [Segment(word.form, "???")], flags=[Flag("analysis_failed", reason)]
+        word.form, word.punct, [Segment(word.form, "???")], flags=[Flag("analysis_failed", reason)], lead=word.lead
     )
 
 
 def _parse_proposal(raw: dict, word: InputWord) -> WordAnalysis:
+    if not isinstance(raw["segments"], list):
+        raise TypeError("segments must be a list")
+    for name in ("lemma", "upos", "meaning"):
+        if raw.get(name) is not None and not isinstance(raw[name], str):
+            raise TypeError(f"{name} must be text")
+    if not isinstance(raw.get("feats") or {}, dict):
+        raise TypeError("feats must be an object")
     segments = [Segment(str(s["form"]), str(s["gloss"])) for s in raw["segments"]]
     flags = []
     if raw.get("ambiguous"):
@@ -146,7 +154,9 @@ def _problem_with(words: list[InputWord], response: dict) -> tuple[str | None, l
 def _fix_segments(word: InputWord, proposal: WordAnalysis) -> None:
     """A human's segmentation stands, whatever the model proposed."""
     forms = [s.form for s in proposal.segments]
-    if forms == word.segments:
+    if [normalize(f) for f in forms] == [normalize(f) for f in word.segments]:
+        for segment, form in zip(proposal.segments, word.segments):
+            segment.form = form
         return
     glosses = [s.gloss for s in proposal.segments]
     count = len(word.segments)
@@ -160,7 +170,9 @@ def _fix_segments(word: InputWord, proposal: WordAnalysis) -> None:
 def _analyse_words(words: list[InputWord], ctx: Context) -> list[WordAnalysis]:
     messages = build_messages(words, ctx)
     problem = None
+    sent = []
     for _ in range(2):
+        sent.append(messages)
         try:
             response = ctx.complete(messages)
         except LLMError as error:
@@ -169,7 +181,12 @@ def _analyse_words(words: list[InputWord], ctx: Context) -> list[WordAnalysis]:
         if problem is None:
             return _finish(words, proposals, ctx)
         messages = [*messages, {"role": "user", "content": f"{problem} Reply again with the corrected JSON."}]
-    return _salvage(words, response, problem, ctx)
+    results = _salvage(words, response, problem, ctx)
+    if any(flag.code == "analysis_failed" for result in results for flag in result.flags):
+        # Don't let a bad response answer this sentence forever: both attempts go.
+        for attempt in sent:
+            ctx.forget(attempt)
+    return results
 
 
 def _salvage(words: list[InputWord], response: dict, problem: str, ctx: Context) -> list[WordAnalysis]:
@@ -216,11 +233,16 @@ def _finish(words: list[InputWord], proposals: list[WordAnalysis], ctx: Context)
     return results
 
 
+def _unanalysed(word: InputWord) -> WordAnalysis:
+    """Punctuation passes through. Anything else without letters, like ⁊ or 7, gets a flag."""
+    flags = []
+    if "⁊" in word.form or any(unicodedata.category(character)[0] not in "PZ" for character in word.form):
+        flags.append(Flag("unknown_form", f"{word.form} wasn't analysed: it has no letters"))
+    return WordAnalysis(word.form, word.punct, [Segment(word.form, word.form)], flags=flags, lead=word.lead)
+
+
 def analyze_sentence(words: list[InputWord], ctx: Context) -> list[WordAnalysis]:
     """One result per input word, in order. Punctuation-only words aren't sent to the model."""
     real = [word for word in words if _has_letters(word.form)]
     analysed = iter(_analyse_words(real, ctx) if real else [])
-    return [
-        next(analysed) if _has_letters(word.form) else WordAnalysis(word.form, word.punct, [Segment(word.form, word.form)])
-        for word in words
-    ]
+    return [next(analysed) if _has_letters(word.form) else _unanalysed(word) for word in words]

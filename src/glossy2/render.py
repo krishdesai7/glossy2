@@ -21,7 +21,7 @@ def _pad(text: str, width: int) -> str:
 
 def _display_form(analysis: WordAnalysis) -> str:
     joined = "-".join(s.form for s in analysis.segments) if analysis.segments else analysis.form
-    return joined + analysis.punct
+    return analysis.lead + joined + analysis.punct
 
 
 def _width() -> int:
@@ -91,7 +91,9 @@ def _gloss_to_tex(gloss: str) -> str:
         if run:
             tex.append(f"\\textsc{{{'.'.join(run)}}}")
         parts.append(".".join(tex))
-    return "-".join(parts) + marker
+    tex = "-".join(parts) + marker
+    # gb4e aligns on spaces, so a gloss of several words has to stay one group.
+    return f"{{{tex}}}" if " " in body else tex
 
 
 def render_gb4e(analyses: list[WordAnalysis], translation: str = "") -> str:

@@ -76,3 +76,51 @@ def test_two_parts_of_speech_is_a_conflict():
 
 def test_blank_line():
     assert parse_line("   ") == []
+
+
+def test_space_before_hint_is_an_error():
+    with pytest.raises(HintError) as error:
+        parse_line("lande [noun]")
+    assert "[noun]" in error.value.word
+
+
+def test_second_bracket_is_an_error():
+    with pytest.raises(HintError):
+        parse_line("lande[noun][neuter]")
+
+
+def test_text_after_hint_is_an_error():
+    with pytest.raises(HintError) as error:
+        parse_line("lande[noun]extra")
+    assert error.value.word == "lande"
+
+
+@pytest.mark.parametrize("label,short", [("strong", "str"), ("first", "1"), ("present", "prs"), ("name", "propn"), ("past", "pst")])
+def test_labels_that_are_also_meanings_must_be_spelled_out(label, short):
+    with pytest.raises(HintError) as error:
+        parse_line(f"word[{label}]")
+    assert short in error.value.reason and f"={label}" in error.value.reason
+
+
+def test_equals_forces_a_stem_meaning():
+    word = parse_line("strang-e[=strong]")[0]
+    assert word.hint_stem == "strong" and not word.hint_feats
+
+
+def test_empty_equals_is_an_error():
+    with pytest.raises(HintError):
+        parse_line("lande[=]")
+
+
+def test_leading_punctuation_is_separated():
+    word = parse_line('"Hē,')[0]
+    assert (word.lead, word.form, word.punct) == ('"', "Hē", ",")
+
+
+def test_middle_dots_are_separated():
+    word = parse_line("·lande·")[0]
+    assert (word.lead, word.form, word.punct) == ("·", "lande", "·")
+
+
+def test_punctuation_alone_stays_a_token():
+    assert parse_line("( lande")[0].form == "("

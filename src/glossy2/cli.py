@@ -13,13 +13,13 @@ from glossy2.dictionary import Dictionary
 from glossy2.evaluate import LEVELS, TokenScore, aggregate, make_inputs, run_level, score_sentence
 from glossy2.gold import load_corrections, load_gold, split_sentences
 from glossy2.hints import HintError, parse_line
-from glossy2.llm import MissingKeyError, complete_json, current_model, estimate_cost, usage_totals
+from glossy2.llm import CacheMiss, MissingKeyError, complete_json, current_model, estimate_cost, usage_totals
 from glossy2.memory import Memory
 from glossy2.models import GoldSentence
 from glossy2.normalize import normalize
 from glossy2.render import render_gb4e, render_text
 from glossy2.report import memory_effect, render_report
-from glossy2.ycoe import YcoeIndex
+from glossy2.ycoe import YcoeIndex, YcoeMissing
 
 OHTHERE_TEX = Path("corpus/ohthere/Voyages_of_Ohthere_Wulfstan.tex")
 TINA_CORRECTIONS = Path("corpus/ohthere/tina-corrections.jsonl")
@@ -29,7 +29,18 @@ OHTHERE_YCOE_FILE = "coorosiu.o2.pos"
 MEMORY_PATH = Path("memory/ang.jsonl")
 REPORTS_DIR = Path("reports")
 OUTPUT_TOKENS_PER_WORD = 90
+# The Ohthere test run used 1.14x its estimate, mostly from retries that resend a sentence.
+RETRY_MARGIN = 1.2
+TRIAL_MAX_SENTENCES = 3
 _complete = complete_json
+
+
+def _complete_cached(messages: list[dict]) -> dict:
+    return complete_json(messages, cache_only=True)
+
+
+def _money(amount: float) -> str:
+    return "unknown" if amount != amount else f"${amount:.2f}"
 
 
 def coverage_stats(sentences: list[GoldSentence], ycoe: YcoeIndex, dictionary: Dictionary) -> dict:
@@ -139,7 +150,7 @@ def _estimate(sentences, levels, ctx) -> tuple[int, int]:
         characters = sum(len(m["content"]) for m in build_messages(words, ctx))
         prompt_tokens += characters // 4 * len(levels)
         completion_tokens += len(words) * OUTPUT_TOKENS_PER_WORD * len(levels)
-    return prompt_tokens, completion_tokens
+    return int(prompt_tokens * RETRY_MARGIN), int(completion_tokens * RETRY_MARGIN)
 
 
 def _score_from_json(row: dict) -> TokenScore:
@@ -169,6 +180,9 @@ def _eval(args: argparse.Namespace) -> int:
     if args.gold and not args.name:
         print("--gold needs --name, which names the report.", file=sys.stderr)
         return 2
+    if args.limit is not None and args.limit < 1:
+        print("--limit must be at least 1.", file=sys.stderr)
+        return 2
     ohthere = load_gold(OHTHERE_TEX, TINA_CORRECTIONS)
     dev, test = split_sentences(ohthere)
     if args.gold:
@@ -189,15 +203,20 @@ def _eval(args: argparse.Namespace) -> int:
     selected = sentences[: args.limit] if args.limit else sentences
     ycoe, dictionary = _eval_sources(exclude)
     memory = _eval_memory(args.memory, dev)
-    ctx = Context(ycoe, dictionary, dev, _complete, memory)
+    ctx = Context(ycoe, dictionary, dev, _complete_cached if args.cache_only else _complete, memory)
     prompt_tokens, completion_tokens = _estimate(selected, levels, ctx)
     cost = estimate_cost(prompt_tokens, completion_tokens, current_model())
-    print(
-        f"{len(selected)} sentences, {len(levels)} hint level(s), {current_model()}: about {prompt_tokens} input "
-        f"tokens and {completion_tokens} output tokens, roughly ${cost:.2f} before caching."
+    if not args.cache_only:
+        print(
+            f"{len(selected)} sentences, {len(levels)} hint level(s), {current_model()}: about {prompt_tokens} input "
+            f"tokens and {completion_tokens} output tokens, roughly {_money(cost)} at list price. "
+            "It could run higher if the model needs many retries."
+        )
+    trial = (
+        args.limit is not None and args.limit <= TRIAL_MAX_SENTENCES
+        and len(levels) == 1 and split == "dev" and not args.gold
     )
-    trial = args.limit and split == "dev" and not args.gold
-    if not args.yes and not trial:
+    if not args.yes and not trial and not args.cache_only:
         if input("Go ahead? [y/N] ").strip().lower() != "y":
             print("Stopped. Nothing was sent.")
             return 0
@@ -212,16 +231,26 @@ def _eval(args: argparse.Namespace) -> int:
     except MissingKeyError as error:
         print(error, file=sys.stderr)
         return 2
+    except CacheMiss:
+        print("A response isn't cached, and --cache-only won't pay for it. Nothing was sent or changed.", file=sys.stderr)
+        return 2
     used = usage_totals()
     spent_in, spent_out = used[0] - before[0], used[1] - before[1]
     spent = estimate_cost(spent_in, spent_out, current_model())
-    print(f"This run used {spent_in} input and {spent_out} output tokens, at most ${spent:.2f}.")
+    print(f"This run used {spent_in} input and {spent_out} output tokens, at most {_money(spent)}.")
     if args.limit:
         return 0
     json_path = REPORTS_DIR / f"{report_name}.json"
     results = _load_results(json_path)
     for level, scores, effect in new_runs:
-        results["runs"][f"{level}|{args.memory}"] = {
+        key = f"{level}|{args.memory}"
+        failed = aggregate(scores).failed
+        if failed:
+            print(f"WARNING: {failed} tokens failed at hints={level}. Check the service and your credits.")
+        if failed and key in results["runs"]:
+            print(f"The earlier hints={level} results were kept instead of being overwritten.")
+            continue
+        results["runs"][key] = {
             "level": level, "memory": args.memory, "effect": effect, "scores": [asdict(s) for s in scores],
         }
     results["spent"] = results.get("spent", 0) + (spent if spent == spent else 0)
@@ -231,7 +260,7 @@ def _eval(args: argparse.Namespace) -> int:
             _, withheld = make_inputs(sentence, "none")
             rows += score_sentence(sentence, ycoe_analyses(sentence, ycoe), withheld, corrections, dictionary)
         results["baselines"]["YCOE most-common tag"] = [asdict(s) for s in rows]
-    if "CLTK Stanza" not in results["baselines"]:
+    if "CLTK Stanza" not in results["baselines"] and not args.cache_only:
         rows, note = _cltk_baseline(sentences, corrections, dictionary)
         if rows is None:
             results["notes"]["CLTK Stanza"] = note
@@ -246,7 +275,7 @@ def _eval(args: argparse.Namespace) -> int:
     baselines = {key: [_score_from_json(row) for row in rows] for key, rows in results["baselines"].items()}
     text = render_report(
         name=name, split=split, sentences=len(sentences), runs=runs, baselines=baselines,
-        baseline_notes=results["notes"], cost_note=f"Model {current_model()}, about ${results['spent']:.2f} at list price",
+        baseline_notes=results["notes"], cost_note=f"Model {current_model()}, about ${results['spent']:.2f} at list price, before any caching discount",
     )
     (REPORTS_DIR / f"{report_name}.md").write_text(text, encoding="utf-8")
     print(f"Report: {REPORTS_DIR / f'{report_name}.md'}")
@@ -281,12 +310,17 @@ def main(argv: list[str] | None = None) -> int:
     evaluate.add_argument("--name", help="Name of the --gold text, used for its report.")
     evaluate.add_argument("--exclude-ycoe", action="append", default=[], metavar="FILE")
     evaluate.add_argument("--memory", choices=["none", "dev", "ohthere"], default="none")
+    evaluate.add_argument("--cache-only", action="store_true", help="Use cached responses only. Never pays for a call.")
     evaluate.set_defaults(run=_eval)
 
     args = parser.parse_args(argv)
     if args.command == "gloss" and not args.text and not args.file:
         gloss.error("give a sentence or --file")
-    return args.run(args)
+    try:
+        return args.run(args)
+    except YcoeMissing as error:
+        print(error, file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

@@ -78,3 +78,38 @@ def test_memory_section_shown():
 
 def test_same_words_column_shown():
     assert "same words at every level" in report()
+
+
+def test_baseline_shows_na_for_features_it_cannot_produce():
+    from glossy2.evaluate import TokenScore as T
+
+    scores = [T(0, 0, "x", "y", "", None, False, {"Number": False, "Case": True}, None, None, False, False, False)]
+    text = report(baselines={"YCOE most-common tag": scores})
+    number = next(l for l in text.splitlines() if l.startswith("| Number "))
+    case = next(l for l in text.splitlines() if l.startswith("| Case "))
+    assert number.rstrip(" |").endswith("n/a") and "100.0%" in case
+    row = next(l for l in text.splitlines() if l.startswith("| YCOE most-common"))
+    assert "0.0%" not in row
+
+
+def test_echoed_hint_wording_is_honest():
+    text = report()
+    assert "a hint echoed back can't raise a score" not in text
+    assert "whole-gloss" in text.lower()
+
+
+def test_memory_section_says_it_measures_no_gain():
+    run = {**RUN, "memory": "dev", "effect": {"in_memory": (1, 2), "not_in_memory": (1, 1), "wrong_top": 2, "misled": 1}}
+    text = report(runs=[run])
+    assert "did earlier glosses help" not in text
+    assert "not a measure of memory's effect" in text and "wasn't run" in text
+
+
+def test_report_says_when_runs_used_memory():
+    run = {**RUN, "memory": "dev", "effect": {"in_memory": (1, 2), "not_in_memory": (1, 1), "wrong_top": 2, "misled": 1}}
+    assert "worked-example sentences were also supplied as memory" in report(runs=[run])
+
+
+def test_report_states_share_of_errors_unflagged():
+    assert "1 of the 1 wrong glosses" not in report()
+    assert "0 of the 1 wrong glosses carried no flag" in report()

@@ -85,6 +85,10 @@ def ycoe_features(tag: str) -> tuple[str | None, dict[str, str]]:
     return None, {}
 
 
+class YcoeMissing(FileNotFoundError):
+    pass
+
+
 class YcoeIndex:
     def __init__(self, table: dict[str, Counter]):
         self._table = table
@@ -92,7 +96,13 @@ class YcoeIndex:
     @classmethod
     def load(cls, pos_dir: Path, exclude: set[str] = frozenset()) -> "YcoeIndex":
         table: dict[str, Counter] = defaultdict(Counter)
-        for path in sorted(Path(pos_dir).glob("*.pos")):
+        paths = sorted(Path(pos_dir).glob("*.pos"))
+        if not paths:
+            raise YcoeMissing(f"No YCOE files found in {pos_dir}. Unzip your copy there first.")
+        unmatched = set(exclude) - {path.name for path in paths}
+        if unmatched:
+            raise YcoeMissing(f"Can't exclude {', '.join(sorted(unmatched))}: no such YCOE file in {pos_dir}.")
+        for path in paths:
             if path.name in exclude:
                 continue
             for word, tag in _TOKEN.findall(path.read_text(encoding="latin-1")):

@@ -50,5 +50,5 @@ def render_gloss(analysis: WordAnalysis) -> str:
     codes = {flag.code for flag in analysis.flags}
     if "analysis_failed" in codes:
         return "???"
-    text = "-".join(segment.gloss for segment in analysis.segments)
+    text = "-".join(segment.gloss for segment in analysis.segments if segment.gloss)
     return f"{text}?" if codes else text
