@@ -1,19 +1,42 @@
 [project]
-name = "glossy2"
-version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-authors = [
-    { name = "Krish Desai", email = "27725015+krishdesai7@users.noreply.github.com" }
-]
-requires-python = ">=3.15"
-dependencies = [
+  name            = "glossy2"
+  version         = "0.1.0"
+  description     = "Add your description here"
+  readme          = "README.md"
+  requires-python = ">=3.15"
+  authors         = [{ name = "Krish Desai", email = "27725015+krishdesai7@users.noreply.github.com" }]
+  dependencies    = [
     "cltk[mistral,ollama,openai,stanza]>=2.5.1",
-]
+  ]
 
-[project.scripts]
-glossy2 = "glossy2:main"
+
+  [project.scripts]
+    glossy2 = "glossy2:main"
+
+
+[dependency-groups]
+  dev = [
+    "tombi>=1.9.8",
+  ]
+
 
 [build-system]
-requires = ["uv_build>=0.13.6,<0.14.0"]
-build-backend = "uv_build"
+  requires      = ["uv_build>=0.13.6,<0.14.0"]
+  build-backend = "uv_build"
+
+
+[tool.tombi]
+  toml-version = "v1.1.0"
+
+
+  [tool.tombi.format.rules]
+    group-blank-lines-limit         = 2
+    indent-sub-tables               = true
+    indent-table-key-value-pairs    = true
+    key-value-equals-sign-alignment = true
+    table-blank-lines               = 2
+    trailing-comment-alignment      = true
+
+
+  [tool.tombi.extensions."tombi-toml/pyproject"]
+    lsp.document-link.pypi-org.enabled = true

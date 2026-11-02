@@ -2,11 +2,10 @@
 
 ## Intent
 
-Krish's friend, an Old English glosser who doesn't code, paid for a site (Glossy)
-whose "automatic glossing" is hand-written lookup tables and suffix rules. Unknown
+Glossy is a website whose "automatic glossing" is hand-written lookup tables and suffix rules. Unknown
 words become confident nouns, with Wiktionary links nobody checked.
 
-This project is a small demo for that friend of what a well-designed glosser could
+This project is a small demo of what a well-designed glosser could
 be. It is not a product. It should change his view of what is possible, and give him
 evidence that he, as a domain expert, can judge. A website could come later and is
 treated as decoration.
@@ -21,7 +20,7 @@ returns the completed interlinear gloss. Partial means per-word and can be half-
 
 1. Complete glosses from no input or partial input, in a format the friend can read
    at a glance, such as `sǣ-d-e` / `say-PST-IND.3SG`.
-2. Treat his hints as fixed facts. The tool never overrides them. If a hint conflicts
+2. Treat hints as fixed facts. The tool never overrides them. If a hint conflicts
    with what the tool thinks is possible, it says so.
 3. Mark what it is unsure of, with a reason, instead of guessing confidently.
 4. Only show Wiktionary links for entries known to exist.
@@ -42,13 +41,13 @@ returns the completed interlinear gloss. Partial means per-word and can be half-
 - Silently changing a hint.
 - An invented lemma or a link to a page that doesn't exist.
 - Inflated scores from testing on data the tool has already seen.
-- Presenting agent-written or generated data as the friend's work.
+- Presenting agent-written or generated data human work.
 
 ## Data
 
 All paths are relative to the repo root.
 
-**`corpus/ohthere/Voyages_of_Ohthere_Wulfstan.tex`** is the friend's work and the main
+**`corpus/ohthere/Voyages_of_Ohthere_Wulfstan.tex`** is human work and the main
 answer key: 75 sentences, 1,716 tokens, 636 of them hyphenated, in `gb4e` format, with
 translations and 341 distinct lexical glosses. It contains no lemmas or
 parts of speech. Tags used include `SG PL NOM ACC GEN DAT INS M F N 3SG 3PL 1PL PRS PST
@@ -57,7 +56,7 @@ THM AGT NMLZ PASS`. Note that `COMP` means complementizer and `CMP` means compar
 though older glosses use `comp` for comparative. Known quirks are one `have--prs.ind.pl`
 and one `dat,pl`.
 
-**The friend's TinaCMS corrections** are also his work, and Krish confirms they are
+**The TinaCMS corrections** are also human work, and they are
 reliable. They live in the git history of the sibling repo `../glossy`, in
 `content/texts/ohthere.json`, commits `d1ef57a ea2abff f5a7dcf 72dcd3c db12d79 17db08c`.
 Compare each commit with its parent and keep only the fields it changed: about 21
@@ -80,7 +79,7 @@ and credit Wiktionary (CC BY-SA).
 
 ## How it works
 
-```
+```text
 input sentence + hints
    -> normalise spelling for lookup
    -> candidates: YCOE tags seen for this form; dictionary entries for this form
@@ -106,6 +105,7 @@ the dictionary can't supply lemmas, stop and rethink that part rather than build
 
 **Flags are based on evidence, not on the model's own confidence**, which is a poor
 guide. A word is flagged, with its reason, when:
+
 - the form isn't in YCOE or the dictionary,
 - the chosen tag isn't one YCOE has seen for that form,
 - the lemma isn't in the dictionary,
@@ -127,7 +127,7 @@ context that works, sentence at a time.
 
 ## Command line
 
-```
+```shell
 glossy2 gloss "Hē cwæð þæt hē būde on þǣm lande."
 glossy2 gloss --file sentences.txt
 glossy2 eval --hints none|half|stem|stem+half [--split dev|test] [--limit N]
@@ -137,7 +137,7 @@ Hints go in brackets straight after a word, comma-separated. Known labels such a
 `noun`, `neuter` and `dat` become features. Anything else is the stem meaning. A hyphen
 in the word fixes the segmentation:
 
-```
+```text
 Hē cwæð þæt hē būde on þǣm lande[noun,neuter] ...
 Hē sǣ-d-e his hlāford-e[lord] ...
 ```
@@ -149,7 +149,7 @@ per-word table with lemma and link. `--format gb4e` prints LaTeX he can paste.
 
 `glossy2 eval` is the part that makes the demo persuasive.
 
-- **Answer key:** his `.tex`, with his Tina gloss corrections applied.
+- **Answer key:** `.tex`, with Tina gloss corrections applied.
 - **No leakage:** exclude `coorosiu.o2.pos` from YCOE during eval, because it contains
   the Ohthere text. Say in the report that the model may also remember this famous text
   from training, so these scores may run high on unseen text.
@@ -158,7 +158,7 @@ per-word table with lemma and link. `--format gb4e` prints LaTeX he can paste.
   other 60 are `test`, and are only run to produce reported numbers. Examples shown to
   the model come only from `dev`, and the report says so. Keep Ohthere's two passages
   represented in both.
-- **Hint levels:** all hints come from his glosses, so nothing machine-made is fed in as
+- **Hint levels:** all hints come from human glosses, so nothing machine-made is fed in as
   fact. `none`; `half` (a random half of each word's marked features, fixed seed);
   `stem` (stem meaning given, grammar withheld); `stem+half`. Part-of-speech hints work
   in `gloss`, but aren't an eval level: his `.tex` has no parts of speech, and only about
@@ -169,9 +169,9 @@ per-word table with lemma and link. `--format gb4e` prints LaTeX he can paste.
   ignored rather than counted wrong, and the report says that this measures recall of
   what he marked.
 - **Scores, each split by hint level:** exact match to his whole gloss, which is the
-  number he'll care about most; segmentation; each grammatical feature; lexical meaning,
+  number users will care about most; segmentation; each grammatical feature; lexical meaning,
   as exact match and as match against any dictionary sense, since `say` versus `speak`
-  isn't really an error; lemma, on his Tina corrections only, which is a small sample
+  isn't really an error; lemma, on Tina corrections only, which is a small sample
   and must be labelled so.
 - **Flag quality:** accuracy on flagged versus unflagged words. Flags only earn trust if
   unflagged words are clearly more accurate.
@@ -180,12 +180,12 @@ per-word table with lemma and link. `--format gb4e` prints LaTeX he can paste.
   noting that its tables were built around this same text.
 
 Output is a markdown report at `reports/eval.md`, including a sample of real errors for
-him to read. No accuracy target is set in advance: an honest number is the deliverable.
+users to read. No accuracy target is set in advance: an honest number is the deliverable.
 
 ## Constraints
 
 - Python via uv, in this repo. Requires Python 3.15, as already set up.
-- CLI only, and it has to run on Krish's Mac.
+- CLI only, and it has to run on the user's Mac.
 - Demo-sized LLM spend: Moonshot credits are already paid for. Print the token count
   and an estimated cost before a full eval, and test with `--limit` first.
 - Never commit the API key, YCOE or the dictionary download.
