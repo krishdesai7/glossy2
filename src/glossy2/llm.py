@@ -81,6 +81,7 @@ def _attempt(client, model: str, messages: list[dict]) -> dict:
         model=model,
         messages=messages,
         response_format={"type": "json_object"},
+        temperature=0,
         max_tokens=MAX_OUTPUT_TOKENS,
     )
     usage = response.usage

@@ -1,7 +1,7 @@
 import json
 from types import SimpleNamespace
 
-import httpx
+import httpx2 as httpx
 import openai
 import pytest
 
@@ -114,3 +114,12 @@ def test_usage_counted(tmp_path):
 def test_estimate_cost():
     assert llm.estimate_cost(1_000_000, 1_000_000, "kimi-k3.1-pro") == pytest.approx(12.0)
     assert llm.estimate_cost(1, 1, "unknown-model") != llm.estimate_cost(1, 1, "unknown-model")
+
+
+def test_temperature_zero(tmp_path):
+    client = FakeClient(reply())
+    seen = {}
+    original = client.create
+    client.chat.completions.create = lambda **kw: (seen.update(kw), original(**kw))[1]
+    llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path)
+    assert seen["temperature"] == 0
