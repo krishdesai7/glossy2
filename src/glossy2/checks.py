@@ -56,13 +56,17 @@ def _apply_feature_to_gloss(segments: list[Segment], key: str, value: str) -> No
 
 
 def _apply_stem(segments: list[Segment], stem: str) -> None:
-    for segment in segments:
-        pieces = segment.gloss.split(".")
-        lexical = [i for i, piece in enumerate(pieces) if piece not in HUMAN_TO_FEATS]
-        if lexical:
-            tags = [piece for i, piece in enumerate(pieces) if i not in lexical]
-            segment.gloss = ".".join([stem, *tags])
-            return
+    """Put the given stem on the segments that carry lexical meaning, keeping any tags."""
+    lexical = [s for s in segments if any(p not in HUMAN_TO_FEATS for p in s.gloss.split("."))]
+    if not lexical:
+        return
+    parts = stem.split("-")
+    if len(parts) != len(lexical):
+        parts = [stem]
+        lexical = lexical[:1]
+    for segment, part in zip(lexical, parts):
+        tags = [piece for piece in segment.gloss.split(".") if piece in HUMAN_TO_FEATS]
+        segment.gloss = ".".join([part, *tags])
 
 
 def _apply_hints(word: InputWord, result: WordAnalysis) -> None:

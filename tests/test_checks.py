@@ -122,3 +122,17 @@ def test_rejoin():
     assert segments_rejoin("sǣde", [Segment("sǣ", "say"), Segment("d", "PST"), Segment("e", "IND.3SG")])
     assert segments_rejoin("sǣ-d-e", [Segment("sǣ", "say"), Segment("de", "PST")])
     assert not segments_rejoin("sǣde", [Segment("sa", "say"), Segment("de", "PST")])
+
+
+def test_hyphenated_stem_spreads_over_stem_segments():
+    segments = [Segment("norþ", "north"), Segment("mon", "man"), Segment("a", "GEN.PL")]
+    word = InputWord("norþmona", hint_stem="north-person")
+    result = apply_checks(word, proposed(form="norþmona", segments=segments), FakeYcoe(), DICTIONARY)
+    assert [s.gloss for s in result.segments] == ["north", "person", "GEN.PL"]
+
+
+def test_hyphenated_stem_on_one_segment_stays_whole():
+    word = InputWord("norþmona", hint_stem="north-person")
+    segments = [Segment("norþmon", "northman"), Segment("a", "GEN.PL")]
+    result = apply_checks(word, proposed(form="norþmona", segments=segments), FakeYcoe(), DICTIONARY)
+    assert result.segments[0].gloss == "north-person"
