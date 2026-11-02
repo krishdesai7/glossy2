@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 from glossy2.checks import apply_checks, segments_rejoin
 from glossy2.dictionary import Dictionary
 from glossy2.llm import LLMError, complete_json
+from glossy2.memory import Memory
 from glossy2.models import Flag, GoldSentence, InputWord, Segment, WordAnalysis
 from glossy2.normalize import normalize
 from glossy2.tags import HUMAN_TO_FEATS
@@ -14,6 +15,7 @@ from glossy2.ycoe import YcoeIndex
 MAX_SENSES = 3
 MAX_TAGS = 5
 MAX_ENTRIES = 4
+MAX_REMEMBERED = 5
 
 SYSTEM_PROMPT = """You are an expert in Old English philology, producing Leipzig-style interlinear glosses.
 
@@ -25,7 +27,7 @@ For each numbered word, split it into morphemes and gloss each one, following th
 
 Tags allowed in glosses: {tags}
 
-Each word lists evidence where available: tags YCOE has recorded for that spelling (with counts), and dictionary entries. Use it, but read the sentence: the most frequent reading is not always the right one, and a word may have no evidence at all.
+Each word lists evidence where available: tags YCOE has recorded for that spelling (with counts), and dictionary entries. Use it, but read the sentence: the most frequent reading is not always the right one, and a word may have no evidence at all. Some words also list how humans glossed that spelling before. The same spelling can be a different word or form elsewhere, so treat those only as possible readings.
 
 Anything listed as "fixed" came from a human and must not be changed. Build your analysis around it.
 
@@ -42,6 +44,7 @@ class Context:
     dictionary: Dictionary
     examples: list[GoldSentence] = field(default_factory=list)
     complete: Callable[[list[dict]], dict] = complete_json
+    memory: Memory | None = None
 
 
 def _has_letters(form: str) -> bool:
@@ -78,6 +81,11 @@ def _describe_word(index: int, word: InputWord, ctx: Context) -> str:
         forms = " | ".join(" ".join(tags) for tags in entry.form_tags[:MAX_TAGS])
         detail = f" [{forms}]" if forms else ""
         lines.append(f"   dictionary: {entry.lemma} ({entry.pos}){detail}: {senses}")
+    if ctx.memory:
+        remembered = ctx.memory.human(word.form)[:MAX_REMEMBERED]
+        if remembered:
+            readings = ", ".join(f"{gloss} x{count} ({', '.join(sources)})" for gloss, count, sources in remembered)
+            lines.append(f"   earlier human glosses, may not apply here: {readings}")
     return "\n".join(lines)
 
 
