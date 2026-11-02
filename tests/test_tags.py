@@ -56,3 +56,7 @@ def test_render_failed():
 
 def test_vocative_is_a_tag():
     assert parse_gloss("father.VOC.SG") == ("father", {"Case": "Voc", "Number": "Sing"})
+
+
+def test_possessive_is_a_tag():
+    assert parse_gloss("1PL.POSS.NOM.SG.M") == ("", {"Person": "1", "Number": "Sing", "Poss": "Yes", "Case": "Nom", "Gender": "Masc"})

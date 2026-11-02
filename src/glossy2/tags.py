@@ -25,7 +25,7 @@ HUMAN_TO_FEATS: dict[str, dict[str, str]] = {
     "CMP": {"Degree": "Cmp"}, "SUP": {"Degree": "Sup"},
     "COMP": {"PartType": "Comp"}, "NEG": {"Polarity": "Neg"},
     "ADV": {"Form": "Adv"}, "ADJ": {"Form": "Adj"},
-    "HAB": {"Aspect": "Hab"}, "THM": {"Thematic": "Yes"}, "PFX": {"Prefix": "Yes"},
+    "POSS": {"Poss": "Yes"}, "HAB": {"Aspect": "Hab"}, "THM": {"Thematic": "Yes"}, "PFX": {"Prefix": "Yes"},
     "AGT": {"Derivation": "Agt"}, "NMLZ": {"Derivation": "Nmlz"},
 }
 
