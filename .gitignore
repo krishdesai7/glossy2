@@ -14,3 +14,8 @@ corpus/ycoe-archive/
 
 # Secrets
 .env
+
+# Downloads and caches
+data/
+.llm-cache/
+.superpowers/
