@@ -1,0 +1,19 @@
+[project]
+name = "glossy2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Krish Desai", email = "27725015+krishdesai7@users.noreply.github.com" }
+]
+requires-python = ">=3.15"
+dependencies = [
+    "cltk[mistral,ollama,openai,stanza]>=2.5.1",
+]
+
+[project.scripts]
+glossy2 = "glossy2:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"

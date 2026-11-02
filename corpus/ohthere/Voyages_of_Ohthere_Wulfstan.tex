@@ -1,0 +1,562 @@
+%!TEX TS-program = xelatex
+% !BIB program = biber
+\documentclass{article}[12pt]
+\usepackage{setspace}
+\singlespacing
+\usepackage{ifpdf}
+\usepackage{fontspec}
+%\setmainfont{Charis SIL}
+%\setmainfont{TeX Gyre Termes}
+%\newfontfamily\myfont{Doulos SIL}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsthm, amsmath, amssymb}
+%\usepackage{qtree}
+\usepackage[linguistics]{forest}
+\usepackage{adjustbox}
+\usepackage[loose,nice]{units} %replace "nice" by "ugly" for units in upright fractions
+\usepackage{tipa}
+\usepackage{graphicx}
+\usepackage{covington}
+\usepackage{gb4e}
+\noautomath
+\let\eachwordone=\normalfont
+\let\eachwordone=\textbf
+\usepackage{hanging}
+\usepackage{textgreek}
+\usepackage{multirow}
+\usepackage{multicol}
+\setlength{\multicolsep}{0pt}
+%\setlength{\columnsep}{-1.4cm}
+%\setlength{\textfloatsep}{0.1cm}
+\usepackage[normalem]{ulem}
+\usepackage{stmaryrd}
+\usepackage{hyperref}
+\usepackage[backend=biber,style=unified,citestyle=authoryear-comp,maxcitenames=3,maxbibnames=99]{biblatex}
+\DeclareFieldFormat{postnote}{#1}
+\renewcommand{\postnotedelim}{\addcolon\space}
+\usepackage[utf8x]{inputenc}
+
+\title{\textbf{The voyages of Ohthere and Wulfstan}}
+\author{Translated and glossed by Tyler Lemon}
+\date{September 30, 2026}
+
+\addbibresource{Voyages_of_Ohthere_Wulfstan.bib}
+
+\begin{document}
+\maketitle
+
+%\begin{center}
+
+%\textbf{\large The voyages of Ohthere and Wulfstan}
+
+%\end{center}
+
+%\vspace{0.5cm}
+
+\section{Text}
+
+\begin{exe}
+\ex \label{ex:paragraph.1} \begin{xlist}
+
+\ex{\gll Ōhthere sǣ-d-e his hlāford-e, Ælfrēd-e cyning-e, þæt hē eal-ra Norð-monn-a norþ-mest bū-d-e.\\
+Ohthere.\textsc{nom} say-\textsc{pst}-\textsc{ind.3sg} \textsc{3sg.m.gen} lord-\textsc{dat.sg} Alfred-\textsc{dat.sg} king-\textsc{dat.sg} \textsc{comp} \textsc{3sg.m.nom} all-\textsc{gen.pl.str} north-man-\textsc{gen.pl} north-most.\textsc{adv} dwell-\textsc{pst}-\textsc{sjv.sg}\\
+\glt `Ohthere said to his lord, King Alfred, that he lived the furthest north of all Norwegians.'}
+
+\ex{\gll Hē cwæð þæt hē bū-d-e on þǣm land-e norþ-weard-um wiþ þā West-sǣ.\\
+\textsc{3sg.m.nom} say.\textsc{pst.ind.3sg} \textsc{comp} \textsc{3sg.m.nom} dwell-\textsc{pst}-\textsc{sjv.sg} in \textsc{det.def}.\textsc{dat.sg.n} land-\textsc{dat.sg} north-ward-\textsc{dat.sg.n.str} against \textsc{det.def}.\textsc{acc.sg.f} west-sea.\textsc{acc.sg}\\
+\glt `He said that he lived in the northern part of the land by the West Sea (ocean west of Norway).'}
+
+\ex{\gll Hē sǣ-d-e þēah þæt þæt land sīe swīþ-e lang norþ þonan, ac hit is eal wēst-e, būton on fēaw-um stōw-um styċċe-mǣl-um wīc-i-að Finn-as on hunt-oð-e on wintr-a and on sumer-a on fisc-aþ-e be þǣre sǣ.\\
+\textsc{3sg.m.nom} say-\textsc{pst}-\textsc{ind.3sg} though \textsc{comp} \textsc{det.def}.\textsc{nom.sg.n} land.\textsc{nom.sg} be.\textsc{prs.sjv.sg} strong-\textsc{adv} long.\textsc{nom.sg.n.str} north.\textsc{adv} thence but \textsc{3sg.n.nom} be.\textsc{prs.ind.3sg} all.\textsc{nom.sg.n} waste-\textsc{nom.sg.n.str} except in few-\textsc{dat.pl.str} place-\textsc{dat.pl} piece-meal-\textsc{dat.pl} camp-\textsc{thm}-\textsc{prs.ind.pl} Finn-\textsc{nom.pl} in hunt-\textsc{nmlz}-\textsc{dat.sg} in winter-\textsc{dat.sg} and in summer-\textsc{dat.sg} in fish-\textsc{nmlz}-\textsc{dat.sg} by \textsc{det.def}.\textsc{dat.sg.f} sea.\textsc{dat.sg}\\
+\glt `He said though that the land continues very long to the north from there, but it is all uninhabited, except in a few places here and there Finns (i.e. Sami) camp, hunting in winter and in summer fishing by the sea.'}
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.2}  \begin{xlist}
+
+\ex{\gll Hē sǣ-d-e þæt hē æt sum-um ċirr-e wol-d-e fand-i-an hū long-e þæt land norþ-ryht-e lǣġ-e, oþþe hwæðer ǣniġ mon be-norð-an þǣm wēstenn-e bū-d-e.\\
+\textsc{3sg.m.nom} say-\textsc{pst}-\textsc{ind.3sg} \textsc{comp} \textsc{3sg.m.nom} at some-\textsc{dat.sg.m.str} occasion-\textsc{dat.sg} want-\textsc{pst}-\textsc{sjv.sg} find.out-\textsc{thm}-\textsc{inf} how long-\textsc{adv} \textsc{dem.dist} land.\textsc{nom.sg} north-right-\textsc{adv} lie.\textsc{pst}-\textsc{sjv.sg} or whether any.\textsc{nom.sg.m.str} 
+man.\textsc{nom.sg} by-north-from \textsc{det.def}.\textsc{dat.sg.n} wasteland-\textsc{dat.sg} dwell-\textsc{pst}-\textsc{sjv.sg}\\
+\glt `He said that on one occasion he wanted to find out how far that land lay to the north, or whether anyone lived to the north of the wilderness.'}
+
+\ex{\gll Þā fōr hē norþ-ryht-e be þǣm land-e.\\
+then travel.\textsc{pst.ind.3sg} \textsc{3sg.m.nom} north-right-\textsc{adv} by \textsc{det.def}.\textsc{dat.sg.n} land-\textsc{dat.sg}\\
+\glt `Then he traveled north near the land.'}
+
+\ex{\gll Lēt him eal-ne weġ þæt wēst-e land on ðæt stēor-bord and þā wīd-sǣ on ðæt bæc-bord þrīe dag-as; þā wæs hē swā feor norþ swā þā hwæl-hunt-an firr-est far-aþ.\\
+let.\textsc{pst.ind.3sg} \textsc{3sg.m.dat} all-\textsc{acc.sg.m.str} way.\textsc{acc.sg} \textsc{det.def}.\textsc{acc.sg.n} waste-\textsc{acc.sg.n.wk} land.\textsc{acc.sg} in \textsc{det.def}.\textsc{acc.sg.n} steering-board.\textsc{acc.sg} and \textsc{det.def}.\textsc{acc.sg.f} wide-sea.\textsc{acc.sg} in \textsc{det.def}.\textsc{acc.sg.n} back-board.\textsc{acc.sg} three.\textsc{acc.m} day-\textsc{acc.pl} then be.\textsc{pst.ind.3sg} \textsc{3sg.m.nom} as far.\textsc{adv} north.\textsc{adv} as \textsc{det.def}.\textsc{nom.pl} whale-hunt-\textsc{agt.nom.pl.m} far-\textsc{sup}.\textsc{adv} travel-\textsc{prs.ind.pl}\\
+\glt `The whole way he kept the empty land to his starboard and the open sea to his port side for three days; then he was as far north as the whale hunters travel at the farthest.'}
+
+\ex{\gll Þā fōr hē þā ġīet norþ-ryht-e swā feor swā hē meah-t-e on þǣm ōþr-um þri-m dag-um ġe-siġl-an.\\
+then travel.\textsc{pst.ind.3sg} \textsc{3sg.m.nom} then yet north-right-\textsc{adv} as far.\textsc{adv} as \textsc{3sg.m.nom} can-\textsc{pst}-\textsc{ind.3sg} in \textsc{det.def}.\textsc{dat.pl} other-\textsc{dat.pl.str} three-\textsc{dat} day-\textsc{dat.pl} \textsc{pfx}-sail-\textsc{inf}\\
+\glt `Then he traveled still northwards as far as he could sail in the next three days.'}
+
+\ex{\gll Þā bēag þæt land þǣr ēast-ryht-e, oþþe sēo sǣ in on ðæt lond, hē n-yss-e hwæðer, būton hē wiss-e ðæt hē ðǣr bād west-an-wind-es and hwōn norþ-an and siġl-d-e ðā ēast be land-e swā swā hē meah-t-e on fēower dag-um ġe-siġl-an.\\
+then turn.\textsc{pst.ind.3sg} \textsc{det.def}.\textsc{nom.sg.n} land.\textsc{nom.sg} there east-right-\textsc{adv} or \textsc{det.def}.\textsc{nom.sg.f} sea.\textsc{nom.sg} in in \textsc{det.def}.\textsc{acc.sg.n} land.\textsc{acc.sg} \textsc{3sg.m.nom} \textsc{neg}-know.\textsc{pst}-\textsc{ind.3sg} whether except \textsc{3sg.m.nom} know.\textsc{pst}-\textsc{ind.3sg} \textsc{comp} \textsc{3sg.m.nom} there wait.\textsc{pst.ind.3sg} west-from-wind-\textsc{gen.sg} and a.little north-from and sail-\textsc{pst}-\textsc{ind.3sg} then east.\textsc{adv} by land-\textsc{dat.sg} as as \textsc{3sg.m.nom} can-\textsc{pst}-\textsc{ind.3sg} in four day-\textsc{dat.pl} \textsc{pfx}-sail-\textsc{inf}\\
+\glt `Then the land turned eastwards, or the sea turned into the land, he did not know which, but he knew that he waited there for wind from the west and a little from the north and then sailed east by land as far as he could sail in four days.'}
+
+\ex{\gll Þā sċẹol-d-e hē ðǣr bīd-an ryht-norþ-an-wind-es, for ðǣm þæt land bēag þǣr sūþ-ryht-e, oþþe sēo sǣ in on ðæt land, hē n-yss-e hwæþer.\\
+then have.to-\textsc{pst}-\textsc{ind.3sg} \textsc{3sg.m.nom} there wait-\textsc{inf} right-north-from-wind-\textsc{gen.sg} for \textsc{dem.dist}.\textsc{dat.sg.n} \textsc{det.def}.\textsc{nom.sg.n} land.\textsc{nom.sg} turn.\textsc{pst.ind.3sg} there south-right-\textsc{adv} or \textsc{det.def}.\textsc{nom.sg.f} sea.\textsc{nom.sg} in in \textsc{det.def}.\textsc{acc.sg.n} land.\textsc{acc.sg}  \textsc{3sg.m.nom}  \textsc{neg}-know.\textsc{pst}-\textsc{ind.3sg} whether\\ 
+\glt `Then he had to wait there for a wind from due north, because the land turned south there, or the sea turned into the land, he did not know which.'}
+
+\ex{\gll Þā siġl-d-e hē þonan sūð-ryht-e be land-e swā swā hē meh-t-e on fīf dag-um ġe-siġl-an.\\
+then sail-\textsc{pst}-\textsc{ind.3sg} \textsc{3sg.m.nom} thence south-right-\textsc{adv} by land-\textsc{dat.sg} as as \textsc{3sg.m.nom} can-\textsc{pst}-\textsc{ind.3sg} in five day-\textsc{dat.pl} \textsc{pfx}-sail-\textsc{inf}\\
+\glt `Then he sailed southwards from there near land as far as he could sail in five days.'}
+
+\ex{\gll Ðā læġ þǣr ān miċel ēa ūp in on þæt land.\\
+then lie.\textsc{pst.ind.3sg} there one.\textsc{nom.sg.f} large.\textsc{nom.sg.f.str} river.\textsc{nom.sg} up in in \textsc{det.def}.\textsc{acc.sg.n} land.\textsc{acc.sg}\\
+\glt `There a large river led up into the land.'}
+
+\ex{\gll Þā ċir-d-on hīe ūp in on ðā ēa, for þǣm hīe ne dors-t-on forþ bī þǣre ēa siġl-an for un-friþ-e, for þǣm ðæt land wæs eall ġe-bū-n on ōþr-e healf-e þǣre ēa-s.\\
+then turn-\textsc{pst}-\textsc{ind.pl} \textsc{3pl.nom} up in in \textsc{det.def}.\textsc{acc.sg.f} river.\textsc{acc.sg} for \textsc{dem.dist}.\textsc{dat.sg.n} \textsc{3pl.nom} \textsc{neg} dare-\textsc{pst}-\textsc{ind.pl} forth.\textsc{adv} by \textsc{det.def}.\textsc{dat.sg.f} river.\textsc{dat.sg} sail-\textsc{inf} for un-peace-\textsc{dat.sg} for \textsc{dem.dist}.\textsc{dat.sg.n} \textsc{det.def}.\textsc{nom.sg.n} land.\textsc{nom.sg} be.\textsc{pst.ind.3sg} all.\textsc{nom.sg.n} \textsc{pfx}-dwell-\textsc{part}.\textsc{nom.sg.n.str} in other-\textsc{acc.sg.f.str} side-\textsc{acc.sg} \textsc{det.def}.\textsc{gen.sg.f} river-\textsc{gen.sg}\\
+\glt `Then they turned up into the river, because they did not dare sail forth by the river for fear of hostility, because the land was all settled on the other side of the river.'}
+
+\ex{\gll Ne mēt-t-e hē ǣr n-ān ġe-bū-n land siþþan hē from his āgn-um hām fōr, ac him wæs eal-ne weġ wēst-e land on þæt stēor-bord, būtan fisċ-er-um and fugel-er-um and hunt-um, and þæt wǣr-on eall Finn-as, and him wæs ā wīd-sǣ on ðæt bæc-bord.\\
+\textsc{neg} meet-\textsc{pst}-\textsc{ind.3sg} \textsc{3sg.m.nom} before \textsc{neg}-one.\textsc{acc.sg.n} \textsc{pfx}-dwell-\textsc{part}.\textsc{acc.sg.n.str} land.\textsc{acc.sg} after \textsc{3sg.m.nom} from \textsc{3sg.m.gen} own-\textsc{dat.sg.m.str} home.\textsc{dat.sg} travel.\textsc{pst.ind.3sg} but \textsc{3sg.m.dat} be.\textsc{pst.ind.3sg} all-\textsc{acc.sg.m.str} way.\textsc{acc.sg} waste-\textsc{nom.sg.n.str} land.\textsc{nom.sg} in \textsc{det.def}.\textsc{acc.sg.n} steering-board.\textsc{acc.sg} except fish-\textsc{agt.m}-\textsc{dat.pl} and fowl-\textsc{agt.m}-\textsc{dat.pl} and hunt-\textsc{agt.dat.pl.m} and \textsc{dem.dist}.\textsc{nom.sg.n} be.\textsc{pst}-\textsc{ind.pl} all.\textsc{nom.sg.n} Finn-\textsc{nom.pl} and \textsc{3sg.m.dat} be.\textsc{pst.ind.3sg} always wide-sea.\textsc{nom.sg} in \textsc{det.def}.\textsc{acc.sg.n} back-board.\textsc{acc.sg}\\
+\glt `He had not encountered any settled land before since he traveled from his own home, but the whole way there there had been empty land to his starboard except for fishermen and fowlers and hunters, and they were all Finns, and open sea was always to his port side.'}
+
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.3} \begin{xlist}
+
+\ex{\gll Þā Beorm-as hæf-d-on swīþ-e wel ġe-bū-d hira land, ac hīe ne dors-t-on þǣr-on cum-an.\\
+\textsc{det.def}.\textsc{nom.pl} Bjarmian-\textsc{nom.pl} have-\textsc{pst}-\textsc{ind.pl} strong-\textsc{adv} well \textsc{pfx}-dwell-\textsc{part}.\textsc{acc.sg.n.str} \textsc{3pl.gen} land.\textsc{acc.sg} but \textsc{3pl.nom} \textsc{neg} dare-\textsc{pst}-\textsc{ind.pl} there-in come-\textsc{inf}\\
+\glt `The Bjarmians (Permians?, Komi?) had very widely cultivated their land, but they (Ohthere and his crew) did not dare go there.'}
+
+\ex{\gll Ac þāra Ter-finn-a land wæs eal wēst-e, būton ðǣr hunt-an ġe-wīc-o-d-on oþþe fisċ-er-as oþþe fugel-er-as.\\
+but \textsc{det.def}.\textsc{gen.pl} Ter-Finn-\textsc{gen.pl} land.\textsc{nom.sg} be.\textsc{pst.ind.3sg} all.\textsc{nom.sg.n} waste-\textsc{nom.sg.n.str} except there hunt-\textsc{agt.nom.pl.m} \textsc{pfx}-camp-\textsc{thm}-\textsc{pst}-\textsc{ind.pl} or fish-\textsc{agt.m}-\textsc{nom.pl} or fowl-\textsc{agt.m}-\textsc{nom.pl}\\
+\glt `But the land of the Terfinns (Ter-Sami?) was all uninhabited, except where hunters camped, or fishermen or fowlers.}
+
+\ex{\gll Fela spell-a him sǣ-d-on þā Beorm-as ǣġþer ġe of hiera āgn-um land-e ġe of þǣm land-um þe ymb hīe ūt-an wǣr-on, ac hē n-ys-t-e hwæt þæs sōþ-es wæs, for þǣm hē hit self ne ġe-seah.\\
+many story-\textsc{gen.pl} \textsc{3sg.m.dat} say-\textsc{pst}-\textsc{ind.pl} \textsc{det.def}.\textsc{nom.pl} Bjarmian-\textsc{nom.pl} each and from \textsc{3pl.gen} own-\textsc{dat.sg.n.str} land-\textsc{dat.sg} and from \textsc{det.def}.\textsc{dat.pl} land-\textsc{dat.pl} \textsc{rel} around \textsc{3pl.acc} out-from be.\textsc{pst}-\textsc{ind.pl} but \textsc{3sg.m.nom} \textsc{neg}-know-\textsc{pst}-\textsc{ind.3sg} what.\textsc{acc} \textsc{det.def}.\textsc{gen.sg.n} truth-\textsc{gen.sg} be.\textsc{pst.ind.3sg} for \textsc{dem.dist}.\textsc{dat.sg.n} \textsc{3sg.m.nom} \textsc{3sg.n.acc} self.\textsc{nom.sg.m.str} \textsc{neg} \textsc{pfx}-see.\textsc{pst.ind.3sg}\\
+\glt `Many stories the Bjarmians told him both about their own land and about the lands that were around them, but he did not know how much was true, because he did not see it himself.'}
+
+\ex{\gll Þā Finn-as, him þūh-t-e, and þā Beorm-as sprǣc-on nēah ān ġe-þēod-e.\\
+\textsc{det.def}.\textsc{nom.pl} Finn-\textsc{nom.pl} \textsc{3sg.m.dat} seem-\textsc{pst}-\textsc{ind.3sg} and \textsc{det.def}.\textsc{nom.pl} Bjarmian-\textsc{nom.pl} speak.\textsc{pst}-\textsc{ind.pl} near.\textsc{adv} one.\textsc{acc.sg.n} \textsc{pfx}-language-\textsc{acc.sg}\\
+\glt `The Finns, it seemed to him, and the Bjarmians spoke almost the same language.'}
+
+\ex{\gll Swīþ-ost hē fōr ðider, tō-ēac-an þæs land-es sċēaw-ung-e, for þǣm hors-hwæl-um, for ðǣm hīe habb-að swīþ-e æþel-e bān on hiora tōþ-um ( þā tēð hīe brōh-t-on sum-e þǣm cyning-e ), and hiora hȳd bi-ð swīð-e gōd tō sċip-rāp-um.\\
+strong-\textsc{sup}.\textsc{adv} \textsc{3sg.m.nom} travel.\textsc{pst.ind.3sg} to.there to-eke-\textsc{dat.sg} \textsc{det.def}.\textsc{gen.sg.n} land-\textsc{gen.sg} show-\textsc{nmlz}-\textsc{dat.sg} for \textsc{det.def}.\textsc{dat.pl} horse-whale-\textsc{dat.pl} for \textsc{dem.dist}.\textsc{dat.sg.n} \textsc{3pl.nom} have--\textsc{prs.ind.pl} strong-\textsc{adv} noble-\textsc{acc.sg.n.str} bone.\textsc{acc.sg} in \textsc{3pl.gen} tooth-\textsc{dat.pl} ( \textsc{det.def}.\textsc{acc.pl} tooth.\textsc{acc.pl} \textsc{3pl.nom} bring-\textsc{pst}-\textsc{ind.pl} some-\textsc{acc.pl.m.str} \textsc{det.def}.\textsc{dat.sg.m} king-\textsc{dat.sg} ) and \textsc{3pl.gen} hide.\textsc{nom.sg} be.\textsc{hab}-\textsc{ind.3sg} strong-\textsc{adv} good.\textsc{nom.sg.f.str} to ship-rope-\textsc{dat.pl}\\
+\glt `He traveled there mostly, in addition to the exploration of the land, for the walruses, because they have very fine bone in their teeth (the teeth they brought some of for the king), and their hide is very good for ships' ropes.'}
+
+\ex{\gll Sē hwæl bi-ð micl-e lǣss-a þonne ōðre hwal-as: ne bi-ð hē leng-r-a ðonne syfan eln-a lang.\\
+\textsc{det.def}.\textsc{nom.sg.m} whale.\textsc{nom.sg} be.\textsc{hab}-\textsc{ind.3sg} large-\textsc{adv} little.\textsc{cmp}-\textsc{nom.sg.m.wk} than other-\textsc{nom.pl.m.str} whale-\textsc{nom.pl} \textsc{neg} be.\textsc{hab}-\textsc{ind.3sg} \textsc{3sg.m.nom} long-\textsc{cmp}-\textsc{nom.sg.m.wk} than seven ell-\textsc{gen.pl} long.\textsc{nom.sg.m.str}\\
+\glt `This whale is much smaller than other whales: it is not longer than 7 ells ($\sim$14 feet) long.'}
+
+\ex{\gll Ac on his āgn-um land-e is sē bet-st-a hwæl-hunt-að: þā bēo-ð eahta and fēower-tiġ-es eln-a lang-e, and þā mǣ-st-an fīf-tiġ-es eln-a lang-e.\\
+but in \textsc{3sg.m.gen} own-\textsc{dat.sg.n.str} land.\textsc{dat.sg} be.\textsc{prs.ind.3sg} \textsc{det.def}.\textsc{nom.sg.m} good-\textsc{sup}-\textsc{nom.sg.m.wk} whale-hunt-\textsc{nmlz}.\textsc{nom.sg} \textsc{dem.dist}.\textsc{nom.pl} be.\textsc{hab}-\textsc{ind.pl} eight and four-ty-\textsc{gen.sg} ell-\textsc{gen.pl} long-\textsc{nom.pl.m.str} and \textsc{det.def}.\textsc{nom.pl} large-\textsc{sup}-\textsc{nom.pl.m.wk} five-ty-\textsc{gen.sg} ell-\textsc{gen.pl} long-\textsc{nom.pl.m.str}\\
+\glt `But in his own land is the best whale hunting: those (whales) are 48 ells long and the biggest 50 ells long."}
+
+\ex{\gll Þāra hē sǣ-d-e þæt hē syx-a sum of-slōg-e syx-tiġ on twā-m dag-um.\\
+ \textsc{dem.dist}.\textsc{gen.pl} \textsc{3sg.m.nom} say-\textsc{pst}-\textsc{ind.3sg} \textsc{comp} \textsc{3sg.m.nom} six-\textsc{gen.pl} some.\textsc{nom.sg.m} from-slay.\textsc{pst}-\textsc{sjv.sg} six-ty in two-\textsc{dat} day-\textsc{dat.pl}\\
+\glt `Of these (whales), he said that he as part of a crew of 6 (whalers) killed 60 in two days.'}
+
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.4} \begin{xlist}
+
+\ex{\gll Hē wæs swȳð-e spēd-iġ man on þǣm ǣht-um þe heora spēd-a on bēo-ð, þæt is on wildr-um.\\
+\textsc{3sg.m.nom} be.\textsc{pst.ind.3sg} strong-\textsc{adv} wealth-\textsc{adj}.\textsc{nom.sg.m.str} man.\textsc{nom.sg} in \textsc{det.def}.\textsc{dat.pl} possession-\textsc{dat.pl} \textsc{rel} \textsc{3pl.gen} wealth-\textsc{nom.pl} in be.\textsc{hab}-\textsc{ind.pl} \textsc{dem.dist}.\textsc{nom.sg.n} be.\textsc{prs.ind.3sg} in wild.beast-\textsc{dat.pl}\\
+\glt `He was a very wealthy man in the possessions that their wealth is based on, which is wild beasts.'}
+
+\ex{\gll Hē hæf-d-e þā ġȳt, ðā hē þone cyningc sōh-t-e, tamr-a dēor-a un-be-boh-t-ra syx hund\\
+\textsc{3sg.m.nom} have-\textsc{pst}-\textsc{ind.3sg} then yet then \textsc{3sg.m.nom} \textsc{det.def}.\textsc{acc.sg.m} king.\textsc{acc.sg} seek-\textsc{pst}-\textsc{ind.3sg} tame-\textsc{gen.pl.str} animal-\textsc{gen.pl} un-by-buy-\textsc{part}-\textsc{gen.pl.str} six hundred.\textsc{acc.pl}\\
+\glt `He still had, when he visited the king, 600 unsold tame animals.'}
+
+\ex{\gll Þā dēor hī hāt-að hrān-as; þāra wǣr-on syx stæl-hrān-as, ðā bēo-ð swȳð-e dȳr-e mid Finn-um, for ðǣm hȳ fō-ð þā wild-an hrān-as mid.\\
+\textsc{det.def}.\textsc{acc.pl} animal.\textsc{acc.pl} \textsc{3pl.nom} call-\textsc{prs.ind.pl} reindeer-\textsc{acc.pl}  \textsc{dem.dist}.\textsc{gen.pl} be.\textsc{pst}-\textsc{ind.pl} six decoy-reindeer-\textsc{nom.pl} \textsc{dem.dist}.\textsc{nom.pl} be.\textsc{hab}-\textsc{ind.pl} strong-\textsc{adv} dear-\textsc{nom.pl.m.str} with Finn-\textsc{dat.pl} for \textsc{dem.dist}.\textsc{dat.sg.n} \textsc{3pl.nom} catch-\textsc{prs.ind.pl} \textsc{det.def}.\textsc{acc.pl} wild-\textsc{acc.pl.wk} reindeer-\textsc{acc.pl} with\\
+\glt `Those animals they call reindeer; of these, 6 were decoy reindeer, which are very valuable to the Finns, because they catch the wild reindeer with them.'}
+
+\ex{\gll Hē wæs mid þǣm fyrst-um mann-um on þǣm land-e; n-æf-d-e hē þēah mā ðonne twēn-tiġ hrȳðer-a and twēn-tiġ sċēap-a and twēn-tiġ swȳn-a, and þæt lȳtl-e þæt hē ere-d-e hē ere-d-e mid hors-an.\\
+\textsc{3sg.m.nom} be.\textsc{pst.ind.3sg} with \textsc{det.def}.\textsc{dat.pl} first-\textsc{dat.pl.wk} man-\textsc{dat.pl} in \textsc{det.def}.\textsc{dat.sg.n} land-\textsc{dat.sg} \textsc{neg}-have-\textsc{pst}-\textsc{ind.3sg} \textsc{3sg.m.nom} though large.\textsc{comp}.\textsc{adv} than two-ty cow-\textsc{gen.pl} and two-ty sheep-\textsc{gen.pl} and two-ty swine-\textsc{gen.pl} and \textsc{det.def}.\textsc{acc.sg.n} little-\textsc{acc.sg.m.wk} \textsc{dem.dist}.\textsc{acc.sg.n} \textsc{3sg.m.nom} plough-\textsc{pst}-\textsc{ind.3sg} \textsc{3sg.m.nom} plough-\textsc{pst}-\textsc{ind.3sg} with horse-\textsc{dat.pl}\\
+\glt `He was among the principal men in that land, though he did not have more than 20 cows and 20 sheep and 20 swine, and the little (land) that he ploughed, he ploughed with horses.'}
+
+\ex{\gll Ac hyra ār is mǣ-st on þǣm gafol-e þe ðā Finn-as him ġyld-að.\\
+but \textsc{3pl.gen} income.\textsc{nom.sg} be.\textsc{prs.ind.3sg} large-\textsc{sup}.\textsc{adv} in \textsc{det.def}.\textsc{dat.sg.n} tribute-\textsc{dat.sg} \textsc{rel} \textsc{det.def}.\textsc{nom.pl} Finn-\textsc{nom.pl} \textsc{3pl.dat} pay-\textsc{prs.ind.pl}\\
+\glt `But their income is mostly from the tribute that the Finns pay to them.'}
+
+\ex{\gll Þæt gafol bi-ð on dēor-a fell-um and on fugel-a feðer-um and hwal-es bān-e and on þǣm sċip-rāp-um þe bēo-ð of hwæl-es hȳd-e ġe-worh-t and of sēol-es.\\
+\textsc{det.def}.\textsc{dat.sg.n} tribute.\textsc{nom.sg} be.\textsc{hab}-\textsc{ind.3sg} in animal-\textsc{gen.pl} skin-\textsc{dat.pl} and in fowl-\textsc{gen.pl} feather-\textsc{dat.pl} and whale-\textsc{gen.sg} bone-\textsc{dat.sg} and in \textsc{det.def}.\textsc{dat.pl} ship-rope-\textsc{dat,pl} \textsc{rel} be.\textsc{hab}-\textsc{ind.pl} from whale-\textsc{gen.sg} hide-\textsc{dat.sg} \textsc{pfx}-make-\textsc{part}.\textsc{nom.sg.n.str} and from seal-\textsc{gen.sg}\\
+\glt `The tribute consists of animal skins and bird feathers and whale bone and the ships' ropes that are made from whale and seal hides.'}
+
+\ex{\gll Ǣġhwilċ ġylt be hys ġe-byrd-um.\\
+every.\textsc{nom.sg.m.str} pay.\textsc{prs.ind.3sg} by \textsc{3sg.m.gen} \textsc{pfx}-birth-\textsc{dat.pl}\\
+\glt `Each pays according to his rank.'}
+
+\ex{\gll Sē byrd-est-a sċeall ġyld-an fīf-tȳne mearð-es fell and fīf hrān-es and ān ber-an fel and tȳn ambr-a feðr-a and ber-en-ne kyrtel oððe yter-en-ne and twēġen sċip-rāp-as; ǣġþer sȳ syx-tiġ eln-a lang: ōþer sȳ of hwæl-es hȳd-e ġe-worh-t, ōþer of sīol-es.\\
+\textsc{det.def}.\textsc{nom.sg.m} birth-\textsc{sup}-\textsc{nom.sg.m.wk} have.to.\textsc{prs.ind.3sg} pay-\textsc{inf} five-teen marten-\textsc{gen.sg} skin.\textsc{acc.pl} and five reindeer-\textsc{gen.sg} and one.\textsc{acc.sg.n} bear-\textsc{gen.sg} skin.\textsc{acc.sg} and ten amber-\textsc{gen.pl} feather-\textsc{gen.pl} and bear-\textsc{adj}-\textsc{acc.sg.m.str} coat.\textsc{acc.sg} or otter-\textsc{adj}-\textsc{acc.sg.m.str} and two.\textsc{acc.m} ship-rope-\textsc{acc.pl} each be.\textsc{prs.sjv.sg} six-ty ell-\textsc{gen.pl} long.\textsc{nom.sg.m.str} other.\textsc{nom.sg.m.str} be.\textsc{prs.sjv.sg} from whale-\textsc{gen.sg} hide-\textsc{dat.sg} \textsc{pfx}-make-\textsc{part}.\textsc{nom.sg.m.str} other.\textsc{nom.sg.m.str} from seal-\textsc{gen.sg}\\
+\glt `The highest ranking have to pay 15 marten skins and 5 reindeer skins and 1 bear skin and 10 ambers (unit of measurement) of feathers and a bear-skin or otter-skin coat and 2 ships' ropes; each is 60 ells long: one is made from whale skin, and the other from seal skin.'}
+
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.5} \begin{xlist}
+
+\ex{\gll Hē sǣ-d-e ðæt Norð-mann-a land wǣr-e swȳþ-e lang and swȳð-e smæl.\\
+\textsc{3sg.m.nom} say-\textsc{pst}-\textsc{ind.3sg} \textsc{comp} north-man-\textsc{gen.pl} land.\textsc{nom.sg} be.\textsc{pst}-\textsc{sjv.sg} strong-\textsc{adv} long.\textsc{nom.sg.n.str} and strong-\textsc{adv} narrow.\textsc{nom.sg.n.str}\\
+\glt `He said that the Norwegians' land is very long and very narrow.'}
+
+\ex{\gll Eal þæt his man āþer oððe ett-an oððe eri-an mæġ, þæt lī-ð wið ðā sǣ; and þæt is þēah on sum-um stōw-um swȳð-e clūd-iġ.\\
+all.\textsc{nom.sg.n.str} \textsc{dem.dist}.\textsc{acc.sg.n} \textsc{3sg.n.gen} one.\textsc{indf} either or graze-\textsc{inf} or plough-\textsc{inf} can.\textsc{prs.ind.3sg} \textsc{dem.dist}.\textsc{nom.sg.n} lie-\textsc{prs.ind.3sg} against \textsc{det.def}.\textsc{acc.sg.f} sea.\textsc{acc.sg} and \textsc{dem.dist}.\textsc{nom.sg.n} be.\textsc{prs.ind.3sg} though in some-\textsc{dat.pl.str} place-\textsc{dat.pl} strong-\textsc{adv} rock-\textsc{adj}.\textsc{nom.sg.n.str}\\
+\glt `All that one can either graze or plow of it, that lies by the sea, and even that is very rocky in some places.'}
+
+\ex {\gll And liċġ-að wild-e mōr-as wið-ēast-an and wið-upp-on, emn-lang-e þǣm bȳ-n-um land-e; on þǣm mōr-um eard-i-að Finn-as.\\
+and lie-\textsc{prs.ind.pl} wild-\textsc{nom.pl.m.str} moor-\textsc{nom.pl} agaisnt-east-from and against-up-in even-long-\textsc{adv} \textsc{det.def}.\textsc{dat.sg.n} dwell-\textsc{part}-\textsc{dat.sg.n.str} land-\textsc{dat.sg} in \textsc{det.def}.\textsc{dat.pl} moor-\textsc{dat.pl} live-\textsc{thm}-\textsc{prs.ind.pl} Finn-\textsc{nom.pl}\\
+\glt `And wild moors lie to the east and above, along the settled land; in the moors live Finns.'}
+
+\ex{\gll And þæt bȳ-n-e land is ēaste-weard brād-ost and symle swā norð-or swā smæl-r-e.\\
+and \textsc{det.def}.\textsc{nom.sg.n} dwell-\textsc{part}-\textsc{nom.sg.n.wk} land.\textsc{nom.sg} be.\textsc{prs.ind.3sg} east-ward broad-\textsc{sup}.\textsc{nom.sg.n.str} and always as north-\textsc{cmp}.\textsc{adv} as narrow-\textsc{comp}-\textsc{nom.sg.n.wk}\\
+\glt `And the settled land is widest to the east and the further north (one goes) the narrower (it becomes).'}
+
+\ex{\gll Ēaste-werd hit mæġ bīo-n syx-tiġ mīl-a brād oþþe hwēne brǣd-r-e; and midde-weard þrī-tiġ oððe brād-r-e.\\
+east-ward \textsc{3sg.n.nom} can.\textsc{prs.ind.3sg} be.\textsc{hab}-\textsc{inf} six-ty mile-\textsc{gen.pl} broad.\textsc{nom.sg.n.str} or a.little broad-\textsc{cmp}-\textsc{nom.sg.n.wk} and middle-ward three-ty or broad-\textsc{comp}-\textsc{nom.sg.n.wk}\\
+\glt `Eastward it can be 60 miles wide, or a little wider, and in the middle it can be 30 (miles) or wider.'}
+
+\ex{\gll And norðe-weard, hē cwæð, þǣr hit smal-ost wǣr-e, þæt hit mih-t-e bēo-n þrēo-ra mīl-a brād tō þǣm mōr-e, and sē mōr syðþan on sum-um stōw-um swā brād swā man mæġ on twā-m wuc-um ofer-fēr-an, and on sum-um stōw-um swā brād swā man mæġ on syx dag-um ofer-fēr-an.\\
+and north-ward \textsc{3sg.m.nom} say.\textsc{pst.ind.3sg} there \textsc{3sg.n.nom} narrow-\textsc{sup}.\textsc{nom.sg.n.str} be.\textsc{pst}-\textsc{sjv.sg} \textsc{comp} \textsc{3sg.n.nom} can-\textsc{pst}-\textsc{ind.3sg} be.\textsc{hab}-\textsc{inf} three-\textsc{gen} mile-\textsc{gen.pl} broad.\textsc{nom.sg.n.str} to \textsc{det.def}.\textsc{dat.sg.m} moor-\textsc{dat.sg} and \textsc{det.def}.\textsc{nom.sg.m} moor.\textsc{nom.sg} afterwards in some-\textsc{dat.pl.str} place-\textsc{dat.pl} as broad.\textsc{nom.sg.m.str} as one.\textsc{indf} can.\textsc{prs.ind.3sg} in two-\textsc{dat} week-\textsc{dat.pl} over-travel-\textsc{inf} and in some-\textsc{dat.pl.str} place-\textsc{dat.pl} as broad.\textsc{nom.sg.m.str} as one.\textsc{indf} can.\textsc{prs.ind.3sg} in six day-\textsc{dat.pl} over-travel-\textsc{inf}\\
+\glt `And northward, he said, where it is narrowest, that it could be three miles wide to the moor, and the moor afterwards is as wide in some places as one can travel over in two weeks, and in some places as wide as one can travel over in six days.'}
+
+\ex{\gll Ðonne is tō-emn-es þǣm land-e sūðe-weard-um, on ōðr-e healf-e þæs mōr-es, Swēo-land, oþ þæt land norðe-weard; and tō-emn-es þǣm land-e norðe-weard-um Cwēn-a land.\\
+then be.\textsc{prs.ind.3sg} to-even-\textsc{gen.sg.n.str} \textsc{det.def}.\textsc{dat.sg.n} land-\textsc{dat.sg} south-ward-\textsc{dat.sg.n.str} in other-\textsc{acc.sg.f.str} side-\textsc{acc.sg} \textsc{det.def}.\textsc{gen.sg.m} moor-\textsc{gen.sg} Swede-land until \textsc{det.def}.\textsc{acc.sg.n} land.\textsc{acc.sg} north-ward.\textsc{acc.sg.n.str} and to-even-\textsc{gen.sg.n.str} \textsc{det.def}.\textsc{dat.sg.n} land-\textsc{dat.sg} north-ward-\textsc{dat.sg.n.str} Kven-\textsc{gen.pl} land.\textsc{nom.sg}\\
+\glt `Then along the southern part of the land (Norway), on the other side of the moor, is Sweden, until the northern part of the land; and along the northern part of the land is Cwen (Kven) land.'}
+
+\ex{\gll Þā Cwēn-as herg-i-að hwīl-um on ðā Norð-men ofer ðone mōr, hwīl-um þā Norð-men on hȳ.\\
+\textsc{det.def}.\textsc{nom.pl} Kven-\textsc{nom.pl} harry-\textsc{thm}-\textsc{prs.ind.pl} time-\textsc{dat.pl} in \textsc{det.def}.\textsc{acc.pl} north-man.\textsc{acc.pl} over \textsc{det.def}.\textsc{acc.sg.m} moor.\textsc{acc.sg} time-\textsc{dat.pl} \textsc{det.def}.\textsc{nom.pl} north-man.\textsc{nom.pl} in \textsc{3pl.acc}\\
+\glt `The Cwens sometimes raid the Norwegians across the moor, sometimes the Norwegians raid them.'}
+ 
+\ex{\gll And þǣr sint swīð-e micl-e mer-as fersċ-e ġẹond þā mōr-as, and ber-að þā Cwēn-as hyra sċyp-u ofer land on ðā mer-as and þanon herg-i-að on ðā Norð-men; hȳ habb-að swȳð-e lȳtl-e sċypa and swȳðe lēoht-e.\\
+and there be.\textsc{prs.ind.pl} strong-\textsc{adv} large-\textsc{nom.pl.m.str} lake-\textsc{nom.pl} fresh-\textsc{nom.pl.m.str} through \textsc{det.def}.\textsc{acc.pl} moor-\textsc{acc.pl} and bear-\textsc{prs.ind.pl} \textsc{det.def}.\textsc{nom.pl} Kven-\textsc{nom.pl} \textsc{3pl.gen} ship-\textsc{acc.pl} over land.\textsc{acc.sg} in \textsc{det.def}.\textsc{acc.pl} lake-\textsc{acc.pl} and thence harry-\textsc{thm}-\textsc{prs.ind.pl} in \textsc{det.def}.\textsc{acc.pl} north-man.\textsc{acc.pl} \textsc{3pl.nom} have-\textsc{prs.ind.pl} strong-\textsc{adv} little-\textsc{acc.pl.n.str} ship-\textsc{acc.pl} and strong-\textsc{adv} light-\textsc{acc.pl.n.str}\\
+\glt `And there are very large freshwater lakes throughout the moors, and the Cwens carry their ships over land to the lakes and from there raid the Norwegians; they have very small and very light ships.'}
+
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.6} \begin{xlist}
+
+\ex{\gll Ōhthere sǣ-d-e þæt sīo sċīr hāt-te Hālgo-land þe hē on bū-d-e.\\
+Othere.\textsc{nom} say-\textsc{pst}-\textsc{ind.3sg} \textsc{comp} \textsc{det.def}.\textsc{nom.sg.f} shire.\textsc{nom.sg} call-\textsc{pass}.\textsc{prs.ind.3sg} Håloga-land.\textsc{nom} \textsc{rel} \textsc{3sg.m.nom} in dwell-\textsc{pst}-\textsc{ind.3sg}\\
+\glt `Ohthere said that the district that he lived in is called Hålogaland.'}
+
+\ex{\gll Hē cwæð þæt n-ān man ne bū-d-e be-norð-an him.\\
+ \textsc{3sg.m.nom} say.\textsc{pst.ind.3sg} \textsc{comp} \textsc{neg}-one.\textsc{nom.sg.m} one.\textsc{indf} \textsc{neg} dwell-\textsc{pst}-\textsc{sjv.sg} by-north-from  \textsc{3sg.m.dat}\\
+ \glt `He said that no one lived to the north of him.'}
+
+\ex{\gll Þonne is ān port on sūðe-weard-um þǣm land-e þone man hǣt Sċīringesheal.\\
+then be.\textsc{prs.ind.3sg} one.\textsc{nom.sg.m} port.\textsc{nom.sg} in south-ward-\textsc{dat.sg.n.str} \textsc{det.def}.\textsc{dat.sg.n} land-\textsc{dat.sg} \textsc{dem.dist}.\textsc{acc.sg.m} one.\textsc{indf} call.\textsc{prs.ind.3sg} Skiringssal.\textsc{acc.sg}\\
+\glt `Then in the south of the land is a port that one calls Skiringssal.'}
+
+\ex{\gll Þyder hē cwæð þæt man ne mih-t-e ġe-seġl-i-an on ān-um mōnð-e ġyf man on niht wīc-o-d-e and ǣlċ-e dæġ-e hæf-d-e ambyr-ne wind.\\
+to.there \textsc{3sg.m.nom} say.\textsc{pst.ind.3sg} \textsc{comp} one.\textsc{indf} \textsc{neg} can-\textsc{pst}-\textsc{ind.3sg} \textsc{pfx}-sail-\textsc{thm}-\textsc{inf} in one-\textsc{dat.sg.m} month-\textsc{dat.sg} if one.\textsc{indf} in night.\textsc{acc.sg} camp-\textsc{thm}-\textsc{pst}-\textsc{ind.3sg} and every-\textsc{ins.sg.m.str} day-\textsc{dat.sg} have-\textsc{pst}-\textsc{ind.3sg} favorable-\textsc{acc.sg.m.str} wind.\textsc{acc.sg}\\
+\glt `He said that one could not sail there in one month if they camped at night and had favorable wind every day.'}
+
+\ex{\gll And eall-e ðā hwīl-e hē sċeal seġl-i-an be land-e.\\
+and all-\textsc{acc.sg.f.str} \textsc{det.def}.\textsc{acc.sg.f} time-\textsc{acc.sg} \textsc{3sg.m.nom} have.to.\textsc{prs.ind.3sg} sail-\textsc{thm}-\textsc{inf} by land-\textsc{dat.sg}\\
+\glt `And all the while he must sail by land.'}
+
+\ex{\gll And on þæt stēor-bord him bi-ð ǣr-est Īr-a-land and þonne ðā īġ-land þe synd be-tux Īr-a-land-e and þiss-um land-e.\\
+and in \textsc{det.def}.\textsc{acc.sg.n} steering-board.\textsc{acc.sg} \textsc{3sg.m.dat} be.\textsc{hab}-\textsc{ind.3sg} before-\textsc{sup}.\textsc{adv} Irish-\textsc{gen.pl}-land.\textsc{nom.sg} and then \textsc{det.def}.\textsc{nom.pl} island-land.\textsc{nom.pl} \textsc{rel} be.\textsc{prs.ind.pl} by-twofold Irish-\textsc{gen.pl}-land-\textsc{dat.sg} and \textsc{dem.prox}-\textsc{dat.sg.n} land-\textsc{dat.sg}\\
+\glt `And to his starboard first there is Ireland and then the islands that are between Ireland (Shetlands, Orkneys, Hebrides?) and this land (Britain).'}
+
+\ex{\gll Þonne is þis land ( on þæt stēor-bord ) oð hē cym-ð tō Sċīrincgesheal-e, and eal-ne weġ on þæt bæc-bord Norð-weġ.\\
+then be.\textsc{prs.ind.3sg} \textsc{dem.prox}.\textsc{nom.sg.n} land.\textsc{nom.sg} ( in \textsc{det.def}.\textsc{acc.sg.n} steering-board.\textsc{acc.sg} ) until \textsc{3sg.m.nom} come-\textsc{prs.ind.3sg} to Skiringssal-\textsc{dat.sg} and all-\textsc{acc.sg.m.str} way.\textsc{acc.sg} in \textsc{det.def}.\textsc{acc.sg.n} back-board.\textsc{acc.sg} north-way.\textsc{nom.sg}\\
+\glt `Then there is this land (to the starboard)\footnote{This prepositional phrase in parentheses is only present in some versions of the text.}  until he comes to Skiringssal, and the whole way to the port side is Norway.'}
+
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.7} \begin{xlist}
+
+\ex{\gll Wið-sūð-an þone Sċīringesheal fyl-ð swȳð-e myċel sǣ ūp in on ðæt lond; sēo is brād-r-e þonne ǣniġ man ofer-sēo-n mæġ-e, and is Got-land on ōðr-e healf-e on-ġēan and siððan Sillende.\\
+against-south-from \textsc{det.def}.\textsc{acc.sg.m} Skiringssal.\textsc{acc.sg} fall-\textsc{prs.ind.3sg} strong-\textsc{adv} large.\textsc{nom.sg.f.str} sea.\textsc{nom.sg} up in in \textsc{det.def}.\textsc{acc.sg.n} land.\textsc{acc.sg} \textsc{dem.dist}.\textsc{nom.sg.f} be.\textsc{prs.ind.3sg} broad-\textsc{comp}-\textsc{nom.sg.f.wk} than any.\textsc{nom.sg.m.str} man.\textsc{nom.sg} over-see-\textsc{inf} can.\textsc{prs}-\textsc{sjv.sg} and be.\textsc{prs.ind.3sg} Jute-land.\textsc{nom.sg} in other-\textsc{acc.sg.f.str} side-\textsc{acc.sg} in-again and after Sillende.\textsc{nom.sg}\\
+\glt `South of Skiringssal a very large sea leads up into the land; it is wider than anyone can see over, and Jutland is opposite on the other side and then Sillende (an area of the Jutland peninsula south of what is being called Jutland here).'}
+
+\ex{\gll Sēo sǣ lī-ð mæniġ hund mīl-a ūp in on þæt land.\\
+ \textsc{det.def}.\textsc{nom.sg.f} sea.\textsc{nom.sg} lie-\textsc{prs.ind.3sg} many.\textsc{acc.pl.n.str} hundred.\textsc{acc.pl} mile-\textsc{gen.pl} up in in \textsc{det.def}.\textsc{acc.sg.n} land.\textsc{acc.sg}\\
+ \glt `The sea runs many hundred miles up into the land.'}
+
+\ex{\gll And of Sċīringesheal-e hē cwæð þæt hē seġl-o-d-e on fīf dag-an tō þǣm port-e þe mon hǣt æt Hǣþ-um; sē stent be-tuh Wined-um, and Seax-um, and Angl-e, and hȳr-ð in on Den-e.\\
+and from Skiringssal-\textsc{dat.sg} \textsc{3sg.m.nom} say.\textsc{pst.ind.3sg} \textsc{comp} \textsc{3sg.m.nom} sail-\textsc{thm}-\textsc{pst}-\textsc{sjv.sg} in five day-\textsc{dat.pl} to \textsc{det.def}.\textsc{dat.sg.m} port-\textsc{dat.sg} \textsc{rel} one.\textsc{indf} call.\textsc{prs.ind.3sg} at Heath-\textsc{dat.pl} \textsc{dem.dist}.\textsc{nom.sg.m} stand.\textsc{prs.ind.3sg} by-twofold Wend-\textsc{dat.pl} and Saxon-\textsc{dat.pl} and Angeln-\textsc{dat.sg} and belong-\textsc{prs.ind.3sg} in in Dane-\textsc{acc.pl}\\
+\glt `And from Skiringssal he said that he sailed in five days to the port that one calls Hedeby; it stands between the Wends (i.e. Slavs) and the Saxons and Angeln (the peninsula), and it belongs to the Danes.'}
+
+\ex{\gll Ðā hē þider-weard seġl-o-d-e fram Sċīringesheal-e, þā wæs him on þæt bæc-bord Den-a-mearc, and on þæt stēor-bord wīd-sǣ þrȳ dag-as; and þā, twēġen dag-as ǣr hē tō Hǣþ-um cōm-e, him wæs on þæt stēor-bord Got-land, and Sillende, and īġ-land-a fela.\\
+then \textsc{3sg.m.nom} to.there-ward sail-\textsc{thm}-\textsc{pst}-\textsc{ind.3sg} from Skiringssal-\textsc{dat.sg} then be.\textsc{pst.ind.3sg} \textsc{3sg.m.dat} in \textsc{det.def}.\textsc{acc.sg.n} back-board.\textsc{acc.sg} Dane-\textsc{gen.pl}-mark.\textsc{nom.sg} and in \textsc{det.def}.\textsc{acc.sg.n} steering-board.\textsc{acc.sg} wide-sea.\textsc{nom.sg} three.\textsc{acc.m} day-\textsc{acc.pl} and then two.\textsc{acc.m} day-\textsc{acc.pl} before \textsc{3sg.m.nom} to Heath-\textsc{dat.pl} come.\textsc{pst}-\textsc{sjv.sg} \textsc{3sg.m.dat} be.\textsc{pst.ind.3sg} in \textsc{det.def}.\textsc{acc.sg.n} steering-board.\textsc{acc.sg} Jute-land.\textsc{nom.sg} and Sillende.\textsc{nom.sg} and island-land-\textsc{gen.pl} many\\
+\glt `When he was sailing there from Skiringssal, on his port side was Denmark (now Halland and Skåne in Sweden), and on his starboard was open sea for three days; and then, for two days before he came to Hedeby, on his starboard were Jutland and Sillende and many islands.'}
+
+\ex{\gll On þǣm land-um eard-o-d-on Engl-e, ǣr hī hider on land cōm-an.\\
+in \textsc{dem.dist}.\textsc{dat.pl} land-\textsc{dat.pl} live-\textsc{thm}-\textsc{pst}-\textsc{ind.pl} English-\textsc{nom.pl} before \textsc{3pl.nom} to.here in land.\textsc{acc.sg} come-\textsc{pst}-\textsc{ind.pl}\\
+\glt `In those lands lived the English, before they came here to (this) land.'}
+
+\ex{\gll And hym wæs ðā twēġen dag-as on ðæt bæcbord þā īġ-land þe in Den-e-mearc-e hȳr-að.\\
+and \textsc{3sg.m.dat} be.\textsc{pst.ind.3sg} \textsc{dem.dist}.\textsc{acc.pl} two.\textsc{acc.m} day-\textsc{acc.pl} in \textsc{det.def}.\textsc{acc.sg.n} back-board.\textsc{acc.sg} \textsc{det.def}.\textsc{nom.pl} island-land.\textsc{nom.pl} \textsc{rel} in Dane-\textsc{nom.pl}-mark-\textsc{acc.sg} belong-\textsc{prs.ind.pl}\\
+\glt `And to his port side for those two days were the islands that belong to Denmark.'}
+
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.8} \begin{xlist}
+
+\ex{\gll Wulfstān sǣ-d-e þæt hē ġe-fōr-e of Hǣð-um, þæt hē wǣr-e on Truso on syfan dag-um and niht-um, þæt þæt sċip wæs eal-ne weġ yrn-ende under seġl-e.\\
+Wulfstan.\textsc{nom.sg} say-\textsc{pst}-\textsc{ind.3sg} \textsc{comp} \textsc{3sg.m.nom} \textsc{pfx}-travel.\textsc{pst}-\textsc{sjv.sg} from Heath-\textsc{dat.pl} \textsc{comp} \textsc{3sg.m.nom} be.\textsc{pst}-\textsc{sjv.sg} in Truso.\textsc{dat.sg} in seven day-\textsc{dat.pl} and night-\textsc{dat.pl} \textsc{comp} \textsc{det.def}.\textsc{nom.sg.n} ship.\textsc{nom.sg} be.\textsc{pst.ind.3sg} all-\textsc{acc.sg.m.str} way.\textsc{acc.sg} run-\textsc{part.prs} under sail-\textsc{dat.sg}\\
+\glt `Wulfstan said that he traveled from Hedeby, that he was in Truso in seven days and nights, that the ship was the whole way running under sail.'}
+
+\ex{\gll Weonoð-land him wæs on stēor-bord, and on bæc-bord him wæs Langa-land and Lǣ-land and Falster and Scōneġ; and þās land eall hȳr-að tō Den-e-mearc-an.\\
+Wend-land \textsc{3sg.m.dat} be.\textsc{pst.ind.3sg} in steering-board.\textsc{acc.sg} and in back-board.\textsc{acc.sg} \textsc{3sg.m.dat} be.\textsc{pst.ind.3sg} Long-land.\textsc{nom.sg} and Lol-land\textsc{nom.sg} and Falster.\textsc{nom.sg} and Skåne.\textsc{nom.sg} and \textsc{dem.prox}.\textsc{nom.pl} land.\textsc{nom.pl} all.\textsc{nom.pl.n.str} belong-\textsc{prs.ind.pl} to Dane-\textsc{nom.pl}-mark-\textsc{dat.sg}\\
+\glt `Wendland was to his starboard, and to his port side were Langeland and Lolland and Falster and Skåne; and these lands all belong to Denmark.'}
+
+\ex{\gll And þonne Burgend-a land wæs ūs on bæc-bord, and þā habb-að him sylf cyning.\\
+and then Burgundian-\textsc{gen.pl} land.\textsc{nom.sg} be.\textsc{pst.ind.3sg} \textsc{1pl.dat} in back-board.\textsc{acc.sg} and \textsc{dem.dist}.\textsc{nom.pl} have-\textsc{prs.ind.pl} \textsc{3pl.dat} self.\textsc{nom.pl.m.str} king.\textsc{acc.sg}\\
+\glt `And then Burgundy (Bornholm) was to the port side, and they have their own king.'}
+
+\ex{\gll Þonne æfter Burgend-a land-e wǣr-on ūs þās land þā synd hāt-en-e ǣr-est Blecinga ēġ, and Meore and Eow-land and Got-land on bæc-bord; and þās land hȳr-að tō Swēon.\\
+then after Burgundian-\textsc{gen.pl} land.\textsc{dat.sg} be.\textsc{pst}-\textsc{ind.pl} \textsc{1pl.dat} \textsc{dem.prox}.\textsc{nom.pl} land.\textsc{nom.pl} \textsc{dem.dist}.\textsc{nom.pl} be.\textsc{prs.ind.pl} call-\textsc{part}-\textsc{nom.pl.n.str} before-\textsc{sup}.\textsc{adv} Blekinge island.\textsc{nom.sg} and Möre.\textsc{nom.sg} and Ö-land.\textsc{nom.sg} and Got-land in back-board.\textsc{acc.sg} and \textsc{dem.prox}.\textsc{nom.pl} land.\textsc{nom.pl} belong-\textsc{prs.ind.pl} to Swede.\textsc{dat.pl}\\
+\glt `Then after Burgundy, to our port side were these lands that are called first Blekinge island, and (then) Möre and Öland and Gotland; and these lands begong to the Swedes.'}
+
+\ex{\gll And Weonod-land wæs ūs eal-ne weġ on stēor-bord oð Wīsl-e-mūð-an.\\
+and Wend-land.\textsc{nom.sg} be.\textsc{pst.ind.3sg} \textsc{1pl.dat} all-\textsc{acc.sg.m.str} way.\textsc{acc.sg} in steering-board.\textsc{acc.sg} until Vistula-\textsc{nom.sg}-river.mouth-\textsc{acc.sg}\\
+\glt `And Wendland was to our starboard the whole way until the mouth of the Vistula.'}
+
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.9} \begin{xlist}
+
+\ex{\gll Sēo Wīsl-e is swȳð-e myċel ēa, and hīo tō-lī-ð Wit-land and Weonod-land, and þæt Wit-land be-limp-eð tō Ēst-um.\\
+\textsc{det.def}.\textsc{nom.sg.f} Vistula-\textsc{nom.sg} be.\textsc{prs.ind.3sg} strong-\textsc{adv} large.\textsc{nom.sg.f.str} river.\textsc{nom.sg} and \textsc{3sg.f.nom} apart-lie-\textsc{prs.ind.3sg} Wit-land.\textsc{acc.sg} and Wend-land.\textsc{acc.sg} and \textsc{dem.dist}.\textsc{nom.sg.n} Wit-land.\textsc{nom.sg} by-happen-\textsc{prs.ind.3sg} to Est-\textsc{dat.pl}\\
+\glt `The Vistula is a very large river, and it separates Witland and Wendland, and that Witland belongs to the Ests.'}
+
+\ex{\gll And sēo Wīsl-e lī-ð ūt of Weonod-land-e and lī-ð in Ēst-mer-e, and sē Ēst-mer-e is hūru fīftēne mīl-a brād.\\
+and \textsc{det.def}.\textsc{nom.sg.f} Vistula-\textsc{nom.sg} lie-\textsc{prs.ind.3sg} out from Wend-land-\textsc{dat.sg} and lie-\textsc{prs.ind.3sg} in Est-lake-\textsc{acc.sg} and \textsc{det.def}.\textsc{nom.sg.m} Est-lake-\textsc{nom.sg} be.\textsc{prs.ind.3sg} indeed fifteen mile-\textsc{gen.pl} broad.\textsc{nom.sg.m.str}\\
+\glt `And the Vistula leads out of Wendland and leads into the Est Sea (Vistula Lagoon), and the Est Sea is at least 15 miles wide.'}
+
+\ex{\gll Þonne cym-eð Ilfing ēast-an in Ēst-mer-e of ðǣm mer-e ðe Truso stand-eð in stað-e, and cum-að ūt samod in Ēst-mer-e, Ilfing ēast-an of Ēst-land-e and Wīsl-e sūð-an of Winod-land-e, and þonne be-nim-ð Wīsl-e Ilfing hire nam-an, and liġ-eð of þǣm mer-e west and norð on sǣ; for ðȳ hit man hǣt Wīsl-e-mūð-a.\\
+then come.\textsc{prs}-\textsc{ind.3sg} Elbląg.\textsc{nom.sg} east-from in Est-lake-\textsc{acc.sg} from \textsc{det.def}.\textsc{dat.sg.m} lake-\textsc{dat.sg} \textsc{rel} Truso.\textsc{nom.sg} stand.\textsc{prs}-\textsc{ind.3sg} in river.shore-\textsc{dat.sg} and come.\textsc{prs}-\textsc{ind.pl} out together in Est-lake-\textsc{acc.sg} Elbląg.\textsc{nom.sg} east-from from Est-land-\textsc{dat.sg} and Vistula-\textsc{nom.sg} south-from from Wend-land-\textsc{dat.sg} and then by-take.\textsc{prs}-\textsc{ind.3sg} Vistula-\textsc{dat.sg} Elbląg.\textsc{nom.sg} \textsc{3sg.f.gen} name-\textsc{acc.sg} and lie-\textsc{prs.ind.3sg} from \textsc{det.def}.\textsc{dat.sg.m} lake-\textsc{dat.sg} west.\textsc{adv} and north.\textsc{adv} in sea.\textsc{acc.sg} for \textsc{dem.dist}.\textsc{ins.sg.n} \textsc{3sg.n.acc} one.\textsc{indf} call.\textsc{prs.ind.3sg} Vistula-\textsc{nom.sg}-river.mouth-\textsc{nom.sg}\\
+\glt `Then the Elbląg (river) comes from the east into the Est Sea from the lake where Truso stands on the shore, and the Elbląg from the east from Estland and the Vistula from the south from Wendland come out together into the Est Sea, and then the Elbląg deprives the Vistula of its name (i.e.\ takes the name of the Vistula), and (the combined river) leads from the lake west and north to sea; therefore one calls it the mouth of the Vistula.'}
+
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.10} \begin{xlist}
+
+\ex{\gll Þæt Ēstland is swȳð-e myċel, and þǣr bi-ð swȳð-e maniġ burh, and on ǣlċ-ere byriġ bi-ð cynincg.\\
+\textsc{dem.dist}.\textsc{nom.sg.n} Est-land.\textsc{nom.sg} be.\textsc{prs.ind.3sg} strong-\textsc{adv} large.\textsc{nom.sg.n.str} and there be.\textsc{hab}-\textsc{ind.3sg} strong-\textsc{adv} many.\textsc{nom.sg.f.str} town.\textsc{nom.sg} and in every-\textsc{dat.sg.f.str} town.\textsc{dat.sg} be.\textsc{hab}-\textsc{ind.3sg} king.\textsc{nom.sg}\\
+\glt `That Estland is very large, and there are very many towns, and in each town is a king.'}
+
+\ex{\gll And þǣr bi-ð swȳð-e myċel huniġ and fisc-að; and sē cyning and þā rīċ-ost-an men drinc-að mȳr-an meolc, and þā un-spēd-ig-an and þā þēow-an drinc-að medo.\\
+and there be.\textsc{hab}-\textsc{ind.3sg} strong-\textsc{adv} large.\textsc{nom.sg.n.str} honey.\textsc{nom.sg} and fish-\textsc{nmlz}.\textsc{nom.sg} and \textsc{det.def}.\textsc{nom.sg.m} king.\textsc{nom.sg} and \textsc{det.def}.\textsc{nom.pl} rich-\textsc{sup}-\textsc{nom.pl.wk} man.\textsc{nom.pl} drink.\textsc{prs}-\textsc{ind.pl} mare-\textsc{gen.sg} milk.\textsc{acc.sg} and \textsc{det.def}.\textsc{nom.pl} un-wealth-\textsc{adj}-\textsc{nom.pl.wk} and \textsc{det.def}.\textsc{nom.pl} servant-\textsc{nom.pl} drink.\textsc{prs}-\textsc{ind.pl} mead.\textsc{acc.sg}\\
+\glt `And there is very much honey and fishing; and the king and the richest men drink mare's milk, and the non-wealthy and the servants drink mead.'}
+
+\ex{\gll Þǣr bi-ð swȳð-e myċel ġe-winn be-twēon-an him.\\
+there be.\textsc{hab}-\textsc{ind.3sg} strong-\textsc{adv} large.\textsc{nom.sg.n.str} \textsc{pfx}-war.\textsc{nom.sg} by-two-\textsc{dat.pl} \textsc{3pl.dat}\\
+\glt `There is much conflict between them.'}
+
+\ex{\gll And ne bi-ð ðǣr n-ǣniġ ealo ġe-brow-en mid Ēst-um, ac þǣr bi-ð medo ġenōh.\\
+and \textsc{neg} be.\textsc{hab}-\textsc{ind.3sg} there \textsc{neg}-any.\textsc{nom.sg.n.str} ale.\textsc{nom.sg} \textsc{pfx}-brew-\textsc{part}.\textsc{nom.sg.n.str} with Est-\textsc{dat.pl} but there be.\textsc{hab}-\textsc{ind.3sg} mead.\textsc{nom.sg} enough.\textsc{nom.sg.m.str}\\ 
+\glt `And there isn't any ale brewed among the Ests, but there is sufficient mead.'}
+
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.11} \begin{xlist}
+
+\ex{\gll And þǣr is mid Ēst-um ðēaw, þonne þǣr bi-ð man dēad, þæt hē lī-ð inn-e un-for-bærn-ed mid his māg-um and frēond-um mōnað, ġe hwīl-um twēġen; and þā kyning-as and þā ōðr-e hēah-ðung-en-e men swā micl-e lenċġ swā hī mār-an spēd-a habb-að, hwīl-um healf ġēar þæt hī bēo-ð un-for-bærn-ed; and liċġ-að b-uf-an eorð-an on hyra hūs-um.\\
+and there be.\textsc{prs.ind.3sg} with Est-\textsc{dat.pl} custom.\textsc{nom.sg} then there be.\textsc{hab}-\textsc{ind.3sg} man.\textsc{nom.sg} dead.\textsc{nom.sg.m.str} \textsc{comp} \textsc{3sg.m.nom} lie-\textsc{prs.ind.3sg} in-\textsc{adv} un-for-burn-\textsc{part}.\textsc{nom.sg.m.str} with \textsc{3sg.m.gen} kinsman-\textsc{dat.pl} and friend-\textsc{dat.pl} month.\textsc{acc.sg} and time-\textsc{dat.pl} two.\textsc{acc.m} and  \textsc{det.def}.\textsc{nom.pl} king-\textsc{nom.pl} and \textsc{det.def}.\textsc{nom.pl} other-\textsc{nom.pl.m.str} high-flourish-\textsc{part}-\textsc{nom.pl.m.str} man.\textsc{nom.pl} as large-\textsc{adv} longer.\textsc{adv} as \textsc{3pl.nom} large.\textsc{comp}-\textsc{acc.pl} wealth-\textsc{acc.pl} have-\textsc{prs.ind.pl} time-\textsc{dat.pl} half.\textsc{acc.sg.n.str} year.\textsc{acc.sg} \textsc{comp} \textsc{3pl.nom} be.\textsc{hab}-\textsc{ind.pl} un-for-burn-\textsc{part}.\textsc{nom.pl.m.str} and lie-\textsc{prs.ind.pl} by-up-from ground-\textsc{dat.sg} in \textsc{3pl.gen} house-\textsc{dat.pl}\\
+\glt `And there is a custom with the Ests that when a man dies, he lies inside inside uncremated with his kinsmen and friends for a month, and sometimes two, and the kings and the other high-ranking men, so much longer as they have more wealth, sometimes half a year that they will remain uncremated; and lie above ground in their houses.'}
+
+\ex{\gll And eall-e þā hwīl-e þe þæt līċ bi-ð inn-e, þǣr sċeal bēo-n ġe-drynċ and pleg-a, oð ðone dæġ þe hī hine for-bærn-að.\\
+and all-\textsc{acc.sg.f.str} \textsc{det.def}.\textsc{acc.sg.f} time-\textsc{acc.sg} \textsc{rel} \textsc{det.def}.\textsc{nom.sg.n} 
+body.\textsc{nom.sg} be.\textsc{hab}-\textsc{ind.3sg} in-\textsc{adv} there have.to.\textsc{prs.ind.3sg} be.\textsc{hab}-\textsc{inf} \textsc{pfx}-drink.\textsc{nom.sg} and play-\textsc{nom.sg} until \textsc{det.def}.\textsc{acc.sg.m} day.\textsc{acc.sg} \textsc{rel} \textsc{3pl.nom} \textsc{3sg.m.acc} for-burn-\textsc{prs.ind.pl}\\
+\glt `And all the while that the body is inside, there must be be drinking and playing, until the day that they cremate him.'}
+
+\ex{\gll Þonne þȳ ylc-an dæġ-e þe hī hine tō þǣm ād-e ber-an wyll-að, þonne tō-dǣl-að hī his feoh þæt þǣr tō lāf-e bi-ð æfter þǣm ġe-drynċ-e and þǣm pleg-an on fīf oððe syx, hwȳl-um on mā, swā swā þæs fēo-s andefn bi-ð.\\
+then \textsc{det.def}.\textsc{ins.sg.m} same-\textsc{ins.sg.m.wk} day-\textsc{dat.sg} \textsc{rel} \textsc{3pl.nom} \textsc{3sg.m.acc} to \textsc{det.def}.\textsc{dat.sg.m} pyre-\textsc{dat.sg} bear-\textsc{inf} want.\textsc{prs}-\textsc{ind.pl} then apart-deal-\textsc{prs.ind.pl} \textsc{3pl.nom} \textsc{3sg.m.gen} property.\textsc{acc.sg} \textsc{dem.dist}.\textsc{nom.sg.n} there to remainder.\textsc{dat.sg} be.\textsc{hab}-\textsc{ind.3sg} after \textsc{det.def}.\textsc{dat.sg.m} \textsc{pfx}-drink-\textsc{dat.sg} and \textsc{det.def}.\textsc{dat.sg.m} play-\textsc{dat.sg} in five or six time-\textsc{dat.pl} in large.\textsc{comp}.\textsc{adv} as as \textsc{det.def}.\textsc{gen.sg.n} property-\textsc{gen.sg} amount.\textsc{nom.sg} be.\textsc{hab}-\textsc{ind.3sg}\\
+\glt `Then the same day that they wish to carry him to the (funeral) pyre, they divide apart his property that remains there after the drinking and the playing into five or six (parts), sometimes into more, as the amount of the property may be.'}
+
+\ex{\gll Ā-leċġ-að hit ðonne for-hwæga on ān-re mīl-e þone mǣ-st-an dǣl fram þǣm tūn-e, þonne ōðer-ne, ðonne þæne þridd-an, oþ þæt hyt eall ā-lē-d bi-ð on þǣre ān-re mīl-e; and sċeall bēo-n sē lǣ-st-a dǣl nȳh-st þǣm tūn-e ðe sē dēad-a man on lī-ð.\\
+out-lay-\textsc{prs.ind.pl} \textsc{3sg.n.acc} then for-some in one-\textsc{dat.sg.f} mile-\textsc{dat.sg} \textsc{det.def}.\textsc{acc.sg.m} large-\textsc{sup}-\textsc{acc.sg.m.wk} deal from \textsc{det.def}.\textsc{dat.sg.m} town-\textsc{dat.sg} then other-\textsc{acc.sg.m.str} then \textsc{det.def}.\textsc{acc.sg.m} third-\textsc{acc.sg.m.wk} until \textsc{comp} \textsc{3sg.n.nom} all.\textsc{nom.sg.n} out-lay-\textsc{part}.\textsc{nom.sg.n.str} be.\textsc{hab}-\textsc{ind.3sg} in \textsc{dem.dist}.\textsc{dat.sg.f} one-\textsc{dat.sg.f} mile-\textsc{dat.sg} and have.to.\textsc{prs.ind.3sg} be.\textsc{hab}-\textsc{inf} \textsc{det.def}.\textsc{nom.sg.m} little-\textsc{sup}-\textsc{nom.sg.m.wk} deal.\textsc{nom.sg} near-\textsc{sup}.\textsc{nom.sg.m.str} \textsc{det.def}.\textsc{dat.sg.m} town-\textsc{dat.sg} \textsc{rel} \textsc{det.def}.\textsc{nom.sg.m} dead-\textsc{nom.sg.m.wk} man.\textsc{nom.sg} in lie-\textsc{prs.ind.3sg}\\
+\glt `Then they lay out the largest part of it about one mile from the town, then the second, then the third, until it is all laid within that one mile, and the smallest part shall be nearest to the town that the dead man lived in.''}
+
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.12} \begin{xlist}
+
+\ex{\gll Ðonne sċẹol-on bēo-n ġe-samn-o-d-e eall-e ðā menn ðe swyft-ost-e hors habb-að on þǣm land-e, for-hwæga on fīf mīl-um oððe on syx mīl-um fram þǣm fēo.\\
+then have.to.\textsc{prs}-\textsc{ind.pl} be.\textsc{hab}-\textsc{inf} \textsc{pfx}-gather-\textsc{thm}-\textsc{part}-\textsc{nom.pl.m.str} all-\textsc{nom.pl.m.str} \textsc{det.def}.\textsc{nom.pl} man.\textsc{nom.pl} \textsc{rel} swift-\textsc{sup}-\textsc{acc.pl.n.str} horse.\textsc{acc.pl} have-\textsc{prs.ind.pl} in \textsc{det.def}.\textsc{dat.sg.n} land-\textsc{dat.sg} for-some in five mile-\textsc{dat.pl} or in six mile-\textsc{dat.pl} from \textsc{det.def}.\textsc{dat.sg.n} property.\textsc{dat.sg}\\
+\glt `Then all the men that have the swiftest horses in the land shall be assembled, about five or six miles from the property.'}
+
+\ex{\gll Þonne ærn-að hȳ eall-e tō-weard þǣm fēo; ðonne cym-eð sē man sē þæt swift-ost-e hors haf-að tō þǣm ǣr-est-an dǣl-e and tō þǣm mǣ-st-an, and swā ǣlċ æfter ōðr-um, oþ hit bi-ð eall ġe-num-en; and sē nim-ð þone lǣ-st-an dǣl sē nȳh-st þǣm tūn-e þæt feoh ġe-ærn-eð.\\
+then run-\textsc{prs.ind.pl} \textsc{3pl.nom} all-\textsc{nom.pl.m.str} to-ward \textsc{det.def}.\textsc{dat.sg.n} property.\textsc{dat.sg} then come.\textsc{prs}-\textsc{ind.3sg} \textsc{det.def}.\textsc{nom.sg.m} man.\textsc{nom.sg} \textsc{dem.dist}.\textsc{nom.sg.m} \textsc{det.def}.\textsc{acc.sg.n} swift-\textsc{sup}-\textsc{acc.sg.n.wk} horse.\textsc{acc.sg} have-\textsc{prs.ind.3sg} to \textsc{det.def}.\textsc{dat.sg.m} before-\textsc{sup}-\textsc{dat.sg.m.wk} deal-\textsc{dat.sg} and to \textsc{det.def}.\textsc{dat.sg.m} large-\textsc{sup}-\textsc{dat.sg.m.wk} and as every.\textsc{nom.sg.m.str} after other-\textsc{dat.sg.m.str} until \textsc{3sg.n.nom} be.\textsc{hab}-\textsc{ind.3sg} all.\textsc{nom.sg.n} \textsc{pfx}-take-\textsc{part}.\textsc{nom.sg.n.str} and \textsc{dem.dist}.\textsc{nom.sg.m} take-\textsc{ind.3sg} \textsc{det.def}.\textsc{acc.sg.m} little-\textsc{sup}-\textsc{acc.sg.m.wk} deal.\textsc{acc.sg} \textsc{dem.dist}.\textsc{nom.sg.m} near-\textsc{sup}.\textsc{nom.sg.m.str} \textsc{det.def}.\textsc{dat.sg.m} town-\textsc{dat.sg} \textsc{det.def}.\textsc{acc.sg.n} property.\textsc{acc.sg} \textsc{pfx}-run-\textsc{prs.ind.3sg}\\
+\glt `Then they all run towards the property; then the man who has the swiftest hors comes to the first and the largest part, and so each after the other, until it is all taken, and he who takes the smallest part is he who runs for the property nearest to the town.'}
+
+\ex{\gll And þonne rīd-eð ǣlċ hys weġ-es mid ðān fēo, and hyt mōt-an habb-an eall; and for ðȳ þǣr bēo-ð þā swift-an hors un-ġe-fōg-e dȳr-e.\\
+and then ride.\textsc{prs}-\textsc{ind.3sg} every.\textsc{nom.sg.m.str} \textsc{3sg.m.gen} way-\textsc{gen.sg} with \textsc{det.def}.\textsc{dat.sg.n} property.\textsc{dat.sg} and \textsc{3sg.n.acc} be.allowed-\textsc{prs}-\textsc{ind.pl} have-\textsc{inf} all.\textsc{acc.sg.n} and for \textsc{dem.dist}.\textsc{ins.sg.n} there be.\textsc{hab}-\textsc{ind.pl}  \textsc{det.def}.\textsc{nom.pl} swift-\textsc{nom.pl.n.wk} horse.\textsc{nom.pl} un-\textsc{pfx}-joining-\textsc{adv} dear-\textsc{nom.pl.n.str}\\
+\glt `And then each rides on his way with the property, and can have it all; and therefore swift horses are immensely valuable there.'}
+
+\ex{\gll And þonne hys ġe-strēon bēo-ð þus eall ā-spend-ed, þonne byr-ð man hine ūt and for-bærn-eð mid his wǣpn-um and hræġl-e.\\
+and then \textsc{3sg.m.gen} \textsc{pfx}-treasure be.\textsc{hab}-\textsc{ind.pl} thus all.\textsc{nom.pl.n} out-spend-\textsc{part}.\textsc{nom.pl.n.str} then bear-\textsc{prs.ind.3sg} one.\textsc{indf} \textsc{3sg.m.acc} out and for-burn-\textsc{prs.ind.3sg} with \textsc{3sg.m.gen} weapon-\textsc{dat.pl} and clothing-\textsc{dat.sg}\\
+\glt `And when his property is thus all spent, then one carries him out and cremates (him) with his weapons and clothing.'}
+
+\ex{\gll And swīð-ost eall-e hys spēd-a hȳ for-spend-að mid þān lang-an leġer-e þæs dēad-an mann-es inn-e, and þæs þe hȳ be þǣm weg-um ā-leċġ-að, þe ðā fremd-an tō ærn-að and nim-að.\\
+and strong-\textsc{sup}.\textsc{adv} all-\textsc{acc.pl.f} \textsc{3sg.m.gen} wealth-\textsc{acc.pl} \textsc{3pl.nom} for-spend-\textsc{prs.ind.pl} with \textsc{det.def}.\textsc{dat.sg.n} long-\textsc{dat.sg.n.wk} lying-\textsc{dat.sg} \textsc{det.def}.\textsc{gen.sg.m} dead-\textsc{gen.sg.m.wk} man-\textsc{gen.sg} in-\textsc{adv} and \textsc{dem.dist}.\textsc{gen.sg.n} \textsc{rel} \textsc{3pl.nom} by \textsc{det.def}.\textsc{dat.pl} way-\textsc{dat.pl} out-lay-\textsc{prs.ind.pl} \textsc{rel} \textsc{det.def}.\textsc{nom.pl} stranger-\textsc{nom.pl} to run-\textsc{prs.ind.pl} and take-\textsc{ind.pl}\\
+\glt `And most (commonly) they spend away all his wealth with the long lying of the dead man inside, and what they lay out on the roads, which the strangers run to and take (away).'}
+
+\end{xlist}
+\end{exe}
+
+\begin{exe}
+\ex \label{ex:paragraph.13} \begin{xlist}
+
+\ex{\gll And þæt is mid Ēst-um þēaw þæt þǣr sċeal ǣlċ-es ġe-ðēod-es man bēo-n for-bærn-ed; and ġyf þār man ān bān find-eð un-for-bærn-ed, hī hit sċẹol-an micl-um ġe-bēt-an.\\
+and \textsc{dem.dist}.\textsc{nom.sg.n} be.\textsc{prs.ind.3sg} with Est-\textsc{dat.pl} custom.\textsc{nom.sg} \textsc{comp} there have.to.\textsc{prs.ind.3sg} every-\textsc{gen.sg.n.str} \textsc{pfx}-nation-\textsc{gen.sg} man.\textsc{nom.sg} be.\textsc{hab}-\textsc{inf} for-burn-\textsc{part}.\textsc{nom.sg.m.str} and if there one.\textsc{indf} one.\textsc{acc.sg.n} bone.\textsc{acc.sg} find.\textsc{prs}-\textsc{ind.3sg} un-for-burn-\textsc{part}.\textsc{acc.sg.n.str} \textsc{3pl.nom} \textsc{3sg.n.acc} have.to.\textsc{prs}-\textsc{ind.pl} large-\textsc{dat.sg.n.str} \textsc{pfx}-atone.for-\textsc{inf}\\
+\glt `And it is a custom with the Ests that there men of every tribe must be cremated; and if there one finds a single bone uncremated, they must atone for it greatly.'}
+
+\ex{\gll And þǣr is mid Ēst-um ān mǣġð þæt hī mag-on ċyl-e ġe-wyrċ-an; and þȳ þǣr liċġ-að þā dēad-an men swā lang-e and ne fūl-i-að, þæt hȳ wyrċ-að þone ċyl-e hine on.\\
+and there be.\textsc{prs.ind.3sg} with Est-\textsc{dat.pl} one.\textsc{nom.sg.f} power.\textsc{nom.sg} \textsc{comp} \textsc{3pl.nom} can.\textsc{prs}-\textsc{ind.pl} cold-\textsc{acc.sg} \textsc{pfx}-make-\textsc{inf} and \textsc{dem.dist}.\textsc{ins.sg.n} there lie-\textsc{prs.ind.pl} \textsc{det.def}.\textsc{nom.pl} dead-\textsc{nom.pl.wk} man-\textsc{nom.pl} as long-\textsc{adv} and \textsc{neg} foul-\textsc{thm}-\textsc{prs.ind.pl} \textsc{comp} \textsc{3pl.nom} make-\textsc{prs.ind.pl} \textsc{det.def}.\textsc{acc.sg.m} cold-\textsc{acc.sg} \textsc{3sg.m.acc} in\\
+\glt `And there is among the Ests a power such that they can make coldness; and therefore the dead men lie there so long and do not decay, because they work the cold onto him.'}
+
+\ex{\gll And þēah man ā-sett-e twēġen fǣtels-as full eal-að oððe wæter-es, hȳ ġe-dō-ð þæt ōþer bi-ð ofer-fror-en, sam hit sȳ sumor sam winter.\\
+and though one.\textsc{indf} out-set-\textsc{prs.sjv.sg} two.\textsc{acc.m} vessel-\textsc{acc.pl} full.\textsc{acc.pl.m.str} ale-\textsc{gen.sg} or water-\textsc{gen.sg} \textsc{3pl.nom} \textsc{pfx}-do-\textsc{prs.ind.pl} \textsc{comp} other.\textsc{nom.sg.m.str} be.\textsc{hab}-\textsc{ind.3sg} over-freeze-\textsc{part}.\textsc{nom.sg.m.str} same \textsc{3sg.n.nom} be.\textsc{prs.sjv.sg} summer.\textsc{nom.sg} same winter.\textsc{nom.sg}\\
+\glt `And if one sets out two vessels\footnote{Some versions of the text have the form \textit{fætels} instead of \textit{fætelsas}.  \href{https://bosworthtoller.com/10047}{Bosworth Toller} lists both forms as possible \textsc{nom}/\textsc{acc}.\textsc{pl} forms.} full of ale or water, they make it such that either will be frozen over, whether it be summer or winter.'}
+
+\end{xlist}
+\end{exe}
+
+%\vspace{0.25cm}
+\newpage
+
+\section{Use of different resources}
+
+\begin{itemize}
+
+\item Text, paragraph structure, and punctuation: \textcite{BakerOESite}
+
+\item Text, palatalization marking: \textcite{Fulk2020}
+
+\item Text: \url{http://www.oegrammar.ca/texts/voyage-of-ohthere/}
+
+\item Resolving differences between texts in palatalization and vowel-length marking: \href{https://www.wiktionary.org/}{Wiktionary}
+
+\item Text and translation: \url{https://vikingraiders.yolasite.com/resources/Ohthere-dual.pdf}
+
+\item Text: \url{https://archive.org/details/rcin.org.pl.WA51_92790_PAN37315-r1855_Description-Europe_71615/page/n9/mode/2up}
+
+\item Translation of words: \href{https://www.wiktionary.org/}{Wiktionary}, \href{https://bosworthtoller.com/}{Bosworth Toller}, \url{https://www.oldenglishaerobics.net/ohthere.php}
+
+\end{itemize}
+
+\section{Glossing abbreviations}
+
+\vspace{0.25cm}
+
+\begin{multicols}{3}
+
+\textsc{1} = 1st person
+
+\textsc{2} = 2nd person
+
+\textsc{3} = 3rd person
+
+%\textsc{abl} = ablative case
+
+\textsc{acc} = accusative case
+
+%\textsc{act} = active voice
+
+\textsc{adj} = adjective
+
+\textsc{adv} = adverb
+
+\textsc{agt} = agent
+
+\textsc{cmp} = comparative
+
+\textsc{comp} = complementizer
+
+\textsc{dat} = dative case
+
+\textsc{def} = definite
+
+\textsc{dem} = demonstrative
+
+\textsc{det} = determiner
+
+\textsc{dist} = distal
+
+\textsc{f} = feminine gender
+
+\textsc{gen} = genitive case
+
+\textsc{hab} = habitual
+
+\textsc{imp} = imperative mood
+
+\textsc{ind} = indicative mood
+
+\textsc{indf} = indefinite
+
+\textsc{inf} = infinitive
+
+\textsc{ins} = instrumental case
+
+\textsc{m} = masculine gender
+
+\textsc{neg} = negative
+
+\textsc{n} = neuter gender
+
+\textsc{nmlz} - nominalizer
+
+\textsc{nom} = nominative case
+
+\textsc{part} = participle
+
+\textsc{pass} = passive voice
+
+%\textsc{perf} = perfect tense/aspect
+
+\textsc{pfx} = prefix
+
+\textsc{pl} = plural
+
+\textsc{poss} = possessive
+
+\textsc{prs} = present tense
+
+\textsc{prox} = proximate
+
+\textsc{pst} = past tense
+
+\textsc{rel} = relativizer
+
+\textsc{sg} = singular
+
+\textsc{sjv} = subjunctive mood
+
+\textsc{str} = strong declension (indef.)
+
+\textsc{sup} = superlative
+
+\textsc{thm} = theme vowel
+
+%\textsc{voc} = vocative case
+
+\textsc{wk} = weak declension (def.)
+
+\end{multicols}
+
+\printbibliography
+
+\end{document}
