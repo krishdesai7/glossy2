@@ -2,6 +2,7 @@
 
 import json
 import sqlite3
+import threading
 import unicodedata
 import urllib.request
 from dataclasses import dataclass
@@ -112,6 +113,7 @@ def fetch_dictionary(jsonl_path: Path = JSONL_PATH, index_path: Path = INDEX_PAT
 class Dictionary:
     def __init__(self, connection: sqlite3.Connection):
         self._connection = connection
+        self._lock = threading.Lock()
 
     @classmethod
     def open(cls, path: Path = INDEX_PATH) -> "Dictionary":
@@ -122,9 +124,10 @@ class Dictionary:
         return cls(sqlite3.connect(path, check_same_thread=False))
 
     def lookup(self, form: str) -> list[Entry]:
-        rows = self._connection.execute(
-            "SELECT lemma, pos, senses, url, tags FROM forms WHERE form = ?", (normalize(form),)
-        )
+        with self._lock:
+            rows = self._connection.execute(
+                "SELECT lemma, pos, senses, url, tags FROM forms WHERE form = ?", (normalize(form),)
+            ).fetchall()
         merged: dict[tuple[str, str], Entry] = {}
         for lemma, pos, senses, url, tags in rows:
             entry = merged.setdefault((lemma, pos), Entry(lemma, pos, [], url, []))
@@ -135,7 +138,8 @@ class Dictionary:
         return list(merged.values())
 
     def has_lemma(self, lemma: str) -> bool:
-        row = self._connection.execute(
-            "SELECT 1 FROM lemmas WHERE form = ?", (normalize(lemma),)
-        ).fetchone()
+        with self._lock:
+            row = self._connection.execute(
+                "SELECT 1 FROM lemmas WHERE form = ?", (normalize(lemma),)
+            ).fetchone()
         return row is not None

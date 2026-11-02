@@ -3,8 +3,10 @@
 import random
 import re
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 
+from glossy2.analyze import Context, analyze_sentence
 from glossy2.dictionary import Dictionary
 from glossy2.models import GoldSentence, InputWord, WordAnalysis
 from glossy2.normalize import normalize
@@ -177,3 +179,19 @@ def aggregate(scores: list[TokenScore]) -> Scores:
         unflagged=_tally(s.exact for s in scores if not s.flagged),
         features={key: _tally(values) for key, values in sorted(features.items())},
     )
+
+
+def run_level(
+    sentences: list[GoldSentence],
+    level: str,
+    ctx: Context,
+    corrections: dict[tuple[int, int], dict[str, object]],
+    workers: int = 4,
+) -> list[TokenScore]:
+    def run_one(sentence: GoldSentence) -> list[TokenScore]:
+        words, withheld = make_inputs(sentence, level)
+        analyses = analyze_sentence(words, ctx)
+        return score_sentence(sentence, analyses, withheld, corrections, ctx.dictionary)
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        return [score for scores in pool.map(run_one, sentences) for score in scores]
