@@ -1,0 +1,5 @@
+{"word":"land","pos":"noun","senses":[{"glosses":["land (dry portion of the Earth's surface)"]},{"glosses":["a country"]}],"forms":[{"form":"no-table-tags","tags":["table-tags"]},{"form":"ang-decl-noun-a-n","tags":["inflection-template"]},{"form":"land","tags":["nominative","singular"]},{"form":"landes","tags":["genitive","singular"]},{"form":"lande","tags":["dative","singular"]}]}
+{"word":"lande","pos":"noun","senses":[{"glosses":["dative singular of land"],"form_of":[{"word":"land"}]}]}
+{"word":"sǣde","pos":"verb","senses":[{"glosses":["past of secgan"],"form_of":[{"word":"secgan"}]}]}
+{"word":"secgan","pos":"verb","senses":[{"glosses":["to say, tell"]}],"forms":[{"form":"seċġan","tags":["canonical"]},{"form":"sæġde","tags":["past","singular"]}]}
+{"word":"Ohthere","pos":"name","senses":[{"glosses":["a Norwegian"]}]}

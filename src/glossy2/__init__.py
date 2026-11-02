@@ -1,2 +1,9 @@
+"""Old English glosser."""
+
+import sys
+
+
 def main() -> None:
-    print("Hello from glossy2!")
+    from glossy2.cli import main as run
+
+    sys.exit(run())
