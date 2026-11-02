@@ -49,6 +49,8 @@ class TokenScore:
     flagged: bool
     failed: bool
     flag_codes: list[str] = field(default_factory=list)
+    gloss_matches: bool = False
+    has_grammar: bool = False
 
 
 @dataclass
@@ -63,6 +65,7 @@ class Scores:
     flagged: Tally
     unflagged: Tally
     features: dict[str, Tally]
+    exact_with_grammar: Tally = (0, 0)
 
 
 def make_inputs(sentence: GoldSentence, level: str, seed: int = 1729) -> tuple[list[InputWord], list[Withheld]]:
@@ -118,14 +121,15 @@ def _score_token(sid, index, token, analysis, hidden, fields, dictionary) -> Tok
     gold_stem, gold_feats = parse_gloss(token.gloss)
     predicted_gloss = render_gloss(analysis)
     predicted_stem, gloss_feats = parse_gloss(predicted_gloss)
-    predicted_feats = {**gloss_feats, **analysis.feats}
+    predicted_feats = {**analysis.feats, **gloss_feats}
     hinted = set(gold_feats) - hidden.feats
     tina = _tina_feats(fields)
     wanted = {key: gold_feats[key] for key in hidden.feats if key in gold_feats}
     wanted.update({key: value for key, value in tina.items() if key not in hinted})
     feats = {key: not failed and predicted_feats.get(key) == value for key, value in wanted.items()}
     something_hidden = hidden.stem or bool(hidden.feats) or bool(wanted)
-    exact = (not failed and predicted_gloss.rstrip("?") == token.gloss) if something_hidden else None
+    matches = not failed and predicted_gloss.rstrip("?") == token.gloss
+    exact = matches if something_hidden else None
     gold_parts = [normalize(part) for part in token.form.split("-") if part]
     predicted_parts = [normalize(segment.form) for segment in analysis.segments]
     meaning_exact = meaning_sense = None
@@ -138,7 +142,7 @@ def _score_token(sid, index, token, analysis, hidden, fields, dictionary) -> Tok
     return TokenScore(
         sid, index, token.form, token.gloss, predicted_gloss, exact,
         not failed and predicted_parts == gold_parts, feats, meaning_exact, meaning_sense, lemma,
-        bool(analysis.flags), failed, [flag.code for flag in analysis.flags],
+        bool(analysis.flags), failed, [flag.code for flag in analysis.flags], matches, bool(gold_feats),
     )
 
 
@@ -178,6 +182,7 @@ def aggregate(scores: list[TokenScore]) -> Scores:
         flagged=_tally(s.exact for s in scores if s.flagged),
         unflagged=_tally(s.exact for s in scores if not s.flagged),
         features={key: _tally(values) for key, values in sorted(features.items())},
+        exact_with_grammar=_tally(s.gloss_matches for s in scores if s.has_grammar),
     )
 
 

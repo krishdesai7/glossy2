@@ -24,7 +24,13 @@ For each numbered word, split it into morphemes and gloss each one, following th
 - Segments must rejoin to exactly the word as given.
 - Gloss a stem with an English word, and an ending with capitalised tags joined by dots, such as STEM-PST-IND.3SG or STEM-DAT.SG.
 - A word that isn't split keeps its whole gloss on one segment, such as STEM.PST.IND.3SG.
-- Mark only the features the examples would normally mark. Report your full analysis in "feats", using Universal Dependencies names (Case, Number, Gender, Person, Tense, Mood, VerbForm, Voice, Degree, Definite, PronType, Polarity) plus Declension, Aspect, Thematic, Derivation, Prefix, PartType, Deixis and Form.
+- Gloss literally and transparently, morpheme by morpheme: a compound or derived word gets one gloss per part, in plain words, rather than one modern English word that covers the whole.
+- Use THM for a thematic vowel in a verb, NMLZ for a nominalising ending, AGT for an agent ending, PFX for the prefix ge-, HAB for the b- forms of "be", and PART for a participle. Number words keep their parts, such as six-ty.
+- Tell a definite article (DET.DEF...) from a true demonstrative (DEM.DIST... or DEM.PROX...) and from the complementizer (COMP) by the sentence. The impersonal "man" is one.INDF. The preposition "on" with a place is usually "in".
+- Add ADV only to an adverb formed from an adjective; a plain adverb or preposition has no tag. Add STR or WK to adjective and quantifier endings, not to nouns.
+- A word left unsplit uses dots throughout, never hyphens. The hyphens in a gloss match the hyphens in the word.
+- A fixed stem meaning still needs its grammatical tags around it. Only the English word is given.
+- Mark only the features the examples would normally mark. Report your full analysis in "feats", using these exact names and values where they apply: Case=Nom|Acc|Gen|Dat|Ins, Number=Sing|Plur, Gender=Masc|Fem|Neut, Person=1|2|3, Tense=Pres|Past, Mood=Ind|Sub|Imp, VerbForm=Inf|Part, Voice=Pass, Degree=Cmp|Sup, Definite=Def|Ind, PronType=Det|Dem|Rel, Polarity=Neg, Declension=Str|Wk, Aspect=Hab, Thematic=Yes, Derivation=Agt|Nmlz, Prefix=Yes, PartType=Comp, Deixis=Dist|Prox, Form=Adv|Adj.
 
 Tags allowed in glosses: {tags}
 
@@ -32,7 +38,7 @@ Each word lists evidence where available: tags YCOE has recorded for that spelli
 
 Anything listed as "fixed" came from a human and must not be changed. Build your analysis around it.
 
-Do not force a guess. If the sentence doesn't settle a reading, set "ambiguous" to true and say why in "ambiguity_reason". If you don't know the lemma, set it to null rather than inventing one.
+Do not force a guess. Many endings are truly ambiguous, such as past indicative against past subjunctive, or dative against instrumental. If the sentence doesn't settle a reading, set "ambiguous" to true and say why in "ambiguity_reason". If you don't know the lemma, set it to null rather than inventing one.
 
 Reply with one JSON object only:
 {{"words": [{{"index": 0, "segments": [{{"form": "", "gloss": ""}}], "lemma": "", "upos": "", "feats": {{}}, "meaning": "", "ambiguous": false, "ambiguity_reason": ""}}]}}
@@ -110,6 +116,8 @@ def _failed(word: InputWord, reason: str) -> WordAnalysis:
 
 def _parse_proposal(raw: dict, word: InputWord) -> WordAnalysis:
     segments = [Segment(str(s["form"]), str(s["gloss"])) for s in raw["segments"]]
+    if len(segments) == 1:
+        segments[0].gloss = segments[0].gloss.replace("-", ".")
     flags = []
     if raw.get("ambiguous"):
         flags.append(Flag("ambiguous", str(raw.get("ambiguity_reason") or "the sentence doesn't settle it")))

@@ -74,3 +74,7 @@ def test_memory_section_shown():
     run = {**RUN, "memory": "dev", "effect": {"in_memory": (1, 2), "not_in_memory": (1, 1), "wrong_top": 2, "misled": 1}}
     text = report(runs=[run])
     assert "Memory" in text and "misled" in text
+
+
+def test_same_words_column_shown():
+    assert "same words at every level" in report()

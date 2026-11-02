@@ -188,3 +188,21 @@ def test_aggregate_per_feature():
     scores = aggregate([score(LAND, analysis, all_withheld(LAND))])
     assert scores.features == {"Case": (0, 1), "Number": (1, 1)}
     assert scores.tokens == 1
+
+
+def test_printed_gloss_beats_feats_when_they_disagree():
+    analysis = predicted("þǣm", "DET.DEF.DAT.SG.N", feats={"PronType": "Art"})
+    gold = token("þǣm", "DET.DEF.DAT.SG.N")
+    assert score(gold, analysis, all_withheld(gold)).feats["PronType"] is True
+
+
+def test_same_words_column_counts_words_with_grammar_at_every_level():
+    match = predicted("sǣde", "", [("sǣ", "say"), ("d", "PST"), ("e", "IND.3SG")])
+    function_word = token("and", "and")
+    plain = predicted("and", "and")
+    hinted = score_sentence(
+        sentence(SAID, function_word), [match, plain],
+        [Withheld(False, set()), Withheld(False, set())], {}, NO_DICTIONARY,
+    )
+    assert aggregate(hinted).exact_with_grammar == (1, 1)
+    assert aggregate(hinted).exact == (0, 0)

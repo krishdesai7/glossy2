@@ -161,3 +161,15 @@ def test_output_keeps_the_users_spelling():
     ctx, _ = context({"words": [response]}, ycoe=FakeYcoe(), dictionary=FakeDictionary())
     result = analyze_sentence([InputWord("gehalgod")], ctx)[0]
     assert [s.form for s in result.segments] == ["ge", "halg", "od"]
+
+
+def test_unsplit_word_uses_dots_not_hyphens():
+    response = word(segments=[{"form": "lande", "gloss": "land-DAT.SG"}])
+    ctx, _ = context({"words": [response]})
+    assert analyze_sentence([InputWord("lande")], ctx)[0].segments[0].gloss == "land.DAT.SG"
+
+
+def test_prompt_gives_feature_values_and_conventions():
+    ctx, _ = context({})
+    text = prompt(build_messages([InputWord("lande")], ctx))
+    assert "Declension=Str" in text and "NMLZ" in text and "fixed stem meaning still" in text

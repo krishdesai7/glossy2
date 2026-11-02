@@ -46,13 +46,13 @@ def memory_effect(scores: list[TokenScore], memory: Memory) -> dict:
 
 def _accuracy_table(runs: list[dict]) -> list[str]:
     lines = [
-        "| Hints | Memory | Whole gloss exact | Segmentation | Meaning exact | Meaning (any dictionary sense) | Lemma |",
-        "|---|---|---|---|---|---|---|",
+        "| Hints | Memory | Words with grammar, same words at every level | Whole gloss exact, withheld only | Segmentation | Meaning exact | Meaning (any dictionary sense) | Lemma |",
+        "|---|---|---|---|---|---|---|---|",
     ]
     for run in runs:
         s = aggregate(run["scores"])
         lines.append(
-            f"| {run['level']} | {run['memory']} | {_percent(s.exact)} | {_percent(s.segmentation)} | "
+            f"| {run['level']} | {run['memory']} | {_percent(s.exact_with_grammar)} | {_percent(s.exact)} | {_percent(s.segmentation)} | "
             f"{_percent(s.meaning_exact)} | {_percent(s.meaning_sense)} | {_percent(s.lemma)} |"
         )
     return lines
@@ -121,6 +121,7 @@ def render_report(*, name, split, sentences, runs, baselines, baseline_notes, co
     failed = sum(aggregate(run["scores"]).failed for run in runs)
     parts = [f"# Evaluation: {name}", "", f"Split: `{split}`. {sentences} sentences. {cost_note}.", ""]
     parts += [_CAVEATS, "## Accuracy by hint level", "", *_accuracy_table(runs), ""]
+    parts += ["Use the first accuracy column to compare hint levels. It scores the same words each time, though at hint levels with features given, a word can match partly because its hints were given. The second column drops words with nothing withheld, so its word set changes per level and easy function words leave it at `stem`.", ""]
     parts += [f"{failed} token analyses failed outright (bad or missing model response). They count as wrong.", ""]
     parts += ["## Per feature", "", *_feature_table(runs, baselines), ""]
     parts += ["## Do flags mean anything?", "", "Flags only earn trust if unflagged words are clearly more accurate.", "", *_flag_table(runs), ""]
