@@ -116,10 +116,19 @@ def test_estimate_cost():
     assert llm.estimate_cost(1, 1, "unknown-model") != llm.estimate_cost(1, 1, "unknown-model")
 
 
-def test_temperature_zero(tmp_path):
+def test_no_temperature_sent(tmp_path):
+    # kimi-k3.1-pro rejects anything but its default.
     client = FakeClient(reply())
     seen = {}
     original = client.create
     client.chat.completions.create = lambda **kw: (seen.update(kw), original(**kw))[1]
     llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path)
-    assert seen["temperature"] == 0
+    assert "temperature" not in seen
+
+
+def test_bad_request_not_retried_and_reason_given(tmp_path):
+    client = FakeClient(status_error(openai.BadRequestError, 400, "invalid temperature"))
+    with pytest.raises(llm.LLMError) as error:
+        llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path)
+    assert client.calls == 1
+    assert "invalid temperature" in error.value.reason

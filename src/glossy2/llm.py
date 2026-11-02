@@ -81,7 +81,6 @@ def _attempt(client, model: str, messages: list[dict]) -> dict:
         model=model,
         messages=messages,
         response_format={"type": "json_object"},
-        temperature=0,
         max_tokens=MAX_OUTPUT_TOKENS,
     )
     usage = response.usage
@@ -113,8 +112,10 @@ def complete_json(messages: list[dict], *, client=None, cache_dir: Path = Path("
             _sleep(2**attempt)
         try:
             parsed = _attempt(client, model, messages)
-        except (openai.AuthenticationError, openai.PermissionDeniedError) as error:
+        except (openai.AuthenticationError, openai.PermissionDeniedError):
             raise MissingKeyError() from None
+        except openai.BadRequestError as error:
+            raise LLMError(f"Moonshot refused the request: {error.message}") from None
         except openai.APIError as error:
             reason = f"{type(error).__name__} from Moonshot"
         except LLMError as error:

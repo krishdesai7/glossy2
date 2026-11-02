@@ -2,11 +2,12 @@
 
 import unicodedata
 
+_DROP = str.maketrans("", "", "$-()[]")
 _YCOE_CODES = {"+t": "þ", "+d": "þ", "+a": "æ", "+g": "g", "+l": "l"}
 
 
 def normalize(form: str) -> str:
-    text = form.lower().replace("$", "").replace("-", "")
+    text = form.lower().translate(_DROP)
     for code, letter in _YCOE_CODES.items():
         text = text.replace(code, letter)
     decomposed = unicodedata.normalize("NFD", text)

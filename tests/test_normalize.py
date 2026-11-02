@@ -25,3 +25,7 @@ def test_hyphens_and_ycoe_emendation_marks_removed():
 
 def test_dot_below_stripped():
     assert normalize("ġẹond") == "geond"
+
+
+def test_brackets_removed():
+    assert normalize("(lande") == normalize("lande)") == "lande"
