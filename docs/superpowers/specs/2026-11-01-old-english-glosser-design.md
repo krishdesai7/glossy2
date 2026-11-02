@@ -123,6 +123,14 @@ behind one small function so it can be swapped. Cache every response on disk by 
 hash, so repeat runs are free and reproducible. Use the smallest amount of sentence
 context that works, sentence at a time.
 
+**Gloss memory:** glosses seen before are remembered per form, so `gehalgod` seen once
+as `hallow.PTCP` can be offered next time as a possible reading, never a fact, with counts
+and sources. The value should grow with each text glossed, and more so for languages with
+larger corpora. Human-approved glosses (`glossy2 remember`) reach the model. Machine output
+is stored separately and doesn't, so a wrong gloss can't keep confirming itself. Eval never
+writes to memory, memory never contains the sentences being scored, and the report measures
+both the gain and the cost: how often a wrong remembered reading misled the model.
+
 **CLTK** is a comparison baseline only, through its Stanza backend.
 
 ## Command line

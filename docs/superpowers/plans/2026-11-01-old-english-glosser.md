@@ -22,7 +22,8 @@
 - Prompt tuning uses the `dev` split only. Worked examples come only from `dev`. `test` runs only to produce reported numbers.
 - Nothing from the old Glossy JSON is an answer except fields changed by the six listed Tina commits. Machine-made data is never presented as human work.
 - Moonshot only: base URL `https://api.moonshot.ai/v1`, key in `MOONSHOT_API_KEY`, default model `kimi-k3.1-pro`, overridable with `MOONSHOT_MODEL`. Never print the key.
-- Remaining balance at planning time is about 14.84. Print tokens and estimated cost before any full eval, and test with `--limit` first.
+- Remaining balance at planning time is about 14.84, and more can be bought on request. Print tokens and estimated cost before any full eval, and test with `--limit` first. Prices are in Task 6.
+- Gloss memory: only human-approved entries reach the model, always as a labelled possibility rather than a fact. Machine output is stored but never shown to the model. `eval` never writes to memory, and memory used in an eval never contains the sentences being scored.
 
 ## Review Focus
 
@@ -46,6 +47,7 @@ src/glossy2/
   tags.py         human tags <-> UD-plus features; gloss rendering
   hints.py        input line parsing
   llm.py          Moonshot call, disk cache, retries, cost estimate
+  memory.py       glosses seen before, with human and machine tiers
   analyze.py      prompt, LLM response handling
   checks.py       hint enforcement, flags, links
   render.py       terminal and gb4e output
@@ -55,6 +57,7 @@ src/glossy2/
   cli.py          gloss, coverage, eval
 scripts/extract_tina.py
 corpus/ohthere/tina-corrections.jsonl
+memory/ang.jsonl  committed, append-only; one file per language
 tests/  (one test module per source module; tests/fixtures/ holds tiny samples)
 ```
 
@@ -291,7 +294,7 @@ def test_usage_counted(tmp_path): # usage totals increase only on real calls
 ```
 
 - [ ] **Step 2: Run them.** Expected: FAIL.
-- [ ] **Step 3: Implement.** Use the `openai` SDK with `base_url="https://api.moonshot.ai/v1"`, temperature 0 and JSON response format. Read `.env` from the repo root without adding a dependency unless needed. Up to 3 attempts with backoff. Look up current prices for `kimi-k3.1-pro` from Moonshot's pricing page and put them in a dict with the date; unknown models give `nan`, shown as "unknown".
+- [ ] **Step 3: Implement.** Use the `openai` SDK with `base_url="https://api.moonshot.ai/v1"`, temperature 0 and JSON response format. Read `.env` from the repo root without adding a dependency unless needed. Up to 3 attempts with backoff. Put prices in a dict dated 2026-11-01, in USD per million tokens as input, output, cached input: `kimi-k3.1-pro` 2.00, 10.00, 0.20; `kimi-k3.1-pro-highspeed` 4.00, 20.00, 0.20; `kimi-k3` 3.00, 15.00, 0.30; `kimi-k2.7-code` 0.95, 4.00, 0.19; `kimi-k2.7-code-highspeed` 1.90, 8.00, 0.38; `kimi-k2.6` 0.95, 4.00, 0.16. Estimates assume no cached input, so they run high. Unknown models give `nan`, shown as "unknown". Don't use the Batch API.
 - [ ] **Step 4: Run the tests.** Expected: PASS.
 - [ ] **Step 5: Smoke test** with one real call asking for `{"ok": true}`. Expected: parsed dict, and a cache file created. Check that `.llm-cache/` is ignored.
 - [ ] **Step 6: Commit** as `feat: add cached Moonshot client`.
@@ -331,6 +334,39 @@ def test_unknown_word_no_link(): # a word in no source -> unknown_form and no UR
 - [ ] **Step 4: Run the tests.** Expected: PASS.
 - [ ] **Step 5: Commit** as `feat: analyse sentences with candidates and fixed hints`.
 
+### Task 7a: Gloss memory
+
+Remembers glosses seen before, so a later text can use them as a possible reading. Machine output is kept apart: if it reached the model, one wrong gloss could keep confirming itself, which is the old engine's failure in a new form.
+
+**Files:**
+- Create: `src/glossy2/memory.py`, `memory/ang.jsonl`
+- Modify: `src/glossy2/analyze.py`
+- Test: `tests/test_memory.py`, `tests/test_analyze.py`
+
+**Interfaces:**
+- Consumes: `GoldSentence`, `normalize`, `WordAnalysis`.
+- Produces: `MemoryEntry(form: str, gloss: str, lemma: str | None, source: str, tier: str)` (tier `human` or `machine`); `Memory.load(path: Path) -> Memory`; `Memory.from_gold(sentences: list[GoldSentence], source: str) -> Memory` (in memory only, never saved); `.human(form: str) -> list[tuple[str, int, list[str]]]` (gloss, count, sources, most frequent first); `.add_human(sentences, source, path)`; `.record_machine(analyses, source, path)`. `Context` gains `memory: Memory | None`.
+
+- [ ] **Step 1: Write failing tests:**
+
+```python
+def test_counts_readings(): # two "þæt" as COMP and one as DET.DEF.NOM.SG.N -> ordered with counts
+def test_normalised_lookup(): # glosses from "ġehālgod" are found by "gehalgod"
+def test_machine_not_returned(): # record_machine, then human(form) == []
+def test_record_skips_flagged(): # flagged and analysis_failed words aren't recorded
+def test_add_human_twice_same_source(): # re-adding a source replaces it, so counts don't double
+def test_persist_roundtrip(tmp_path): # entries survive load
+def test_prompt_shows_human_memory(): # the prompt lists the gloss, count and source, worded as possibly not applying here
+def test_prompt_no_machine_memory(): # a machine entry never appears in the prompt
+def test_prompt_no_memory(): # memory None -> prompt has no memory section, and still works
+def test_memory_not_used_as_hint(): # the model's differing analysis is kept, with no hint_conflict flag
+```
+
+- [ ] **Step 2: Run them.** Expected: FAIL.
+- [ ] **Step 3: Implement.** Append-only JSONL, one object per token occurrence. Keep the prompt's memory section after the shared prefix of examples, so Moonshot's prefix caching still applies. Cap at the 5 most frequent readings per form.
+- [ ] **Step 4: Run the tests.** Expected: PASS.
+- [ ] **Step 5: Commit** as `feat: add gloss memory with human and machine tiers`.
+
 ### Task 8: `glossy2 gloss`
 
 **Files:**
@@ -342,7 +378,7 @@ def test_unknown_word_no_link(): # a word in no source -> unknown_form and no UR
 **Interfaces:**
 
 - Consumes: `parse_line`, `analyze_sentence`, `render_gloss`.
-- Produces: `render_text(analyses: list[WordAnalysis]) -> str`, `render_gb4e(analyses: list[WordAnalysis], translation: str = "") -> str`, CLI `glossy2 gloss TEXT | --file PATH [--format text|gb4e]`.
+- Produces: `render_text(analyses: list[WordAnalysis]) -> str`, `render_gb4e(analyses: list[WordAnalysis], translation: str = "") -> str`, CLI `glossy2 gloss TEXT | --file PATH [--format text|gb4e] [--no-record]` and `glossy2 remember PATH --name NAME` (loads a human-approved `gb4e` file into `memory/ang.jsonl` as tier `human`). `gloss` loads that memory, and records unflagged output as tier `machine` unless `--no-record`.
 
 - [ ] **Step 1: Write failing tests:**
 
@@ -356,6 +392,8 @@ def test_cli_missing_key(capsys): # exit 2, one-line .env message, no traceback
 def test_cli_bad_hint(capsys): # exit 2, message names the word, no traceback, no LLM call
 def test_cli_file_blank_lines(): # blank lines are skipped, and a failed sentence doesn't stop the rest
 def test_cli_no_args(capsys): # usage shown, exit 2
+def test_cli_remember(tmp_path): # adds human entries, and prints how many tokens and forms
+def test_cli_no_record(tmp_path): # --no-record leaves the memory file unchanged
 ```
 
 - [ ] **Step 2: Run them.** Expected: FAIL.
@@ -412,7 +450,7 @@ def test_segmentation(): # sǣ/d/e vs sǣd/e is wrong; comparison uses forms onl
 **Interfaces:**
 
 - Consumes: all of Task 9, `split_sentences`, `estimate_cost`, `usage_totals`.
-- Produces: `glossy2 eval --hints LEVEL|all [--split dev|test] [--limit N] [--yes] [--gold PATH --name NAME] [--exclude-ycoe FILE ...]`; `ycoe_majority(form, ycoe) -> dict[str, str]`; `cltk_analyses(sentence) -> list[WordAnalysis]`; `write_report(results, path)`.
+- Produces: `glossy2 eval --hints LEVEL|all [--split dev|test] [--limit N] [--yes] [--gold PATH --name NAME] [--exclude-ycoe FILE ...] [--memory none|dev|ohthere]`; `ycoe_majority(form, ycoe) -> dict[str, str]`; `cltk_analyses(sentence) -> list[WordAnalysis]`; `write_report(results, path)`.
 
 - [ ] **Step 1: Write failing tests:**
 
@@ -425,6 +463,11 @@ def test_test_split_needs_yes(): # --split test without --yes asks first
 def test_gold_path_all_test(): # --gold treats all sentences as test; examples are still Ohthere dev
 def test_majority(): # most common tag's features; unknown form gives {}
 def test_baseline_only_scores_what_it_has(): # no exact-gloss number for a baseline: "n/a" rather than 0
+def test_eval_never_writes_memory(tmp_path): # memory/ang.jsonl is byte-identical after an eval
+def test_memory_excludes_scored(): # --memory dev on the test split: no scored sentence is in memory
+def test_memory_rejects_leak(): # --memory ohthere with the Ohthere test split exits 2
+def test_memory_effect(): # for runs with memory: accuracy on forms in memory vs not; and where memory's top
+                          # reading was wrong, how often the model repeated it (the anchoring cost)
 def test_report_sections(): # hint table, per-feature table, flag quality, baselines, error sample, caveats
 def test_report_caveats(): # says dev tuned; model may remember Ohthere; lemma sample is small and biased;
                            # scoring is recall of what was marked; YCOE acknowledged
@@ -445,10 +488,10 @@ def test_failed_sentences_reported(): # the count of analysis_failed tokens is s
 - Create: `reports/eval.md`
 
 - [ ] **Step 1: Run `uv run glossy2 eval --hints none --split dev --limit 3`.** Expected: real scores and a cost line. Read the sentences' output by eye.
-- [ ] **Step 2: Tune the prompt on dev.** Run all levels on `dev`. Fix systematic errors in the prompt, tag mapping or checks. At most 3 rounds, and record each round's dev exact-gloss score in the commit message. Stop if spend passes 5.00 or the balance falls below 5.00, and report.
+- [ ] **Step 2: Tune the prompt on dev.** Run all levels on `dev`. Fix systematic errors in the prompt, tag mapping or checks. At most 3 rounds, and record each round's dev exact-gloss score in the commit message. Stop and report if tuning spend passes $5.00. If the test run's estimate then exceeds the remaining balance, ask the user to top up rather than cutting the run down.
 - [ ] **Step 3: Check flag rate on dev.** If over 60% of tokens are flagged, or flagged words aren't clearly less accurate, fix the flag rules on dev before going further.
 - [ ] **Step 4: Commit the frozen prompt** as `chore: freeze prompt after dev tuning`.
-- [ ] **Step 5: Install the baseline** with `uv sync --extra baseline` and run `uv run glossy2 eval --hints all --split test --yes`. Expected: `reports/eval.md`, with all sections. Do not change the prompt after this. If a real bug appears, fix it, say so in the report, and keep the first run's numbers beside the new ones.
+- [ ] **Step 5: Install the baseline** with `uv sync --extra baseline` and run `uv run glossy2 eval --hints all --split test --memory dev --yes`, then `uv run glossy2 eval --hints none --split test --memory none --yes` to measure memory's effect. Expected: `reports/eval.md`, with all sections. Do not change the prompt after this. If a real bug appears, fix it, say so in the report, and keep the first run's numbers beside the new ones.
 - [ ] **Step 6: Write the README:** what it is, setup, `.env`, the three commands, hint syntax, flags, how to read the report, YCOE acknowledgement and licence limits, and the Wiktionary and wiktextract credits.
 - [ ] **Step 7: Run `uv run pytest -v` and `git status`.** Expected: all pass, and no `.env`, YCOE or `data/` in the status.
 - [ ] **Step 8: Commit** as `docs: add evaluation report and README`.
@@ -470,6 +513,6 @@ Do this when the file arrives. Don't wait for it to finish Task 11. The design c
 - [ ] **Step 1: Check the format.** If it's `gb4e` and loads with `load_gold`, continue. If it's anything else, ask the user before writing a parser, and don't reformat it by hand.
 - [ ] **Step 2: Write a test** pinning its sentence count, token count and first token, and that every token aligns. List tags missing from `HUMAN_TO_FEATS`, and add them with a test. Don't guess at any tag's meaning: ask the user.
 - [ ] **Step 3: Check overlap with YCOE:** find any `.pos` file sharing a run of 5 or more normalised words with the text, and pass those files to `--exclude-ycoe`. Name them in the report.
-- [ ] **Step 4: Run** `uv run glossy2 eval --hints all --gold corpus/<name>/<file> --name <name> --yes`, with the prompt unchanged from Task 11. Expected: `reports/eval-<name>.md`. Add a short comparison with `reports/eval.md`, and state its sample size.
-- [ ] **Step 5: Record the text in `corpus/README.md`,** with who glossed it and when.
+- [ ] **Step 4: Run** `uv run glossy2 eval --hints all --gold corpus/<name>/<file> --name <name> --memory ohthere --yes`, then the same with `--hints none --memory none`, with the prompt unchanged from Task 11. All of Ohthere as memory against a new text is the realistic test of whether memory pays off. Expected: `reports/eval-<name>.md`. Add a short comparison with `reports/eval.md`, and state its sample size.
+- [ ] **Step 5: Record the text in `corpus/README.md`,** with who glossed it and when. Then run `uv run glossy2 remember corpus/ohthere/Voyages_of_Ohthere_Wulfstan.tex --name ohthere` and the same for the new text, so real use starts with all human work in memory.
 - [ ] **Step 6: Commit** as `feat: evaluate on unseen human-glossed text`.
