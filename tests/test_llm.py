@@ -132,3 +132,12 @@ def test_bad_request_not_retried_and_reason_given(tmp_path):
         llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path)
     assert client.calls == 1
     assert "invalid temperature" in error.value.reason
+
+
+def test_reasoning_turned_off(tmp_path):
+    client = FakeClient(reply())
+    seen = {}
+    original = client.create
+    client.chat.completions.create = lambda **kw: (seen.update(kw), original(**kw))[1]
+    llm.complete_json(MESSAGES, client=client, cache_dir=tmp_path)
+    assert seen["extra_body"] == {"thinking": {"type": "disabled"}}

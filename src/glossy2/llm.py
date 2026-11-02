@@ -13,7 +13,9 @@ BASE_URL = "https://api.moonshot.ai/v1"
 DEFAULT_MODEL = "kimi-k3.1-pro"
 MAX_ATTEMPTS = 3
 MAX_OUTPUT_TOKENS = 16000
-TIMEOUT_SECONDS = 300
+TIMEOUT_SECONDS = 180
+# Reasoning costs about 10x the output tokens, too slow and expensive for a whole text.
+REQUEST_OPTIONS = {"thinking": {"type": "disabled"}}
 # USD per million tokens as (input, output, cached input), from Moonshot, 2026-11-01.
 PRICES = {
     "kimi-k3.1-pro": (2.00, 10.00, 0.20),
@@ -65,7 +67,7 @@ def _make_client() -> openai.OpenAI:
 
 
 def _cache_path(cache_dir: Path, model: str, messages: list[dict]) -> Path:
-    payload = json.dumps([model, messages], ensure_ascii=False, sort_keys=True)
+    payload = json.dumps([model, REQUEST_OPTIONS, messages], ensure_ascii=False, sort_keys=True)
     return Path(cache_dir) / f"{hashlib.sha256(payload.encode('utf-8')).hexdigest()}.json"
 
 
@@ -82,6 +84,7 @@ def _attempt(client, model: str, messages: list[dict]) -> dict:
         messages=messages,
         response_format={"type": "json_object"},
         max_tokens=MAX_OUTPUT_TOKENS,
+        extra_body=REQUEST_OPTIONS,
     )
     usage = response.usage
     if usage:

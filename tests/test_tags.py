@@ -52,3 +52,7 @@ def test_render_marks_flagged():
 def test_render_failed():
     word = WordAnalysis("sǣde", flags=[Flag("analysis_failed", "no response")])
     assert render_gloss(word) == "???"
+
+
+def test_vocative_is_a_tag():
+    assert parse_gloss("father.VOC.SG") == ("father", {"Case": "Voc", "Number": "Sing"})

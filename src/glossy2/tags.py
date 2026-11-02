@@ -9,7 +9,7 @@ from glossy2.models import WordAnalysis
 HUMAN_TO_FEATS: dict[str, dict[str, str]] = {
     "SG": {"Number": "Sing"}, "PL": {"Number": "Plur"},
     "NOM": {"Case": "Nom"}, "ACC": {"Case": "Acc"}, "GEN": {"Case": "Gen"},
-    "DAT": {"Case": "Dat"}, "INS": {"Case": "Ins"},
+    "DAT": {"Case": "Dat"}, "INS": {"Case": "Ins"}, "VOC": {"Case": "Voc"},
     "M": {"Gender": "Masc"}, "F": {"Gender": "Fem"}, "N": {"Gender": "Neut"},
     "1": {"Person": "1"}, "2": {"Person": "2"}, "3": {"Person": "3"},
     "1SG": {"Person": "1", "Number": "Sing"}, "2SG": {"Person": "2", "Number": "Sing"},

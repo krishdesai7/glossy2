@@ -154,3 +154,10 @@ def test_punctuation_only_word_not_sent():
     ctx, _ = context({"words": [word(index=0)]})
     result = analyze_sentence([InputWord("("), InputWord("lande")], ctx)
     assert result[0].form == "(" and result[0].flags == [] and result[1].lemma == "land"
+
+
+def test_output_keeps_the_users_spelling():
+    response = word(segments=[{"form": "ġe", "gloss": "PFX"}, {"form": "hālg", "gloss": "hallow"}, {"form": "od", "gloss": "PART"}], lemma=None)
+    ctx, _ = context({"words": [response]}, ycoe=FakeYcoe(), dictionary=FakeDictionary())
+    result = analyze_sentence([InputWord("gehalgod")], ctx)[0]
+    assert [s.form for s in result.segments] == ["ge", "halg", "od"]

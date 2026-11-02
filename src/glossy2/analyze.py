@@ -1,5 +1,6 @@
 """Ask the model to choose an analysis per sentence, then run the deterministic checks."""
 
+import unicodedata
 from collections.abc import Callable
 from dataclasses import dataclass, field
 
@@ -185,11 +186,26 @@ def _salvage(words: list[InputWord], response: dict, problem: str, ctx: Context)
     return results
 
 
+def _keep_user_spelling(form: str, segments: list[Segment]) -> None:
+    """Move the model's morpheme boundaries onto the word as the user typed it."""
+    position = 0
+    for segment in segments:
+        wanted = len(normalize(segment.form))
+        start = position
+        while position < len(form) and len(normalize(form[start:position])) < wanted:
+            position += 1
+        while position < len(form) and unicodedata.combining(form[position]):
+            position += 1
+        segment.form = form[start:position]
+
+
 def _finish(words: list[InputWord], proposals: list[WordAnalysis], ctx: Context) -> list[WordAnalysis]:
     results = []
     for word, proposal in zip(words, proposals):
         if word.segments:
             _fix_segments(word, proposal)
+        elif segments_rejoin(word.form, proposal.segments):
+            _keep_user_spelling(word.form, proposal.segments)
         results.append(apply_checks(word, proposal, ctx.ycoe, ctx.dictionary))
     return results
 
