@@ -28,7 +28,7 @@ For each numbered word, split it into morphemes and gloss each one, following th
 - Use THM for a thematic vowel in a verb, NMLZ for a nominalising ending, AGT for an agent ending, PFX for the prefix ge-, HAB for the b- forms of "be", and PART for a participle. Number words keep their parts, such as six-ty.
 - Tell a definite article (DET.DEF...) from a true demonstrative (DEM.DIST... or DEM.PROX...) and from the complementizer (COMP) by the sentence. The impersonal "man" is one.INDF. The preposition "on" with a place is usually "in".
 - Add ADV only to an adverb formed from an adjective; a plain adverb or preposition has no tag. Add STR or WK to adjective and quantifier endings, not to nouns.
-- A word left unsplit uses dots throughout, never hyphens. The hyphens in a gloss match the hyphens in the word.
+- Give one segment entry per morpheme, so a word glossed X-PST-IND.3SG has three entries, such as {{"form": "sǣ", "gloss": "X"}}, {{"form": "d", "gloss": "PST"}}, {{"form": "e", "gloss": "IND.3SG"}}. Most inflected words split like this. Only a word with no separable ending, such as a strong past form, stays whole with dots: X.PST.IND.3SG.
 - A fixed stem meaning still needs its grammatical tags around it. Only the English word is given.
 - Mark only the features the examples would normally mark. Report your full analysis in "feats", using these exact names and values where they apply: Case=Nom|Acc|Gen|Dat|Ins, Number=Sing|Plur, Gender=Masc|Fem|Neut, Person=1|2|3, Tense=Pres|Past, Mood=Ind|Sub|Imp, VerbForm=Inf|Part, Voice=Pass, Degree=Cmp|Sup, Definite=Def|Ind, PronType=Det|Dem|Rel, Polarity=Neg, Declension=Str|Wk, Aspect=Hab, Thematic=Yes, Derivation=Agt|Nmlz, Prefix=Yes, PartType=Comp, Deixis=Dist|Prox, Form=Adv|Adj.
 
@@ -116,8 +116,6 @@ def _failed(word: InputWord, reason: str) -> WordAnalysis:
 
 def _parse_proposal(raw: dict, word: InputWord) -> WordAnalysis:
     segments = [Segment(str(s["form"]), str(s["gloss"])) for s in raw["segments"]]
-    if len(segments) == 1:
-        segments[0].gloss = segments[0].gloss.replace("-", ".")
     flags = []
     if raw.get("ambiguous"):
         flags.append(Flag("ambiguous", str(raw.get("ambiguity_reason") or "the sentence doesn't settle it")))

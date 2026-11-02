@@ -163,10 +163,17 @@ def test_output_keeps_the_users_spelling():
     assert [s.form for s in result.segments] == ["ge", "halg", "od"]
 
 
-def test_unsplit_word_uses_dots_not_hyphens():
+def test_hyphens_in_a_single_segment_gloss_are_left_alone():
+    # Round 2 of tuning: rewriting these to dots broke 46 correct dev glosses.
     response = word(segments=[{"form": "lande", "gloss": "land-DAT.SG"}])
     ctx, _ = context({"words": [response]})
-    assert analyze_sentence([InputWord("lande")], ctx)[0].segments[0].gloss == "land.DAT.SG"
+    assert analyze_sentence([InputWord("lande")], ctx)[0].segments[0].gloss == "land-DAT.SG"
+
+
+def test_prompt_shows_how_to_split_segments():
+    ctx, _ = context({})
+    text = prompt(build_messages([InputWord("lande")], ctx))
+    assert '{"form": "d", "gloss": "PST"}' in text and "one segment entry per morpheme" in text
 
 
 def test_prompt_gives_feature_values_and_conventions():
