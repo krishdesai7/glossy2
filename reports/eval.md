@@ -16,7 +16,7 @@ Split: `test`. 60 sentences. Model kimi-k3.1-pro, about $8.68 at list price, bef
 ## Accuracy by hint level
 
 | Hints | Memory | Words with grammar, same words at every level | Whole gloss exact, withheld only | Segmentation | Meaning exact | Meaning (any dictionary sense) | Lemma |
-|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | none | dev | 71.1% (730/1027) | 75.3% (1077/1430) | 90.8% (1298/1430) | 83.7% (945/1129) | 87.1% (983/1129) | 100.0% (14/14) |
 | half | dev | 74.5% (765/1027) | 77.2% (1076/1394) | 90.8% (1299/1430) | 83.2% (939/1129) | 86.7% (979/1129) | 100.0% (14/14) |
 | stem | dev | 76.5% (786/1027) | 76.5% (786/1027) | 90.9% (1300/1430) | n/a | n/a | 100.0% (14/14) |
@@ -29,7 +29,7 @@ Use the first accuracy column to compare hint levels, because it scores the same
 ## Per feature
 
 | Feature | none / memory dev | half / memory dev | stem / memory dev | stem+half / memory dev | YCOE most-common tag | CLTK Stanza |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | Aspect | 91.3% (21/23) | 88.2% (15/17) | 91.3% (21/23) | 82.4% (14/17) | n/a | n/a |
 | Case | 93.4% (683/731) | 95.3% (341/358) | 94.1% (688/731) | 95.3% (341/358) | 52.5% (384/731) | 71.4% (522/731) |
 | Declension | 86.0% (98/114) | 82.5% (47/57) | 86.0% (98/114) | 86.0% (49/57) | n/a | n/a |
@@ -56,7 +56,7 @@ Use the first accuracy column to compare hint levels, because it scores the same
 Flags only earn trust if unflagged words are clearly more accurate.
 
 | Hints | Memory | Unflagged, exact | Flagged, exact |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | none | dev | 78.4% (1007/1284) | 47.9% (70/146) |
 | half | dev | 80.1% (1005/1254) | 50.7% (71/140) |
 | stem | dev | 78.1% (714/914) | 63.7% (72/113) |
@@ -74,7 +74,7 @@ No flag doesn't mean correct. Some of these are convention differences rather th
 This is not a measure of memory's effect. Words in memory are mostly frequent function words, which are easier anyway, and the comparison run with no memory wasn't run. The last column does show a real cost: where the remembered reading was wrong for this word, how often the model repeated it.
 
 | Hints | Memory | In memory, exact | Not in memory, exact | Wrong remembered reading | Model misled |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | none | dev | 91.0% (689/757) | 57.7% (388/673) | 186 | 16 |
 | half | dev | 93.0% (679/730) | 59.8% (397/664) | 186 | 8 |
 | stem | dev | 89.1% (400/449) | 66.8% (386/578) | 186 | 12 |
@@ -83,7 +83,7 @@ This is not a measure of memory's effect. Words in memory are mostly frequent fu
 ## Baselines
 
 | Baseline | Whole gloss exact | Segmentation | Lemma |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | YCOE most-common tag | n/a | n/a | n/a |
 | CLTK Stanza | n/a | n/a | 42.9% (6/14) |
 
@@ -94,7 +94,7 @@ Neither baseline produces glosses or morpheme splits. Compare them on the featur
 From the `none` run. A `?` on a gloss means the tool flagged it.
 
 | Word | Human gloss | Tool's gloss |
-|---|---|---|
+| --- | --- | --- |
 | norþ-weard-um | north-ward-DAT.SG.N.STR | north-ward-DAT.SG? |
 | norþ-an | north-from | from.the.north |
 | n-ān | NEG-one.ACC.SG.N | no.ACC.SG.N.STR |

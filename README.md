@@ -49,7 +49,7 @@ Labels include `noun`, `verb`, `adj`, `neuter`, `dat`, `sg`, `pst`, `sjv` and `s
 ### Flags
 
 | Flag | Meaning |
-|---|---|
+| --- | --- |
 | `unknown_form` | The spelling isn't in YCOE or the dictionary |
 | `tag_unseen` | YCOE has never recorded this spelling with this reading |
 | `lemma_not_in_dictionary` | The lemma has no dictionary entry, so there's no link |

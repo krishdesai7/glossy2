@@ -15,7 +15,7 @@ Split: `dev`. 15 sentences. Model kimi-k3.1-pro, about $1.66 at list price, befo
 ## Accuracy by hint level
 
 | Hints | Memory | Words with grammar, same words at every level | Whole gloss exact, withheld only | Segmentation | Meaning exact | Meaning (any dictionary sense) | Lemma |
-|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | none | none | 70.8% (138/195) | 75.5% (213/282) | 91.1% (257/282) | 85.4% (204/239) | 90.0% (215/239) | 71.4% (5/7) |
 | half | none | 75.4% (147/195) | 78.0% (216/277) | 89.4% (252/282) | 85.8% (205/239) | 91.2% (218/239) | 71.4% (5/7) |
 | stem | none | 77.4% (151/195) | 77.4% (151/195) | 90.1% (254/282) | n/a | n/a | 85.7% (6/7) |
@@ -28,7 +28,7 @@ Use the first accuracy column to compare hint levels, because it scores the same
 ## Per feature
 
 | Feature | none / memory none | half / memory none | stem / memory none | stem+half / memory none | YCOE most-common tag | CLTK Stanza |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | Aspect | 87.5% (7/8) | 100.0% (4/4) | 87.5% (7/8) | 75.0% (3/4) | n/a | n/a |
 | Case | 95.6% (129/135) | 97.2% (70/72) | 95.6% (129/135) | 98.6% (71/72) | 56.3% (76/135) | 82.2% (111/135) |
 | Declension | 84.4% (27/32) | 91.7% (11/12) | 84.4% (27/32) | 100.0% (12/12) | n/a | n/a |
@@ -54,7 +54,7 @@ Use the first accuracy column to compare hint levels, because it scores the same
 Flags only earn trust if unflagged words are clearly more accurate.
 
 | Hints | Memory | Unflagged, exact | Flagged, exact |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | none | none | 77.3% (198/256) | 57.7% (15/26) |
 | half | none | 79.8% (198/248) | 62.1% (18/29) |
 | stem | none | 78.8% (134/170) | 68.0% (17/25) |
@@ -70,7 +70,7 @@ No flag doesn't mean correct. Some of these are convention differences rather th
 ## Baselines
 
 | Baseline | Whole gloss exact | Segmentation | Lemma |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | YCOE most-common tag | n/a | n/a | n/a |
 | CLTK Stanza | n/a | n/a | 71.4% (5/7) |
 
@@ -81,7 +81,7 @@ Neither baseline produces glosses or morpheme splits. Compare them on the featur
 From the `none` run. A `?` on a gloss means the tool flagged it.
 
 | Word | Human gloss | Tool's gloss |
-|---|---|---|
+| --- | --- | --- |
 | þēah | though | however |
 | wēst-e | waste-NOM.SG.N.STR | waste.NOM.SG.N.STR |
 | hunt-oð-e | hunt-NMLZ-DAT.SG | hunting-DAT.SG |

@@ -6,27 +6,30 @@ Only fields changed by the listed commits are kept. Everything else in that JSON
 lemmatizer output and must not be treated as an answer.
 """
 
+from typing import Any
 import collections
 import json
 import subprocess
 import sys
 from pathlib import Path
 
-COMMITS = ["d1ef57a", "ea2abff", "f5a7dcf", "72dcd3c", "db12d79", "17db08c"]
+COMMITS: list[str] = ["d1ef57a", "ea2abff", "f5a7dcf", "72dcd3c", "db12d79", "17db08c"]
 JSON_PATH = "content/texts/ohthere.json"
 OUTPUT = Path("corpus/ohthere/tina-corrections.jsonl")
-ANALYSIS_FIELDS = ["lemma", "partOfSpeech", "wiktionaryUrl"]
+ANALYSIS_FIELDS: list[str] = ["lemma", "partOfSpeech", "wiktionaryUrl"]
 
 
 def load(repo: str, commit: str) -> dict:
-    shown = subprocess.run(
-        ["git", "-C", repo, "show", f"{commit}:{JSON_PATH}"], capture_output=True, check=True
+    shown: subprocess.CompletedProcess[bytes] = subprocess.run(
+        args=["git", "-C", repo, "show", f"{commit}:{JSON_PATH}"],
+        capture_output=True,
+        check=True,
     )
-    return json.loads(shown.stdout.decode("utf-8"))
+    return json.loads(s=shown.stdout.decode(encoding="utf-8"))
 
 
 def word_fields(word: dict) -> dict[str, object]:
-    analysis = word.get("analysis") or {}
+    analysis: dict[Any, Any] | Any = word.get("analysis") or {}
     fields: dict[str, object] = {"morphologicalGloss": word.get("morphologicalGloss")}
     fields.update({name: analysis.get(name) for name in ANALYSIS_FIELDS})
     for name, value in (analysis.get("features") or {}).items():
@@ -39,8 +42,12 @@ def main(repo: str) -> None:
     final: dict[tuple[int, int, str], dict[str, object]] = {}
     for commit in COMMITS:
         before, after = load(repo, f"{commit}~1"), load(repo, commit)
-        for sid, (old, new) in enumerate(zip(before["sentences"], after["sentences"])):
-            for idx, (old_word, new_word) in enumerate(zip(old["words"], new["words"])):
+        for sid, (old, new) in enumerate(
+            iterable=zip(before["sentences"], after["sentences"])
+        ):
+            for idx, (old_word, new_word) in enumerate(
+                iterable=zip(old["words"], new["words"])
+            ):
                 old_fields, new_fields = word_fields(old_word), word_fields(new_word)
                 for name, value in new_fields.items():
                     if value not in (None, "") and old_fields.get(name) != value:
@@ -52,12 +59,14 @@ def main(repo: str) -> None:
                             "value": value,
                             "commit": commit,
                         }
-    with OUTPUT.open("w", encoding="utf-8") as handle:
+    with OUTPUT.open(mode="w", encoding="utf-8") as handle:
         for key in sorted(final):
-            handle.write(json.dumps(final[key], ensure_ascii=False) + "\n")
-    kinds = collections.Counter(k[2].split(".")[0] for k in final)
+            handle.write(json.dumps(obj=final[key], ensure_ascii=False) + "\n")
+    kinds: collections.Counter[str] = collections.Counter(
+        k[2].split(sep=".")[0] for k in final
+    )
     print(f"{len(final)} corrections written to {OUTPUT}: {dict(kinds)}")
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(repo=sys.argv[1])

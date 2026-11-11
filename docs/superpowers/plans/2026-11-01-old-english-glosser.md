@@ -131,12 +131,12 @@ def test_tina_applied(): # the word lemmatised wrongly as westanwindesan has lem
 
 - Consumes: `load_gold`.
 - Produces:
-    - `normalize(form: str) -> str`
-    - `YcoeIndex.load(pos_dir: Path, exclude: set[str] = frozenset()) -> YcoeIndex`; `.tags(form: str) -> Counter[str]`
-    - `ycoe_features(tag: str) -> tuple[str | None, dict[str, str]]` (UPOS, features)
-    - `Dictionary.open(path: Path = Path("data/dictionary.sqlite")) -> Dictionary`; `.lookup(form: str) -> list[Entry]`; `.has_lemma(lemma: str) -> bool`
-    - `Entry(lemma: str, pos: str, senses: list[str], url: str, form_tags: list[list[str]])`
-    - CLI `glossy2 coverage [--tex PATH]`
+  - `normalize(form: str) -> str`
+  - `YcoeIndex.load(pos_dir: Path, exclude: set[str] = frozenset()) -> YcoeIndex`; `.tags(form: str) -> Counter[str]`
+  - `ycoe_features(tag: str) -> tuple[str | None, dict[str, str]]` (UPOS, features)
+  - `Dictionary.open(path: Path = Path("data/dictionary.sqlite")) -> Dictionary`; `.lookup(form: str) -> list[Entry]`; `.has_lemma(lemma: str) -> bool`
+  - `Entry(lemma: str, pos: str, senses: list[str], url: str, form_tags: list[list[str]])`
+  - CLI `glossy2 coverage [--tex PATH]`
 
 - [ ] **Step 1: Write failing tests:**
 
@@ -339,11 +339,13 @@ def test_unknown_word_no_link(): # a word in no source -> unknown_form and no UR
 Remembers glosses seen before, so a later text can use them as a possible reading. Machine output is kept apart: if it reached the model, one wrong gloss could keep confirming itself, which is the old engine's failure in a new form.
 
 **Files:**
+
 - Create: `src/glossy2/memory.py`, `memory/ang.jsonl`
 - Modify: `src/glossy2/analyze.py`
 - Test: `tests/test_memory.py`, `tests/test_analyze.py`
 
 **Interfaces:**
+
 - Consumes: `GoldSentence`, `normalize`, `WordAnalysis`.
 - Produces: `MemoryEntry(form: str, gloss: str, lemma: str | None, source: str, tier: str)` (tier `human` or `machine`); `Memory.load(path: Path) -> Memory`; `Memory.from_gold(sentences: list[GoldSentence], source: str) -> Memory` (in memory only, never saved); `.human(form: str) -> list[tuple[str, int, list[str]]]` (gloss, count, sources, most frequent first); `.add_human(sentences, source, path)`; `.record_machine(analyses, source, path)`. `Context` gains `memory: Memory | None`.
 

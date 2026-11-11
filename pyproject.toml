@@ -7,28 +7,34 @@
   authors         = [{ name = "Krish Desai", email = "27725015+krishdesai7@users.noreply.github.com" }]
   dependencies    = [
     "openai>=3.42.1",
-]
+  ]
 
 
   [project.scripts]
     glossy2 = "glossy2:main"
 
-[project.optional-dependencies]
-baseline = [
-    "cltk[stanza]>=2.5.1",
-]
+
+  [project.optional-dependencies]
+    baseline = [
+      "cltk[stanza]>=2.5.1",
+    ]
 
 
 [dependency-groups]
   dev = [
     "pytest>=9.2.0",
     "tombi>=1.9.8",
-]
+  ]
 
 
 [build-system]
   requires      = ["uv_build>=0.13.6,<0.14.0"]
   build-backend = "uv_build"
+
+
+[tool.pytest.ini_options]
+  markers   = ["data: needs local corpus or dictionary files"]
+  testpaths = ["tests"]
 
 
 [tool.tombi]
@@ -46,8 +52,3 @@ baseline = [
 
   [tool.tombi.extensions."tombi-toml/pyproject"]
     lsp.document-link.pypi-org.enabled = true
-
-
-[tool.pytest.ini_options]
-  testpaths = ["tests"]
-  markers   = ["data: needs local corpus or dictionary files"]
