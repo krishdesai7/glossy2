@@ -16,6 +16,4 @@ corpus/ycoe-archive/
 .env
 
 # Downloads and caches
-data/
-.llm-cache/
 .superpowers/
