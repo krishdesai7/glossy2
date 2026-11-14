@@ -1,0 +1,6 @@
+#!/usr/local/bin/perl
+
+while (<>) {
+	s/CODE\s<([^>]+)>\)/CODE &lt;$1&gt;\)/g;
+        print;
+}

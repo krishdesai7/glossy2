@@ -1,0 +1,827 @@
+<T09300_LawIne_B14.4.5>_CODE
+
+<T09300000100,0.1>_CODE Ic_PRO^N Ine_NR^N ,_, mid_P Godes_NR^G gife_N
+Wesseaxna_NR^G kyning_N^N ,_, mid_P ge+deahte_N^D &_CONJ mid_P lare_N
+Cenredes_NR^G mines_PRO$^G f+ader_N^G &_CONJ Heddes_NR^G mines_PRO$^G
+biscepes_N^G &_CONJ Eorcenwoldes_NR^G mines_PRO$^G biscepes_N^G ,_,
+mid_P eallum_Q^D minum_PRO$^D ealdormonnum_N^D &_CONJ +t+am_D^D
+ieldstan_ADJS^D witum_N^D minre_PRO$^G +deode_N^G &_CONJ eac_ADV
+micelre_Q^G gesomnunge_N^G Godes_NR^G +deowa_N^G ,_, w+as_BEDI
+smeagende_VAG be_P +d+are_D^D h+alo_N^D urra_PRO$^G sawla_N^G &_CONJ
+be_P +dam_D^D sta+tole_N^D ures_PRO$^G rices_N^G ,_, +t+atte_C
+ryht_ADJ^N +aw_N^N &_CONJ ryhte_ADJ^N cynedomas_N^N +durh_P ure_PRO$^A
+folc_N^A gef+astnode_VBN^N &_CONJ getrymede_VBN^N w+aron_BEDI ,_,
++t+atte_C n+anig_NEG+Q^N ealdormonna_N^G ne_NEG+CONJ us_PRO
+underge+deodedra_RP+VBN^G +after_P +tam_D^D w+are_BEDS awendende_VAG
++das_D^A ure_PRO$^A domas_N^A ._. colawine,LawIne:0.1.2_ID
+
+<T09300000200,1>_CODE +Arest_ADVS^T we_PRO^N bebeoda+d_VBPI ,_,
++t+atte_C Godes_NR^G +deowas_N^N hiora_PRO$ ryhtregol_N^A on_P ryht_N^A
+healdan_VBPS ._. colawine,LawIne:1.3_ID
+
+<T09300000300,1.1>_CODE +After_P +tam_D^D we_PRO^N bebeoda+d_VBPI ,_,
++t+atte_C ealles_Q^G folces_N^G +aw_N^N &_CONJ domas_N^N +dus_ADV
+sien_BEPS gehealdene_VBN^N :_. colawine,LawIne:1.1.4_ID
+
+<T09300000400,2>_CODE Cild_N^N binnan_P +dritegum_NUM^D nihta_N^G
+sie_BEPS gefulwad_VBN ;_. colawine,LawIne:2.5_ID
+
+gif_P hit_PRO^N swa_ADV ne_NEG sie_BEPS ,_, XXX_NUM scillinga_N^G
+gebete_VBPS ._. colawine,LawIne:2.6_ID
+
+<T09300000500,2.1>_CODE Gif_P hit_PRO^N +donne_ADV^T sie_BEPS
+dead_ADJ^N butan_P fulwihte_N^D ,_, gebete_VBPS he_PRO^N hit_PRO^A
+mid_P eallum_Q^D +dam_D^D +de_C he_PRO^N age_VBPS ._.
+colawine,LawIne:2.1.7_ID
+
+<T09300000600,3>_CODE Gif_P +deowmon_N^N wyrce_VBPS on_P
+Sunnand+ag_NR^A be_P his_PRO$ hlafordes_N^G h+ase_N ,_, sie_BEPS
+he_PRO^N frioh_ADJ^N ,_. colawine,LawIne:3.8_ID
+
+&_CONJ se_D^N hlaford_N^N geselle_VBPS XXX_NUM scillinga_N^G to_P
+wite_N ._. colawine,LawIne:3.9_ID
+
+<T09300000700,3.1>_CODE Gif_P +tonne_ADV^T se_D^N +deowa_N^N butan_P
+his_PRO$ gewitnesse_N wyrce_VBPS ,_, +tolie_VBPS his_PRO$ hyde_N ._.
+colawine,LawIne:3.1.10_ID
+
+<T09300000800,3.2>_CODE Gif_P +donne_ADV^T se_D^N frigea_ADJ^N +dy_D^I
+d+age_N^D wyrce_VBPS butan_P his_PRO$ hlafordes_N^G h+ase_N ,_,
++dolie_VBPS his_PRO$ freotes_N^G ._. colawine,LawIne:3.2.11_ID
+
+<T09300000900,4>_CODE Ciricsceattas_N^N sin_BEPS agifene_VBN^N be_P
+Sancte_NR Martines_NR^G m+assan_N ;_. colawine,LawIne:4.12_ID
+
+gif_P hwa_Q^N +d+at_D^A ne_NEG gel+aste_VBPS ,_, sie_BEPS he_PRO^N
+scyldig_ADJ^N LX_NUM scillinga_N^G colawine,LawIne:4.13_ID
+
+be_P XIIfealdum_ADJ^D agife_VBPS +tone_D^A ciricsceat_N^A ._.
+colawine,LawIne:4.14_ID
+
+<T09300001000,5>_CODE Gif_P hwa_Q^N sie_BEPS dea+des_N^G scyldig_ADJ^N
+&_CONJ he_PRO^N cirican_N geierne_VBPS ,_, h+abbe_HVPS his_PRO$
+feorh_N^A colawine,LawIne:5.15_ID
+
+&_CONJ bete_VBPS ,_, swa_P him_PRO^D ryht_N^N wisige_VBPS ._.
+colawine,LawIne:5.16_ID
+
+<T09300001100,5.1>_CODE Gif_P hwa_Q^N his_PRO$ hyde_N forwyrce_VBPS
+&_CONJ cirican_N geierne_VBPS ,_, sie_BEPS him_PRO^D sio_D^N
+swingelle_N^N forgifen_VBN ._. colawine,LawIne:5.1.17_ID
+
+<T09300001200,6>_CODE Gif_P hwa_Q^N gefeohte_VBPS on_P cyninges_N^G
+huse_N^D ,_, sie_BEPS he_PRO^N scyldig_ADJ^N ealles_Q^G his_PRO$
+ierfes_N^G ,_. colawine,LawIne:6.18_ID
+
+&_CONJ sie_BEPS on_P cyninges_N^G dome_N^D ,_, hw+a+der_WQ he_PRO^N
+lif_N^A age_VBPS +te_CONJ nage_NEG+VBPS ._. colawine,LawIne:6.19_ID
+
+<T09300001300,6.1>_CODE Gif_P hwa_Q^N on_P mynster_N^A gefeohte_VBPS
+,_, CXX_NUM scillinga_N^G gebete_VBPS ._. colawine,LawIne:6.1.20_ID
+
+<T09300001400,6.2>_CODE Gif_P hwa_Q^N on_P ealdormonnes_N^G huse_N^D
+gefeohte_VBPS o+d+de_CONJ on_P o+dres_ADJ^G ge+dungenes_VBN^G witan_N^G
+,_, LX_NUM scillinga_N^G gebete_VBPS he_PRO^N colawine,LawIne:6.2.21_ID
+
+&_CONJ o+ter_ADJ^A LX_NUM geselle_VBPS to_P wite_N ._.
+colawine,LawIne:6.2.22_ID
+
+<T09300001500,6.3>_CODE Gif_P +donne_ADV^T on_P gafolgeldan_N^G
+huse_N^D o+d+de_CONJ on_P gebures_N^G gefeohte_VBPS ,_, CXX_NUM
+scillinga_N^G to_P wite_N geselle_VBPS &_CONJ +tam_D^D gebure_N^D
+VI_NUM scillinga_N^G ._. colawine,LawIne:6.3.23_ID
+
+<T09300001600,6.4>_CODE &_CONJ +teah_P hit_PRO^N sie_BEPS on_P
+middum_ADJ^D felda_N^D gefohten_VBN ,_, CXX_NUM scillinga_N^G to_P
+wite_N sie_BEPS agifen_VBN ._. colawine,LawIne:6.4.24_ID
+
+<T09300001700,6.5>_CODE Gif_P +donne_ADV^T on_P gebeorscipe_N hie_PRO^N
+geciden_VBPS ,_, &_CONJ o+der_ADJ^N hiora_PRO^G mid_P ge+dylde_N
+hit_PRO^A forbere_VBPS ,_, geselle_VBPS se_D^N o+der_ADJ^N XXX_NUM
+scillinga_N^G to_P wite_N ._. colawine,LawIne:6.5.25_ID
+
+<T09300001800,7>_CODE Gif_P hwa_Q^N stalie_VBPS ,_, swa_P his_PRO$
+wif_N^N nyte_NEG+VBPS &_CONJ his_PRO$ bearn_N^N ,_, geselle_VBPS LX_NUM
+scillinga_N^G to_P wite_N ._. colawine,LawIne:7.26_ID
+
+<T09300001900,7.1>_CODE Gif_P he_PRO^N +donne_ADV^T stalie_VBPS on_P
+gewitnesse_N ealles_Q^G his_PRO$ hiredes_N^G ,_, gongen_VBPS hie_PRO^N
+ealle_Q^N on_P +deowot_N^A ._. colawine,LawIne:7.1.27_ID
+
+<T09300002000,7.2>_CODE X_NUM wintre_ADJ^N cniht_N^N m+ag_MDPI bion_BE
++dief+de_N^G gewita_N^N ._. colawine,LawIne:7.2.28_ID
+
+<T09300002100,8>_CODE Gif_P hwa_Q^N him_PRO^D ryhtes_N^G bidde_VBPS
+beforan_P hwelcum_Q^D scirmen_N^D o+d+de_CONJ o+trum_ADJ^D deman_N^D
+&_CONJ abiddan_VB ne_NEG m+age_MDPS ,_, &_CONJ him_PRO^D wedd_N^A
+sellan_VB nelle_NEG+MDP ,_, gebete_VBPS XXX_NUM scillinga_N^G
+colawine,LawIne:8.29_ID
+
+&_CONJ binnan_P VII_NUM nihton_N^D gedo_VBPH hine_PRO^A ryhtes_N^G
+wier+dne_ADJ^A ._. colawine,LawIne:8.30_ID
+
+<T09300002200,9>_CODE Gif_P hwa_Q^N wrace_N do_VBPS ,_, +ar+don_P
+he_PRO^N him_PRO^D ryhtes_N^G bidde_VBPS ,_, +t+at_D^A he_PRO^N
+him_PRO^D onnime_RP+VBDS agife_VBPS colawine,LawIne:9.31_ID
+
+&_CONJ forgielde_VBPS &_CONJ gebete_VBPS mid_P XXX_NUM scillingum_N^D
+._. colawine,LawIne:9.32_ID
+
+<T09300002300,10>_CODE Gif_P hwa_Q^N binnan_P +tam_D^D gem+arum_N^D
+ures_PRO$^G rices_N^G reaflac_N^A &_CONJ niedn+ame_N^A do_VBPS ,_,
+agife_VBPS he_PRO^N +done_D^A reaflac_N^A colawine,LawIne:10.33_ID
+
+&_CONJ geselle_VBPS LX_NUM scillinga_N^G to_P wite_N ._.
+colawine,LawIne:10.34_ID
+
+<T09300002400,11>_CODE Gif_P hwa_Q^N his_PRO$ agenne_ADJ^A geleod_N^A
+bebycgge_VBPS ,_, +deowne_ADJ^A o+d+de_CONJ frigne_ADJ^A ,_, +deah_P
+he_PRO^N scyldig_ADJ^N sie_BEPS ,_, ofer_P s+a_N ,_, forgielde_VBPS
+hine_PRO^A his_PRO$ were_N^D ._. colawine,LawIne:11.35_ID
+
+<T09300002500,12>_CODE Gif_P +deof_N^N sie_BEPS gefongen_VBN ,_,
+swelte_VBPS he_PRO^N dea+de_N^D ,_. colawine,LawIne:12.36_ID
+
+o+d+de_CONJ his_PRO$ lif_N^A be_P his_PRO$ were_N^D man_MAN^N
+aliese_VBPS ._. colawine,LawIne:12.37_ID
+
+<T09300002600,13>_CODE Gif_P hwa_Q^N beforan_P biscepe_N^D his_PRO$
+gewitnesse_N^A &_CONJ his_PRO$ wed_N^A aleoge_VBPS ,_, gebete_VBPS
+mid_P CXX_NUM scillingum_N^D ._. colawine,LawIne:13.38_ID
+
+<T09300002700,13.1>_CODE +Deofas_N^A we_PRO^N hata+d_VBPI o+d_P VII_NUM
+men_N^A ;_, from_P VII_NUM hlo+d_N^A o+d_P XXXV_NUM ;_.
+colawine,LawIne:13.1.39_ID
+
+si+d+dan_ADV^T bi+d_BEPI here_N^N ._. colawine,LawIne:13.1.40_ID
+
+<T09300002800,14>_CODE Se_D^N +de_C hlo+te_N betygen_VBN sie_BEPS ,_,
+geswicne_VBPS se_D^N hine_PRO^A be_P CXX_NUM hida_N^G
+colawine,LawIne:14.41_ID
+
+o+d+de_CONJ swa_ADV bete_VBPS ._. colawine,LawIne:14.42_ID
+
+<T09300002900,15>_CODE Se_D^N +de_C hereteama_N^G betygen_VBN sie_BEPS
+,_, he_PRO^N hine_PRO^A be_P his_PRO$ wergilde_N^D aliese_VBPS
+colawine,LawIne:15.43_ID
+
+o+d+de_CONJ be_P his_PRO$ were_N^D geswicne_VBPS ._.
+colawine,LawIne:15.44_ID
+
+<T09300003000,15.1>_CODE Se_D^N a+d_N^N sceal_MDPI bion_BE healf_NUM^N
+be_P huslgengum_N^D ._. colawine,LawIne:15.1.45_ID
+
+<T09300003100,15.2>_CODE +Teof_N^N ,_, si+d+dan_P he_PRO^N bi+d_BEPI
+on_P cyninges_N^G bende_N^D ,_, nah_NEG+VBPI he_PRO^N +ta_D^A
+swicne_N^A ._. colawine,LawIne:15.2.46_ID
+
+<T09300003200,16>_CODE Se_D^N +de_C +deof_N^A ofslih+d_RP+VBPI ,_,
+se_D^N mot_MDPI gecy+dan_VB mid_P a+de_N^D ,_, +t+at_C he_PRO^N
+hine_PRO^A synnigne_ADJ^A ofsloge_RP+VBDS ,_, nalles_NEG+Q +da_D^N
+gegildan_N^N ._. colawine,LawIne:16.47_ID
+
+<T09300003300,17>_CODE Se_D^N +de_C forstolen_VBN^A fl+asc_N^A
+finde+d_VBPI &_CONJ gedyrne+d_VBPI ,_, gif_P he_PRO^N dear_MDPI ,_,
+he_PRO^N mot_MDPI mid_P a+de_N^D gecy+dan_VB ,_, +t+at_C he_PRO^N
+hit_PRO^A age_VBPS ;_. colawine,LawIne:17.48_ID
+
+se_D^N +de_C hit_PRO^A ofspyre+d_RP+VBPI ,_, he_PRO^N ah_VBPI +d+at_D^A
+meldfeoh_N^A ._. colawine,LawIne:17.49_ID
+
+<T09300003400,18>_CODE Cierlisc_ADJ^N mon_N^N gif_P he_PRO^N oft_ADV^T
+betygen_VBN w+are_BEDS ,_, gif_P he_PRO^N +at_P si+destan_ADVS^T
+sie_BEPS gefongen_VBN ,_, slea_VBPS mon_MAN^N hond_N^A o+d+de_CONJ
+fot_N^A ._. colawine,LawIne:18.50_ID
+
+<T09300003500,19>_CODE Cyninges_N^G geneat_N^N ,_, gif_P his_PRO$
+wer_N^N bi+d_BEPI twelfhund_NUM scillinga_N^G ,_, he_PRO^N mot_MDPI
+swerian_VB for_P syxtig_NUM hida_N^G ,_, gif_P he_PRO^N bi+d_BEPI
+huslgengea_N^N ._. colawine,LawIne:19.51_ID
+
+<T09300003600,20>_CODE Gif_P feorcund_ADJ^N mon_N^N o+d+de_CONJ
+fremde_ADJ^N butan_P wege_N^D geond_P wudu_N^A gonge_VBPS &_CONJ ne_NEG
+hrieme_VBPS ne_NEG+CONJ horn_N^A blawe_VBPS ,_, for_P +deof_N^A
+he_PRO^N bi+d_BEPI to_TO profianne_VB^D :_, o+d+de_CONJ to_TO
+sleanne_VB^D o+d+de_CONJ to_TO aliesanne_VB^D ._.
+colawine,LawIne:20.52_ID
+
+<T09300003700,21>_CODE Gif_P mon_MAN^N +donne_ADV^T +t+as_D^G
+ofsl+agenan_RP+VBN^G weres_N^G bidde_VBPS ,_, he_PRO^N mot_MDPI
+gecy+tan_VB ,_, +t+at_C he_PRO^N hine_PRO^A for_P +deof_N^A
+ofsloge_RP+VBDS ,_, nalles_NEG+Q +t+as_D^G ofslegenan_RP+VBN^G
+gegildan_N^N ne_NEG+CONJ his_PRO$ hlaford_N^N ._.
+colawine,LawIne:21.53_ID
+
+<T09300003800,21.1>_CODE Gif_P he_PRO^N hit_PRO^A +donne_ADV^T
+dierne+d_VBPI ,_, &_CONJ weor+de+d_BEPI ymb_P long_ADJ^A yppe_ADJ^N ,_,
++donne_ADV^T ryme+d_VBPI he_PRO^N +dam_D^D deadan_ADJ^D to_P +dam_D^D
+a+de_N^D ,_, +t+at_C hine_PRO^A moton_MDPI his_PRO$ m+agas_N^N
+unsyngian_VB ._. colawine,LawIne:21.1.54_ID
+
+<T09300003900,22>_CODE Gif_P +din_PRO$^N geneat_N^N stalie_VBPS &_CONJ
+losie_VBPS +de_PRO ,_, gif_P +du_PRO^N h+abbe_HVPS byrgean_N ,_,
+mana_VBI +tone_D^A +t+as_D^G angyldes_N^G ;_. colawine,LawIne:22.55_ID
+
+gif_P he_PRO^N n+abbe_NEG+HVPS ,_, gyld_VBI +du_PRO^N +t+at_D^A
+angylde_N^A ,_. colawine,LawIne:22.56_ID
+
+&_CONJ ne_NEG sie_BEPS him_PRO^D no_NEG+ADV +dy_D^I +dingodre_ADJR^N
+._. colawine,LawIne:22.57_ID
+
+<T09300004000,23>_CODE Gif_P mon_MAN^N el+deodigne_ADJ^A ofslea_RP+VBPS
+,_, se_D^N cyning_N^N ah_VBPI tw+adne_ADJ^A d+al_N^A weres_N^G ,_,
++triddan_ADJ^A d+al_N^A sunu_N^N o+d+de_CONJ m+agas_N^N ._.
+colawine,LawIne:23.58_ID
+
+<T09300004100,23.1>_CODE Gif_P he_PRO^N +donne_ADV^T m+agleas_ADJ^N
+sie_BEPS ,_, healf_NUM^N kyninge_N^D ,_. colawine,LawIne:23.1.59_ID
+
+healf_NUM^A se_D^N gesi+d_N^N ._. colawine,LawIne:23.1.60_ID
+
+<T09300004200,23.2>_CODE Gif_P hit_PRO^N +donne_ADV^T abbod_N^N
+sie_BEPS o+d+de_CONJ abbodesse_N^N ,_, d+alen_VBPS on_P +ta_D^A
+ilcan_ADJ^A wisan_N^A wi+d_P +tone_D^A kyning_N^A ._.
+colawine,LawIne:23.2.61_ID
+
+<T09300004300,23.3>_CODE Wealh_NR^N gafolgelda_N^N CXX_NUM
+scillinga_N^G colawine,LawIne:23.3.62_ID
+
+his_PRO$ sunu_N C_NUM ,_. colawine,LawIne:23.3.63_ID
+
++deowne_ADJ^A LX_NUM ,_. colawine,LawIne:23.3.64_ID
+
+somhwelcne_Q^A fiftegum_NUM^D ;_. colawine,LawIne:23.3.65_ID
+
+Weales_NR^G hyd_N^N twelfum_NUM^D ._. colawine,LawIne:23.3.66_ID
+
+<T09300004400,24>_CODE Gif_P wite+deow_ADJ^N Englisc_ADJ^N mon_N^N
+hine_PRO^A forstalie_VBPS ,_, ho_VBPS hine_PRO^A mon_MAN^N
+colawine,LawIne:24.67_ID
+
+&_CONJ ne_NEG gylde_VBPS his_PRO$ hlaforde_N^D ._.
+colawine,LawIne:24.68_ID
+
+<T09300004500,24.1>_CODE Gif_P hine_PRO^A mon_MAN^N ofslea_RP+VBPS ,_,
+ne_NEG gylde_VBPS hine_PRO^A mon_MAN^N his_PRO$ m+agum_N^D ,_, gif_P
+hie_PRO^N hine_PRO^A on_P XII_NUM mon+dum_N^D ne_NEG aliesden_VBDS ._.
+colawine,LawIne:24.1.69_ID
+
+<T09300004600,24.2>_CODE Wealh_NR^N ,_, gif_P he_PRO^N hafa+d_HVPI
+V_NUM hida_N^G ,_, he_PRO^N bi+d_BEPI syxhynde_ADJ^N ._.
+colawine,LawIne:24.2.70_ID
+
+<T09300004700,25>_CODE Gif_P ciepemon_N^N uppe_ADV^L on_P folce_N^D
+ceapie_VBPS ,_, do_VBPH +t+at_D^A beforan_P gewitnessum_N^D ._.
+colawine,LawIne:25.71_ID
+
+<T09300004800,25.1>_CODE Gif_P +diefefioh_ADJ^N mon_N^N +at_P ciepan_N
+befo_VBPS ,_, &_CONJ he_PRO^N hit_PRO^A n+abbe_NEG+HVPS beforan_P
+godum_ADJ^D weotum_N^D geceapod_VBN ,_, gecy+de_VBPS hit_PRO^A be_P
+wite_N ,_, +t+at_C he_PRO^N ne_NEG+CONJ gewita_N^N ne_NEG+CONJ
+gestala_N^N n+are_NEG+BEDS ,_. colawine,LawIne:25.1.72_ID
+
+o+d+de_CONJ gielde_VBPS to_P wite_N VI_NUM &_CONJ XXX_NUM scillinga_N^G
+._. colawine,LawIne:25.1.73_ID
+
+<T09300004900,26>_CODE To_P fundes_VBN^G cildes_N^G fostre_N^D ,_,
++dy_D^I forman_ADJ^D geare_N^D geselle_VBPS VI_NUM scillinga_N^G ,_,
++dy_D^I +afterran_ADJR^D XII_NUM ,_, +dy_D^I +driddan_ADJ^D XXX_NUM ,_,
+si+d+dan_ADV^T be_P his_PRO$ wlite_N ._. colawine,LawIne:26.74_ID
+
+<T09300005000,27>_CODE Se_D^N +de_C dearnenga_ADV bearn_N^A
+gestriene+d_VBPI &_CONJ gehile+d_VBPI ,_, nah_NEG+VBPI se_D^N his_PRO$
+dea+des_N^G wer_N^A ,_, ac_CONJ his_PRO$ hlaford_N^N &_CONJ se_D^N
+cyning_N^N ._. colawine,LawIne:27.75_ID
+
+<T09300005100,28>_CODE Se_D^N +deof_N^A gefeh+d_VBPI ,_, ah_VBPI X_NUM
+scillinga_N^G ,_, &_CONJ se_D^N cyning_N^N +done_D^A +deof_N^A ;_.
+colawine,LawIne:28.76_ID
+
+&_CONJ +ta_D^N m+agas_N^N him_PRO^D swerian_VBPS a+das_N^A
+unf+ah+da_N^G ._. colawine,LawIne:28.77_ID
+
+<T09300005200,28.1>_CODE Gif_P he_PRO^N +donne_ADV^T o+dierne_VBPS
+&_CONJ orige_ADJ^N weor+de_BEPS ,_, +tonne_ADV^T bi+d_BEPI he_PRO^N
+wites_N^G scyldig_ADJ^N ._. colawine,LawIne:28.1.78_ID
+
+<T09300005300,28.2>_CODE Gif_P he_PRO^N onsacan_VB wille_MDP ,_,
+do_VBPS he_PRO^N +d+at_D^A be_P +dam_D^D feo_N^D &_CONJ be_P +dam_D^D
+wite_N^D ._. colawine,LawIne:28.2.79_ID
+
+<T09300005400,29>_CODE Gif_P mon_MAN^N sweordes_N^G onl+ane_RP+VBPS
+o+dres_ADJ^G esne_N ,_, &_CONJ he_PRO^N losie_VBPS ,_, gielde_VBPS
+he_PRO^N hine_PRO^A +driddan_ADJ^D d+ale_N^D ;_, gif_P mon_MAN^N
+spere_N selle_VBPS ,_, healfne_NUM^A ;_. colawine,LawIne:29.80_ID
+
+gif_P he_PRO^N horses_N^G onl+ane_RP+VBPS ,_, ealne_Q^A he_PRO^N
+hine_PRO^A gylde_VBPS ._. colawine,LawIne:29.81_ID
+
+<T09300005500,30>_CODE Gif_P mon_MAN^N cierliscne_ADJ^A monnan_N^A
+flieman_N feorme_N teo_VBPS ,_, be_P his_PRO$ agnum_ADJ^D were_N^D
+geladige_VBPS he_PRO^N hine_PRO^A ;_. colawine,LawIne:30.82_ID
+
+gif_P he_PRO^N ne_NEG m+age_MDPS ,_, gielde_VBPS hine_PRO^A his_PRO$
+agne_ADJ^D were_N^D ;_. &_CONJ se_D^N gesi+dmon_N^N swa_ADV be_P
+his_PRO$ were_N^D ._. colawine,LawIne:30.83_ID
+
+<T09300005600,31>_CODE Gif_P mon_MAN^N wif_N^A gebyccge_VBPS ,_, &_CONJ
+sio_D^N gyft_N^N for+d_RP ne_NEG cume_VBPS ,_, agife_VBPS +t+at_D^A
+feoh_N^A colawine,LawIne:31.84_ID
+
+&_CONJ forgielde_VBPS &_CONJ gebete_VBPS +tam_D^D byrgean_N^D ,_, swa_P
+his_PRO$ borgbryce_N^N sie_BEPS ._. colawine,LawIne:31.85_ID
+
+<T09300005700,32>_CODE Gif_P Wilisc_ADJ^N mon_N^N h+abbe_HVPS hide_N
+londes_N^G ,_, his_PRO$ wer_N^N bi+d_BEPI CXX_NUM scillinga_N^G ;_,
+gif_P he_PRO^N +tonne_ADV^T healfes_NUM^G h+abbe_HVPS ,_, LXXX_NUM
+scillinga_N^G ;_, gif_P he_PRO^N n+anig_NEG+Q^A h+abbe_HVPS ,_, LX_NUM
+scillinga_N^G ._. colawine,LawIne:32.86_ID
+
+<T09300005800,33>_CODE Cyninges_N^G horswealh_N^N ,_, se_D^N +de_C
+him_PRO^D m+age_MDPS ge+arendian_VB ,_, +d+as_D^G wergield_N^N
+bi+d_BEPI CC_NUM scillinga_N^G ._. colawine,LawIne:33.87_ID
+
+<T09300005900,34>_CODE Se_D^N +de_C on_P +d+are_D^D fore_N^D w+are_BEDS
+,_, +t+at_C mon_MAN^N monnan_N ofsloge_RP+VBDS ,_, getriewe_VBPS
+hine_PRO^A +d+as_D^G sleges_N^G colawine,LawIne:34.88_ID
+
+&_CONJ +da_D^A fore_N^A gebete_VBPS be_P +d+as_D^G ofslegenan_RP+VBN^G
+wergielde_N^D :_. colawine,LawIne:34.89_ID
+
+Gif_P his_PRO$ wergield_N^N sie_BEPS CC_NUM scillinga_N^G ,_,
+gebete_VBPS mid_P L_NUM scillingum_N^D ,_. colawine,LawIne:34.90_ID
+
+&_CONJ +dy_D^I ilcan_ADJ^D ryhte_N^D do_VBPS man_MAN^N be_P +dam_D^D
+deorborenran_ADJR^D ._. colawine,LawIne:34.91_ID
+
+<T09300006000,35>_CODE Se_D^N +de_C +deof_N^A slih+d_VBPI ,_, he_PRO^N
+mot_MDPI a+de_N^D gecy+dan_VB ,_, +t+at_C he_PRO^N hine_PRO^A
+fleondne_VAG^A for_P +deof_N^A sloge_VBDS ,_. colawine,LawIne:35.92_ID
+
+&_CONJ +t+as_D^G deadan_ADJ^G m+agas_N^N him_PRO^D swerian_VBPS
+unceases_N^G a+d_N^A ._. colawine,LawIne:35.93_ID
+
+<T09300006100,35>_CODE Gif_P he_PRO^N hit_PRO^A +tonne_ADV^T
+dierne_VBPS ,_, &_CONJ sie_BEPS eft_ADV^T yppe_ADJ^N ,_, +tonne_ADV^T
+forgielde_VBPS he_PRO^N hine_PRO^A ._. colawine,LawIne:35.94_ID
+
+<T09300006200,35.1>_CODE Gif_P mon_MAN^N to_P +tam_D^D men_N^D feoh_N^A
+geteme_VBPS ,_, +de_C his_PRO^G +ar_ADV^T o+dswaren_VBN h+afde_HVD
+&_CONJ eft_ADV^T o+dswerian_VB wille_MDP ,_, o+dswerige_VBPS be_P
++dam_D^D wite_N^D &_CONJ be_P +d+as_D^G feos_N^G weor+de_N^D ;_.
+colawine,LawIne:35.1.95_ID
+
+gif_P he_PRO^N o+dswerian_VB nylle_NEG+MDP ,_, gebete_VBPS +tone_D^A
+m+anan_ADJ^A a+d_N^A twybote_ADJ^A ._. colawine,LawIne:35.1.96_ID
+
+<T09300006300,36>_CODE Se_D^N +de_C +deof_N^A gefeh+d_VBPI ,_,
+o+d+de_CONJ him_PRO^D mon_MAN^N gefongenne_VBN^A agif+d_VBPI ,_, &_CONJ
+he_PRO^N hine_PRO^A +tonne_ADV^T al+ate_VBPS ,_, o+d+de_CONJ +ta_D^A
++dief+de_N^A gedierne_VBPS ,_, forgielde_VBPS +tone_D^A +teof_N^A
+his_PRO$ were_N^D ._. colawine,LawIne:36.97_ID
+
+<T09300006400,36.1>_CODE Gif_P he_PRO^N ealdormon_N^N sie_BEPS ,_,
++dolie_VBPS his_PRO$ scire_N ,_, buton_P him_PRO^D kyning_N^N arian_VB
+wille_MDP ._. colawine,LawIne:36.1.98_ID
+
+<T09300006500,37>_CODE Se_D^N cirlisca_ADJ^N mon_N^N ,_, se_D^N +de_C
+oft_ADV^T betygen_VBN w+are_BEDS +dief+de_N ,_, &_CONJ +tonne_ADV^T
++at_P si+destan_ADVS^T synnigne_ADJ^A gefo_VBPS in_P ceape_N^D
+o+d+de_CONJ elles_ADV +at_P openre_ADJ^D scylde_N^D ,_, slea_VBPS
+him_PRO^D mon_MAN^N hond_N^A of_RP o+d+de_CONJ fot_N^A ._.
+colawine,LawIne:37.99_ID
+
+<T09300006600,38>_CODE Gif_P ceorl_N^N &_CONJ his_PRO$ wif_N^N
+bearn_N^A h+abben_HVPS gem+ane_ADJ^A ,_, &_CONJ fere_VBPS se_D^N
+ceorl_N^N for+d_RP ,_, h+abbe_HVPS sio_D^N modor_N^N hire_PRO$
+bearn_N^A &_CONJ fede_VBPS :_. colawine,LawIne:38.100_ID
+
+agife_VBPS hire_PRO mon_MAN^N VI_NUM scillinga_N^G to_P fostre_N ,_,
+cu_N on_P sumera_N^D ,_, oxan_N on_P wintra_N^D ;_.
+colawine,LawIne:38.101_ID
+
+healden_VBPS +ta_D^N m+agas_N^N +tone_D^A frumstol_N^A ,_, o+d_P
++d+at_D^A hit_PRO^N gewintred_ADJ^N sie_BEPS ._.
+colawine,LawIne:38.102_ID
+
+<T09300006700,39>_CODE Gif_P hwa_Q^N fare_VBPS unaliefed_ADJ^N fram_P
+his_PRO$ hlaforde_N^D o+d+de_CONJ on_P o+dre_ADJ scire_N hine_PRO^A
+bestele_VBPS ,_, &_CONJ hine_PRO^A mon_MAN^N geahsige_VBPS ,_,
+fare_VBPS +t+ar_ADV^L he_PRO^N +ar_ADV^T w+as_BEDI
+colawine,LawIne:39.103_ID
+
+&_CONJ geselle_VBPS his_PRO$ hlaforde_N^D LX_NUM scillinga_N^G ._.
+colawine,LawIne:39.104_ID
+
+<T09300006800,40>_CODE Ceorles_N^G wor+dig_N^N sceal_MDPI beon_BE
+wintres_N^G &_CONJ sumeres_N^G betyned_VBN ;_.
+colawine,LawIne:40.105_ID
+
+gif_P he_PRO^N bi+d_BEPI untyne+d_ADJ^N ,_, &_CONJ rec+d_VBPI his_PRO$
+neahgebures_N^G ceap_N^A in_RP on_P his_PRO$ agen_ADJ^A geat_N^A ,_,
+nah_NEG+VBPI he_PRO^N +at_P +tam_D^D ceape_N^D nan_NEG+Q^A wuht_Q^A :_.
+colawine,LawIne:40.106_ID
+
+adrife_VBPS hine_PRO^A ut_RP colawine,LawIne:40.107_ID
+
+&_CONJ +dolie_VBPS +afwerdlan_N ._. colawine,LawIne:40.108_ID
+
+<T09300006900,41>_CODE Borges_N^G mon_MAN^N mot_MDPI o+dsacan_VB ,_,
+gif_P he_PRO^N wat_VBPI ,_, +t+at_C he_PRO^N ryht_N^A de+d_VBPI ._.
+colawine,LawIne:41.109_ID
+
+<T09300007000,42>_CODE Gif_P ceorlas_N^N g+arstun_N^A h+abben_HVPS
+gem+anne_ADJ^A o+d+de_CONJ o+ter_ADJ^A gedalland_N^A to_TO tynanne_VB^D
+,_, &_CONJ h+abben_HVPS sume_Q^N getyned_VBN hiora_PRO$ d+al_N^A ,_,
+sume_Q^N n+abben_NEG+HVPS ,_, &_CONJ etten_VBPS hiora_PRO$
+gem+anan_ADJ^A +aceras_N^A o+d+de_CONJ g+ars_N^A ,_, gan_VBPS +ta_D^N
++tonne_ADV^T ,_, +te_C +d+at_D^A geat_N^A agan_VBPI ,_.
+colawine,LawIne:42.110_ID
+
+&_CONJ gebete_VBPS +tam_D^D o+drum_ADJ^D +te_C hiora_PRO$ d+al_N^A
+getynedne_VBN^A h+abben_HVPS ,_, +tone_D^A +awerdlan_N^A +te_C
++d+ar_ADV^L gedon_VBN sie_BEPS ._. colawine,LawIne:42.111_ID
+
+<T09300007100,42>_CODE Abidden_VBPS him_PRO^D +at_P +tam_D^D ceape_N^D
+swylc_ADJ^A ryht_N^A swylce_P hit_PRO^N kyn_N^N sie_BEPS ._.
+colawine,LawIne:42.112_ID
+
+<T09300007200,42.1>_CODE Gif_P +tonne_ADV^T hry+dera_N^G hwelc_Q^N
+sie_BEPS +te_C hegas_N^A brece_VBPS &_CONJ ga_VBPS in_P gehw+ar_ADV^L
+,_, &_CONJ se_D^N hit_PRO^A nolde_NEG+MDD gehealdan_VB ,_, se_D^N
+hit_PRO^A age_VBPS o+d+de_CONJ ne_NEG m+age_MDPS ,_, nime_VBPS se_D^N
+hit_PRO^A on_P his_PRO$ +acere_N^D mete_VBPS
+colawine,LawIne:42.1.113_ID
+
+&_CONJ ofslea_RP+VBPS ;_. colawine,LawIne:42.1.114_ID
+
+&_CONJ nime_VBPS se_D^N agenfrigea_ADJ^N his_PRO$ fel_N^A &_CONJ
+fl+asc_N^A colawine,LawIne:42.1.115_ID
+
+&_CONJ +tolie_VBPS +t+as_D^G o+dres_ADJ^G ._.
+colawine,LawIne:42.1.116_ID
+
+<T09300007300,43>_CODE +Donne_P mon_MAN^N beam_N^A on_P wuda_N
+forb+arne_VBPS ,_, &_CONJ weor+de_BEPS yppe_ADJ^N on_P +tone_D^A +de_C
+hit_PRO^A dyde_VBD ,_, gielde_VBPS he_PRO^N fulwite_N :_.
+colawine,LawIne:43.117_ID
+
+geselle_VBPS LX_NUM scillinga_N^G ;_, $for+tam_P $+te_C
+<TEXT:for+tam+te>_CODE fyr_N^N bi+d_BEPI +teof_N^N ._.
+colawine,LawIne:43.118_ID
+
+<T09300007400,43.1>_CODE Gif_P mon_MAN^N afelle_VBPS on_P wuda_N
+wel_ADV monega_Q^A treowa_N^A ,_, &_CONJ wyr+d_BEPI eft_ADV^T
+undierne_ADJ^N ,_, forgielde_VBPS III_NUM treowu_N^A +alc_Q^A mid_P
+XXX_NUM scillingum_N^D ;_. colawine,LawIne:43.1.119_ID
+
+ne_NEG +dearf_MDPI he_PRO^N hiora_PRO^G ma_QR geldan_VB ,_, w+are_BEDS
+hiora_PRO^G swa_ADV fela_Q swa_P hiora_PRO^G w+are_BEDS :_, for+ton_P
+sio_D^N +asc_N^N bi+d_BEPI melda_N^N ,_, nalles_NEG+Q +deof_N^N ._.
+colawine,LawIne:43.1.120_ID
+
+<T09300007500,44>_CODE Gif_P mon_MAN^N +tonne_ADV^T aceorfe_VBPS
+an_NUM^A treow_N^A ,_, +t+at_D^A m+age_MDPS XXX_NUM swina_N^G
+undergestandan_RP+VB ,_, &_CONJ wyr+d_BEPI undierne_ADJ^N ,_,
+geselle_VBPS LX_NUM scillinga_N^G ._. colawine,LawIne:44.121_ID
+
+<T09300007600,44.1>_CODE Gafolhwitel_N^N sceal_MDPI bion_BE +at_P
+hiwisce_N VI_NUM p+aninga_N^G weor+d_ADJ^N ._.
+colawine,LawIne:44.1.122_ID
+
+<T09300007700,45>_CODE Burgbryce_N mon_MAN^N sceal_MDPI betan_VB
+CXX_NUM scillinga_N^G kyninges_N^G &_CONJ biscepes_N^G ,_, +t+ar_ADV^L
+his_PRO$ rice_N^N bi+d_BEPI ;_, ealdormonnes_N^G LXXX_NUM scillinga_N^G
+;_, cyninges_N^G +degnes_N^G LX_NUM scillinga_N^G ;_,
+gesi+dcundes_ADJ^G monnes_N^G landh+abbendes_ADJ^G XXXV_NUM ;_, &_CONJ
+bi_P +don_D^I ansacan_RP+VB ._. colawine,LawIne:45.123_ID
+
+<T09300007800,46>_CODE +Donne_P mon_MAN^N monnan_N betyh+d_VBPI ,_,
++t+at_C he_PRO^N ceap_N^A forstele_VBPS o+d+de_CONJ forstolenne_VBN^A
+gefeormie_VBPS ,_, +tonne_ADV^T sceal_MDPI he_PRO^N be_P LX_NUM
+hida_N^G onsacan_RP+VB +t+are_D +tief+de_N ,_, gif_P he_PRO^N
+a+dwyr+de_ADJ^N bi+d_BEPI ._. colawine,LawIne:46.124_ID
+
+<T09300007900,46.1>_CODE Gif_P +donne_ADV^T Englisc_ADJ^N onstal_N^N
+ga_VBPS for+d_RP ,_, onsace_RP+VBPS +tonne_ADV^T be_P twyfealdum_ADJ^D
+;_. colawine,LawIne:46.1.125_ID
+
+gif_P hit_PRO^N +donne_ADV^T bi+d_BEPI Wilisc_ADJ^N onstal_N^N ,_,
+ne_NEG bi+d_BEPI se_D^N a+d_N^N na_NEG+ADV +dy_D^I mara_QR^N ._.
+colawine,LawIne:46.1.126_ID
+
+<T09300008000,46.2>_CODE +Alc_Q^N mon_N^N mot_MDPI onsacan_RP+VB
+frym+te_N &_CONJ werf+ah+de_N ,_, gif_P he_PRO^N m+ag_MDPI o+d+de_CONJ
+dear_MDPI ._. colawine,LawIne:46.2.127_ID
+
+<T09300008100,47>_CODE Gif_P mon_MAN^N forstolenne_VBN^A ceap_N^A
+befeh+d_VBPI ,_, ne_NEG mot_MDPI hine_PRO^A mon_MAN^N tieman_VB to_P
++deowum_ADJ^D men_N^D ._. colawine,LawIne:47.128_ID
+
+<T09300008200,48>_CODE Gif_P hwelc_Q^N mon_N^N bi+d_BEPI wite+deow_N^N
+niwan_ADV ge+deowad_VBN ,_, &_CONJ hine_PRO^A mon_MAN^N betyh+d_VBPI
+,_, +t+at_C he_PRO^N h+abbe_HVPS +ar_ADV^T ge+diefed_VBN ,_, +ar_P
+hine_PRO^A mon_MAN^N ge+deowode_VBD ,_, +tonne_ADV^T ah_VBPI se_D^N
+teond_N^N ane_NUM^A swingellan_N^A +at_P him_PRO^D :_.
+colawine,LawIne:48.129_ID
+
+bedrife_VBPS hine_PRO^A to_P swingum_N^D be_P his_PRO$ ceape_N^D ._.
+colawine,LawIne:48.130_ID
+
+<T09300008300,49>_CODE Gif_P mon_MAN^N on_P his_PRO$ m+astenne_N^D
+unaliefed_ADJ^A swin_N^A gemete_VBPS ,_, genime_VBPS +tonne_ADV^T
+VI_NUM scillinga_N^G weor+d_ADJ^A wed_N^A ._. colawine,LawIne:49.131_ID
+
+<T09300008400,49.1>_CODE Gif_P hie_PRO^N +tonne_ADV^T +t+ar_ADV^L
+n+aren_NEG+BEDS oftor_ADVR^T +tonne_P +ane_ADV^T ,_, geselle_VBPS
+scilling_N^A se_D^N agenfrigea_N^N colawine,LawIne:49.1.132_ID
+
+&_CONJ gecy+de_VBPS ,_, +t+at_C hie_PRO^N +t+ar_ADV^L oftor_ADVR^T
+ne_NEG comen_VBDS ,_, be_P +t+as_D^G ceapes_N^G weor+de_N^D ._.
+colawine,LawIne:49.1.133_ID
+
+<T09300008500,49.2>_CODE Gif_P hi_PRO^N +d+ar_ADV^L tuwa_ADV^T
+w+aren_BEDS ,_, geselle_VBPS twegen_NUM^A scillinga_N^A ._.
+colawine,LawIne:49.2.134_ID
+
+<T09300008600,49.3>_CODE Gif_P mon_MAN^N nime_VBPS +afesne_N on_P
+swynum_N^D :_, +at_P +tryfingrum_ADJ^D +t+at_D^A +dridde_ADJ^A ,_.
++at_P twyfingrum_ADJ^D +t+at_D^A feor+de_ADJ^A ,_, +at_P +tymelum_ADJ^D
++t+at_D^A fifte_ADJ^A ._. colawine,LawIne:49.3.135_ID
+
+<T09300008700,50>_CODE Gif_P gesi+dcund_ADJ^N mon_N^N +tinga+d_VBPI
+wi+d_P cyning_N^A o+d+de_CONJ wi+d_P kyninges_N^G ealdormonnan_N for_P
+his_PRO$ inhiwan_N o+d+de_CONJ wi+d_P his_PRO$ hlaford_N^A for_P
++deowe_ADJ o+d+de_CONJ for_P frige_ADJ ,_, nah_NEG+VBPI he_PRO^N
++t+ar_ADV^L nane_NEG+Q^A witer+adenne_N^A ,_, se_D^N gesi+d_N^N ,_,
+for+don_P he_PRO^N him_PRO^D nolde_NEG+MDD +ar_ADV^T yfles_N^G
+gestieran_VB +at_P ham_N ._. colawine,LawIne:50.136_ID
+
+<T09300008800,51>_CODE Gif_P gesi+dcund_ADJ^N mon_N^N landagende_ADJ^N
+forsitte_VBPS fierd_N^A ,_, geselle_VBPS CXX_NUM scillinga_N^G &_CONJ
++dolie_VBPS his_PRO$ landes_N^G ;_, unlandagende_ADJ^N LX_NUM
+scillinga_N^G ;_, cierlisc_ADJ^N XXX_NUM scillinga_N^G to_P fierdwite_N
+._. colawine,LawIne:51.137_ID
+
+<T09300008900,52>_CODE Se_D^N +de_C diernum_ADJ^D ge+dingum_N^D
+betygen_VBN sie_BEPS ,_, geswicne_VBPS hine_PRO^A be_P CXX_NUM hida_N^G
++tara_D^G ge+dingea_N^G colawine,LawIne:52.138_ID
+
+o+d+de_CONJ CXX_NUM scillinga_N^G geselle_VBPS ._.
+colawine,LawIne:52.139_ID
+
+<T09300009000,53>_CODE Gif_P mon_MAN^N forstolenne_VBN^A man_N^A
+befo_VBPS +at_P o+trum_ADJ^D ,_, &_CONJ sie_BEPS sio_D^N hand_N^N
+o+dcwolen_VBN ,_, sio_D^N hine_PRO^A sealde_VBD +tam_D^D men_N^D +te_C
+hine_PRO^A mon_MAN^N +atbefeng_VBDI ,_, tieme_VBPS +tonne_ADV^T
++tone_D^A mon_N^A to_P +t+as_D^G deadan_ADJ^G byrgelse_N^D ,_, swa_P
+o+der_ADJ^N fioh_N^N swa_C hit_PRO^N sie_BEPS ,_.
+colawine,LawIne:53.140_ID
+
+&_CONJ cy+de_VBPS on_P +tam_D^D a+de_N^D be_P LX_NUM hida_N^G ,_,
++t+at_C sio_D^N deade_ADJ^N hond_N^N hine_PRO^A him_PRO^D sealde_VBD
+._. colawine,LawIne:53.141_ID
+
+<T09300009100,53>_CODE +Tonne_ADV^T h+af+d_HVPI he_PRO^N +t+at_D^A
+wite_N^A afylled_VBN mid_P +ty_D^I a+de_N^D ,_.
+colawine,LawIne:53.142_ID
+
+agife_VBPS +tam_D^D agendfrio_N^D +tone_D^A monnan_N^A ._.
+colawine,LawIne:53.143_ID
+
+<T09300009200,53.1>_CODE Gif_P he_PRO^N +tonne_ADV^T wite_VBPS ,_,
+hwa_WPRO^N +d+as_D^G deadan_ADJ^G ierfe_N h+abbe_HVPS ,_, tieme_VBPS
++tonne_ADV^T to_P +tam_D^D ierfe_N^D colawine,LawIne:53.1.144_ID
+
+&_CONJ bidde_VBPS +da_D^A hond_N^A +te_C +t+at_D^A ierfe_N^A
+hafa+d_HVPI ,_, +t+at_C he_PRO^N him_PRO^D gedo_VBPS +tone_D^A ceap_N^A
+unbeceasne_ADJ^A colawine,LawIne:53.1.145_ID
+
+o+t+te_CONJ gecy+de_VBPS ,_, +t+at_C se_D^N deada_N^N n+afre_NEG+ADV^T
++t+at_D^A ierfe_N^A ahte_VBD ._. colawine,LawIne:53.1.146_ID
+
+<T09300009300,54>_CODE Se_D^N +te_C bi+d_BEPI werf+ah+de_N betogen_VBN
+&_CONJ he_PRO^N onsacan_RP+VB wille_MDP +t+as_D^G sleges_N^G mid_P
+a+de_N^D ,_, +tonne_ADV^T sceal_MDPI bion_BE on_P +t+are_D^D
+hyndenne_N^D an_NUM^N kyning+ade_N^N be_P XXX_NUM hida_N^G ,_, swa_CONJ
+be_P gesi+dcundum_ADJ^D men_N^D swa_CONJ be_P cierliscum_ADJ^D ,_,
+swa_ADV hw+a+ter_WADJ^N swa_C hit_PRO^N sie_BEPS ._.
+colawine,LawIne:54.147_ID
+
+<T09300009400,54.1>_CODE Gif_P hine_PRO^A mon_MAN^N gilt_VBPI ,_,
++tonne_ADV^T mot_MDPI he_PRO^N gesellan_VB on_P +tara_D^G hyndenna_N^G
+gehwelcere_Q^D monnan_N^A &_CONJ byrnan_N^A &_CONJ sweord_N^A on_P
++t+at_D^A wergild_N^A ,_, gif_P he_PRO^N +dyrfe_MDPS ._.
+colawine,LawIne:54.1.148_ID
+
+<T09300009500,54.2>_CODE Wite+deowne_ADJ^A monnan_N^A Wyliscne_ADJ^A
+mon_MAN^N sceal_MDPI bedrifan_VB be_P XII_NUM hidum_N^D swa_P
++deowne_ADJ^A to_P swingum_N^D ,_, Engliscne_ADJ^A be_P feower_NUM
+&_CONJ XXX_NUM hida_N^G ._. colawine,LawIne:54.2.149_ID
+
+<T09300009600,55>_CODE Ewo_N^N bi+d_BEPI mid_P hire_PRO$ giunge_ADJ^D
+sceape_N^D scilling_N weor+d_ADJ^N o+t+t+at_P XII_NUM niht_N^A ofer_P
+Eastran_NR ._. colawine,LawIne:55.150_ID
+
+<T09300009700,56>_CODE Gif_P mon_MAN^N hwelcne_Q^A ceap_N^A
+gebyg+d_VBPI &_CONJ he_PRO^N +donne_ADV^T onfinde_RP+VBPS him_PRO^D
+hwelc_Q^A unh+alo_N^A on_P binnan_P XXX_NUM nihta_N^G ,_, +tonne_ADV^T
+weorpe_VBPS +tone_D^A ceap_N^A to_P honda_N ;_.
+colawine,LawIne:56.151_ID
+
+o+d+de_CONJ swerie_VBPS ,_, +t+at_C he_PRO^N him_PRO^D nan_NEG+Q^A
+facn_N^A on_P nyste_NEG+VBD ,_, +ta_P he_PRO^N hine_PRO^A him_PRO^D
+sealde_VBD ._. colawine,LawIne:56.152_ID
+
+<T09300009800,57>_CODE Gif_P ceorl_N^N ceap_N^A forstil+d_VBPI &_CONJ
+bire+d_VBPI into_P his_PRO$ +arne_N^D ,_, &_CONJ befeh+d_VBPI
++t+arinne_ADV+P mon_N^A ,_, +tonne_ADV^T bi+d_BEPI se_D^N his_PRO$
+d+al_N^N synnig_ADJ^N butan_P +tam_D^D wife_N^D anum_NUM^D ,_,
+for+don_P hio_PRO^N sceal_MDPI hire_PRO$ ealdore_N^D hieran_VB :_.
+colawine,LawIne:57.153_ID
+
+gif_P hio_PRO^N dear_MDPI mid_P a+de_N^D gecy+dan_VB ,_, +t+at_C
+hio_PRO^N +t+as_D^G forstolenan_VBN^G ne_NEG onbite_RP+VBDS ,_,
+nime_VBPS hire_PRO$ +driddan_ADJ^A sceat_N^A ._.
+colawine,LawIne:57.154_ID
+
+<T09300009900,58>_CODE Oxan_N^G horn_N^N bi+d_BEPI X_NUM p+aninga_N^G
+weor+d_ADJ^N ._, <T09300010000,59>_CODE Cuuhorn_N^N bi+d_BEPI
+twegea_NUM^G p+aninga_N^G ;_. colawine,LawIne:58.155_ID
+
+oxan_N^G t+agl_N^N bi+d_BEPI scillinga_N^G weor+d_ADJ^N ,_, cus_N^G
+bi+d_BEPI fifa_NUM^G ;_. colawine,LawIne:58.156_ID
+
+oxan_N^G eage_N^N bi+d_BEPI V_NUM p+aninga_N^G weor+d_ADJ^N ,_.
+colawine,LawIne:58.157_ID
+
+cus_N^G bi+d_BEPI scilling_N^A weor+t_ADJ^N ._.
+colawine,LawIne:58.158_ID
+
+<T09300010100,59.1>_CODE Mon_N^N sceal_MDPI simle_ADV^T to_P
+beregafole_N^D agifan_VB +at_P anum_NUM^D wyrhtan_N^D VI_NUM w+aga_N^G
+._. colawine,LawIne:59.1.159_ID
+
+<T09300010200,60>_CODE Se_D^N ceorl_N^N se_D^N +de_C h+af+d_HVPI
+o+dres_ADJ^G geoht_N^A ahyrod_VBN ,_, gif_P he_PRO^N h+abbe_HVPS
+ealle_Q^A on_P fo+dre_N^D to_TO agifanne_VB^D ,_, gesceawige_VBPS
+mon_MAN^N ,_, agife_VBPS ealle_Q^A ;_. colawine,LawIne:60.160_ID
+
+gif_P he_PRO^N n+abbe_NEG+HVPS ,_, agife_VBPS healf_NUM^A on_P
+fodre_N^D ,_, healfe_NUM on_P o+trum_ADJ^D ceape_N^D ._.
+colawine,LawIne:60.161_ID
+
+<T09300010300,61>_CODE Ciricsceat_N^A mon_MAN^N sceal_MDPI agifan_VB
+to_P +tam_D^D healme_N^D &_CONJ to_P +tam_D^D heor+de_N^D ,_, +te_C
+se_D^N mon_N^N on_P bi+d_BEPI to_P middum_ADJ^D wintra_N^D ._.
+colawine,LawIne:61.162_ID
+
+<T09300010400,62>_CODE +Tonne_P mon_MAN^N bi+d_BEPI tyhtlan_N
+betygen_VBN ,_, &_CONJ hine_PRO^A mon_MAN^N bedrife+d_VBPI to_P
+ceape_N^D ,_, nah_NEG+VBPI +tonne_ADV^T self_ADJ^N nane_NEG+Q^A
+wiht_N^A to_TO gesellanne_VB^D beforan_P ceape_N^D ._.
+colawine,LawIne:62.163_ID
+
+<T09300010500,62>_CODE +Tonne_ADV^T g+a+d_VBPI o+der_ADJ^N mon_N^N ,_.
+colawine,LawIne:62.164_ID
+
+sele+d_VBPI his_PRO$ ceap_N^A fore_RP ,_, swa_P he_PRO^N +tonne_ADV^T
+ge+tingian_VB m+age_MDPS ,_, on_P +da_D^A r+adenne_N^A ,_, +te_C
+he_PRO^N him_PRO^D ga_VBPS to_P honda_N ,_, o+d_P +d+at_D^A he_PRO^N
+his_PRO$ ceap_N^A him_PRO^D geinnian_VB m+age_MDPS ._.
+colawine,LawIne:62.165_ID
+
+<T09300010600,62>_CODE +Tonne_ADV^T betyh+d_VBPI hine_PRO^A mon_MAN^N
+eft_ADV^T o+tre_ADJ^I si+de_N^D colawine,LawIne:62.166_ID
+
+&_CONJ bedrif+d_VBPI to_P ceape_N^D ._. colawine,LawIne:62.167_ID
+
+<T09300010700,62>_CODE Gif_P hine_PRO^A for+d_RP nele_NEG+MDP
+forstandan_VB se_D^N +de_C him_PRO^D +ar_ADV^T ceap_N^A fore_RP
+sealde_VBD ,_, &_CONJ he_PRO^N hine_PRO^A +tonne_ADV^T forfeh+d_VBPI
+,_, +tolige_VBPS +tonne_ADV^T his_PRO$ ceapes_N^G se_D^N ,_, +de_C
+he_PRO^N him_PRO^D +ar_ADV^T fore_RP sealde_VBD ._.
+colawine,LawIne:62.168_ID
+
+<T09300010800,63>_CODE Gif_P gesi+dcund_ADJ^N mon_N^N fare_VBPS ,_,
++tonne_ADV^T mot_MDPI he_PRO^N habban_HV his_PRO$ gerefan_N^A mid_P
+him_PRO^D &_CONJ his_PRO$ smi+d_N^A &_CONJ his_PRO$ cildfestran_N^A ._.
+colawine,LawIne:63.169_ID
+
+<T09300010900,64>_CODE Se_D^N +de_C h+af+d_HVPI XX_NUM hida_N^G ,_,
+se_D^N sceal_MDPI t+acnan_VB XII_NUM hida_N^G gesettes_VBN^G landes_N^G
+,_, +tonne_P he_PRO^N faran_VB wille_MDP ._. colawine,LawIne:64.170_ID
+
+<T09300011000,65>_CODE Se_D^N +de_C h+af+d_HVPI X_NUM hida_N^G ,_,
+se_D^N sceal_MDPI t+acnan_VB VI_NUM hida_N^G gesettes_VBN^G landes_N^G
+._. colawine,LawIne:65.171_ID
+
+<T09300011100,66>_CODE Se_D^N +de_C h+abbe_HVPS +treora_NUM^G hida_N^G
+,_, t+acne_VBPS o+tres_ADJ^G healfes_N^G ._. colawine,LawIne:66.172_ID
+
+<T09300011200,67>_CODE Gif_P mon_MAN^N ge+tinga+d_VBPI gyrde_N^A
+landes_N^G o+t+te_CONJ mare_QR^A to_P r+adegafole_N^D &_CONJ
+geere+d_VBPI ,_, gif_P se_D^N hlaford_N^N him_PRO^D wile_MDP +t+at_D^A
+land_N^A ar+aran_VB to_P weorce_N^D &_CONJ to_P gafole_N^D ,_, ne_NEG
++tearf_MDPI he_PRO^N him_PRO^D onfon_RP+VB ,_, gif_P he_PRO^N him_PRO^D
+nan_NEG+Q^A botl_N^A ne_NEG sel+d_VBPI ,_. colawine,LawIne:67.173_ID
+
+&_CONJ +tolie_VBPS +tara_D^G +acra_N^G ._. colawine,LawIne:67.174_ID
+
+<T09300011300,68>_CODE Gif_P mon_MAN^N gesi+dcundne_ADJ^A monnan_N^A
+adrife_VBPS ,_, fordrife_VBPS +ty_D^I botle_N^D ,_, n+as_NEG+ADV
++t+are_D^D setene_N^D ._. colawine,LawIne:68.175_ID
+
+<T09300011400,69>_CODE Sceap_N^N sceal_MDPI gongan_VB mid_P his_PRO$
+fliese_N^D o+d_P midne_ADJ^A sumor_N^A ;_. colawine,LawIne:69.176_ID
+
+o+d+de_CONJ gilde_VBPS +t+at_D^A flies_N^A mid_P twam_NUM^D
+p+aningum_N^D ._. colawine,LawIne:69.177_ID
+
+<T09300011500,70>_CODE +At_P twyhyndum_ADJ^D were_N^D mon_MAN^N
+sceal_MDPI sellan_VB to_P monbote_N XXX_NUM scillinga_N^G ,_, +at_P
+VI_NUM hyndum_N^D LXXX_NUM scillinga_N^G ,_, +at_P XII_NUM hyndum_N^D
+CXX_NUM scillingum_N^G ._, <T09300011600,70.1>_CODE +At_P X_NUM
+hidum_N^D to_P fostre_N^D X_NUM fata_N^G hunies_N^G ,_, CCC_NUM
+hlafa_N^G ,_, XII_NUM ambra_N^G Wilisc_ADJ^G eala+d_N^G ,_, XXX_NUM
+hluttres_ADJ^G ,_, tu_NUM^A eald_ADJ^A hri+deru_N^A o+d+de_CONJ X_NUM
+we+deras_N^A ,_, X_NUM gees_N^A ,_, XX_NUM henna_N^G ,_, X_NUM
+cesas_N^A ,_, amber_N^A fulne_ADJ^A buteran_N^G ,_, V_NUM leaxas_N^A
+,_, XX_NUM pundw+aga_N^G fo+dres_N^G &_CONJ hundteontig_NUM +ala_N^G
+._. colawine,LawIne:70.178_ID
+
+<T09300011700,71>_CODE Gif_P mon_MAN^N sie_BEPS wertyhtlan_N
+betogen_VBN &_CONJ he_PRO^N hit_PRO^A +tonne_ADV^T geondette_VBPS
+beforan_P a+de_N^D &_CONJ onsace_RP+VBDS +ar_ADV^T ,_, bide_VBPS
+mon_MAN^N mid_P +t+are_D^D witer+adenne_N^D ,_, o+d_P +d+at_D^A se_D^N
+wer_N^N gegolden_VBN sie_BEPS ._. colawine,LawIne:71.179_ID
+
+<T09300011800,72>_CODE Gif_P mon_MAN^N wergild+deof_N^A gefeh+d_VBPI
+,_, &_CONJ he_PRO^N losige_VBPS +dy_D^I d+age_N^D +tam_D^D monnum_N^D
++de_C hine_PRO^A gefo+d_VBPI ,_, +teah_P hine_PRO^A mon_MAN^N gefo_VBPS
+ymb_P niht_N^A ,_, nah_NEG+VBPI him_PRO^D mon_MAN^N mare_QR^A +at_P
++donne_P fulwite_N ._. colawine,LawIne:72.180_ID
+
+<T09300011900,73>_CODE Gif_P hit_PRO^N bi+d_BEPI niht_N eald_ADJ^N
++tief+d_N^N ,_, gebeten_VBPS +ta_D^N +tone_D^A gylt_N^A +te_C
+hine_PRO^A gefengon_VBDI ,_, swa_P hie_PRO^N ge+tingian_VB m+agen_MDPS
+wi+d_P cyning_N^A &_CONJ his_PRO$ gerefan_N^A ._.
+colawine,LawIne:73.181_ID
+
+<T09300012000,74>_CODE Gif_P +deowwealh_N^N Engliscne_ADJ^A monnan_N^A
+ofslih+d_RP+VBPI ,_, +tonne_ADV^T sceal_MDPI se_D^N +de_C hine_PRO^A
+ah_VBPI weorpan_VB hine_PRO^A to_P honda_N hlaforde_N^D &_CONJ
+m+agum_N^D o+d+de_CONJ LX_NUM scillinga_N^G gesellan_VB wi+d_P his_PRO$
+feore_N^D ._. colawine,LawIne:74.182_ID
+
+<T09300012100,74.1>_CODE Gif_P he_PRO^N +tonne_ADV^T +tone_D^A ceap_N^A
+nelle_NEG+MDP fore_RP gesellan_VB ,_, +tonne_ADV^T mot_MDPI hine_PRO^A
+se_D^N hlaford_N^N gefreogean_VB ;_. colawine,LawIne:74.1.183_ID
+
+gielden_VBPS si+d+dan_ADV^T his_PRO$ m+agas_N^N +tone_D^A wer_N^A ,_,
+gif_P he_PRO^N m+agburg_N^A h+abbe_HVPS freo_ADJ^A ;_.
+colawine,LawIne:74.1.184_ID
+
+gif_P he_PRO^N n+abbe_NEG+HVPS ,_, heden_VBPS his_PRO^G +ta_D^N
+gefan_N^N ._. colawine,LawIne:74.1.185_ID
+
+<T09300012200,74.2>_CODE Ne_NEG +tearf_MDPI se_D^N frige_ADJ^N mid_P
++tam_D^D +teowan_ADJ^D m+ag_N^D gieldan_VB ,_, buton_P he_PRO^N
+him_PRO^D wille_MDP f+ah+de_N of_P aceapian_VB ,_, ne_NEG+CONJ se_D^N
++teowa_N^N mid_P +ty_D^I frigean_ADJ^D ._. colawine,LawIne:74.2.186_ID
+
+<T09300012300,75>_CODE Gif_P mon_MAN^N ceap_N^A befeh+t_VBPI
+forstolenne_VBN^A ,_, &_CONJ sio_D^N hond_N^N tiem+d_VBPI +tonne_ADV^T
+,_, sio_D^N hine_PRO^A mon_MAN^N +atbefeh+t_VBPI ,_, to_P o+trum_ADJ^D
+men_N^D ,_, gif_P se_D^N mon_N^N hine_PRO^A +tonne_ADV^T onfon_RP+VB
+ne_NEG wille_MDP &_CONJ s+ag+t_VBPI ,_, +t+at_C he_PRO^N him_PRO^D
+n+afre_NEG+ADV^T +t+at_D^A ne_NEG sealde_VBD ,_, ac_CONJ sealde_VBD
+o+ter_ADJ^A ,_, +tonne_ADV^T mot_MDPI se_D^N gecy+dan_VB ,_, se_D^N
++de_C hit_PRO^A tiem+t_VBPI to_P +t+are_D^D honda_N^D ,_, +t+at_C
+he_PRO^N him_PRO^D nan_NEG+Q^A o+der_ADJ^A ne_NEG sealde_VBD buton_P
++t+at_D^A ilce_ADJ^A ._. colawine,LawIne:75.187_ID
+
+<T09300012400,76>_CODE Gif_P hwa_Q^N o+dres_ADJ^G godsunu_N^A slea_VBPS
+o+d+de_CONJ his_PRO$ godf+ader_N^A ,_, sie_BEPS sio_D^N m+agbot_N^N
+&_CONJ sio_D^N manbot_N^N gelic_ADJ^N ;_. colawine,LawIne:76.188_ID
+
+weaxe_VBPS sio_D^N bot_N^N be_P +dam_D^D were_N^D ,_, swa_ADV ilce_ADV
+swa_P sio_D^N manbot_N^N de+d_VBPI +te_C +tam_D^D hlaforde_N^D
+sceal_MDPI ._. colawine,LawIne:76.189_ID
+
+<T09300012500,76.1>_CODE Gif_P hit_PRO^N +tonne_ADV^T kyninges_N^G
+godsunu_N^N sie_BEPS ,_, bete_VBPS be_P his_PRO$ were_N^D +tam_D^D
+cyninge_N^D swa_ADV ilce_ADV swa_P +t+are_D^D m+ag+te_N^D ._.
+colawine,LawIne:76.1.190_ID
+
+<T09300012600,76.2>_CODE Gif_P he_PRO^N +tonne_ADV^T on_P +tone_D^A
+geonbyrde_VBPS +te_C hine_PRO^A slog_VBDI ,_, +tonne_ADV^T
++atfealle_VBPS sio_D^N bot_N^N +t+am_D^D godf+ader_N^D ,_, swa_ADV
+ilce_ADV swa_P +t+at_D^N wite_N^N +tam_D^D hlaforde_N^D de+d_VBPI ._.
+colawine,LawIne:76.2.191_ID
+
+<T09300012700,76.3>_CODE Gif_P hit_PRO^N biscepsunu_N^N sie_BEPS ,_,
+sie_BEPS be_P healfum_NUM^D +tam_D^D ._. colawine,LawIne:76.3.192_ID
+
+
+
