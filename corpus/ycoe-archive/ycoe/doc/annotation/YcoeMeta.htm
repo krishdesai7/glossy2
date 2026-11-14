@@ -1,0 +1,422 @@
+<HTML>
+<HEAD>
+<TITLE>YCOE, Non-linguistic annotations</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+<BASEFONT SIZE=4>
+
+<h1>The York-Toronto-Helsinki Parsed Corpus<br>
+of Old English Prose</h1>
+
+<h2>Non-linguistic annotations within the text</h2>
+
+<p><br>
+
+<DL>
+    <DT><a href="#token_ids">Token IDs</a>
+    <DT><a href="#the_text">The text</a>
+    <DT><a href="#text_markup">Text Markup</a>
+    <DT><a href="#emendations">Emendations</a>
+    <DT><a href="#comments">Comments</a>
+    <p>
+    <DT><a href="../../YcoeHome.htm">YCOE Home</a>
+</DL>
+
+<p><br>
+
+<a name="token_ids">
+<h2>Token IDs</h2></a>
+
+Each <a href="YcoeRef.htm#definition_of_token">token</a> in the corpus
+has a unique ID at the end, which includes the filename, DOE short title,
+some way of locating the token in the printed text (usually following DOE
+practice) and lastly, a token number unique to that file. This information
+is contained in a node (that is, a pair of parentheses with a label on the
+opening parenthesis) labelled ID. The ID node itself is contained within
+the wrapper, the outermost (unlabelled) pair of parentheses.
+
+<pre>
+( (CODE &lt;T03010000800,25&gt;)
+  (IP-MAT (NP-NOM (NUM^N An) (N^N woruldcynincg))
+          (HVPI h+af+d)
+          (NP-ACC (NP (Q fela)
+                      (NP-GEN (N^G +tegna)))
+                  (CONJP (CONJ and)
+                         (NP-ACC (ADJ^A mislice) (N^A wicneras))))
+          (. ;)) 
+  (ID copreflives,+ALS_[Pref]:25.14)) <-- ID node
+
+
+
+( (PP (PP (P For) 
+          (NP-DAT (Q^D miclum) (N^D gesceade)))
+      (, .)
+      (CONJP (CONJ &) (ADV eac)
+             (PP (P for)
+                 (NP (N neode))))
+      (. .)) 
+  (ID cocathom1,+ACHom_I,_13:283.79.2424)) <-- ID node
+
+</pre>
+
+In the two tokens above, the IDs are decomposed as follows:
+
+<pre>
+filename               copreflives        cocathom1
+short title            +ALS_[Pref]	  +ACHom_I,_13
+line number            25		  page 283, line 79
+token number           14		  2424
+
+</pre>
+
+<p><br>
+
+<a name="the_text">
+<h2>The text</h2></a>
+
+The text of the corpus is that of the Dictionary of Old English Project
+(Toronto). The following modifications have been made.
+
+<dl><dt>
+<ul>
+
+<li> Special characters (thorn, ash, eth) have been converted to their
+Helsinki equivalents: 
+
+<p>
+
+<blockquote>
+<pre>
+        eth             +d        ash		+a
+        Eth		+D        Ash		+A
+        thorn		+t        e-cedilla	+e 
+        Thorn		+T        barred t      +tt        
+	barred l	vel
+
+</pre>
+</blockquote>
+
+<li> Most of the html codes have been removed or altered to a format more
+compatible with the annotation. The titles and identifiers have been
+retained in slightly altered format. For instance, parentheses have been
+altered to &lt;paren&gt;...&lt;/paren&gt;, since otherwise they would
+interfere with the annotation. 
+
+<p>
+The title information has been reduced to one code that contains the number
+of the file, the short title, and the Cameron number. Parentheses in the
+titles have been altered to square brackets.
+
+<blockquote>
+<pre>
+&lt;T02040_+ACHom_I_[Pref]_B1.1.1&gt;
+
+</pre>
+</blockquote>
+
+The identifiers have been slightly altered in format, as follows:
+
+<blockquote>
+<pre>
+&lt;s id="T02040000100" n="174.44"&gt;     <-- DOE identifier
+
+&lt;T02040000100,174.44&gt;                <-- YCOE equivalent
+
+</pre>
+</blockquote>
+
+<li> Errors have been silently corrected (a list of corrections is
+available upon request).
+
+<p>
+
+<li> Capitalization has been regularized to some extent in that all words
+labelled as proper nouns in the annotation have been capitalized if they
+weren't already. The capitalization of other words has not been altered.
+
+<p>
+
+<li> In a few texts, additions have been added to the identifiers to make
+the tokens more identifiable; for instance, page numbers have been added to
+the Blickling Homilies since the text has no line numbers making finding
+tokens by homily and line number quite difficult.
+
+<p>
+
+<li> Some alterations to the word divisions in the text are made for
+reasons of parsing. These are described in the <a
+href="YcoePos.htm#word_division">POS Manual: Word division</a>. In all
+cases when new divisions are made the parts are labelled as emendations
+with the emendation symbol ($) and a TEXT comment is included to indicate
+the change. See <a href="#emendations">Emendations</a>.
+
+<p>
+
+<li> In most cases the text is reproduced as supplied by the DOE project
+(apart from error correction); in a few cases, however, we have made our
+own emendations, or, in cases where the DOE project has replaced the
+printed text reading with a less felicitous manuscript reading, we have
+restored the text reading. See <a
+href="#emendations">Emendations</a>.
+
+</ul></dl>
+
+<p><br><br>
+
+<a name="text_markup">
+<H2>Text Markup</H2></a>
+
+Text markup is reduced to a minimum so as not to interfere with the
+annotation; what there is is in html-type format (&lt;markup&gt;
+...&lt;/markup&gt;). All text markup is additionally enclosed within a node
+labelled CODE to differentiate it from the text. The following codes can be
+found in the corpus:
+
+<dl><dt>
+<ul>
+
+<li> DOE titles (converted to YCOE format)
+
+<blockquote>
+<pre>
+(CODE &lt;T02040_+ACHom_I_[Pref]_B1.1.1&gt;)
+
+</pre>
+</blockquote>
+
+<li> DOE identifiers (converted to YCOE format)
+
+<blockquote>
+<pre>
+(CODE &lt;T02040000100,174.44&gt;)
+ 
+</pre>
+</blockquote>
+
+<li> parentheses are converted to
+
+<blockquote>
+<pre>
+(CODE &lt;paren&gt;)
+...
+(CODE &lt;/paren&gt;)
+
+</pre>
+</blockquote>
+
+<li> comments may begin with <b>COM:</b>, <b>TEXT:</b>, or <b>MS:</b>,
+where the first is our comment, the second indicates a text reading
+different from that present (especially where word division has been
+altered), and the third either a manuscript reading different from that
+present or a comment about the manuscript (see <a
+href="#comments">Comments</a> and <a
+href="#emendations">Emendations</a>)
+
+<blockquote>
+<pre>
+(CODE &lt;COM:text_missing&gt;)
+
+(CODE &lt;TEXT:for+tan+te&gt;)
+
+(CODE &lt;MS:secga+d&gt;)
+
+</pre>
+</blockquote>
+
+<li> in the A ms. of the Anglo-Saxon Chronicle, the number of the scribe
+has been added at every change of scribe
+
+<blockquote>
+<pre>
+(CODE &lt;SCRIBE:1&gt;)  
+
+</pre>
+</blockquote>
+
+<li> in the E ms. of the Chronicle (the Peterborough Chronicle) the
+beginning and end of each interpolation has been marked as follows
+
+<blockquote>
+<pre>
+( (CODE &lt;INTERPOLATION&gt;))
+...
+( (CODE &lt;/INTERPOLATION&gt;))
+
+</pre>
+</blockquote>
+
+</ul></dl>
+
+<p><br>
+
+<a name="emendations">
+<h2>Emendations</h2></a>
+
+Emendations that are made either by the editor of the text or by the DOE
+Corpus (labelled &lt;corr&gt;>...&lt;/corr&gt; in the DOE texts) are
+marked as emendations with the emendation symbol <b>$</b> on the beginning
+of every word or partial word emended. No comment is added.
+
+<pre>
+(NP-NOM-VOC (PRO^N +tu) 
+	    (NP-NOM-PRN (ADJ^N $halige) (N^N $modor))) <-- emended text
+
+</pre>
+
+Emendations made to the text by the YCOE team fall into the following
+categories.
+
+<dl><dt>
+<ul>
+<li> Units may be separated in order to facilitate the parsing. The
+separated parts are labelled with the emendation symbol (<b>$</b>) and
+comment of the <b>TEXT</b> variety (see <a href="#comments">Comments</a>) is
+included to indicate the change. For details of which units are separated,
+see the <a href="YcoePos.htm#word_division">POS Manual: Word division</a>.
+
+<pre>
+(NODE (IP-MAT-SPE (NEG Ne)
+		  (VBPI $lyfast)        <-- LYFASTU separated in order
+		  (NP-NOM (PRO^N $tu))      to allow annotation of subject
+		  (CODE &lt;TEXT:lyfastu&gt;) <-- TEXT comment
+		  (PP (P o+d)
+		      (NP-ACC (N^A +afen))))
+      (ID coaelive,+ALS_[Basil]:583.870))
+
+</pre>
+
+<li>A word may be replaced at the suggestion of the editor or from another
+manscript source when replacing it will create a grammatical parse. The
+replacement word is marked as an emendation.
+
+<pre>
+( (CODE &lt;T06560178800,47.363.3&gt;)
+  (IP-MAT-SPE (CONJ Ond)
+              (ADVP (ADV for+d+am))
+              (NP-GEN (PRO^G min))
+              (NP-NOM (MAN^N monn))
+              (VBPI $eht) 
+              (CODE &lt;TEXT:eft;eht_from_ms.Cotton&gt;)
+              (CP-ADV-SPE (C +de) 
+			  (IP-SUB-SPE (NP-NOM (PRO^N ic))
+				      (VBP bodige)
+				      (PP (P ymb)
+					  (NP-ACC (D^A +done) (N^A tohopan) 
+						  (NP-GEN (NP-GEN (ADJ^G deadra) (N^G monna))
+							  (N^G +arestes))))))
+              (. .)) (ID cocura,CP:47.363.3.2456))
+
+</pre>
+
+<li> Occasionally a word in the text is in effect removed by enclosing it
+in a <b>TEXT</b> type comment. Sometimes these are indicated as superfluous
+by the editor; others have been removed by our decision. The source of the
+emendation is included if there is one. The lack of a source indicates it is
+our emendation.
+
+<pre>
+( (CODE &lt;T04890014900,289&gt;)
+  (IP-MAT-SPE (CONJ And)
+              (ADVP-TMP (ADV^T nu))
+              (PTP-DAT-ABS (VBN^D geendodum)
+                           (NP-DAT-SBJ (N^D ryne)))
+              (NP (PRO me))
+              (BEPI is)
+              (VBN gehealden)
+              (NP-NOM (NP-GEN (N^G rihtwisnysse))
+                      (CODE &lt;TEXT:weg;emendation_suggested_by_ed.&gt;)
+                      (N^N wuldorbeah))
+              (. .)) (ID coeuphr,LS_7_[Euphr]:289.297))
+
+( (CODE &lt;T03910012500,107&gt;)
+  (IP-MAT (NEG Ne)
+          (VBDI cw+a+d)
+          (NP-NOM (PRO^N he))
+          (ADVP (NEG+ADV na) (ADV lichamlice) (CODE &lt;TEXT:ne&gt;) (CONJ ac) (ADV gastlice))
+          (. .)) (ID colwstan2,+ALet_3_[Wulfstan_2]:107.146))
+
+</pre>
+
+<li> The DOE editors have altered certain printed texts by restoring
+manuscript readings from one particular manuscript. Thus in the C version
+of Gregory's Dialogues, in many cases, readings from O included by the
+editor have been removed or replaced by C readings. We have restored the
+printed text in all cases when doing so allows a grammatical parse. If the
+text is grammatical either way, we have not. The manuscript reading
+preferred by the DOE is indicated by an <b>MS</b> comment. Following a word
+indicated as emended, this indicates the word replaces the manuscript
+reading in the text; when no emended word precedes, the manuscript reading
+is not included in the printed text. The notation <b>emendation_lacking</b>
+indicates that the preceding emended words are in the text, but not in the
+DOEs chosen manuscript.
+
+<pre>
+(NODE (PP (P in)
+	  (NP-DAT (D^D +d+are) (N^D stowe)
+		  (CP-REL (WNP-NOM-1 0)
+			  (C $+te)           <-- replacement in text
+			  (CODE &lt;MS:+ta&gt;)
+			  (IP-SUB (NP-NOM *T*-1)
+				  (VBD hatte)
+				  (NP-NOM-PRD (NR^N Maiuma))))))
+      (ID comart3,Mart_5_[Kotzor]:Oc21,A.35.2046))
+
+(NP-NOM (NP-GEN (D^G +d+as) (N^G martyres)
+		(NP-GEN-PRN *ICH*-1)
+		(CP-REL *ICH*-3))
+	(CODE &lt;MS:tid&gt;)                       <-- omitted from text
+	(N^N +trowung)
+	(NP-GEN-PRN-1 (NR Sancti) (NR^G Genesi)))
+
+(IP-INF (NP-ACC-SBJ (ADJ^A hwite) (N^A culfran))
+                          (PP (P of)
+                              (NP-DAT (N^D heofonum)))
+                          (VB $cuman)         <-- lacking in the ms.
+                          (CODE &lt;MS:lacks_emendation&gt;))
+
+</pre>
+
+</ul></dl>
+
+<p><br>
+
+<a name="comments">
+<h2>Comments</h2></a>
+
+All changes that were made to the DOE text (apart from the correction of
+clear errors) are accompanied by a comment. There are three types of
+comment:
+
+<dl><dt>
+<ul>
+<li> <b>TEXT</b> comments indicate that the electronic text differs from
+the printed text. Most of these result from word division changes, but a
+few indicate the replacement or removal of a word or words in the printed
+text (see <a href="#emendations">Emendations</a>).
+<p>
+<li> <b>MS</b> comments indicate that the alterations to the printed text
+made by the DOE project on the basis of manuscript readings have been
+restored to the printed text reading. The <b>MS</b> comment therefore
+either contains the DOE electronic text reading, or a comment about it (see
+<a href="#emendations">Emendations</a>).
+
+<p>
+<li> <b>COM</b> comments are used in all other cases. The most common is to
+indicate places in which the printed text is missing, but it is has various
+uses.
+
+<blockquote>
+<pre>
+(CODE &lt;COM:text_missing&gt;)
+(CODE &lt;COM:conjectured_text_omitted&gt;)
+(CODE &lt;COM:ofercuman_glossed_by_onbegan&gt;)
+(CODE &lt;COM:emendation_from_ms.U&gt;)
+
+</pre>
+</blockquote>
+
+</ul></dl>
+
+
+

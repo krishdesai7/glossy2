@@ -1,0 +1,489 @@
+<HTML>
+<HEAD>
+<TITLE>PPCME2, POS Annotation, Adjectives and Adverbs</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<a name="adjectives_and_adverbs">
+<H2>Adjectives and Adverbs (ADJ, ADV)</H2></a>
+
+<DL><DT>
+<DL>
+<DT><a href="#comparative_adj_adv">Comparative Adjectives and Adverbs
+(ADJR, ADVR)</a>
+<DT><a href="#superlative_adj_adv">Superlative Adjectives and Adverbs
+(ADJS, ADVS)</a>
+<DT><a href="#much_more_most_less_least">Adjectival MUCH, MORE, MOST, LESS, LEAST</a>
+<DT><a href="#ordinal_numbers">Ordinal numbers</a>
+<DT><a href="#adjectives_and_adverbs_words">Treatment of individual
+words</a>
+	<DL>
+	<DT><a href="#adj_adv_enough">ENOUGH</a>
+	<DT><a href="#adj_adv_too">TOO</a>
+	<DT><a href="#adj_adv_so_as">SO, AS</a>
+	<DT><a href="#adj_adv_as_well_as">AS WELL AS</a>
+	<DT><a href="#adj_adv_little">LITTLE (Adjective)</a>
+	<DT><a href="#adj_adv_first_last">FIRST and LAST</a>
+	<DT><a href="#adj_adv_one">ANE/ONE (Adjective)</a>
+	<DT><a href="#adj_adv_therefore">THEREFORE, THEREOF, etc</a>
+	<DT><a href="#adj_adv_near_next_nigh">NEAR, NEARER, NEXT, NIGH</a>
+	<DT><a href="#adj_adv_worth">WORTH</a>
+	<DT><a href="#adj_adv_fast">FAST</a>
+	<DT><a href="#adj_adv_even">EVEN (Adverb)</a>
+	<DT><a href="#adj_adv_passing">PASSING (Adverb)</a>
+	<DT><a href="#adj_adv_long">LONG</a>
+	<DT><a href="#adj_adv_inward_outward">INWARD, OUTWARD (Adjective)</a>
+	</DL>
+<DT><a href="pos-toc.htm">Table of Contents</a>
+</DL></DL>
+
+<P>
+
+The tags for adjectives and adverbs are, respectively, <TT>ADJ</TT> and
+<TT>ADV</TT>. See Sections <A HREF="#comparative_adj_adv">COMPARATIVE
+ADJECTIVES AND ADVERBS</A> and <A HREF="#superlative_adj_adv">SUPERLATIVE
+ADJECTIVES AND ADVERBS</A>.
+
+<PRE>
+        for_CONJ she_PRO was_BED called_VAN a_D fair_ADJ lady_N 
+        and_CONJ a_D passynge_ADV wyse_ADJ ,_.
+
+        Thenne_ADV the_D peple_NS merveilled_VBD
+
+</PRE>
+
+<a name="comparative_adj_adv">
+<H3>Comparative Adjectives and Adverbs (ADJR, ADVR)</H3></a>
+
+<PRE>
+        ADJR    Comparative adjective
+        ADVR    Comparative adverb
+
+</PRE>
+
+<PRE>
+        Thenne_ADV quene_NPR Igrayne_NPR waxid_VBD dayly_ADV 
+        gretter_ADJR and_CONJ gretter_ADJR ._.
+
+        he_PRO lovithe_VBP Arthure_NPR bettir_ADVR than_P us_PRO ;_.
+
+</PRE>
+
+<a name="superlative_adj_adv">
+<H3>Superlative Adjectives and Adverbs (ADJS, ADVS)</H3></a>
+
+<PRE>
+        ADJS    Superlative adjective
+        ADVS    Superlative adverb
+
+</PRE>
+
+<PRE>
+        in_P the_D grettest_ADJS chirch_N of_P London_NPR
+
+        and_CONJ than_ADV every_Q knyght_N toke_VBD the_D way_N 
+        that_C hym_PRO lyked_VBD beste_ADVS ._.
+
+</PRE>
+
+<a name="much_more_most_less_least">
+<H3>Adjectival MUCH, MORE, MOST, LESS, LEAST</H3></a>
+
+MUCH, MORE, MOST, LESS, and LEAST are treated as quantifiers(see Sections
+<A HREF="pos-quant.htm#quantifier_much">MUCH (QUANTIFIER)</A> and <A
+HREF="pos-quant.htm#comp_and_sup_quantifiers">COMPARATIVE AND
+SUPERLATIVE QUANTIFIERS</A>), except in the following cases:
+
+<OL>
+  
+<LI> when following a determiner or possessive and preceding a noun;
+  note that this does not include the comparative use, as in SHE LOVED
+  HIM THE LESS, or, SHE WAS THE MORE MERRY, where either there is no
+  word following the quantifier or it is not a noun, but does include
+  cases where the noun has clearly been elided.
+  
+<PRE>
+        a_D michel_ADJ lust_N
+
+        fram_P +te_D michel_ADJ conseil_N of_P +te_D vntrew_ADJ
+
+        and_CONJ +te_D more_ADJR fysches_NS swolwen_VBP 
+        +te_D lesse_ADJR ;_.
+
+        '_' and_CONJ I_PRO shall_MD ensure_VB you_PRO ye_PRO 
+        shall_MD have_HV the_D more_ADJR worship_N than_P 
+        ever_ADV ye_PRO had_HVD ._. '_'
+
+        And_CONJ hem_PRO thinketh_VBP +tat_C the_D more_ADJR 
+        peyne_N &_CONJ the_D more_ADJR tribulacioun_N +tat_C 
+        +tei_PRO suffren_VBP for_P loue_N of_P here_PRO$ god_N ,_, 
+        the_D <P_117>_CODE more_ADJR ioye_N +tei_PRO schull_MD haue_HV 
+        in_P another_D+OTHER world_N
+
+</PRE>
+
+<LI> when used as the predicate with a copular verb or in a small
+  clause
+
+<PRE>
+        for_CONJ he_PRO shal_MD ben_BE michel_ADJ bifore_P gode_NPR
+
+        And_CONJ sum_Q men_NS maken_VBP hem_PRO more_ADJR
+
+        and_CONJ maki+t_VBP his_PRO$ myracle_N more_ADJR
+
+        Ne_NEG dowte_VBP we_PRO not_NEG how_WADV byleue_N 
+        may_MD now_ADV be_BE lesse_ADJR and_CONJ now_ADV 
+        be_BE more_ADJR
+
+</PRE>
+
+<LI> occasionally when conjoined with an adjective
+
+<PRE>
+        and_CONJ bifore_P gode_NPR ben_BEP michel_ADJ and_CONJ mihti_ADJ
+
+        that_C ony_Q sholde_MD be_BE accompted_VAN more_QR hardy_ADJ 
+        or_CONJ more_ADJR of_P prouesse_N 
+
+</PRE>
+
+</OL>
+
+<a name="ordinal_numbers">
+<H3>Ordinal numbers</H3></a>
+
+Ordinal numbers are tagged <TT>ADJ</TT>.
+
+<PRE>
+        +te_D thrid_ADJ day_N of_P +tat_D solempnyte_N
+
+        &_CONJ +t=e=_D elleueneth_ADJ assembled_VBD a_D 
+        gret_ADJ power_N
+
+        +t=e=_D firste_ADJ me_MAN callyd_VBD Lotryn_NPR ,_, 
+        +t=e=_D secounde_ADJ Albanac_NPR ,_, &_CONJ +t=e=_D 
+        thryd_ADJ kambyr_NPR ._.
+
+</PRE>
+
+FIRST may also be tagged <TT>ADV</TT> when used as a temporal adverb. 
+
+<PRE>
+        So_ADV firste_ADV they_PRO put_VBD kynge_NPR Idres_NPR 
+        in_P the_D cite_N of_P Nauntis_NPR
+
+        for-as-miche_P+ADVR+Q as_P +tai_PRO were_BED of_P
+        Engistes_NPR$ Kynrede_N ,_, +tat_C first_ADV hade_HVD 
+        al_Q +te_D lande_N of_P Britain_NPR ;_.
+
+</PRE>
+
+In cases where an ordinal might be expected but there is no overt marking,
+<TT>NUM</TT> is used. See section <A
+HREF="pos-other.htm#cardinal_numbers">CARDINAL NUMBERS EXCEPT ONE</A>.
+
+<PRE>
+        The_D ij._NUM day_N hit_PRO schall_MD fall_VB downe_RP
+        The_D appostle_N this_D declareth_VBP to_P the_D Hebreos_NPRS 
+        the_D .ix._NUM chapytre_N ._. 
+</PRE>
+
+<a name="adjectives_and_adverbs_words">
+<H3>Treatment of individual words</H3></a>
+
+<a name="adj_adv_enough">
+<H3>ENOUGH</H3></a>
+
+ENOUGH is tagged <TT>ADJR</TT> if it modifies a noun, or stands alone, and
+<TT>ADVR</TT> if it modifies an adjective.
+
+<PRE>
+        wit_N inoch_ADJR
+        sorwe_N ynow_ADJR
+        +teowdom_N inoh_ADJR
+
+        light_ADJ ynowgh_ADVR
+        riche_ADJ ynowe_ADVR
+
+        +gif_P he_PRO hadde_HVD ynow_ADJR bysyde_ADV
+</PRE>
+
+<a name="adj_adv_too">
+<H3>TOO</H3></a>
+
+TOO is tagged <TT>ADV</TT> when it means AS WELL and <TT>ADVR</TT> in cases
+like TOO HAPPY and TOO MUCH CAKE.
+
+<PRE>
+        but_CONJ traveillynge_VAG men_NS are_BEP ofte_ADV wery_ADJ
+        and_CONJ their_PRO$ horses_NS to_ADV ,_.
+        
+        he_PRO +geoue_VBP +te_PRO sunne_N &_CONJ +tu_PRO him_PRO 
+        +ti_PRO$ saule_N &_CONJ ti_PRO$ bodi_N to_ADV mid_P al_Q ._, 
+        to_P weane_N &_CONJ to_P wontrede_N world_N buten_P ende_N ._.
+
+        to_ADVR many_Q
+
+        to_ADVR muche_Q luue_N
+
+        to_ADVR curious_ADJ
+
+        to_ADVR deere_ADJ
+</PRE>
+
+<a name="adj_adv_so_as">
+<H3>SO, AS</H3></a>
+
+SO (and variants SWA, SE, etc.) and AS (ALSWA, ALSE, ASE, etc.) in
+comparative or degree contexts are tagged <TT>ADVR</TT>, whether modifying
+adjectives, adverbs or quantifiers.
+
+<PRE>
+        so_ADVR symple_ADJ
+
+        as_ADVR wood_ADJ as_P a_D lyoun_N
+
+        as_ADVR often_ADV
+
+        as_ADVR wel_ADV of_P man_N as_P of_P womman_N
+
+        so_ADVR muche_Q pownsonynge_N of_P chisels_NS
+
+        and_CONJ do_DOI good_N to_P as_ADVR manye_Q as_P
+        +tu_PRO mi+gt_MD ._.
+
+</PRE>
+
+When separated, AL SWA is tagged <TT>al_Q swa_ADV</TT>, whether in
+modifying use, or introducing a matrix clause. AS SWA, on the other
+hand, is tagged as a separated word <TT>as_ADV21 swa_ADV22</TT>.
+
+<PRE>        
+        Al_Q swa_ADV me_MAN mai_MD ,_, mang_P alles_Q kennes_NS liues_NS 
+        menn_NS ,_, sume_Q gode_N and_CONJ sume_Q euele_N finden_VB ._.
+
+        Al_Q swo_ADV he_PRO de+d_DOP +to_D men_NS +de_C sennen_NS 
+        habbe+d_HVP forhaten_VBN te_TO laten_VB ,_,
+
+        for_CONJ as_ADV21 swa_ADV22 as_P mon_N islein_VAN is_BEP 
+        grislich_ADJ &_CONJ atelich_ADJ in_P monnes_N$ ech+ge_N 
+        alswa_ADV is_BEP +te_D sunnefule_ADJ bifor_P godes_NPR$ 
+        echnen_NS ._.
+
+</PRE>
+
+<a name="adj_adv_as_well_as">
+<H3>AS WELL AS</H3></a>
+
+AS WELL AS is always treated as comparative, even when it has a more
+conjunctive than comparative feeling.
+
+<PRE>
+        Mooreover_ADV ,_, man_MAN oghte_MD to_TO sorwe_VB for_P 
+        his_PRO$ wikkede_ADJ wordes_NS as_ADVR wel_ADV as_P 
+        for_P his_PRO$ wikkede_ADJ dedes_NS ._.
+
+        Yet_ADV comen_VBP ther_EX of_P Ire_N manye_Q mo_QR 
+        synnes_NS ,_, as_ADVR wel_ADV in_P word_N as_P in_P 
+        thoght_N and_CONJ in_P dede_N ;_,
+</PRE>
+
+<a name="adj_adv_little">
+<H3>LITTLE (Adjective)</H3></a>
+
+LITTLE is tagged <TT>ADJ</TT> when it means SMALL. When it indicates an
+amount it is tagged <TT>Q</TT>; see Section <A HREF="pos-quant.htm#quantifier_little">LITTLE (QUANTIFIER)</A>.
+
+<PRE>
+        +dis_D little_ADJ writt_N
+
+        be_P little_ADJ stechches_NS
+
+        +te_D little_ADJ +tyeues_NS
+
+        a_D litel_ADJ reste_N
+
+        Wit_PRO moten_MD +giet_ADV a_D litel_ADJ swinken_VB
+
+        &_CONJ do_DOI a_D littill_ADJ in_P thyn_PRO$ eghne_NS
+        
+        sume_Q deden_DOD to_ADVR litel_Q
+
+        oc_CONJ sc+a_PRO hedde_HVD litel_Q blisse_N mid_P him_PRO
+
+        +Tet_D w+as_BED for+ti_P+D +tet_C corn_N w+as_BED litel_Q
+
+        they_PRO been_BEP but_FP litel_Q syb_N to_P yow_PRO ,_.
+
+        a_D littill_Q wyn_N 
+
+        a_D littill_Q gres_N
+
+</PRE>
+
+<a name="adj_adv_first_last">
+<H3>FIRST and LAST</H3></a>
+
+FIRST and LAST are tagged <TT>ADJ</TT> or <TT>ADV</TT>.
+
+<PRE>
+        the_D firste_ADJ coveitise_N
+
+        The_D firste_ADJ is_BEP whan_P he_PRO putteth_VBP 
+        othere_OTHER men_NS biforn_P hym_PRO ._.
+
+        he_PRO shal_MD first_ADV biwaylen_VB The_D synnes_NS that_C 
+        he_PRO hath_HVP doon_DON
+
+        the_D last_ADJ gret_ADJ sorowe_N
+
+        And_CONJ at_P the_D last_ADJ he_PRO enterde_VBD into_P a_D
+        chambir_N
+
+        telle_VBI hym_PRO eek_ALSO alle_Q the_D synnes_NS that_C
+        thow_PRO hast_HVP doon_DON syn_P thou_PRO were_BED last_ADV
+        yshryven_VAN ;_.
+     
+        and_CONJ agyn_VBI to_P hem_PRO +tat_C comen_VBD last_ADV ._.
+
+</PRE>
+
+<a name="adj_adv_one">
+<H3>ANE/ONE (Adjective)</H3></a>
+
+ONE in the meaning ALONE in a copular construction or small clause is
+tagged <TT>ADJ</TT>;
+
+<PRE>
+        +ter_ADV ha_PRO weren_BED ane_ADJ bi_P ham_PRO seolf_N
+
+        $hu_WADV hise_PRO$ deciples_NS flu+gen_VBD alle_Q from_P 
+        him_PRO &_CONJ leafden_VBD him_PRO ane_ADJ ._.
+
+</PRE>
+
+<a name="adj_adv_therefore">
+<H3>THEREFORE, THEREOF, etc</H3></a>
+
+THEREFORE, THEROF etc. are tagged <TT>ADV+P</TT> in all readings. Note the
+change from PPCME1 where THEREFORE was sometimes treated as an adverb.
+See Section <A href="pos-prep.htm#prep_rpronouns">PREPOSITION WITH R-PRONOUN</A>.
+
+<a name="adj_adv_near_next_nigh">
+<H3>NEAR, NEARER, NEXT, NIGH</H3></a>
+
+NEAR, NEARER, NEXT and NIGH are tagged as adjectives when they have a
+locative meaning.  NIGH and NEAR are also used adverbially to mean
+NEARLY, in which case they are tagged <TT>ADV</TT>. NEXT in the meaning
+NEIGHBOUR is tagged <TT>N</TT>.
+
+<PRE>
+        But_CONJ thou_PRO arte_BEP more_QR nere_ADJ thy_PRO$ 
+        deth_N than_P I_PRO am_BEP ,_.
+
+        Kyng_NPR Edmunde_NPR went_VBD +to_ADV neir_ADJ
+
+        for_CONJ hit_PRO ys_BEP nere_ADV nyght_N ._.
+
+        kynge_NPR Idres_NPR &lt;/em&gt;_CODE was_BED nere_ADV discomfited_VAN
+
+        swich_SUCH shamefast_ADJ folk_N been_BEP next_ADJS foryevenesse_N
+
+        +te_D man_N mai_MD be_BE god_NPR next_ADJS
+
+        Luue_VBI +dine_PRO$ nexte_N al_Q swa_P +de_PRO seluen_N 
+
+</PRE>
+
+<a name="adj_adv_worth">
+<H3>WORTH</H3></a>
+
+WORTH is tagged <TT>ADJ</TT>.
+
+<PRE>
+        For_CONJ unskylful_ADJ penance_N es_BEP litel_Q worth_ADJ ,_,
+
+        for_CONJ the_D scawberde_N ys_BEP worth_ADJ ten_NUM of_P 
+        the_D swerde_N
+</PRE>
+
+<a name="adj_adv_fast">
+<H3>FAST</H3></a>
+
+FAST as the predicate of a small clause (SHE MADE THE GATES FAST) and
+in phrases like FAST BY THE CASTLE is tagged <TT>ADJ</TT>.  In other uses
+it is tagged <TT>ADV</TT>.
+
+<PRE>
+        and_CONJ made_VBD +t=e=_D +gates_NS fast_ADJ
+        
+        +tei_PRO founden_VBD fast_ADJ bysyde_P a_D coste_N of_P 
+        +te_D see_N thre_NUM hundred_NUM men_NS of_P +te_D
+        lynage_N &_CONJ kynrede_N of_P Troy_NPR
+
+        &_CONJ fast_ADJ beside_P it_PRO is_BEP CAPHARNAUM_NPR ;_.
+
+        &_CONJ faste_ADV they_PRO gunne_VBD to_TO fle_VB ._.
+
+        and_CONJ +tise_D ij_NUM bre+terne_NS ,_, after_P here_PRO$
+        fadres_N$ deth_N ,_, stryuen_VBD faste_ADV for_P +te_D lande_N ;_.
+
+</PRE>
+
+<a name="adj_adv_even">
+<H3>EVEN (Adverb)</H3></a>
+
+EVEN is commonly used as a focus particle (see Section <A
+HREF="pos-other.htm#focus_particles">FOCUS PARTICLES</A>), but there is
+a use which means CLOSE AT HAND and is tagged <TT>ADV</TT> not <TT>FP</TT>.
+
+<PRE>
+        as_P they_PRO com_VBD by_P an_D ermytage_N evyn_ADV by_P 
+        a_D chyrcheyerde_N
+
+</PRE>
+
+<a name="adj_adv_passing">
+<H3>PASSING (Adverb)</H3></a>
+
+PASSING is tagged <TT>ADV</TT> when it means EXCEEDINGLY and in phrases like
+PASSING THREE THOUSAND.
+
+<PRE>
+        Than_ADV was_BED he_PRO passyng_ADV hevy_ADJ
+
+        and_CONJ sir_NPR Percivale_NPR was_BED passynge_ADV glad_ADJ
+
+        a_D passynge_ADV good_ADJ knyght_N
+
+        passynge_ADV +tre_NUM +towsand_NUM of_P grootes_NS turonens_ADJ
+
+</PRE>
+
+<a name="adj_adv_long">
+<H3>LONG</H3></a>
+
+LONG is always tagged <TT>ADJ</TT> even when used absolutely.
+
+<PRE>
+        for_CONJ I_PRO wille_MD not_NEG be_BE long_ADJ behynde_ADV
+
+        he_PRO wille_MD not_NEG dwelle_VB long_ADJ
+
+</PRE>
+
+<a name="adj_adv_inward_outward">
+<H3>INWARD, OUTWARD (Adjective)</H3></a>
+
+INWARD and OUTWARD are labelled <TT>ADJ</TT> when modifiying a noun (e.g.
+INWARD BEAUTY), but <TT>RP+WARD</TT> in other uses; see Section <A
+HREF="pos-words.htm#ward">WARD</A>.
+
+<PRE>
+         to_P good_ADJ inward_ADJ wysdom_N
+
+         in_P alle_Q myn_PRO$ outward_ADJ doynges_NS
+
+</PRE>

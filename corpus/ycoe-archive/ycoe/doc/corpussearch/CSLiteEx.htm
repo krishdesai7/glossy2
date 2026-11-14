@@ -1,0 +1,659 @@
+<HTML>
+<HEAD>
+<TITLE>CorpusSearch Lite, Examples</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<BASEFONT SIZE=4>
+
+<h1>Some extended examples</h1>
+
+<a name="example1">
+<h2>Example 1</h2></a>
+
+You should read the section on the <a
+href="#remove_nodes"><i>remove_nodes</i></a> command before attempting this
+example.
+
+<p>
+
+Our aim is to find all the NPs that contain negatives, but we want
+to exclude any sentential negation that may be contained in embedded
+clauses within NPs. This is a two-step process; first we are going
+to get rid of all embedded clauses that don't contain NPs because
+they are completely irrelevant, and print any embedded clause that contains
+an NP as a separate token. We do this by setting <i>remove_nodes</i>
+to true and then searching for all IPs that contain NPs. 
+
+<blockquote>
+<pre>
+remove_nodes: t
+node: IP*
+query: (IP* iDoms NP*)
+
+</pre>
+</blockquote>
+
+This search is done on the corpus file. Since most IPs in the corpus
+contain NPs the output of this search will be quite extensive with
+most original tokens broken up into a series of individual NODES with all
+the embedded clauses removed.
+
+<blockquote>
+<pre>
+/~*
++Tu wast leof +t+at we awendon on +tam twam +arrum bocum +t+ara halgena
++trowunga and lif, +te Angelcynn mid freolsdagum wur+ta+d.
+(copreflives,+ALS_[Pref]:7.4)
+*~/
+
+/*
+2 IP-MAT: 3 NP-NOM
+2 IP-MAT: 6 NP-NOM-VOC
+10 IP-SUB: 11 NP-NOM
+10 IP-SUB: 21 NP-ACC
+35 IP-SUB: 37 NP-NOM
+*/
+
+(NODE (2 IP-MAT (3 NP-NOM (4 PRO^N +Tu))
+                (5 VBPI wast)
+                (6 NP-NOM-VOC (7 ADJ^N leof))
+                (8 CP-THT (9 C +t+at)
+                          (10 IP-SUB RMV:we_awendon_on...))
+                (44 . .))
+      (ID copreflives,+ALS_[Pref]:7.4)) 
+
+(NODE (10 IP-SUB (11 NP-NOM (12 PRO^N we))
+                 (13 VBDI awendon)
+                 (14 PP (15 P on)
+                        (16 NP-DAT (17 D^D +tam) (18 NUM^D twam) (19 ADJR^D +arrum) (20 N^D bocum)))
+                 (21 NP-ACC (22 NP-GEN (23 D^G +t+ara)
+                                       (24 N^G halgena)
+                                       (25 CP-REL *ICH*-1))
+                            (26 N^A +trowunga)
+                            (27 CONJP (28 CONJ and)
+                                      (29 NX-ACC (30 N^A lif)))
+                            (31 , ,)
+                            (32 CP-REL-1 (33 WNP-2 0)
+                                         (34 C +te)
+                                         (35 IP-SUB RMV:*T*-2_Angelcynn_mid...))))
+      (ID copreflives,+ALS_[Pref]:7.4)) 
+
+(NODE (35 IP-SUB (36 NP *T*-2)
+                 (37 NP-NOM (38 NR^N Angelcynn))
+                 (39 PP (40 P mid)
+                        (41 NP-DAT (42 N^D freolsdagum)))
+                 (43 VBPI wur+ta+d))
+      (ID copreflives,+ALS_[Pref]:7.4)) 
+
+</pre>
+</blockquote>
+
+We can now use our original query on the output of the previous search.
+
+<blockquote>
+<pre>
+node: NP*
+query: (NEG* exists)
+
+</pre>
+</blockquote>
+
+In this case, since embedded clauses have already been removed there is no
+danger of getting unwanted sentential negation.
+
+<blockquote>
+<pre>
+
+/~*
+and hit mid ealle forbernde, swa +t+at +d+ar n+as to lafe nan+ding +te hyre
+w+as.
+(coaelive,+ALS_[Eugenia]:260.347)
+*~/
+/*
+9 NP-NOM: 10 NEG+Q+N^N nan+ding
+*/
+
+(NODE (10 NP-ACC (11 NEG+Q^A n+anne) (12 ADJ^A geleaffulne) (13 N^A mann)
+                 (14 CP-REL (15 WNP-NOM-1 0) 
+                            (16 C +te) 
+                            (17 IP-SUB RMV:*T*-1_hi_l+aren...)))
+      (ID coaelive,+ALS_[Eugenia]:30.208)) 
+
+</pre>
+</blockquote>
+
+<p><br>
+
+<a name="example2">
+<h2>Example 2</h2></a>
+
+This is an extended example of how to set up a file of subordinate clauses
+for further searching. For our investigation we want only subordinate
+clauses which are introduced by an overt complementizer, and we want the
+clauses to have a finite verb. The last condition rules out a lot of
+clauses which are incomplete because of elision, and probably won't be
+useful (although this depends on what the real investigation is).
+
+<p>
+
+The first step is to extract all the CPs with overt
+complementizers. We set the node to <b>CP*</b> because at this stage we
+want to access the CP-level. We also set <a
+href="CorpusSearchLite.htm#remove_nodes"><i>remove_nodes</i></a> to true so
+that embedded CPs will either be thrown away if they don't have an overt
+complementizer or, if they do, will be printed as separate tokens. The
+query specifies that a CP must dominate a C, the label for
+complementizer, and that this complementizer doesn't immediately dominate
+<b>0</b>, which is the way empty complementizers are indicated. If a
+complementizer is not empty it is overt, so this will give us what we are
+looking for.
+
+<blockquote>
+<pre>
+remove_nodes: t
+node: CP*
+query: ((CP* iDoms C)
+AND (C iDoms !0))
+
+</pre>
+</blockquote>
+
+Typical output looks like the following. Note that <b>32 CP-REL-1</b> has
+been removed from <b>8 CP-THT</b> and printed as a separate token. Another
+CP, <b>25 CP-REL</b> has also been removed, but is not printed since it
+doesn't match the query.
+
+<blockquote>
+<pre>
+/~*
++Tu wast leof +t+at we awendon on +tam twam +arrum bocum +t+ara halgena
++trowunga and lif, +te Angelcynn mid freolsdagum wur+ta+d.
+(copreflives,+ALS_[Pref]:7.4)
+*~/
+
+/*
+8 CP-THT: 9 C +t+at
+32 CP-REL-1: 34 C +te
+*/
+
+(NODE (8 CP-THT (9 C +t+at)
+                (10 IP-SUB (11 NP-NOM (12 PRO^N we))
+                           (13 VBDI awendon)
+                           (14 PP (15 P on)
+                                  (16 NP-DAT (17 D^D +tam) (18 NUM^D twam) (19 
+ADJR^D +arrum) (20 N^D bocum)))
+                           (21 NP-ACC (22 NP-GEN (23 D^G +t+ara) (24 N^G halgena)
+                                                 (25 CP-REL RMV:*ICH*-1...))
+                                      (26 N^A +trowunga)
+                                      (27 CONJP (28 CONJ and)
+                                                (29 NX-ACC (30 N^A lif)))
+                                      (31 , ,)
+                                      (32 CP-REL-1 RMV:0_+te_*T*-2...))))
+      (ID copreflives,+ALS_[Pref]:7.4)) 
+
+(NODE (32 CP-REL-1 (33 WNP-2 0)
+                   (34 C +te)
+                   (35 IP-SUB (36 NP *T*-2)
+                              (37 NP-NOM (38 NR^N Angelcynn))
+                              (39 PP (40 P mid)
+                                     (41 NP-DAT (42 N^D freolsdagum)))
+                              (43 VBPI wur+ta+d)))
+      (ID copreflives,+ALS_[Pref]:7.4)) 
+
+</pre>
+</blockquote>
+
+Once we have this file we can throw away the CP-level and concentrate just
+on the IPs, so we set the NODE to <b>IP*</b>. We also set
+<i>remove_nodes</i> to true. In general because we have already removed all
+embedded CPs there won't be a lot of embedded IPs left, but there are some
+types of embedded IPs that aren't under CPs, namely, infinitives, small
+clauses, direct speech, and parentheticals. So we use <i>remove_nodes</i>
+one more time to be safe. The file Ann.def contains a definition for
+<b>finite_verb</b>.
+
+
+<blockquote>
+<pre>
+define: OE.def
+remove_nodes: t
+node: IP*
+query: (IP* iDoms finite_verb)
+
+</pre>
+</blockquote>
+
+Now we run this query on the output of the previous one. The new output is
+a file in which every token is a subordinate clause (introduced by an overt
+complementizer, although this is no longer visible) with a finite verb.
+
+<blockquote>
+<pre>
+/~*
+We awrita+d fela wundra on +tissere bec, for+tan +te God is wundorlic on his
+halgum swa swa we +ar s+adon, and his halgena wundra wur+dia+d hine, for+tan
++te he worhte +ta wundra +turh hi.
+(copreflives,+ALS_[Pref]:22.13)
+*~/
+/*
+5 IP-SUB: 8 BEPI is
+23 IP-SUB-CON: 29 VBPI wur+dia+d
+*/
+
+(NODE (5 IP-SUB (6 NP-NOM (7 NR^N God))
+                (8 BEPI is)
+                (9 ADJP-NOM-PRD (10 ADJ^N wundorlic))
+                (11 PP (12 P on)
+                       (13 NP-DAT (14 PRO$ his) (15 N^D halgum)))
+                (16 PP (17 ADV swa) (18 P swa) 
+                       (19 CPX-CMP RMV:we_+ar_s+adon...)))
+      (ID copreflives,+ALS_[Pref]:22.13)) 
+
+(NODE (23 IP-SUB-CON (24 NP-NOM (25 NP-GEN (26 PRO$ his) (27 N^G halgena))
+                                (28 N^N wundra))
+                     (29 VBPI wur+dia+d)
+                     (30 NP-ACC (31 PRO^A hine))
+                     (32 , ,)
+                     (33 CP-ADV RMV:for+tan_+te_he...))
+      (ID copreflives,+ALS_[Pref]:22.13)) 
+
+</pre>
+</blockquote>
+
+This file can now be used for various kinds of investigations of sentential
+syntax. The restrictions placed on the CPs and IPs are just examples of
+what might be done. The same strategy can be used with different
+requirements for the CP and IP nodes. If you don't want to restrict the
+type of CP at all, then use <b>(CP* iDoms IP*)</b>. You should always
+restrict the IP in some way at this point if at all possible, since a file
+consisting of all the IPs in the corpus will be extremely large, quite
+possibly too large to work with.
+
+<p>
+
+If you are having space problems, you can erase the first output file once
+you have made the second one. You can always recreate it if need be from
+the query file. <a href="#example4">Example 4</a> shows how to retain
+information from the CP-level once it's been thrown away.
+
+<p><br><br>
+
+<a name="example3">
+<h2>Example 3</h2></a>
+
+This example is similiar to the previous one, but we want all IPs, both
+matrix and subordinate. It is impossible to collect <u>all</u> matrix and
+subordinate IPs in one search. The reason is that if you set the node to
+<b>CP*</b> you won't get any IPs that are not dominated by CPs, but if you
+set the node to <b>IP*</b> you won't get any CPs that aren't dominated by
+IPs. 
+
+<p>
+
+The solution is to collect the two sets separately and then join
+them. First we get the matrix IPs. We'll use the same restriction as in <a
+href="#example2">example 2</a>, but this time we want only matrix IPs so we
+make the node <b>IP-MAT*</b>. <i>remove_nodes</i> is set to true to remove
+embedded clauses. We can call this query <b>ip-mat.q</b> so the output will
+be <b>ip-mat.out</b>
+
+<blockquote>
+<pre>
+define: OE.def
+remove_nodes: t
+node: IP-MAT*
+query: (IP-MAT* iDoms finite_verb)
+
+/~*
+and ic secge +te leof, +t+at ic h+abbe nu gegaderod on +tyssere bec +t+ara
+halgena +trowunga +te me to onhagode on englisc to awendene, for +tan +te +du
+leof swi+dost and +A+delm+ar swylcera gewrita me b+adon, and of handum
+gel+ahton eowerne geleafan to getrymmenne, mid +t+are gerecednysse, +te ge on
+eowrum gereorde n+afdon +ar.
+(copreflives,+ALS_[Pref]:1.3)
+*~/
+
+/*
+1 IP-MAT: 5 VBP secge
+*/
+
+(0 (1 IP-MAT (2 CONJ and)
+             (3 NP-NOM (4 PRO^N ic))
+             (5 VBP secge)
+             (6 NP (7 PRO +te))
+             (8 NP-NOM-VOC (9 ADJ^N leof))
+             (10 , ,)
+             (11 CP-THT (12 C +t+at)
+                        (13 IP-SUB RMV:ic_h+abbe_nu...))
+             (111 . .))
+      (ID copreflives,+ALS_[Pref]:1.3)) 
+
+</pre>
+</blockquote>
+
+Then we get the CPs using a query we'll call <b>cp.q</b>, so the output
+will be <b>cp.out</b>. We won't restrict the type of CP at all.
+
+<blockquote>
+<pre>
+remove_nodes: t
+node: CP*
+query: (CP* iDoms IP*)
+
+/~*
+he ne m+ag beon wur+dful cynincg buton he h+abbe +ta ge+tinc+de +te him
+gebyria+d, and swylce +teningmen, +te +teawf+astnysse him gebeodon.
+(copreflives,+ALS_[Pref]:25.15)
+*~/
+
+/*
+10 CP-ADV: 13 IP-SUB
+21 CP-REL: 24 IP-SUB
+36 CP-REL: 39 IP-SUB
+*/
+
+(NODE (10 CP-ADV (11 P buton)
+                 (12 C 0)
+                 (13 IP-SUB (14 NP-NOM (15 PRO^N he))
+                            (16 HVPS h+abbe)
+                            (17 NP-ACC (18 NP-ACC (19 D^A +ta)
+                                                  (20 N^A ge+tinc+de)
+                                                  (21 CP-REL RMV:0_+te_*T*-1...))
+                                       (29 , ,)
+                                       (30 CONJP (31 CONJ and)
+                                                 (32 NP-ACC (33 ADJ^A swylce)
+                                                            (34 N^A +teningmen)
+                                                            (35 , ,)
+                                                            (36 CP-REL RMV:0_+te_*T*-2...))))))
+      (ID copreflives,+ALS_[Pref]:25.15)) 
+
+(NODE (21 CP-REL (22 WNP-NOM-1 0)
+                 (23 C +te)
+                 (24 IP-SUB (25 NP-NOM *T*-1)
+                            (26 NP-DAT (27 PRO^D him))
+                            (28 VBPI gebyria+d)))
+      (ID copreflives,+ALS_[Pref]:25.15)) 
+
+(NODE (36 CP-REL (37 WNP-NOM-2 0)
+                 (38 C +te)
+                 (39 IP-SUB (40 NP-NOM *T*-2)
+                            (41 NP (42 N +teawf+astnysse))
+                            (43 NP-DAT (44 PRO^D him))
+                            (45 VBDI gebeodon)))
+      (ID copreflives,+ALS_[Pref]:25.15)) 
+
+</pre>
+</blockquote>
+
+But we still need to extract the IPs from <b>cp.out</b>. We can use a
+variation of the query to find the matrix IPs to do this (called
+<b>ip-sub.q</b>, specifying subordinate IPs this time. We need to specify
+the IP type because we might otherwise get embedded matrix clauses like
+direct speech and parentheticals. We run this query not on corpus files but
+on <b>cp.out</b>, the output of the CP search. Note that the output this
+time lists each of the IP-SUBs from the token above separately this time,
+along with its own ur-text.
+
+<blockquote>
+<pre>
+define: OE.def
+remove_nodes: t
+node: IP-SUB*
+query: (IP-SUB* iDoms finite_verb)
+
+/~*
+he ne m+ag beon wur+dful cynincg buton he h+abbe +ta ge+tinc+de +te him
+gebyria+d, and swylce +teningmen, +te +teawf+astnysse him gebeodon.
+(copreflives,+ALS_[Pref]:25.15)
+*~/
+/*
+4 IP-SUB: 7 HVPS h+abbe
+*/
+
+(NODE (4 IP-SUB (5 NP-NOM (6 PRO^N he))
+                (7 HVPS h+abbe)
+                (8 NP-ACC (9 NP-ACC (10 D^A +ta) (11 N^A ge+tinc+de) 
+                                    (12 CP-REL RMV:0_+te_*T*-1...))
+                          (13 , ,)
+                          (14 CONJP (15 CONJ and)
+                                    (16 NP-ACC (17 ADJ^A swylce) (18 N^A +teningmen) 
+                                               (19 , ,)
+                                               (20 CP-REL RMV:0_+te_*T*-2...)))))
+      (ID copreflives,+ALS_[Pref]:25.15)) 
+
+/~*
+he ne m+ag beon wur+dful cynincg buton he h+abbe +ta ge+tinc+de +te him
+gebyria+d, and swylce +teningmen, +te +teawf+astnysse him gebeodon.
+(copreflives,+ALS_[Pref]:25.15)
+*~/
+/*
+4 IP-SUB: 8 VBPI gebyria+d
+*/
+
+(NODE (4 IP-SUB (5 NP-NOM *T*-1)
+                (6 NP-DAT (7 PRO^D him))
+                (8 VBPI gebyria+d))
+      (ID copreflives,+ALS_[Pref]:25.15)) 
+
+/~*
+he ne m+ag beon wur+dful cynincg buton he h+abbe +ta ge+tinc+de +te him
+gebyria+d, and swylce +teningmen, +te +teawf+astnysse him gebeodon.
+(copreflives,+ALS_[Pref]:25.15)
+*~/
+/*
+4 IP-SUB: 10 VBDI gebeodon
+*/
+
+(NODE (4 IP-SUB (5 NP-NOM *T*-2)
+                (6 NP (7 N +teawf+astnysse))
+                (8 NP-DAT (9 PRO^D him))
+                (10 VBDI gebeodon))
+      (ID copreflives,+ALS_[Pref]:25.15)) 
+
+</pre>
+</blockquote>
+
+We now have two output files <b>ip-sub.out</b> and <b>ip-mat.out</b>. (We
+can throw away <b>cp.out</b> at this point if necessary). The two sets can
+now be searched together simply by listing both output files as input files
+in subsequent searches. The output of this search will list the hits by
+source text as usual, first all the IP-MATs, and then starting again at the
+first source text all the IP-SUBs. But the <a
+href="CorpusSearchLite.htm#output_summary">summary statistics</a> will list
+each source text only once, with all the hits added together.
+
+<p><br><br>
+
+<a name="example4">
+<h2>Example 4</h2></a>
+
+This example makes use of the <a
+href="CorpusSearchLite.htm#coding_function">coding function</a>.
+
+In this example we want to work with only subordinate clauses but we want
+to know what type of CP originally dominated the IP. In addition we want to
+know whether there is an overt complementizer.
+
+<p>
+
+In our first search we extract all the CPs with a C node. This condition
+forces all the clauses to be embedded. Direct questions lack a C node
+altogether. The output is a set of tokens each consisting of a CP of the
+appropriate type with all embedded CPs removed. 
+
+<blockquote>
+<pre>
+remove_nodes: t
+node: CP*
+query: (CP* iDoms C)
+
+/~*
+him geris+d +t+at he h+abbe halige +tenas +te his willan gefylla+d,
+(copreflives,+ALS_[Pref]:29.17)
+*~/
+
+/*
+6 CP-THT-x: 7 C +t+at
+15 CP-REL: 17 C +te
+*/
+
+(NODE (6 CP-THT-x (7 C +t+at)
+                  (8 IP-SUB (9 NP-NOM (10 PRO^N he))
+                            (11 HVPS h+abbe)
+                            (12 NP-ACC (13 ADJ^A halige) (14 N^A +tenas)
+                                       (15 CP-REL RMV:0_+te_*T*-1...))))
+      (ID copreflives,+ALS_[Pref]:29.17)) 
+
+(NODE (15 CP-REL (16 WNP-NOM-1 0)
+                 (17 C +te)
+                 (18 IP-SUB (19 NP-NOM *T*-1)
+                            (20 NP (21 PRO$ his) (22 N willan))
+                            (23 VBPI gefylla+d)))
+      (ID copreflives,+ALS_[Pref]:29.17)) 
+
+</pre>
+</blockquote>
+
+At this point in <a href="#example2">example 2</a> we threw away the
+CP-level. This time, before we throw it away, we're going to store some
+information about it in a coding string. The first column codes for the
+type of CP. The first condition codes adverbial CPs with "for" as the
+subordinating conjunction. The second codes for all other adverbial CPs,
+then so on through the types of CPs. In the second and subsequent
+conditions, the query is actually a bit otiose since in the previous search
+we made sure that all the clauses had C nodes. The condition is actually
+just a way to get the clause type coded. We could have used <b>iDoms *</b>
+or <b>iDoms IP*</b> or anything we're sure will be found in every
+token. Don't use <i>exists</i> here though, as in <b>CP-ADV exists</b>,
+since when embedded CPs are removed their labels remain, and therefore
+there are other CP labels that might be matched. The second column codes
+for whether the C node is overt or empty.
+
+<blockquote>
+<pre>
+
+node: CP*
+
+1: {
+     f: ((CP-ADV* iDoms P)
+         AND (P iDoms F*|f*))
+     a: (CP-ADV* iDoms C)
+     t: (CP-THT* iDoms C)
+     g: (CP-DEG* iDoms C)
+     c: (CP-CMP* iDoms C)
+     q: (CP-QUE* iDoms C)
+     r: (CP-REL* iDoms C)
+     r: (CP-CAR* iDoms C)
+     r: (CP-FRL* iDoms C)
+     k: (CP-CLF* iDoms C)
+     x: (CP-EXL* iDoms C)
+     }
+
+2: { 
+     0: (C iDoms 0)
+     1: (C iDoms !0)
+     }
+
+</pre>
+</blockquote>
+
+The output of this run looks like this:
+
+<blockquote>
+<pre>
+
+/~*
+him geris+d +t+at he h+abbe halige +tenas +te his willan gefylla+d, 
+(copreflives,+ALS_[Pref]:29.17)
+*~/ 
+
+
+(0 NODE (0 CODING t:1)
+        (1 CP-THT-x (2 C +t+at)
+                    (3 IP-SUB (4 NP-NOM (5 PRO^N he))
+                              (6 HVPS h+abbe)
+                              (7 NP-ACC (8 ADJ^A halige) (9 N^A +tenas)
+                                        (10 CP-REL RMV:0_+te_*T*-1...))))
+        (11 ID copreflives,+ALS_[Pref]:29.17))
+
+
+/~*
+him geris+d +t+at he h+abbe halige +tenas +te his willan gefylla+d, 
+(AelfLives,+ALS_[Pref]:29.17) 
+*~/ 
+
+
+(0 NODE (0 CODING r:1)
+        (1 CP-REL (2 WNP-NOM-1 0)
+                  (3 C +te)
+                  (4 IP-SUB (5 NP-NOM *T*-1)
+                            (6 NP (7 PRO$ his) (8 N willan))
+                            (9 VBPI gefylla+d)))
+        (10 ID copreflives,+ALS_[Pref]:29.17))
+
+</pre>
+</blockquote>
+
+Now because the coding string is passed on from search to search we can get
+rid of the CP-level without losing the information we are interested in. We
+use the same query as in <a href="#example2">example
+2</a>. <i>remove_nodes</i> is set to true for the same reasons as well.
+
+
+<blockquote>
+<pre>
+define: OE.def
+remove_nodes: t
+node: IP*
+query: (IP* iDoms finite_verb)
+
+</pre>
+</blockquote>
+
+<blockquote>
+<pre>
+
+Our tokens now look like this. The coding string is retained but the CP is
+gone. 
+
+/~*
+him geris+d +t+at he h+abbe halige +tenas +te his willan gefylla+d,  
+(AelfLives,+ALS_[Pref]:29.17)  
+*~/ 
+
+/*
+4 IP-SUB: 7 HVPS h+abbe
+*/
+
+(NODE (CODING t:1)
+      (4 IP-SUB (5 NP-NOM (6 PRO^N he))
+                (7 HVPS h+abbe)
+                (8 NP-ACC (9 ADJ^A halige) (10 N^A +tenas)
+                          (11 CP-REL RMV:0_+te_*T*-1...)))
+      (ID copreflives,+ALS_[Pref]:29.17))
+
+/~*
+him geris+d +t+at he h+abbe halige +tenas +te his willan gefylla+d,  
+(copreflives,+ALS_[Pref]:29.17)
+*~/ 
+
+/*
+5 IP-SUB: 10 VBPI gefylla+d
+*/
+
+(NODE (CODING r:1)
+      (5 IP-SUB (6 NP-NOM *T*-1)
+                (7 NP (8 PRO$ his) (9 N willan))
+                (10 VBPI gefylla+d))
+      (ID copreflives,+ALS_[Pref]:29.17))
+
+</pre>
+</blockquote>
+
+At this point we can search this file including the information in the
+coding string, or we could add further coding (just make sure you start at
+column 3!), or any combination of these. You can add or replace columns at
+any time, and you can search the coding string in conjunction with
+searching the parse.

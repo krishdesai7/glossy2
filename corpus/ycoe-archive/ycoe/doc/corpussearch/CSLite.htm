@@ -1,0 +1,3340 @@
+<HTML>
+<HEAD>
+<TITLE>CorpusSearch Lite</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<BASEFONT SIZE=4>
+
+<a name="intro">
+<h1>CorpusSearch Lite:</h1>
+<h2>A beginner's guide to searching with CorpusSearch Version 1.1</h2>
+
+Ann Taylor, University of York<br>
+March 2003
+</center>
+
+<br>
+<hr>
+<p>
+
+<b>This manual includes some features which are not included in the
+Version 1.0 (CD-rom) release. These are <a
+href="CSLite.htm#preference_files">preference files</a>,
+a new version of <a href="#remove_nodes"><i>remove_nodes</i></a>, automatic
+searching of <a href="#conjunction">conjunction structures</a> and the <a
+href="CSLite.htm#coding_function">coding function</a>.</b>
+
+<p><hr>
+<br>
+
+<a href="CSLiteToc.htm">Table of Contents</a>
+
+<p><br>
+
+<h1>Introduction</h1></a>
+
+This manual is a "lite" version of the <a href="CSRefToc.htm">
+CorpusSearch Reference Manual</a>. It discusses strategies for searching
+and introduces the most common and useful features. The queries and
+examples in this manual relate to the York-Toronto-Helsinki Parsed Corpus
+of Old English Prose (YCOE) but the principles of searching are the same
+for all corpora. The queries in this manual are primarily intended to
+illustrate aspects of CorpusSearch using realistic examples. Many of the
+queries are simplified for pedagogical purposes, however, and should not
+therefore be used in real investigations.
+
+<p>
+
+CorpusSearch is a program which was written by Beth Randall to search
+corpora in the <a href="http://www.cis.upenn.edu/~treebank/home.html">Penn
+Treebank</a> format. It is not corpus specific, but will work on any corpus
+in the <a
+href="http://www.ling.upenn.edu/~dringe/CorpStuff/Manual/YourCorpus.html">
+correct format</a>. It can be used to search any of the <a
+href="../annotation/parsed-corpora-series.htm">English Parsed Corpora
+series</a>.
+
+<p>
+
+The most important feature of CorpusSearch is that, unlike many search
+engines for corpora, it was designed to search on its own output
+files. This makes it relatively slow (large searches last minutes rather
+than seconds), but greatly increases its utility and simplifies the
+searches. All relevant data, such as the complete text of the token and the
+ID tag which tells you where the example comes from, is passed along from
+search to search.
+
+<p><br><br>
+
+<a name="structure_of_tokens">
+<h2>The structure of tokens</h2></a>
+
+The <a name="token"><b>token</b></a> is the basic unit of a corpus
+file. Each token is enclosed in a <b>wrapper</b>. In
+addition to containing the token, the wrapper may also contain the
+following:
+
+<ul>
+<li>an <b>ID</b> node, which contains the filename, the Dictionary of Old
+English (DOE) source text identifier, the page/line number of the token,
+and a token number unique to the file
+
+<li>a <b>CODE</b> node, which contains the DOE identifier
+
+<li>a <b>CODING</b> node, which contains a coding string provided by the <a
+href="#coding_function">coding function</a>
+</ul>
+
+The wrapper is the outermost pair of parentheses in each token. In a
+corpusfile the wrapper is always unlabelled (the only unlabelled set of
+parentheses in the token). In an outputfile, if the token is a complete
+corpusfile token, the wrapper is either unlabelled, or has the index
+<b>0</b>, depending on whether <a
+href="#print_indices"><i>print_indices</i></a> is set to true or false. If
+the outputfile token has been extracted from a corpusfile token (see <a
+href="#nodes_only"><i>nodes_only</i></a>) it is labelled <b>NODE</b>. Note
+that <b>token</b> is often used to refer to the entire unit made up of the
+wrapper and the token proper.
+
+
+<p>
+A corpusfile token:
+
+<blockquote>
+<pre>
+( (CODE &lt;T03010000800,25&gt;)       <-- DOE identifier; unlabelled wrapper
+  (IP-MAT (NP-NOM (NUM^N An) (N^N woruldcynincg)) <-- token (IP-MAT)
+          (HVPI h+af+d)
+          (NP-ACC (NP (Q fela)
+		      (NP-GEN (N^G +tegna)))
+		  (CONJP (CONJ and)
+			 (NP-ACC (ADJ^A mislice) (N^A wicneras))))
+          (. ;)) 
+   (ID copreflives,+ALS_[Pref]:25.14))  <-- ID node 
+
+</blockquote>
+</pre>
+
+An outputfile token which is a complete corpusfile token:
+
+<blockquote>
+<pre>
+/~*
+Isaac gestrynde Iacob;
+(cowsgosp,Mt_[WSCp]:1.2.5)
+*~/
+
+(0  (0 CODING 850)    <-- CODING node; wrapper indexed 0
+    (1 IP-MAT (2 NP-NOM (3 NR^N Isaac))
+              (4 VBD gestrynde)
+              (5 NP-ACC (6 NR^A Iacob))
+              (7 . ;))
+    (ID cowsgosp,Mt_[WSCp]:1.2.5))
+
+</pre>
+</blockquote>
+
+An outputfile token that has been extracted from a corpusfile token; the
+full token is provided by the ur-text
+<blockquote>
+<pre>
+
+/~*
+& his m+agas hine feden, gif he self mete n+abbe.  <-- ur-text
+(colawaf,LawAf_1:1.2.7)
+*~/
+
+/*
+13 IP-SUB: 20 NEG+HVPS n+abbe
+*/
+
+(NODE (13 IP-SUB (14 NP-NOM (15 PRO^N he)  <-- wrapper labelled NODE
+                            (16 ADJP-NOM (17 ADJ^N self)))
+                 (18 NP (19 N mete))
+                 (20 NEG+HVPS n+abbe))
+      (ID colawaf,LawAf_1:1.2.7))
+
+</pre>
+</blockquote>
+
+<p><br>
+
+<a name="annotation_system">
+<h2>Tree structure</h2></a>
+
+The English Parsed Corpora series uses limited hierarchical bracketing made
+up of labelled parentheses to represent syntactic trees. The following
+examples are from the York-Toronto-Helsinki Parsed Corpus of Old English Prose
+(YCOE).
+
+<BLOCKQUOTE>
+<PRE>
+(NODE (IP-MAT (NP-NOM (PRO^N He))
+	      (VBD lufode)
+	      (ADVP (ADV swa) (ADV +teah))
+	      (NP-ACC (D^A +done) (ADJ^A halgan) (N^A w+ar))
+	      (. ,))
+      (ID coaelive,+ALS_[Sebastian]:11.1216))
+
+
+<img src="tree-ex1.jpg">
+
+
+( (IP-MAT (NP-NOM (PRO^N hi))
+	  (VBDI oncneowon)
+	  (ADVP-TMP (ADV^T +da))
+	  (CP-THT (C +d+at)
+		  (IP-SUB (NP-NOM (PRO^N hi))
+			  (ADJP-NOM-PRD (ADJ^N nacode))
+			  (BEDI w+aron)))
+	  (. ,))
+  (ID cootest,Gen:3.7.132))
+
+
+<img src="tree-ex2.jpg">
+
+</PRE>
+</BLOCKQUOTE>
+
+It is useful to think of the parse in terms of a tree, since this is how
+CorpusSearch thinks of it. Relations on the tree are defined with respect
+to nodes. A <b>node</b> is any label in the tree; in the parse, <a
+name="nodes">nodes</a> are represented as a labelled open parenthesis. In
+the examples above <b>IP-MAT, NP-NOM, PRO^N, ADVP, ADV^T, C, VBDI</b>
+etc. are all nodes. Terms used to define nodes in relation to other nodes
+are the same as those used in family trees (mothers, daughters, sisters,
+descendants).
+
+<p><br><br>
+
+<a name="defining_relations">
+<h2>Defining relations on trees</h2></a>
+
+Tree structures can be defined by a combination of two relations:
+<b>dominance</b> and <b>precedence</b>. <a name="dominates">On the tree, a
+node X <i>dominates</i> a node Y, if Y is a descendant of X; and in the
+parse, a node X <i>dominates</i> a node Y, if Y is contained within the
+parentheses labelled by X. X <a name="immediately_dominates"><i>immediately
+dominates</i></a> Y if no other node intervenes between X and Y.
+
+<PRE>
+
+        X dominates Y:
+
+	(X (Z (W...) 
+	      (W ...)
+	      (Y ...)))
+
+	<img src="XdomsY.gif">
+
+	X immediately dominates Y
+
+	(X (W ...)
+	   (Y ...)
+	   (W ...))
+
+	<img src="XiDomsY.gif">
+
+</PRE>
+
+Precedence in CorpusSearch is defined over sisters; that is, over two or
+more nodes that are immediately dominated by the same node (the
+mother). Therefore, in the tree a node X <i>precedes</i> a node Y, if X and
+Y are sisters (i.e., have the same mother) and X is to the left of Y. In
+the parse, X <i>precedes</i> Y, if X and Y are <a
+href="#immediately_dominates"><i>immediately dominated</i></a> by the same
+node, and X is to the left of Y. (In the parse as it appears on the page, X
+may be physically above Y, or to its left, because of the way the parses
+are lined up, but the relations are the same.) X <i>immediately
+precedes</i> Y if no other node appears between X and Y. All the basic
+search functions in CorpusSearch are based on these two concepts.
+
+<PRE>
+
+        X precedes Y
+
+	(M (X ...)
+	   (W ...)
+	   (Y ...)
+	   (Z ...))
+
+	or
+
+	(M (X ...) (W ...) (Y ...) (Z ...))
+
+	<img src="XprecedesY.gif">
+
+	X immediately precedes Y
+
+	(M (W ...)
+	   (X ...)
+	   (Y ...)
+	   (Z ...)))
+
+	or 
+
+	(M (W ...) (X ...) (Y ...) (Z ...)))
+
+	<img src="XiPrecedesY.gif">
+
+</PRE>
+
+<p><br>
+<hr>
+<br>
+
+<a name="running_cs">
+<h1>Running CorpusSearch</h1></a>
+
+In order to run a simple CorpusSearch query you need two things: a <a
+href="#the_query"><b>query</b></a> file (also called a command file) and a
+<b>source</b> (or input) file. The files used by CorpusSearch have
+dedicated extensions. Query files must end in <b>.q</b>. Input files are
+not restricted in their extension, but all corpus files end in
+<b>.psd</b>. In the default case CorpusSearch will name the output file
+with the same base as the query, but with the extension <b>.out</b>.
+
+
+<BLOCKQUOTE>
+<PRE>
+File Type        Extension
+
+query file         .q
+corpus file	   .psd
+output file	   .out
+
+</PRE>
+</BLOCKQUOTE>
+
+
+<BLOCKQUOTE>
+<PRE>
+Query File       Output File
+
+nouns.q          nouns.out
+
+</PRE>
+</BLOCKQUOTE>
+
+Exactly how you run CorpusSearch depends on your platform (Windows, Mac,
+unix, etc.). Instructions for the different platforms can be found on the
+<a href="http://www.ling.upenn.edu/mideng/">CorpusSearch CDRom </a>. See <a
+href="CorpusSearch_for_windows.htm">CorpusSearch for Windows</a> for a set
+of simple step-by-step instructions for working with CorpusSearch under
+Windows.
+
+
+<p><br>
+<hr>
+<br>
+
+<a name="output">
+<h1>CorpusSearch output</h1></a>
+
+CorpusSearch provides a lot of information in its output in addition to the
+actual <b>hits</b> (tokens that match the query). The output is divided
+into three parts: <a href="#output_preface">preface</a>, <a href="#output_body">body</a>, and <a href="#output_summary">summary</a>. 
+
+<p><br><br>
+
+<a name="output_preface">
+<h2>The preface</h2></a>
+
+The preface contains at least the following information:
+<ul>
+<li>the date and time
+<li>the name of the command file (i.e., the query/coding file)
+<li>the name of the output file
+<li>the specified node
+<li>the query
+</ul>
+
+It is also possible to add comments to the preface using the <a
+href="CSRef.htm#remark">remarks command</a> in the query file. Note that
+trickily, only <i>begin_remark</i> is followed by a colon, while
+<i>end_remark</i> is not. If you include a colon after <i>end_remark</i>
+CorpusSearch will abort in a rather unhelpful way.
+
+
+<blockquote>
+<PRE>
+begin_remark:
+        this query looks for any negative constituent
+end_remark
+ 
+</PRE>
+</blockquote>
+
+<blockquote>
+<PRE>
+/*
+PREFACE:  regular output file.
+CorpusSearch copyright Beth Randall 2000.
+Date:  Tue Jul 16 11:28:11 GMT+01:00 2002
+
+command file:     neg.q
+output file:      neg.out
+
+remark:     this query looks for any negative constituent
+
+node:   IP*
+query:  (NEG* exists)
+*/
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="output_body">
+<h2>The body</h2></a>
+
+The body of the output files contains the hits. Each input file has its own
+section with a HEADER and FOOTER. The header lists the source file, while
+the footer lists the source file, number of hits, and number of tokens
+searched. In between the header and footer are the hits.
+
+<blockquote>
+<PRE>
+/*
+HEADER:
+source file:  coaelive.o3.psd
+*/
+
+...
+
+/*
+FOOTER
+source file:  coaelive.o3.psd
+hits found:  1236
+tokens containing the hits:  1074
+total tokens searched:  8006
+*/
+</PRE>
+</blockquote>
+
+Each token matched by the query is printed in the following format. The
+first block is the text of the original corpus file token. This is referred
+to as the <b>ur-text</b>. It is provided so that the context of the NODE is
+always available even though parts of it may not be printed in parsed form.
+
+<p>
+
+The second block is called the <a name="vector"><b>vector</b></a>. This
+tells you what CorpusSearch has matched to each of the search terms in your
+query. The query which produced the token below is
+
+<blockquote>
+<PRE>
+node: IP*
+query: (NEG* exists)
+</PRE>
+</blockquote>
+
+The first item in the vector, <b>99 IP-SUB:</b>, is the NODE. It is followed
+by a colon and then the search terms that have been matched. In this case
+the search term <b>NEG*</b> is matched by <b>108 NEG+HVDI n+afdon</b>. The
+numbers in the vector match the <b>indices</b> on the open parens in the
+token. This makes it easy to find the match, or in case of problems to
+figure out why you aren't getting the output you expect. It is possible to
+turn off the indices in the parsed output by setting <a
+href="#print_indices"><i>print_indices</i></a> to false.
+
+<p>
+
+The final block contains the parsed token. Only the part of the token that
+matches the NODE is printed. This makes it easier to read and saves
+space. The indices on the open parens start at 99 in this case because the
+<b>IP-SUB</b> is the 99th node in the original corpus file token. If you
+want to print the whole token as it appears in the corpus file, you can set
+<a href="#nodes_only"><i>nodes_only</i></a> to false.
+
+
+<blockquote>
+<PRE>
+/~*
+and ic secge +te leof, +t+at ic h+abbe nu gegaderod on +tyssere bec +t+ara
+halgena +trowunga +te me to onhagode on englisc to awendene, for +tan +te +du
+leof swi+dost and +A+delm+ar swylcera gewrita me b+adon, and of handum
+gel+ahton eowerne geleafan to getrymmenne, mid +t+are gerecednysse, +te ge on
+eowrum gereorde n+afdon +ar.
+(copreflives,+ALS_[Pref]:1.3)
+*~/
+
+/*
+99 IP-SUB: 108 NEG+HVDI n+afdon
+*/
+
+(NODE (99 IP-SUB (100 NP *T*-3)
+                 (101 NP-NOM (102 PRO^N ge))
+                 (103 PP (104 P on)
+                         (105 NP-DAT (106 PRO$^D eowrum) (107 N^D gereorde)))
+                 (108 NEG+HVDI n+afdon)
+                 (109 ADVP-TMP (110 ADV^T +ar)))
+      (ID copreflives,+ALS_[Pref]:1.3))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="output_summary">
+<h2>The summary</h2></a>
+
+The final section of the output file contains the summary. The summary
+lists the names of the command (query/coding) file, the source (input)
+file(s), and the output file. It then provides a set of summary statistics
+listed by source text.
+
+<p>
+The summary statistics give the name of the source file(s) along with the
+number of hits, the number of tokens the hits were found in, and the number
+of tokens in the file. The first number is generally the most useful since
+it tells you how many matches were found. The second number is fairly
+useless. It will always be the same as the first number (if there is only
+one hit per token) or less if in some cases more than one hit was found in
+a single token. The last number is generally not very useful when the
+search was conducted on corpus files since it just tells you how many
+tokens are in the file. In a search done on a carefully constructed output
+file that contains only environments in which a match could have been found
+however, it may indicate something like the application rate of a rule, or
+the frequencies of two (exhaustive) options. Following the statistics for
+each input file are the totals.
+
+<blockquote>
+<PRE>
+/*
+SUMMARY:  regular output file.
+
+command file:     neg.q
+output file:      neg.out
+
+source files, hits/tokens/total
+  colaw1cn.o3.psd       27/21/146
+  colaw2cn.o3.psd       69/57/304
+  colaw5atr.o3.psd      14/13/79
+  colaw6atr.o3.psd      30/22/111
+  colawaf.o2.psd        38/35/210
+  colawafint.o2.psd     74/61/145
+  colawger.o34.psd      10/9/35
+  colawine.ox2.psd      53/42/194
+  colawnorthu.o3.psd    14/9/98
+  colawwllad.o4.psd     4/3/14
+grand total hits :  333
+grand total tokens containing hits:  272
+grand total tokens searched:  1336
+*/
+
+</PRE>
+</blockquote>
+
+When a search is run on the output file of a previous search (rather than
+one or more corpus files), that file is listed as the input file along with
+the command and output files. The summary statistics, however, continue to
+list the statistics by source text. The following summary statistics result
+from running the following query <b>neg-only.q</b> on the output file
+<b>neg.out</b>, the result of a previous search. Although there is only one
+input file, the statistics for each source text included in that file are
+calculated and printed.
+
+<blockquote>
+<PRE>
+node: IP*
+query: (IP* iDoms NEG)
+</PRE>
+</blockquote>
+
+<blockquote>
+<PRE>
+/*
+SUMMARY:  regular output file.
+
+command file:     neg-only.q
+input file:       neg.out
+output file:      neg-only.out
+
+source files, hits/tokens/total
+  colaw1cn              12/11/27
+  colaw2cn              55/51/69
+  colaw5atr             10/10/14
+  colaw6atr             23/21/30
+  colawaf               24/23/38
+  colawafint            66/61/74
+  colawger              9/9/10
+  colawine              26/24/53
+  colawnorthu           10/9/14
+  colawwllad            2/2/4
+grand total hits :  237
+grand total tokens containing hits:  221
+grand total tokens searched:  333
+*/
+
+</PRE>
+</blockquote>
+
+<p><br>
+<hr>
+<br>
+
+<a name="structure_of_a_query">
+<h1>The structure of a query</h1></a>
+
+A query file minimally contains two things: a specification of the node,
+and the query itself. It may also contain a number of <a
+href="#some_useful_commands">commands</a> that control various aspects of
+the search. Technically the node and query are commands as well, but they
+are usually just referred to as the node and the query.
+
+<p><br><br>
+
+<a name="node">
+<h2>The node</h2></a>
+
+Every query requires a specification of a node, introduced by the
+<b>node</b> command, in order to run. The node gives CorpusSearch a domain
+to search within.  Setting the node properly is key to using CorpusSearch
+effectively. It is therefore discussed in detail in the section <a
+href="#setting_the_node">Setting the node</a>. Until that point we will
+always set the node as <b>IP*</b>, which is a good general default.
+
+<blockquote>
+<pre>
+node: IP*
+
+</pre>
+</blockquote>
+
+
+<p><br>
+
+<a name="the_query">
+<h2>The query</h2></a>
+
+The query tells CorpusSearch the structure to search for and is introduced
+by the command <b>query:</b>. The simplest query consists of a
+single <b>search function call</b>. Each call is enclosed in parentheses.
+
+<blockquote>
+<pre>
+node: IP*
+query: (IP* iDominates NEG)
+
+</pre>
+</blockquote>
+
+In this query we can identify the following parts: <b>IP*</b> and
+<b>NEG</b> are search terms while <a href="#iDoms"><i>iDominates</i></a>
+(usually shortened to <i>iDoms</i>) is a search function. 
+
+<p>
+
+Search terms are always node labels. The asterisk following the <b>IP</b>
+indicates any label starting with <b>IP</b>, including <b>IP</b> itself;
+that is, <b>*</b> can match any number of things or nothing. The asterisk can be used
+anywhere within a search term. <b>*VB</b> for instance will match labels
+like <b>RP+VB</b> and <b>NEG+VB</b> and <b>NP*ADT</b> will match for
+example <b>NP-ACC-ADT, NP-DAT-ADT, NP-DAT-RFL-ADT, NP-ADT</b>, etc.
+
+<p>
+
+Most search functions in CorpusSearch are binary (take two arguments), but a
+few (such as <a href="#exists"><i>exists</i></a>) take only one argument:
+
+<blockquote>
+<pre>
+node: IP*
+query: (NEG exists)
+
+</pre>
+</blockquote>
+
+<p><br>
+
+<a name="logical_operators">
+<h2>Logical operators</h2></a>
+
+Search terms (which are node labels) may also contain the logical operators
+<a href="#not"></a><b>NOT</b></a> represented by an exclamation point
+(<b>!</b>), and <b>OR</b> represented by a vertical bar (<b>|</b>). Note
+that these operators only work on search terms and not on
+search functions. The third logical operator <a
+href="#multi-call_queries_and_AND">AND</a> is used
+to join more than one search function call. It is discussed in the section
+on writing <a href="#multi-call_queries">multi-call queries</a>.
+
+<p><br><br>
+
+<a name="not">
+<h2>NOT (!)</h2></a>
+
+CorpusSearch interprets <b>NOT</b>, as for example in <b>!NEG</b>, as
+meaning <u>something which is not NEG</u>. It does not interpret it as
+meaning <u>nothing at all</u>. This is fairly straightforward when the
+search function is a form of <a href="#iDoms"><i>immediately
+dominates</i></a> since nodes (apart from the terminals, i.e., the words of
+the text) always dominate something. It is important to understand,
+however, if there is more than one node that could satisfy the condition,
+each one has to satisfy it. So, the search-function call <b>(IP* iDoms
+!NEG)</b> is interpreted as "IP* immediately dominates one or more nodes,
+and none of those nodes is NEG", rather than "IP* immediately dominates at
+least one node that is not NEG".
+<p>
+With <a href="#precedes"><i>precedes</i></a>, however, unlike with
+<i>iDominates</i>, a node may not be preceded by anything at all, as for
+instance if the node is sentence initial. The query:
+
+<blockquote>
+<pre>
+query: (!NEG iPrecedes VB*)
+
+</pre>
+</blockquote>
+
+will only find tokens in which something which is not <b>NEG</b> precedes
+the verb. It will not find verb-initial tokens like the following.
+
+<blockquote>
+<pre>
+( (IP-MAT-SPE (VBN gebletsod)
+              (BEPI is)
+              (NP-NOM (PRO^N he)
+                      (NP-NOM-PRN (NR^N God)))
+              (. .)) (ID copreflives,+ALS_[Pref]:19.12))
+
+</pre>
+</blockquote>
+
+The same is true in final position. A query like 
+
+<blockquote>
+<pre>
+node: NP*
+query: (ADJ^N iPrecedes !N^N)
+
+</pre>
+</blockquote>
+
+will not find adjective-final NPs like <b>+Ta iudeiscan</b> in the token
+below because no sister node follows the adjective in these cases.
+
+<pre>
+<blockquote>
+( (CODE &lt;T03020000600,11&gt;)
+  (IP-MAT (NP-NOM (D^N +Ta) (ADJ^N iudeiscan))
+          (VBDI axodon)
+          (NP-ACC (NR^A Crist))
+          (CP-QUE (WNP-NOM-1 (WPRO^N hw+at))
+                  (C 0) 
+                  (IP-SUB (NP-NOM-PRD *T*-1)
+                          (NP-NOM (PRO^N he))
+                          (BEDS w+are)))
+          (. .)) (ID coaelive,+ALS_[Christmas]:11.8))
+
+</pre>
+</blockquote>
+
+To find initial and final nodes in a constituent, use <a
+href="#iDomsNumber"><i>iDomsNumber</i></a> and <a
+href="#iDomsLast"><i>iDomsLast</i></a>
+
+<p><br><br>
+
+<a name="or">
+<h2>OR (|)</h2></a>
+
+Like <a href="#not">NOT</a>, <b>OR</b> works only on search terms not on
+search functions. It allows a list of alternates to be used as a
+single search term. For instance, in order to search for every possible type
+of finite verb the appropriate search term for the YCOE is:
+
+<blockquote>
+<pre>
+*MDP*|*MDD*|*HVP*|*HVD*|*BEP*|*BED*|*VBP*|*VBD*|*AXD*|*AXP*
+
+</pre>
+</blockquote>
+
+This might be used in a query to find all IPs with finite verbs,
+such as the following:
+
+<blockquote>
+<pre>
+node: IP*
+query: (IP* iDoms *MDP*|*MDD*|*HVP*|*HVD*|*BEP*|*BED*|*VBP*|*VBD*|*AXD*|*AXP*)
+
+</pre>
+</blockquote>
+
+To avoid having to type such monstrosities too often, it pays to use a <a
+href="#definition_files">definition file</a>.
+
+<p>
+When using <b>OR</b>, the alternatives must be listed in the same order for
+<a href="#same-instance"><i>same instance</i></a> to apply; that is, <b>
+NP-NOM|NP-ACC</b> is not the same as <b>NP-ACC|NP-NOM</b>.
+
+<p><br>
+<hr>
+<br>
+
+<a name="basic_search_functions">
+<h1>Basic Search functions</h1></a>
+
+The following section discusses the basic search functions. It assumes an
+understanding of the relations <a href="#defining_relations">dominance and
+precedence</a> and of the CorpusSearch <a href="#output">output format</a>.
+
+<p><br><br>
+
+<a name="exists">
+<h2>Exists</h2></a>
+
+The simplest CorpusSearch command specifies only that a node exists. This
+command may be useful in initial exploratory searches, as for instance, if
+you want to find all the relative clauses in the corpus, or all tokens
+containing any kind of negative, but for more detailed searches it is not
+necessary since using a node as a search term forces it to exist. 
+
+<p>
+
+A query such as this:
+
+<blockquote>
+<PRE>
+node: IP*
+query: (NEG* exists)
+</PRE>
+</blockquote>
+
+will print out as separate tokens every IP in the corpus that contains the
+node <b>NEG</b> or any node that starts with <b>NEG</b>, since the asterisk
+indicates "anything", such as, <b>NEG+CONJ, NEG+ADV, NEG+VBPI</b>, etc., as
+for example:
+
+<blockquote>
+<PRE>
+/~*
+Se f+ader is angin of nanum o+drum,
+(coaelive,+ALS_[Christmas]:35.24))
+
+*~/
+
+/*
+2 IP-MAT: 12 NEG+Q^D nanum
+*/
+
+(NODE (2 IP-MAT (3 NP-NOM (4 D^N Se) (5 N^N f+ader))
+                (6 BEPI is)
+                (7 NP-NOM-PRD (8 N^N angin))
+                (9 PP (10 P of)
+                      (11 NP-DAT (12 NEG+Q^D nanum) (13 ADJ^D o+drum)))
+                (14 . ,))
+      (ID coaelive,+ALS_[Christmas]:35.24))
+
+</PRE>
+</blockquote>
+
+
+Be careful not to use commands such as <b>(IP* exists)</b> on the entire
+corpus because the resultant output will contain virtually every token in
+the entire corpus and will therefore be extremely large, almost certainly
+too large for your software to handle.
+
+<p><BR><br>
+
+<a name="precedes">
+<h2>Precedes</h2></a>
+
+A node X <i>precedes</i> a node Y, if X and Y are sisters and X is to the
+left of Y. Simple <i>precedes</i> doesn't specify the distance between the
+two search terms; as long as X and Y are sisters, and X is to the left of
+Y, no matter how far, X precedes Y. A query such as the following will find
+all IPs where an object <i>precedes</i> the subject; the object may
+in fact <i>immediately precede</i> the subject as in the first example, or
+there may be intervening material as in the second.
+
+<blockquote>
+<PRE>
+node:   IP*
+query:  (NP|NP-ACC|NP-GEN|NP-DAT precedes NP-NOM)
+</PRE>
+</blockquote>
+
+<blockquote>
+<PRE>
+/~*
+an is hwilwendlic, +te h+af+d +ag+der ge ordfrumman ge ende; +t+at synd nytenu
+and ealle sawullease +ting +te ongunnan +ta +ta hi God gesceop, and +aft
+ge+andia+d and to nahte gewur+da+t.
+(coaelive,+ALS_[Christmas]:27.21)
+*~/
+
+/*
+50 IP-SUB: 51 NP-ACC, 53 NP-NOM
+*/
+
+(NODE (50 IP-SUB (51 NP-ACC (52 PRO^A hi))
+                 (53 NP-NOM (54 NR^N God))
+                 (55 VBDI gesceop))
+      (ID coaelive,+ALS_[Christmas]:27.21))
+
+
+/~*
++Das fif andgitu gewisse+d seo sawul to hire wyllan,
+(coaelive,+ALS_[Christmas]:202.161)
+*~/
+
+/*
+2 IP-MAT: 3 NP-ACC, 8 NP-NOM
+*/
+
+(NODE (2 IP-MAT (3 NP-ACC (4 D^A +Das) (5 NUM fif) (6 N^A andgitu))
+                (7 VBPI gewisse+d)
+                (8 NP-NOM (9 D^N seo) (10 N^N sawul))
+                (11 PP (12 P to)
+                       (13 NP (14 PRO$ hire) (15 N wyllan)))
+                (16 . ,))
+      (ID coaelive,+ALS_[Christmas]:202.161))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="iDoms">
+<h2>Immediately Dominates (iDoms)</h2></a>
+
+In a tree a node X dominates a node Y, if X contains Y. <i>Immediately
+dominates</i> (iDoms) also specifies that the two nodes are exactly one
+generation apart. So, X <i>iDominates</i> Y, if Y is a daughter of X, that
+is, there are no other nodes between X and Y. Likewise for <i>immediately
+precedes</i> (iPrecedes). X <i>iPrecedes</i> Y, if X and Y are sisters, X
+is to the left of Y, and no other sisters intervene between X and Y.
+<p>
+For users of CorpusSearch Version 1.0, note that the search-function
+<i>dominates</i> has been discontinued. Use <a href="#exists"><i>exists</i></a>
+instead. The following two queries are equivalent.
+
+<blockquote>
+<pre>
+node: IP*                   <-- old-style query using <i>dominates</i>
+query: (IP* dominates NEG*)
+
+node: IP*                   <-- same query using <i>exists</i> instead
+query: (NEG* exists)
+
+</pre>
+</blockquote>
+
+The following query looks for IPs containing accusative pronouns. In
+the token we can see that CorpusSearch found two structures matching the
+query: <b>44 IP-SUB-CON</b> and <b>57 IP-SUB</b>. Note that the second
+matching structure (<b>57 IP-SUB</b>), as well as being contained within
+the first, is written as a separate token below the first. CorpusSearch
+always prints every matching node as a separate token.
+
+<blockquote>
+<PRE>
+node: IP*
+query: (NP-ACC iDoms PRO^A)
+
+/~*
+We awrita+d fela wundra on +tissere bec, for+tan +te God is wundorlic on his
+halgum swa swa we +ar s+adon, and his halgena wundra wur+dia+d hine, for+tan
++te he worhte +ta wundra +turh hi.
+(copreflives,+ALS_[Pref]:22.13)
+
+*~/
+
+/*
+44 IP-SUB-CON: 51 NP-ACC, 52 PRO^A hine
+57 IP-SUB: 66 NP-ACC, 67 PRO^A hi
+*/
+
+(NODE (44 IP-SUB-CON (45 NP-NOM (46 NP-GEN (47 PRO$ his) (48 N^G halgena))
+                                (49 N^N wundra))
+                     (50 VBPI wur+dia+d)
+                     (51 NP-ACC (52 PRO^A hine))
+                     (53 , ,)
+                     (54 CP-ADV (55 P for+tan)
+                                (56 C +te)
+                                (57 IP-SUB (58 NP-NOM (59 PRO^N he))
+                                           (60 VBD worhte)
+                                           (61 NP-ACC (62 D^A +ta) (63 N^A wundra))
+                                           (64 PP (65 P +turh)
+                                                  (66 NP-ACC (67 PRO^A hi))))))
+      (ID copreflives,+ALS_[Pref]:22.13))
+
+(NODE (57 IP-SUB (58 NP-NOM (59 PRO^N he))
+                 (60 VBD worhte)
+                 (61 NP-ACC (62 D^A +ta) (63 N^A wundra))
+                 (64 PP (65 P +turh)
+                        (66 NP-ACC (67 PRO^A hi))))
+      (ID copreflives,+ALS_[Pref]:22.13))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="iPrecedes">
+<h2>Immediately precedes (iPrecedes)</h2></a>
+
+<i>Immediately precedes</i> is the same as <a
+href="#precedes"><i>precedes</i></a> but requires the two constituents to
+be adjacent. If we use the same query with <i>iPrecedes</i></a> that we
+used with <i>precedes</i>, we will get a subset of the examples, namely all
+those in which the two constituents adjacent.
+
+<blockquote>
+<PRE>
+node:   IP*
+query:  (NP|NP-ACC|NP-GEN|NP-DAT iPrecedes NP-NOM)
+</PRE>
+</blockquote>
+
+<blockquote>
+<PRE>
+/~*
+an is hwilwendlic, +te h+af+d +ag+der ge ordfrumman ge ende; +t+at synd nytenu
+and ealle sawullease +ting +te ongunnan +ta +ta hi God gesceop, and +aft
+ge+andia+d and to nahte gewur+da+t.
+(coaelive,+ALS_[Christmas]:27.21)
+*~/
+
+/*
+50 IP-SUB: 51 NP-ACC, 53 NP-NOM
+*/
+
+(NODE (50 IP-SUB (51 NP-ACC (52 PRO^A hi))
+                 (53 NP-NOM (54 NR^N God))
+                 (55 VBDI gesceop))
+       (ID coaelive,+ALS_[Christmas]:27.21))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="iDomsOnly">
+<h2>Immediately Dominates Only (iDomsOnly)</h2></a>
+
+Another useful variant of <i>dominates</i> is <i>immediately dominates
+only</i> (iDomsOnly). X <i>iDomsOnly</i> Y if X <i>immediately
+dominates</i> Y but no other nodes; that is, Y is the only daughter of
+X. This is useful for finding, for instance, pronominal NPs or all NPs
+consisting of only a determiner, etc. The following query will find all
+IPs with pronominal subjects.
+
+<blockquote>
+<PRE>
+node: IP*
+query: (NP-NOM iDomsOnly PRO^N)
+
+/~*
++Da andwyrde he him +tus,
+(coaelive,+ALS_[Christmas]:11.9)
+*~/
+
+/*
+2 IP-MAT: 6 NP-NOM, 7 PRO^N he
+*/
+
+(NODE (2 IP-MAT (3 ADVP-TMP (4 ADV^T +Da))
+                (5 VBD andwyrde)
+                (6 NP-NOM (7 PRO^N he))
+                (8 NP-DAT (9 PRO^D him))
+                (10 ADVP (11 ADV +tus))
+                (12 . ,))
+      (ID coaelive,+ALS_[Christmas]:11.9))
+
+</PRE>
+</blockquote>
+
+Using just <i>immediately dominates</i> in this query instead of
+<i>iDomsOnly</i> produces more examples, most of them of the following or
+similar type, which are probably not relevant.
+
+<blockquote>
+<PRE>
+(0 (1 IP-MAT-SPE (2 CONJ and)
+                 (3 NP-NOM (4 PRO^N he)
+                           (5 ADJP-NOM (6 ADJ^N sylf)))
+                 (7 VBPI geedniwa+d)
+                 (8 NP-ACC (9 D^A +tisne) (10 ADJ^A ealdan) (11 N^A middaneard))
+                 (12 . ;))
+      (ID coaelive,+ALS_[Denis]:32.5814))
+
+</PRE>
+</blockquote>
+
+<p><br>
+<hr>
+<br>
+
+<a name="some_useful_commands">
+<h1>Basic commands</h1></a>
+
+CorpusSearch includes many commands to control aspects of the output. They
+are included in the query file <u>before</u> the query. The query must be
+always be the last command in the file. Most of the commands have a default
+setting (see the <a href="CSRefToc.htm"> CorpusSearch Reference
+Manual</a>). If you do not specify a value (usually true or false) for a
+command in the query file, the default is used. Most of the commands have
+the form:
+
+<blockquote>
+<PRE>
+nodes_only: t
+
+</PRE>
+</blockquote>
+
+The command is always followed by a colon and <u>a space</u> (the space is
+crucial). Most commands are set as <b>t</b> or <b>f</b>. The two common
+commands whose value is something other than true or false are <a
+href="#node"><b>node:</b></a> and <a href="#the_query">
+<b>query:</b></a>.
+
+<p>
+
+The following are the most useful basic commands. More <a
+href="#advanced_commands">advanced commands</a> are discussed below. For a
+full list of the available commands, see <a
+href="CSRefToc.htm">the
+CorpusSearch Reference Manual</a>.
+
+<p><br><br>
+
+<a name="setting_the_node">
+<h2>Setting the NODE</h2></a>
+
+The first step in constructing a query is to set the NODE. This is the node
+that CorpusSearch takes as the boundary node for the search. It will search
+and print everything below this node in the tree. It is written in caps in
+this manual to distinguish it from other nodes, but the actual command to
+set the NODE is lower case.
+To set the node simply add
+this command to your query, where the node following <b>node:</b> is your
+chosen NODE:
+
+<blockquote>
+<pre>
+node: IP*
+
+</pre>
+</blockquote>
+
+<p>
+
+For most searches you should set the NODE to the
+minimal constituent that you are interested in; <b>IP*</b> if you are
+investigating sentential syntax, <b>CP*</b> if you are interested in the
+<b>CP</b> level, <b>NP*</b> if you are studying the internal syntax of
+<b>NP</b>s and so on.
+<p>
+
+Consider again our query to search for negative elements.
+
+<blockquote>
+<pre>
+query: (NEG* exists)
+
+</pre>
+</blockquote>
+
+If we set the NODE to <b>CP*</b>, we only get results contained within
+CPs. This will miss a lot of negatives since most negatives are contained
+within IPs that are not contained within CPs. This is therefore an
+inappropriate NODE setting for this query.
+
+<blockquote>
+<pre>
+node: CP*
+query: (NEG* exists)
+
+/~*
+Ne secge we nan +tincg niwes on +tissere gesetnysse, for+tan +de hit stod
+gefyrn awriten on ledenbocum +teah +te +ta l+awedan men +t+at nyston.
+(copreflives,+ALS_[Pref]:12.6)
+*~/
+
+/*
+33 CP-ADV: 43 NEG+VBDI nyston
+*/
+
+(NODE (33 CP-ADV (34 P +teah)
+                 (35 C +te)
+                 (36 IP-SUB (37 NP-NOM (38 D^N +ta) (39 ADJ^N l+awedan) (40 N^N men))
+                            (41 NP-ACC (42 D^A +t+at))
+                            (43 NEG+VBDI nyston)))
+      (ID copreflives,+ALS_[Pref]:12.6))
+
+</pre>
+</blockquote>
+
+The same query with the NODE set to <b>IP*</b> will find all the negatives
+within IPs.
+
+<blockquote>
+<pre>
+node: IP-*
+query: (NEG* exists)
+
+(NODE (36 IP-SUB (37 NP-NOM (38 D^N +ta) (39 ADJ^N l+awedan) (40 N^N men))
+                 (41 NP-ACC (42 D^A +t+at))
+                 (43 NEG+VBDI nyston))
+      (ID copreflives,+ALS_[Pref]:12.6))
+
+</pre>
+</blockquote>
+
+It finds all the negatives found in the previous search, plus many
+more. But it prints them differently, with some type of IP as the
+highest node. The query with <b>CP*</b> as the NODE found 575 hits. When
+<b>IP*</b> is the NODE it finds 1215.
+
+<p>
+
+If we set <b>NP*</b> as the NODE with the same query, we get a subset of
+the data from the previous search, namely only negatives contained within
+NPs. The token above found by the previous two searches will not be
+found by this search since the negative <b>43 NEG+VBDI</b> is not dominated by
+an NP. Here the negative is <b>8 NEG+Q^A</b>
+
+<blockquote>
+<pre>
+node: NP-*
+query: (NEG* exists)
+
+/~*
+Ne secge we nan +tincg niwes on +tissere gesetnysse, for+tan +de hit stod
+gefyrn awriten on ledenbocum +teah +te +ta l+awedan men +t+at nyston.
+(copreflives,+ALS_[Pref]:12.6)
+*~/
+
+/*
+7 NP-ACC: 8 NEG+Q^A nan
+*/
+
+(NODE (7 NP-ACC (8 NEG+Q^A nan) (9 N^A +tincg)
+                (10 ADJP-GEN (11 ADJ^G niwes)))
+      (ID copreflives,+ALS_[Pref]:12.6))
+
+</pre>
+</blockquote>
+
+Using <b>NP-*</b> as the NODE would be appropriate with this query if you
+were only interested in nominal negatives.  But note that you may get some
+sentential negatives, if, for instance, they are contained within a
+relative clause, because the relative clause is dominated by an NP. In the
+token below the NODE is <b>8 NP-ACC</b> which dominates a relative clause
+within which is the negative <b>20 NEG</b>. To avoid this kind of outcome
+you need to use <a href="#remove_nodes"><i>remove_nodes</i></a> to prepare
+the file for searching before undertaking this search. See an illustration
+<a href="CSLiteEx.htm#example1">here</a>.
+
+<blockquote>
+<pre>
+/~*
+hwilon heo wyle wytan +ta +ding +te heo +ar ne cu+de.
+(coaelive,+ALS_[Christmas]:222.178)
+*~/
+
+/*
+8 NP-ACC: 20 NEG ne
+*/
+
+(NODE (8 NP-ACC (9 D^A +ta) (10 N^A +ding)
+                (11 CP-REL (12 WNP-1 0)
+                           (13 C +te)
+                           (14 IP-SUB (15 NP *T*-1)
+                                      (16 NP-NOM (17 PRO^N heo))
+                                      (18 ADVP-TMP (19 ADV^T +ar))
+                                      (20 NEG ne)
+                                      (21 MDD cu+de))))
+      (ID coaelive,+ALS_[Christmas]:222.178))
+
+</pre>
+</blockquote>
+
+Continuing with our NODE experiment, we can now try specifying <b>NEG*</b>
+as the NODE. This gives us minimal output; only the <b>NEG</b> node itself
+is printed. If your interest is (for some reason) in knowing how many
+negatives occur in some text or in the corpus as a whole, this is the query
+for you, because it does not depend on the negative being contained in any
+particular node. The total for this query is 1715, far more than for any of
+the previous searches. To find out why this is so, read the section on <a
+href="#how_cs_counts">How CorpusSearch counts</a>.
+
+<blockquote>
+<pre>
+node: NEG*
+query: (NEG* exists)
+
+/~*
+Ne secge we nan +tincg niwes on +tissere gesetnysse, for+tan +de hit stod
+gefyrn awriten on ledenbocum +teah +te +ta l+awedan men +t+at nyston.
+(copreflives,+ALS_[Pref]:12.6)
+*~/
+
+/*
+3 NEG Ne
+8 NEG+Q^A nan
+43 NEG+VBDI nyston
+*/
+
+(NODE (3 NEG Ne) 
+      (ID copreflives,+ALS_[Pref]:12.6))
+
+(NODE (8 NEG+Q^A nan) 
+      (ID copreflives,+ALS_[Pref]:12.6))
+
+(NODE (43 NEG+VBDI nyston) 
+      (ID copreflives,+ALS_[Pref]:12.6))
+
+</pre>
+</blockquote>
+
+
+Since CorpusSearch only searches below the specified NODE, if you don't set
+the NODE appropriately, you may get erroneous results; for instance, if you
+set the NODE to <b>IP-*</b> and try to access the CP level, you will
+only get results from CPs embedded under the NODE and will not
+access any CP-level material above the NODE. The following query looks for
+CPs with wh-words. With the NODE set as <b>IP*</b> only embedded
+results will be reported, relative clauses, indirect questions,
+etc. Because direct questions are CPs at the highest level, they
+will not be found in a search with an IP node. This query with the
+NODE set to <b>IP*</b> finds 2010 hits, with <b>CP*</b> as the NODE it
+finds 2221.
+
+<blockquote>
+<pre>
+query: (CP* iDoms W*)
+
+</pre>
+</blockquote>
+
+The NODE is also critical in determining how CorpusSearch <a
+href="#how_cs_counts">counts the hits</a> for reporting in the <a
+href="#output_summary">summary statistics</a> so it is important to use the
+appropriate NODE in order for the statistics to be meaningful. This is
+especially true when using <a href="#multi-call_queries">multi-call
+queries</a>. More details about how to set the NODE properly in this
+situation are contained in the section <a
+href="#controlling_the_node_in_multi-call_queries">Controlling the NODE in
+multi-call queries</a>.
+
+<p>
+
+In default mode CorpusSearch only prints the NODE, omitting all material
+outside it. To print the whole token as it appears in the corpusfile, set
+<a href="#nodes_only"><i>nodes_only</i></a> to false. Note that
+CorpusSearch still uses the NODE as the search domain in this case, it just
+prints the whole token.
+
+<blockquote>
+<pre>
+nodes_only: f
+node: IP-*
+
+</pre>
+</blockquote>
+
+You can use a list as the NODE setting, as for example:
+
+<blockquote>
+<pre>
+node: IP-MAT*|IP-SUB*
+
+node: CP-REL*|CP-FRL*|CP-QUE*
+
+</pre>
+</blockquote>
+
+When searching output files always include <b>NODE</b> as one of the terms in
+in the list.
+
+<blockquote>
+<pre>
+node: IP*|NODE
+
+</pre>
+</blockquote>
+
+If you commonly use a particular NODE setting, set the NODE in a <a
+href="#preference_files">preference file</a>.
+
+<p><br><br>
+
+<a name="remove_nodes">
+<h2>remove_nodes</h2></a>
+
+The default setting for <i>remove_nodes</i> is false. When set to true, all
+embedded nodes that match the NODE are removed along with all their
+contents and replaced by the notation <b>RMV:</b> followed by the first
+three words (or traces) dominated by the NODE. "Match" is defined as
+starting with the same two letters. So if the NODE is set to
+<b>IP-MAT*</b>, all nodes starting with <b>IP</b> including <b>IP-SUB,
+IP-INF, IP-SMC-SPE</b>, etc. are removed. Likewise if the NODE is set to
+<b>CP*</b> all nodes starting with <b>CP</b> will be removed. If the node
+that is removed matches the query it is printed beneath as a separate
+token; otherwise it is thrown away. In the examples below both the matrix
+and the embedded clause contain a particle (<b>RP</b>). The embedded clause
+is removed and printed below because it also matches the query.
+
+<blockquote>
+<pre>
+
+remove_nodes: t
+node: IP*
+query: (RP exists)
+
+/~*
+and wearp upp +ta duru, +t+at +da scytelses to burston,
+(coaelive,+ALS_[Basil]:347.682)
+*~/
+
+/*
+1 IP-MAT: 5 RP upp
+12 IP-SUB: 16 RP to
+*/
+
+(0 (1 IP-MAT (2 CONJ and)
+             (3 NP-NOM *con*)
+             (4 VBDI wearp)
+             (5 RP upp)
+             (6 NP-ACC (7 D^A +ta) (8 N^A duru))
+             (9 , ,)
+             (10 CP-ADV (11 C +t+at)
+                        (12 IP-SUB RMV:+da_scytelses_to...))
+             (18 . ,))
+      (ID coaelive,+ALS_[Basil]:347.682)) 
+
+(NODE (12 IP-SUB (13 NP-NOM (14 D^N +da) (15 N^N scytelses))
+                 (16 RP to)
+                 (17 VBDI burston))
+      (ID coaelive,+ALS_[Basil]:347.682)) 
+
+</pre>
+</blockquote>
+
+There are two purposes for <i>remove_nodes</i> The first is simply to make
+the output shorter and easier to negotiate by removing extraneous
+material. The second and more important is to allow the user to create
+files which contain only relevant material to facilitate further
+searching. The <a href="#setting_the_node">NODE command</a> ensures that
+CorpusSearch only searches below the relevant NODE omitting all extraneous
+material above it, but often there is embedded material (subordinate
+clauses, etc.) that are also either irrelevant or constitute a token to be
+searched in their own right. <i>Remove_nodes</i> allows this material
+either to be removed entirely if it is irrelevant or to be printed
+separately as a token.
+
+<p>
+
+Compare the output of the following query with and without
+<i>remove_nodes</i> set to true. In the first, without <i>remove_nodes</i>,
+the query finds two hits as listed in the <a href="#vector">vectors</a> and
+CS prints and counts both instances. But notice that the second hit, in
+<b>51 IP-SUB</b> is printed twice, once embedded in the first token and
+once by itself. When <i>remove_nodes</i> is set to true, on the other hand,
+the second token is only printed once; the embedded instance has been
+removed. In both cases the same number of tokens have been counted and
+printed, but the second output file will be useful for further searching
+whereas the first will not because it contains some tokens twice and
+further searches on this file will give erroneous results.
+
+<blockquote>
+<pre>
+node:   IP*
+query:  (NP-NOM iDominates PRO^N)
+
+
+/~*
+awurpan +t+as halgan lic on +t+are widgillan s+a, mid +tam $hefegum stanum,
+swa swa hi het +te dema, +t+at he huru ne sceolde +t+are s+a +atberstan, +teah
++te he +t+are eor+dan +aror +atburste.
+(coaelive,+ALS_[Vincent]:264.7974)
+*~/
+
+/*
+37 IP-SUB: 38 NP-NOM, 39 PRO^N he
+51 IP-SUB: 52 NP-NOM, 53 PRO^N he
+*/
+
+(NODE (37 IP-SUB (38 NP-NOM (39 PRO^N he))
+                 (40 FP huru)
+                 (41 NEG ne)
+                 (42 MDD sceolde)
+                 (43 NP-DAT (44 D^D +t+are) (45 N^D s+a))
+                 (46 VB +atberstan)
+                 (47 , ,)
+                 (48 CP-ADV (49 P +teah)
+                            (50 C +te)
+                            (51 IP-SUB (52 NP-NOM (53 PRO^N he))
+                                       (54 NP-DAT (55 D^D +t+are) (56 N^D eor+dan))
+                                       (57 ADVP-TMP (58 ADVR^T +aror))
+                                       (59 VBDS +atburste))))
+      (ID coaelive,+ALS_[Vincent]:264.7974))
+
+(NODE (51 IP-SUB (52 NP-NOM (53 PRO^N he))
+                 (54 NP-DAT (55 D^D +t+are) (56 N^D eor+dan))
+                 (57 ADVP-TMP (58 ADVR^T +aror))
+                 (59 VBDS +atburste))
+      (ID coaelive,+ALS_[Vincent]:264.7974))
+
+</pre>
+</blockquote>
+
+<blockquote>
+<pre>
+remove_nodes: t
+node:   IP-*
+query:  (NP-NOM iDominates PRO^N)
+
+/~*
+awurpan +t+as halgan lic on +t+are widgillan s+a, mid +tam $hefegum stanum,
+swa swa hi het +te dema, +t+at he huru ne sceolde +t+are s+a +atberstan, +teah
++te he +t+are eor+dan +aror +atburste.
+(coaelive,+ALS_[Vincent]:264.7974)
+*~/
+
+/*
+37 IP-SUB: 38 NP-NOM, 39 PRO^N he
+51 IP-SUB: 52 NP-NOM, 53 PRO^N he
+*/
+
+(NODE (37 IP-SUB (38 NP-NOM (39 PRO^N he))
+                 (40 FP huru)
+                 (41 NEG ne)
+                 (42 MDD sceolde)
+                 (43 NP-DAT (44 D^D +t+are) (45 N^D s+a))
+                 (46 VB +atberstan)
+                 (47 , ,)
+                 (48 CP-ADV (49 P +teah)
+                            (50 C +te)
+                            (51 IP-SUB RMV:he_+t+are_eor+dan...)))
+      (ID coaelive,+ALS_[Vincent]:264.7974))
+
+(NODE (51 IP-SUB (52 NP-NOM (53 PRO^N he))
+                 (54 NP-DAT (55 D^D +t+are) (56 N^D eor+dan))
+                 (59 VBDS +atburste))      :
+      (ID coaelive,+ALS_[Vincent]:264.7974))
+
+</pre>
+</blockquote>
+
+The point of including the first three words (technically, the first three
+terminal nodes, since traces count here) is to make it possible to
+differentiate between removed nodes that contain only a trace and those
+that have lexical content. Any trace that entirely occupies a CP or IP node
+by itself is of the *ICH* type (see the <a
+href="../annotation/YcoeRef.htm#scrambling_and_extraposition">
+Annotation Reference Manual: Scrambling and Extraposition</a>). Therefore
+these nodes, when their contents are removed, will contain only
+<b>RMV:*ICH*-#...</b> where # is a digit. So if you're using
+<i>remove_nodes</i> and you want to ignore traces, you need to add both
+regular traces and removed traces to the ignore list like this:
+
+<pre>
+add_to_ignore: \**|RMV:\*ICH*
+
+</pre>
+
+Note that it's not enough for RMV to begin with any trace,
+since traces of wh-movement (*T*) will be followed by lexical material.
+
+<pre>
+(IP-SUB-SPE RMV:*T*-1_her_nu...)  <-- RMV beginning with wh-trace (*T*)
+
+(CP-REL RMV:*ICH*-1...)           <-- RMV with *ICH* trace
+
+</pre>
+
+It is important to understand that <i>remove_nodes</i> is a printing
+command which applies after the search has been conducted. This means
+(weirdly) that it is technically possible for <i>remove_nodes</i> to remove
+(and therefore not print) a hit, although it will still count it. To avoid
+this outcome, read the section on <a href="#multi-call_queries">Multi-call
+queries</a>.
+
+<p><br><br>
+
+<a name="add_to_ignore">
+<h2>ignore_nodes and add_to_ignore</h2></a>
+
+CorpusSearch has the capacity to ignore nodes when conducting a search. In
+the general case these nodes (punctuation, comments and various kinds of
+identifying information (titles, page numbers, etc.)) are not useful for
+linguistic analysis and are ignored by default. Sometimes however it is
+useful to ignore other nodes; traces, for instance, are often better
+ignored. Any node or list of nodes can be added to the <i>ignore_nodes</i>
+list with the <i>add_to_ignore</i> command. These nodes will then be
+ignored for the purposes of that particular query. Use the command
+
+<blockquote>
+<pre>
+add_to_ignore: \**
+</pre>
+</blockquote>
+
+to ignore traces since all traces in the corpus begin with an
+asterisk. <b>\*</b> indicates the asterisk (\ tells CorpusSearch to take
+the asterisk literally rather than as a wild card), while the second
+asterisk stands for "followed by anything".
+
+<p>
+
+<a href="#advanced_use_of_add_to_ignore">Advanced uses of
+<i>add_to_ignore</i></a>
+
+<p><br><br>
+
+<a name="nodes_only">
+<h2>nodes_only</h2></a>
+
+The <i>nodes_only</i> command tells CorpusSearch to print only the NODE
+rather than the whole token. The default is true. If you want to print the
+whole token set <i>nodes_only</i> to false.
+
+<blockquote>
+<pre>
+nodes_only: f
+
+</pre>
+</blockquote>
+
+In default mode a query like the following prints only the NODE:
+
+<blockquote>
+<pre>
+node: NP*
+query: (NP* iDoms Q*)
+
+/~*
+Sume syndan creopende on eor+dan mid eallum lichoman, swa swa wurmas do+d.
+(coaelive,+ALS_[Christmas]:54.41)
+*~/
+
+/*
+3 NP-NOM: 4 Q^N Sume
+13 NP-DAT: 14 Q^D eallum
+*/
+
+(NODE (3 NP-NOM (4 Q^N Sume))
+      (ID coaelive,+ALS_[Christmas]:54.41))
+
+(NODE (13 NP-DAT (14 Q^D eallum) (15 N^D lichoman))
+      (ID coaelive,+ALS_[Christmas]:54.41))
+
+</pre>
+</blockquote>
+
+while with <i>nodes_only</i> set to false the same token appears as
+follows.  Note that with <i>nodes_only</i> set to false, the token is only
+printed once, although two NODEs are counted. <i>nodes_only</i> only
+affects the appearance of the output, it does not affect <a
+href="#how_cs_counts">how CorpusSearch counts</a>. In general it is easier
+to work with the default, that is, <i>nodes_only</i> set to true. The whole
+text of the token is included in the ur-text in any case for reference.
+
+<blockquote>
+<pre>
+nodes_only: f
+node: NP*
+query: (NP* iDoms Q*)
+
+/~*
+Sume syndan creopende on eor+dan mid eallum lichoman, swa swa wurmas do+d.
+(coaelive,+ALS_[Christmas]:54.41)
+*~/
+
+/*
+3 NP-NOM: 4 Q^N Sume
+13 NP-DAT: 14 Q^D eallum
+*/
+
+
+(0  (1 CODE &lt;T03020002400,54&gt;)
+    (2 IP-MAT (3 NP-NOM (4 Q^N Sume))
+              (5 BEPI syndan)
+              (6 VAG creopende)
+              (7 PP (8 P on)
+                    (9 NP (10 N eor+dan)))
+              (11 PP (12 P mid)
+                     (13 NP-DAT (14 Q^D eallum) (15 N^D lichoman)))
+              (16 , ,)
+              (17 PP (18 ADV swa)
+                     (19 P swa)
+                     (20 CP-CMP (21 WADVP-1 0)
+                                (22 C 0)
+                                (23 IP-SUB (24 ADVP *T*-1)
+                                           (25 NP-NOM (26 N^N wurmas))
+                                           (27 VBPI do+d))))
+              (28 . .))
+    (19 ID coaelive,+ALS_[Christmas]:54.41))
+
+</pre>
+</blockquote>
+
+<p><br>
+
+<a name="print_indices">
+<h2>print_indices</h2></a>
+
+In default mode CorpusSearch prints an index on every open
+parenthesis. This index is useful for matching the <a
+href="#vector">vector</a> information to the parsed token. You can turn
+<i>print_indices</i> off by setting it to false.
+
+<blockquote>
+<pre>
+print_indices: f
+
+</pre>
+</blockquote>
+
+The two versions of the same token are illustrated below.
+
+<blockquote>
+<pre>
+/~*
+and hi +t+ar bebyrgdon +tone bisceop Philippum.
+(coaelive,+ALS_[Eugenia]:310.380)
+*~/
+
+/*
+1 IP-MAT: 5 ADVP-LOC
+*/
+
+(0 (1 IP-MAT (2 CONJ and)
+             (3 NP-NOM (4 PRO^N hi))
+             (5 ADVP-LOC (6 ADV^L +t+ar))
+             (7 VBDI bebyrgdon)
+             (8 NP-ACC (9 D^A +tone)
+                       (10 N^A bisceop)
+                       (11 NP-ACC-PRN (12 NR^A Philippum)))
+             (13 . .))
+      (ID coaelive,+ALS_[Eugenia]:310.380))
+
+/~*
+and hi +t+ar bebyrgdon +tone bisceop Philippum.
+(coaelive,+ALS_[Eugenia]:310.380)
+*~/
+
+/*
+1 IP-MAT: 5 ADVP-LOC
+*/
+
+( (IP-MAT (CONJ and)
+          (NP-NOM (PRO^N hi))
+          (ADVP-LOC (ADV^L +t+ar))
+          (VBDI bebyrgdon)
+          (NP-ACC (D^A +tone)
+                  (N^A bisceop)
+                  (NP-ACC-PRN (NR^A Philippum)))
+          (. .))
+      (ID coaelive,+ALS_[Eugenia]:310.380))
+
+</pre>
+</blockquote>
+
+<p><br>
+<hr>
+<br>
+
+<a name="multi-call_queries">
+<h1>Multi-call queries</h1>
+
+
+<a name="multi-call_queries_and_AND">
+<h2>Multi-call queries and the logical operator AND</h2></a>
+
+A minimal query consists of a single <b>search function call</b> enclosed
+in parentheses.
+
+<blockquote>
+<PRE>
+query: (IP* iDoms NP-ACC)
+
+</PRE>
+</blockquote>
+
+Any number of search function calls can be conjoined by the logical
+operator <b>AND</b> and sent to CorpusSearch. The outcome should be tokens
+that satisfy all the conditions. In order to write effective multi-call
+queries it is necessary to know how to specify that identically-specified
+search terms in the query must or must not apply to the same
+node. 
+
+<p><br><br>
+
+<a name="same-instance">
+<h2>Same instance</h2></a>
+
+CorpusSearch has a built-in <i>same instance</i></a> function that applies
+when <b>AND</b> is used and forces identically-specified search terms to
+refer to the same node. Therefore if you want every mention of
+<b>NP-NOM</b> in the query below to apply to the same <b>NP-NOM</b> in the
+parse you don't have to do anything. CorpusSearch assumes that this is what
+you want. If you don't want this, however, you must make this explicit by
+using <a href="#prefix-indices">prefix indices</a> (also called
+pre-indices) on the search terms to force them to apply to different
+nodes. Note that the search term must be <u>exactly</u> the
+same. <b>NP-NOM</b> is not the same as <b>NP-NOM*</b>, and
+<b>NP-ACC|NP-DAT</b> is not the same as <b>NP-DAT|NP-ACC</b>. Although
+these alternatives may by chance match the same node, there is no guarentee
+that they will do so.
+
+<blockquote>
+<pre>
+node: IP*
+query: (((IP* iDoms NP-NOM) 
+AND (NP-NOM iDoms PRO^N)) 
+AND (finite_verb iPrecedes NP-NOM))
+
+</pre>
+</blockquote>
+
+The trickiest part about using AND is getting the parentheses in the right
+place. The easiest way to do it is to simply add two close parens to every
+call except the first, then count up the extra parens and add the same
+number at the beginning. If you get the parens wrong in a query,
+CorpusSearch will abort with an error message indicating that part of the
+query didn't conform to its expectations. Don't try to understand this
+message, just check the parens in the query file to make sure they are
+properly distributed.
+
+<p>
+
+To force nodes not to match, use <a href="#prefix-indices">prefix
+indices</a>. 
+
+<p><br><br>
+
+<a name="prefix-indices">
+<h2>Prefix indices</h2></a>
+
+When <a href="#multi-call_queries_and_AND">AND</a> is used to join search
+function calls, <a href="#same-instance"><i>same instance</i></a> is
+automatically invoked. Therefore, if you want to refer to two (or more)
+different nodes with the same label you have to use prefix indices to
+distinguish the search terms. The following query searches for IPs
+with more than one sentential negative element. The search term <b>IP*</b>
+is interpreted as the same IP in both calls, while <b>NEG*</b> is
+forced by the pre-indices to refer to two different nodes beginning with
+<b>NEG</b>.
+
+<blockquote>
+<pre>
+node: IP*
+query: ((IP* iDoms [1]NEG*)
+AND (IP* iDoms [2]NEG*))
+
+</pre>
+</blockquote>
+
+<blockquote>
+<pre>
+
+/~*
+ne he nan +ting ne forgit,
+(coaelive,+ALS_[Christmas]:43.30)
+*~/
+
+/*
+1 IP-MAT: 2 NEG+CONJ ne, 8 NEG ne
+1 IP-MAT: 8 NEG ne, 2 NEG+CONJ ne
+*/
+
+(0 (1 IP-MAT (2 NEG+CONJ ne)
+             (3 NP-NOM (4 PRO^N he))
+             (5 NP-ACC (6 NEG+Q^A nan) (7 N^A +ting))
+             (8 NEG ne)
+             (9 VBPI forgit)
+             (10 . ,))
+      (ID coaelive,+ALS_[Christmas]:43.30))
+
+</pre>
+</blockquote>
+
+Without the indices CorpusSearch acts as if there's only one call <b>(IP*
+iDoms NEG*)</b> and prints every IP with at least one negative
+element.
+
+<p>
+
+Note that CorpusSearch requires pre-indices to distinguish labels even when
+it is impossible for them to be the same. In the following query which
+looks for IPs with two pronominal NPs, for instance, it is impossible for
+the two PRO nodes to be the same because they are dominated by different NP
+nodes, but without indices on the PRO nodes, the output of this search will
+be zero. This error is one of the two most common sources of zero output
+(the other being forgetting to define your <a
+href="#definition_files">definition file</a>).
+
+<blockquote>
+<pre>
+**BAD QUERY**
+node: IP*
+query: ((((IP* iDoms [1]NP*)
+AND (IP* iDoms [2]NP*))
+AND ([1]NP* iDoms PRO*))      <-- PRO* must have a pre-index [3]
+AND ([2]NP* iDoms PRO*))      <-- PRO* must have a pre-index [4]
+**BAD QUERY**
+
+</pre>
+</blockquote>
+
+The only exception to the above is when the two identical search terms are
+in the same search function call. In this case only CorpusSearch is able to
+figure out that the two terms cannot apply to the same node. The following
+are therefore valid queries.
+
+<blockquote>
+<pre>
+query: (ADVP iPrecedes ADVP)
+
+query: (NP-NOM iDoms NP-NOM)
+
+</pre>
+</blockquote>
+
+<p><br>
+
+<a name="controlling_the_node_in_multi-call_queries">
+<h2>Controlling the NODE in multi-call queries</h2></a>
+
+Consider the following query (<b>finite_verb</b> and <b>non_finite_verb</b>
+are defined in the <a href="#definition_files">definition file</a> OE.def)
+
+<blockquote>
+<pre>
+define: OE.def
+node: IP-MAT*
+query: ((NP-NOM precedes finite_verb)
+AND (non_finite_verb precedes NP-ACC))
+
+</pre>
+</blockquote>
+
+When you write a query like this, the chances are you want both calls to be
+satisfied in the same IP. However, if you run this query on a corpus
+file, it is possible (though not necessary) that each call will be
+satisfied in a separate IP within the same token, the first in the
+matrix IP for example, and the second in a subordinate clause. The reason
+for this is that CorpusSearch searches everything below the NODE, in this
+case <b>IP-MAT</b>, which in many tokens will dominate other IPs, all of
+which are accessible to CorpusSearch. In the token below, the first call is
+satisfied at the level of the <b>IP-MAT</b> where <b>3 NP-NOM</b> precedes
+<b>5 VBDI</b>, and the second in the infinitive <b>IP-INF</b> where <b>9
+VB acw+allan</b> precedes <b>10 NP-ACC</b>.
+
+<blockquote>
+<pre>
+/~*
+He het eac acw+allan ealle +ta cristenan, gif hi noldon bugan to +dam
+bysmorfullum h+a+denscype.
+(coaelive,+ALS_[Eugenia]:363.408)
+*~/
+
+/*
+2 IP-MAT: 3 NP-NOM, 5 VBDI het, 9 VB acw+allan, 10 NP-ACC
+2 IP-MAT: 19 NP-NOM, 21 NEG+MDDI noldon, 9 VB acw+allan, 10 NP-ACC
+*/
+
+(NODE (2 IP-MAT (3 NP-NOM (4 PRO^N He))
+                (5 VBDI het)
+                (6 ADVP (7 ADV eac))
+                (8 IP-INF (9 VB acw+allan)
+                          (10 NP-ACC (11 Q^A ealle) (12 D^A +ta) (13 N^A cristenan))
+                          (14 , ,)
+                          (15 CP-ADV (16 P gif)
+                                     (17 C 0)
+                                     (18 IP-SUB (19 NP-NOM (20 PRO^N hi))
+                                                (21 NEG+MDDI noldon)
+                                                (22 VB bugan)
+                                                (23 PP (24 P to)
+                                                       (25 NP-DAT (26 D^D +dam) (27 ADJ^D bysmorfullum) (28 N^D h+a+denscype))))))
+                (29 . .))
+      (ID coaelive,+ALS_[Eugenia]:363.408))
+
+</pre>
+</blockquote>
+
+<p><br>
+
+<a name="tying_to_the_node"></a>
+The safest way to avoid this outcome is to always explicitly
+refer to the NODE in your query, and then to "tie" your search terms to the
+NODE. The above query can be rewritten as the following:
+
+<blockquote>
+<pre>
+define: OE.def
+node: IP-MAT*
+query: ((((IP-MAT* iDoms NP-NOM)
+AND (NP-NOM precedes finite_verb))
+AND (IP-MAT* iDoms non_finite_verb))
+AND (non_finite_verb precedes NP-ACC))
+
+</pre>
+</blockquote>
+
+Here the NODE is explicitly used as the first search term. The
+<b>NP-NOM</b> is tied directly to the NODE by <i>iDoms</i>. The finite verb
+is indirectly tied to the NODE because the function <i>precedes</i> is
+defined over sisters. In the third call the NODE is repeated because there
+is no forced connection between either <b>non_finite_verb</b> or
+<b>NP-ACC</b> and any of the search terms in the first two calls. The
+fourth call is as the second; <i>precedes</i> forces sisterhood and thus
+the <b>NP-ACC</b> is also tied to the NODE. This query will not find the
+above token.
+
+<p>
+In the above example we had to repeat the NODE in the third call because
+there was no search term carried over from the second to the third call. If
+at least one search term is repeated from one call to the next, repeating
+the NODE is not necessary. The following is a good query:
+
+<blockquote>
+<pre>
+define: OE.def
+node: IP-MAT*
+query: (((IP-MAT* iDoms NP-NOM)
+AND (NP-NOM precedes finite_verb))
+AND (finite_verb precedes NP-ACC))
+
+</pre>
+</blockquote>
+
+Here, because <b>NP-NOM</b> is carried from the first to the second call
+and <b>finite_verb</b> is carried from the second to the third, the entire
+query will be satisfied within a single IP-MAT.
+
+<p>
+Simply put, 
+<ul>
+<li>use the NODE as the first search term
+<li>always carry at least one search term from call to call, <b>OR</b>
+<li>repeat the NODE
+</ul>
+
+Note that this strategy doesn't work with the function <a href="#exists">
+<i>exists</i></a> because it is a unary function and so can't be "tied"
+in the specified way. As <i>exists</i> is not usually necessary in multi-call
+queries, however, this doesn't pose a problem.
+
+<p>
+If you use this strategy in writing multi-call queries (avoiding the
+function <i>exists</i>), they will never fail. Nor will
+strange things happen when you use the <a
+href="#remove_nodes"><i>remove_nodes</i></a> command.
+
+<p>
+
+If you are searching on an outputfile in which all embedded clauses have
+already been removed by <a href="#remove_nodes"><i>remove_nodes</i></a>, it
+is not always necessary to adhere to this strategy, but it is nevertheless
+good practice. See some examples of how to set up files for searching using
+<i>remove_nodes</i> <a href="CSLiteEx.htm">here</a>.
+
+<p><br>
+<hr>
+<br>
+
+<a name="how_cs_counts">
+<h1>How CorpusSearch counts</h1></a>
+
+In order to make proper use of the <a href="#output_summary">summary
+statistics</a> it is necessary to understand how CorpusSearch
+counts. CorpusSearch counts NODES. This is partly why it's important to <a
+href="#setting_the_node">set the NODE</a> correctly. In the following
+query which looks for NPs which dominate quantifiers (<b>Q</b>),
+because the NODE is set to <b>IP*</b>, CorpusSearch will not count each
+NP it finds dominating a quantifier, but how many IPs it
+finds with at least one NP that dominates a Q within it. If
+an IP dominates two NPs of the appropriate type it is still
+counted only once. The token below has three hits, but because they are all
+within one IP they are only counted once.
+
+<blockquote>
+<pre>
+node: IP*
+query: (NP* iDoms Q*)
+
+/~*
+and se halga gast is angin +afre of +tam f+ader and of +tam sunu, na acenned
+ac for+dst+appende; for+dan +te se sunu is +t+as f+ader wisdom, of him and mid
+him, and se halga gast is heora begra wylle and lufu, of him bam and mid him
+bam.
+(coaelive,+ALS_[Christmas]:35.26)
+
+*~/
+
+/*
+65 IP-SUB-CON: 72 NP-GEN, 74 Q^G begra
+65 IP-SUB-CON: 84 NP-DAT, 86 Q^D bam
+65 IP-SUB-CON: 91 NP-DAT, 93 Q^D bam
+*/
+
+(NODE (65 IP-SUB-CON (66 NP-NOM (67 D^N se) (68 ADJ^N halga) (69 N^N gast))
+                     (70 BEPI is)
+                     (71 NP-NOM-PRD (72 NP-GEN (73 PRO^G heora) (74 Q^G begra))
+                                    (75 N^N wylle)
+                                    (76 CONJP (77 CONJ and)
+                                              (78 NX-NOM (79 N^N lufu))))
+                     (80 , ,)
+                     (81 PP (82 PP (83 P of)
+                                   (84 NP-DAT (85 PRO^D him) (86 Q^D bam)))
+                            (87 CONJP (88 CONJ and)
+                                      (89 PP (90 P mid)
+                                             (91 NP-DAT (92 PRO^D him) (93 Q^D 
+bam))))))
+      (ID coaelive,+ALS_[Christmas]:35.26))
+
+</pre>
+</blockquote>
+
+If you want to count the number of NPs then you must set the NODE to
+<b>NP*</b>.
+
+<blockquote>
+<pre>
+node: NP*
+query: (NP* iDoms Q*)
+
+</pre>
+</blockquote>
+
+In this search, the same token as was found in the previous search appears
+as three separate tokens and thus is counted three times. CorpusSearch
+always prints as a separate token every NODE that it counts. If the output
+is unhelpful in this minimal form, you can set the command <a
+href="#nodes_only"><i>nodes_only</i></a> to false and CorpusSearch will
+print the whole token three times, one for each hit. Needless to say it
+would not be wise to use such an outputfile as input to a further search
+since the data would be tripled.
+
+<blockquote>
+<pre>
+
+/~*
+and se halga gast is angin +afre of +tam f+ader and of +tam sunu, na acenned
+ac for+dst+appende; for+dan +te se sunu is +t+as f+ader wisdom, of him and mid
+him, and se halga gast is heora begra wylle and lufu, of him bam and mid him
+bam.
+(AelfLives,+ALS_[Christmas]:35.47)
+*~/
+
+/*
+72 NP-GEN: 74 Q^G begra
+84 NP-DAT: 86 Q^D bam
+91 NP-DAT: 93 Q^D bam
+*/
+
+(NODE (72 NP-GEN (73 PRO^G heora) (74 Q^G begra))
+      (ID AelfLives,+ALS_[Christmas]:35.47)) 
+
+(NODE (84 NP-DAT (85 PRO^D him) (86 Q^D bam))
+      (ID AelfLives,+ALS_[Christmas]:35.47)) 
+
+(NODE (91 NP-DAT (92 PRO^D him) (93 Q^D bam))
+      (ID AelfLives,+ALS_[Christmas]:35.47)) 
+
+</pre>
+</blockquote>
+
+These examples show that choosing the appropriate NODE is crucial to
+counting. If you are using the <a href="#output_summary">summary
+statistics</a>, you should always check that CorpusSearch is counting what
+you think it is. Make sure that each structure you want to be counted is
+printed as a separate token. If it is not, you need to change the NODE in
+such a way that it will be.
+
+<p><br>
+<hr>
+<br>
+
+<a name="strategies_for_searching"></a>
+<h1>An algorithm for successful searching</h1>
+
+When constructing a query, the first thing to consider is the NODE. If you
+are using a <a href="#multi-call_queries">multi-call query</a> or making use
+of the <a href="#output_summary">summary statistics</a> it is crucial that
+you choose the appropriate NODE. The NODE 
+
+<ul>
+<li>controls <a href="#how_cs_counts">counting</a>: all (and only) printed
+NODEs are counted
+
+<p>
+<li>controls <a href="#remove_nodes"><i>remove_nodes</i></a>: matching
+NODEs are removed
+
+<p>
+<li>controls the search domain: nothing above the NODE is accessed
+</ul>
+
+<p>
+Second, consider whether you can search safely on corpus files or whether
+you need to use <a href="#remove_nodes"><i>remove_nodes</i></a> to prepare
+a file for searching. If there is any likelihood that there may be embedded
+material which will interfere with your search, then use
+<i>remove_nodes</i>. If you are planning to do more searches on the output
+it is virtually always necessary to use <i>remove_nodes</i> to prepare a
+file since output files created without <i>remove_nodes</i> are likely to
+contain duplicate data which will affect the statistics. Usually it is only
+necessary to use <i>remove_nodes</i> once. On subsequent searches its use
+often results in parts of the data disappearing in inconvenient ways.
+
+<p>
+If you are writing a multi-call query be sure to <a
+href="#tying_to_the_node">"tie" your search terms to the NODE</a>.
+
+<ul>
+<li>use the NODE as the first search term
+<li>always carry at least one search term from call to call, <b>OR</b>
+<li>repeat the NODE
+</ul>
+
+<p>
+Search incrementally. CorpusSearch was designed to search on its own output
+so that it wouldn't be necessary to write complicated queries. Using
+multiple queries also lets you adjust the NODE in each query to that most
+appropriate to the search. See an example <a
+href="CSLiteEx.htm#example2">here</a>.
+
+<p>
+
+Working in this way can produce quite a number of files. CorpusSearch keeps
+track of much of this information in the header to the output file, but it
+is wise practice to keep careful track of the order and purpose of each
+search, both so that you can reconstruct it later, and so that inevitably
+when you discover you've made a mistake it is easy to redo the series from
+the point where the error occurred.
+
+<p>
+
+Finally, check your data at every possible point. The annotation system is
+very complicated and it is easy to make a mistake. Since it is easier to
+weed out excess data than to realize that something is missing, always
+start by searching for a larger set than you think you need. For instance,
+always use <b>*</b> at the end of every search term in your first
+search. You will quickly find that you get some results you don't want but
+you may also find some things you hadn't anticipated. The unwanted results
+can either be weeded out with another search, or the original search can be
+edited and rerun.
+
+<p>
+
+If you get zero results, unless you very strongly expected this result (and
+even in this case you should check by searching again in a different way),
+you've probably made a mistake. The two most likely causes are failing to
+define your <a href="#definition_files">definition file</a>, or failing to
+use <a href="#prefix-indices">prefix indices</a> to distinguish
+non-matching nodes.
+
+<p><br>
+<hr>
+<br>
+
+<a name="optional_command_files">
+<h1>Optional command files</h1></a>
+
+<a name="definition_files">
+<h2>Definition files</h2></a>
+
+A definition file is an optional file that contains search terms or search
+function calls assigned to names that can be used in a query. This is a
+place to store long, complicated lists and often used search function
+calls.  In order to use a definition file you must define it in the
+query. The file may be called anything as long as it ends in
+<b>.def</b>. It must be located in the directory in which you are running
+searches. The following is part of a definition file called <b>OE.def</b>.
+
+<blockquote>
+<pre>
+non_finite_verb:  *VB|*VBN*|*VAG*|*HV|*HVN*|*HAG*|*BE|*BEN*
+finite_verb:  *MDP*|*MDD*|*HVP*|*HVD*|*BEP*|*BED*|*VBP*|*VBD*|*AXD*|*AXP*
+object: NP|NP-ACC|NP-GEN|NP-DAT|NP-RFL|NP-ACC-RFL|NP-GEN-RFL|NP-DAT-RFL|NP-RSP|NP-ACC-RSP|NP-GEN-RSP|NP-DAT-RSP
+pronominal_subject: NP-NOM* iDomsOnly PRO^N
+
+</pre>
+</blockquote>
+
+Note especially that each list must be contained on one line, even if it is
+too wide for the screen, as the <b>object</b> definition is. Secondly, the
+definition of a search-function call does not include the parentheses that
+surround it in a query. When using definitions, the name of a search-term
+list (like <b>non_finite_verb</b>) are simply used in place of search-terms
+in a query; the name of a search-function call is surrounded by
+parentheses, just like a search-function would be. The following examples
+uses the names of list in place of search-terms.
+
+<blockquote>
+<pre>
+define: OE.def
+node: IP*
+query: ((finite_verb precedes object)
+AND (object precedes non_finite_verb))
+</pre>
+</blockquote>
+
+If you use definitions without defining the definition file, you will
+probably get zero output. This is an extremely common error that can be
+avoided by defining your definition file in your <a
+href="#preference_files">preference file</a>.
+
+<p>
+
+<a href="#same-instance"><i>Same instance</i></a> operates the same way
+with definitions as with regular search terms. In the above query,
+<b>object</b> is forced to refer to the same node, the same way as if it
+was written out in full.
+
+<p>
+
+A definition for a search function call is used as a single call just as it
+would when written out.
+
+<blockquote>
+<pre>
+define: OE.def
+node: IP*
+query: ((pronominal_subject)
+AND (finite_verb precedes NP-NOM*))
+
+</pre>
+</blockquote>
+
+The long form of the preceding query (which is what CorpusSearch actually
+uses as the query) is:
+
+<blockquote>
+<pre>
+define: OE.def
+node: IP*
+query: ((NP-NOM* iDomsOnly PRO^N)
+AND (*MDP*|*MDD*|*HVP*|*HVD*|*BEP*|*BED*|*VBP*|*VBD*|*AXD*|*AXP* precedes NP-NOM*))
+
+</pre>
+</blockquote>
+
+Note that in this query, even when using the definitions, <a
+href="#same-instance"><i>same instance</i></a> is invoked between the
+<b>NP-NOM*</b> contained within the <b>pronominal_subject</b> definition
+and the <b>NP-NOM*</b> in the second call.
+
+<p><br><br>
+
+<a name="preference_files">
+<h2>Preference files</h2></a>
+
+A preference file is a place where you can put commands that you use all
+the time. It can be called anything, but must have the extension
+<b>.prf</b>. Like the definition file it must be in the directory from
+which you are running searches. CorpusSearch will read the commands in this
+file first and use them unless they are overridden by commands in the query
+file. This is a good place to define your <a
+href="#definition_files">definition file</a>. It is also good to include a
+default NODE command. <b>IP*|NODE</b> is a good
+choice. You can always override this command in the query file if you want
+to use a different node for any particular query. A minimal useful
+preference file is:
+
+<blockquote>
+<pre>
+define: OE.def
+node: IP*|NODE
+
+</pre>
+</blockquote>
+
+<p><br>
+<hr>
+<br>
+
+<a name="advanced_commands">
+<h1>Advanced commands</h1></a>
+
+This section discusses some of the more advanced commands you can use to
+control output.
+
+<p><br><br>
+
+<a name="print_complement">
+<h2>print_complement</h2></a>
+
+The command <i>print_complement</i> prints in addition to the regular
+output file a file called a <a name="complement_file"><i>complemenent
+file</i></a> which contains everything from the source file that didn't
+match the query. It is invoked by adding the command:
+
+<blockquote>
+<pre>
+print_complement: t
+</pre>
+</blockquote>
+
+to the query file.
+
+<p>
+
+<i>Print_complement</i> is like a search function negator. It can be used to
+filter out unwanted material from a file or to divide a file into
+meaningful divisions. 
+
+<p>
+
+Say you are interested in monotransitive verbs that take an accusative
+object. You might use a query such as the following which looks for
+IPs with an accusative argument but no other type.
+
+<blockquote>
+<pre>
+node: IP*
+query: ((IP* iDoms NP-ACC)
+AND (IP* iDoms !NP-DAT|NP-GEN|NP))
+
+</pre>
+</blockquote>
+
+Note however that this will not rule out verbs that take two accusative
+objects. To do this you need to filter out the two accusative cases. A
+query such as the following run on the output of the first query will
+provide what you need.
+
+<blockquote>
+<pre>
+print_complement: t
+node: IP*
+query: ((IP* iDoms [1]NP-ACC)
+AND (IP* iDoms [2]NP-ACC))
+
+</pre>
+</blockquote>
+
+The output of this search will be a regular outputfile (extension .out)
+containing all the ditransitives with two accusative objects and a
+complement file (extension .cmp) containing the remainder, that is, all
+clauses with only one accusative object.
+
+<p>
+
+<i>Print_complement</i> can also be used to divide data into relevant
+sets. If you have a properly prepared outputfile containing as separate
+tokens all the IPs with overt subjects, you could then use
+<i>print_complement</i> to divide them into those with pronominal and
+non-pronominal subjects with a query such as the following:
+
+<blockquote>
+<pre>
+print_complement: t
+node: IP*
+query: (NP-NOM iDomsOnly PRO^N)
+
+</pre>
+</blockquote>
+
+The regular output file will contain only pronominal subjects while the
+complement file will contain all the others, that is, the non-pronominal
+subjects. 
+
+<p>
+
+In some cases it is easier to define the opposite of a set rather than the
+set itself. This is in fact true for non-pronominal NPs. In such
+cases <i>print_complement</i> can be used simply to make it easier to write
+the query. 
+
+<p>
+
+<i>Print_complement</i> should never be used on corpus files since it will
+print literally everything that doesn't match the query including such
+useful information as page number codes, etc.
+
+<p><br><br>
+
+<a name="advanced_use_of_add_to_ignore">
+<h2>Advanced uses of <i>add_to_ignore</i></h2></a>
+
+<i>add_to_ignore</i> can be used to ignore any node in the corpus. In a search
+for subjects immediately preceding verbs for instance, it may not matter
+whether the negative particle "ne" intervenes. In this case adding
+<b>NEG</b> to the <i>ignore_nodes</i> list will remove it from consideration.
+
+<blockquote>
+<pre>
+define: OE.def
+add_to_ignore: NEG
+node: IP*
+query: (NP-NOM iPrecedes finite_verb)
+
+</pre>
+</blockquote>
+
+The preceding query will find both the following tokens:
+
+<blockquote>
+<pre>
+/~*
++Alfric gret eadmodlice +A+delwerd ealdorman FULL-STOP
+(copreflives,+ALS_[Pref]:1.2)
+*~/
+
+/*
+2 IP-MAT: 3 NP-NOM, 5 VBPI gret
+*/
+
+(NODE (2 IP-MAT (3 NP-NOM (4 NR^N +Alfric))
+                (5 VBPI gret)
+                (6 ADVP (7 ADV eadmodlice))
+                (8 NP-ACC (9 NR^A +A+delwerd) (10 N^A ealdorman))
+                (11 . FULL-STOP))
+      (ID copreflives,+ALS_[Pref]:1.2))
+
+/~*
+ac hi ne synd na +treo anginnu,
+(coaelive,+ALS_[Christmas]:16.16)
+*~/
+
+/*
+1 IP-MAT: 3 NP-NOM, 6 BEPI synd
+*/
+
+(0 (1 IP-MAT (2 CONJ ac)
+             (3 NP-NOM (4 PRO^N hi))
+             (5 NEG ne)
+             (6 BEPI synd)
+             (7 ADVP (8 NEG+ADV na))
+             (9 NP-NOM-PRD (10 NUM^N +treo) (11 N^N anginnu))
+             (12 . ,))
+      (ID coaelive,+ALS_[Christmas]:16.16))
+
+</pre>
+</blockquote>
+
+Another useful trick is to use the <i>add_to_ignore</i> command to ignore
+initial sentence constituents such as conjunctions, interjections,
+vocatives, left-dislocations, that don't count for position when
+calculating verb-second. An example is given in <a
+href="#iDomsNumber"><i>iDomsNumber</i></a>.
+<p>
+The default <i>ignore_nodes</i> list can be found in the <a
+href="CSRef.htm#ignore_nodes">CorpusSearch Reference Manual</a>. If you
+wish to take something off the list, use the <i>ignore_nodes</i> command to
+write a new list to replace the default.  
+
+<p><br>
+<hr>
+<br>
+
+<a name="advanced_search_functions">
+<h1>Advanced search functions</h1></a>
+
+The commands in this section are more specialized and many of them are most
+useful in conjunction with the <i>coding</i> function. This section assumes
+an understanding of <a href="#definition_files">definition files</a> and
+the <a href="#add_to_ignore"><i>add_to_ignore</i></a> command.
+
+<p><br><br>
+
+<a name="finding_constituents">
+<h2>Finding constituents in particular positions</h2></a>
+
+CorpusSearch contains two functions which allow the user to specify not
+only the category of a node but its position within the dominating node;
+one counts from the beginning of the constituent and the other from the
+end.
+
+<p><br><br>
+
+<a name="iDomsNumber">
+<h2>Immediately Dominates as first/second/etc. daughter (iDomsNumber#)</h2></a>
+
+To specify that a node <i>dominates</i> a certain node as its
+n<sup>th</sup> daughter, use <i>iDomsNumber</i> with the number attached
+(iDomsNumber2, etc.). This can be useful when investigating topics and
+verb-second, for instance.  A query such as the following might be the
+first step in finding potential topics. The definition file <b>OE.def</b>
+contains the definitions for <b>object</b> and <b>finite_verb</b> used in
+this query.
+
+<blockquote>
+<PRE>
+define: OE.def
+node:   IP-MAT*
+query:  (((IP-MAT* iDomsNumber1 object)
+        AND (object iDoms !PRO|PRO^*))
+        AND (IP-MAT* iDomsNumber2 finite_verb))
+</PRE>
+</blockquote>
+
+The output contains all matrix IPs where the first constituent is an
+non-pronominal object and the second the finite verb.
+
+<blockquote>
+<PRE>
+/~*
++Das fif andgitu gewisse+d seo sawul to hire wyllan,
+(coaelive,+ALS_[Christmas]:202.161)
+*~/
+
+/*
+2 IP-MAT: 3 NP-ACC, 7 VBPI gewisse+d
+*/
+
+(NODE (2 IP-MAT (3 NP-ACC (4 D^A +Das) (5 NUM fif) (6 N^A andgitu))
+                (7 VBPI gewisse+d)
+                (8 NP-NOM (9 D^N seo) (10 N^N sawul))
+                (11 PP (12 P to)
+                       (13 NP (14 PRO$ hire) (15 N wyllan)))
+                (16 . ,))
+       (ID coaelive,+ALS_[Christmas]:202.161))
+
+</PRE>
+</blockquote>
+
+Of course, the topic may not be absolute initial in the clause since
+certain types of constituents like conjunctions, interjections, and
+vocatives may precede it. We can add these three constituents to the
+<i>ignore_nodes</i> list using <a
+href="#add_to_ignore"><i>add_to_ignore</i></a>. The query will now ignore
+conjunctions, interjections, and vocatives so that if they are initial they
+will not count as the first constituent. In the example below CorpusSearch
+finds <b>3 NP-DAT</b> as the first constituent because the conjunction "ac"
+is ignored.
+
+<blockquote>
+<PRE>
+define: OE.def
+add_to_ignore: CONJ|INTJ*|NP*VOC
+remove_nodes: t
+node: IP-MAT*
+query:  (((IP-MAT* iDomsNumber1 object)
+        AND (object iDoms !PRO|PRO^*))
+        AND (IP-MAT* iDomsNumber2 finite_verb))
+
+</PRE>
+</blockquote>
+
+<blockquote>
+<PRE>
+~*
+ac +tam cwellere +atfeoll f+arlice his gold, +ta+ta he swa hetelice his handa
+cwehte.
+(coaelive,+ALS[Ash_Wed]:215.2824)
+*~/
+
+/*
+1 IP-MAT: 3 NP-DAT, 6 VBDI +atfeoll
+*/
+
+(0 (1 IP-MAT (2 CONJ ac)
+             (3 NP-DAT (4 D^D +tam) (5 N^D cwellere))
+             (6 VBDI +atfeoll)
+             (7 ADVP (8 ADV f+arlice))
+             (9 NP-NOM (10 PRO$ his) (11 N^N gold))
+             (12 , ,)
+             (13 CP-ADV (14 P +ta+ta)
+                        (15 C 0)
+                        (16 IP-SUB REMOVED))
+             (26 . .))
+      (ID coaelive,+ALS[Ash_Wed]:215.2824))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="iDomsLast">
+<h2>Immediately Dominates as last/second last/etc. daughter (iDomsLast#)</h2></a>
+
+
+To specify that a node dominates a certain node counting
+from the end of the constituent, use <i>iDomsLast</i> with the number
+attached. <i>iDomsLast1</i> specifies the last node, <i>iDomsLast2</i>, the
+second last and so on.
+
+<p><br><br>
+
+<a name="counting">
+<h2>Counting constituents/words</h2></a>
+
+CorpusSearch contains a number of functions that allow you to specify the
+number of constituents or words a node contains.
+
+<p><br><br>
+
+<a name="counting_words">
+<h2>Counting words (domsWords#, domsWords&gt;#, domsWords&lt;#)</h2></a>
+
+These commands specify that the dominating constituent contains a specific
+number of words (<i>domsWords#</i>), or more (<i>domsWords&gt;#</i>) or
+less (<i>domsWords&lt;#</i>) than a specified number. These commands may be
+useful if you are interested, for instance, in the heaviness of a
+constituent.
+
+<p>
+
+For instance, you might be interested in comparing the weight of
+constituents before and after the non-finite-verb. The easiest way to do
+this is to make use of the <a href="#coding_function">coding function</a>,
+but at this point we'll illustrate with a regular query file. Suppose we
+have a file of IPs each with a finite and non-finite verb and an object
+between the verbs. We can then divide them into light and heavy (defined
+for illustrative purposes as 1/2 words and 3 or more words
+respectively). The following query will divide our file into two, a
+<b>.out</b> file containing all the "light" objects (less than three words)
+and a <b>.cmp</b> (<a href="#print_complement">complement file</a>)
+containing all the objects of three words or more. The first three lines in
+the query just make sure that we access the object we are interested
+in. Unless we've already ruled out ditransitives in a previous query, there
+might be other objects not in the desired position.
+
+
+<blockquote>
+<PRE>
+define: OE.def
+print_complement: t
+node: IP*
+query:  ((((IP* iDoms finite_verb)
+        AND (finite_verb precedes object))
+	AND (object precedes non_finite_verb))
+	AND (object iDomsWords&lt;3))
+
+</PRE>
+</blockquote>
+
+We could then do the same type of query on a file with objects after the
+non-finite verb, and compare the incidence of light and heavy objects in
+the two positions.
+
+<p><br><br>
+
+<a name="counting_constituents">
+<h2>Counting constituents (iDomsTotal#, iDomsTotal&gt;#, iDomsTotal&lt;#)</h2></a>
+
+It is also possible to count the number of constituents (nodes) a node
+immediately dominates. The commands work the same way as for counting
+words.
+
+<p><br>
+<hr>
+<br>
+
+<a name="conjunction">
+<h1>Searching conjunction structures</h1></a>
+
+Consider the following two tokens.
+
+<pre>
+( (CODE &lt;T03020001800,43&gt;)
+  (IP-MAT (NP-NOM (D^N +T+as) (NUM^N an) (N^N scyppend))
+          (VBPI wat)
+          (NP-ACC (Q^A ealle) (N^A +ting))) 
+  (ID coaelive,+ALS_[Christmas]:43.28))
+
+( (CODE &lt;T03050004900,134&gt;)
+  (IP-MAT-SPE (NP-NOM (PRO^N Ge))
+              (HVPI habba+d)
+              (NP-ACC (NP-ACC (Q^A manega) (N^A godas))
+                      (CONJP (CONJ and)
+                             (NP-ACC (Q^A manega) (N^A gydena))))
+              (. ,)) (ID coaelive,+ALS_[Julian_and_Basilissa]:134.1018))
+
+</pre>
+
+Both tokens contain an object NP that contains a quantifier. If we were
+just interested in quantified NPs, we could easily find the NPs in both
+these tokens by setting the node to NP* and using a query like <b>(NP-ACC
+iDom Q^A)</b>.
+
+<blockquote>
+<pre>
+node: NP*
+query: (NP-ACC iDoms Q^A)
+
+~*
++T+as an scyppend wat ealle +ting
+(coaelive,+ALS_[Christmas]:43.28)
+*~/
+
+/*
+8 NP-ACC: 9 Q^A ealle
+*/
+
+(NODE (NP-ACC (Q^A ealle) (N^A +ting))
+      (ID coaelive,+ALS_[Christmas]:43.28)) 
+
+
+/~*
+Ge habba+d manega godas and manega gydena,
+(coaelive,+ALS_[Julian_and_Basilissa]:134.1018)
+*~/
+
+/*
+7 NP-ACC: 8 Q^A manega
+12 NP-ACC: 13 Q^A manega
+*/
+
+(NODE (NP-ACC (Q^A manega) (N^A godas))
+      (ID coaelive,+ALS_[Julian_and_Basilissa]:134.1018)) 
+
+(NODE (NP-ACC (Q^A manega) (N^A gydena))
+      (ID coaelive,+ALS_[Julian_and_Basilissa]:134.1018)) 
+
+/*
+
+</pre>
+</blockquote>
+
+If, on the other hand, we were interested in the position of these objects
+in relation to the verb, we have a problem. If we're looking for cases
+after the verb, an appropriate query for the first token is:
+
+<blockquote>
+<pre>
+define: OE.def
+node: IP*
+query: (((IP* iDoms NP-ACC)
+AND (NP-ACC iDoms Q^A))
+AND (finite_verb precedes NP-ACC))
+
+</pre>
+</blockquote>
+
+The above query will find the first token because the IP-MAT immediately
+dominates NP-ACC and NP-ACC immediately dominates Q^A. But it wouldn't find
+the second token because in this token IP-MAT immediately dominates an
+NP-ACC, but that NP-ACC doesn't immediately dominate the Q^A; rather it
+immediately dominates another NP-ACC which then immediately dominates the
+Q^A. This means that we cannot retrieve both these tokens in the same
+search. Since the majority of the time that is just what we would want to
+do, version 1.1 of CorpusSearch includes a function which automatically
+searches into conjunction structures.  Basically, this function, which is
+called <i>iDoms_conj_switch</i>, and by default is set to true, makes
+CorpusSearch think that the root of the conjunction structure (that is, the
+node that immediately dominates the CONJP) immediately dominates the
+contents of the conjuncts. So in the following diagram, where <b>XP1</b> is
+the root of the conjunction, when <i>iDoms_conj_switch</i> is set to true,
+CorpusSearch thinks that <b>XP1</b> immediately dominates <b>Xa</b> and
+<b>Xb</b>.
+
+<blockquote>
+<pre>
+(XP1 (XP2 (Xa conjunct1))
+     (CONJP (CONJ and)
+            (XP3 (Xb conjunct2))))
+
+</pre>
+</blockquote>
+
+With version 1.1, this query finds both tokens. So we can now use a single
+query to find both the tokens with objects containing quantifiers.
+
+<pre>
+~*
++T+as an scyppend wat ealle +ting
+(coaelive,+ALS_[Christmas]:43.28)
+*~/
+
+/*
+2 IP-MAT: 8 NP-ACC, 9 Q^A ealle, 7 VBPI wat
+*/
+
+(NODE (2 IP-MAT (3 NP-NOM (4 D^N +T+as) (5 NUM^N an) (6 N^N scyppend))
+                (7 VBPI wat)
+                (8 NP-ACC (9 Q^A ealle) (10 N^A +ting)))
+      (ID coaelive,+ALS_[Christmas]:43.28)) 
+
+
+/~*
+Ge habba+d manega godas and manega gydena,
+(coaelive,+ALS_[Julian_and_Basilissa]:134.1018)
+*~/
+
+/*
+2 IP-MAT-SPE: 6 NP-ACC, 8 Q^A manega, 5 HVPI habba+d
+2 IP-MAT-SPE: 6 NP-ACC, 13 Q^A manega, 5 HVPI habba+d
+*/
+
+(NODE (2 IP-MAT-SPE (3 NP-NOM (4 PRO^N Ge))
+                    (5 HVPI habba+d)
+                    (6 NP-ACC (7 NP-ACC (8 Q^A manega) (9 N^A godas))
+                              (10 CONJP (11 CONJ and)
+                                        (12 NP-ACC (13 Q^A manega) (14 N^A gydena))))
+                    (15 . ,))
+      (ID coaelive,+ALS_[Julian_and_Basilissa]:134.1018)) 
+
+</pre>
+
+As usual, this switch can be turned off. There are also switches that allow
+you to control whether you search all the conjuncts or just the first (or
+just the second). For more information, see the <a
+href="CSRef.htm#iDoms_conj_switch"> CorpusSearch Reference Manual</a>.
+
+<p><br>
+<hr>
+<br>
+
+<a name="coding_function">
+<h1>The coding function</h1></a>
+
+CorpusSearch has a coding function which is primarily intended for
+producing the type of coding strings used as input to Varbrul, SPSS,
+Datadesk, etc. for multi-variate analysis. It also has several other uses,
+however, that might interest the general user.
+
+<p>
+
+In order to use the coding function, you need a coding file. This is the
+equivalent of a query file and is used in exactly the same way. The coding
+file must end in <b>.c</b>; the output file ends in <b>.cod</b>.
+
+<p>
+
+A coding file has the following format.
+
+<blockquote>
+<pre>
+define: OE.def
+node:IP*
+
+1: {
+        s: (IP-SPE* iDoms NP-OB*)
+        n: ELSE
+   }
+
+2: {
+        m: (IP-MAT* iDoms NP-OB*)
+        s: (IP-SUB* iDoms NP-OB*)
+        i: (IP-INF* iDoms NP-OB*)
+        e: ELSE
+
+   }
+
+3: {
+        t: ((IP* iDoms NEG)
+          AND (NEG iDoms !ne))
+        p: (IP* iDoms !NEG)
+        n: ELSE
+   }
+
+</pre>
+</blockquote>
+
+The numbers define the column that the code will be entered in. Columns in
+the output are separated by colons. It is not necessary to start at column
+1. Any undefined columns are filled with an underscore.
+
+<p>
+
+Within the curly braces are the labels, <b>s:, n:</b>, etc. These are the
+symbols that appear in the columns. They can be of any length and are not
+restricted to letters. You can, for instance, use one column to put the
+date of a text.
+
+<p>
+
+The labels are followed by the conditions under which that label is entered
+in the coding string. The conditions are just CorpusSearch queries. Any
+query, including multi-call queries, that you could use in a query file you
+can use as a condition in a coding file. The special condition ELSE
+indicates that any column that hasn't been filled by a label matching one
+of the conditions is given this label. If you don't use ELSE and there are
+unfilled columns, CorpusSearch fills the column with an underscore.
+
+<p>
+
+Query file commands are used in the same way in the coding file and must
+precede the coding conditions.
+
+<p>
+
+The output of a coding file query is an output file with a <b>CODING</b>
+node (not to be confused with <b>CODE</b> which encloses metatext
+information) included in each token. This node is contained within the <a
+href="#structure_of_tokens">wrapper</a> as the first node before the token
+and the DOE identifier if there is one. In the token below, the first
+column records the type of CP, here "r" for relative, and whether there is
+an overt complementizer ("1" = yes).
+
+<blockquote>
+<pre>
+/~*
+Nu gewear+d us +t+at we +tas boc be +t+ara halgena +drowungum and life, 
+gedihton +te mynstermenn mid heora +tenungum betwux him wur+dia+d. 
+(copreflives,+ALS_[Pref]:9.5)
+*~/ 
+
+
+(0 NODE (0 CODING r:1)
+        (1 CP-REL-1 (2 WNP-2 0)
+                    (3 C +te)
+                    (4 IP-SUB (5 NP *T*-2)
+                              (6 NP-NOM (7 N^N mynstermenn))
+                              (8 PP (9 P mid)
+                                    (10 NP-DAT (11 PRO$ heora) (12 N^D +tenungum)))
+                              (13 PP (14 P betwux)
+                                     (15 NP-DAT (16 PRO^D him)))
+                              (17 VBPI wur+dia+d)))
+         (18 ID copreflives,+ALS_[Pref]:9.5))
+
+</pre>
+</blockquote>
+
+The coding function codes every token in a file whether it matches any of
+the conditions or not. If you use a coding file on the entire corpus,
+therefore, the output will be larger than the combined size of the original
+corpus files. Consider carefully whether you really can handle a file of
+this type before doing this. It will also take quite a long time to run,
+depending on how many conditions there are. As usual with CorpusSearch it
+pays to prepare an output file containing only the tokens you are
+interested in before coding.
+
+<p>
+
+Once created, coding strings are passed on from search to search.
+
+<p>
+Searching coding strings is discussed <a
+href="#searching_coding">below</a>.
+
+<p><br><br>
+
+<a name="non-obvious_uses_of_coding">
+<h2>Some non-obvious uses of coding</h2></a>
+
+Even if you are not interested in multi-variate analysis there are a number
+of things coding can do for you.
+
+<p><br><br>
+
+<a name="hand-coding">
+<h2>Hand coding</h2></a>
+
+Although the primary intent of the coding function is to have the coding
+strings added by CorpusSearch, because all CorpusSearch files are ascii,
+they can easily be edited. Information that cannot be extracted from
+structure (pragmatic information, for example) can be added to the coding
+strings by hand. CorpusSearch will then search this information like any
+other.
+
+<p>
+
+Another way to make use of this feature is when checking data. Often in the
+early stages of an investigation, you need to check carefully whether the
+tokens you are getting are really what you want. Add a column to the coding
+string in which you note whether the token is valid or not. You can then
+extract all the invalid tokens by searching the coding string. These can
+then be thrown away leaving only valid tokens, or they can be used to
+refine the search.
+
+<p><br><br>
+
+<a name="storing_information_with_coding">
+<h2>Storing information</h2></a>
+
+Because a coding string is passed on from search to search, the coding
+string can be used to store information about a token which is later
+removed. For instance, if you are looking at subordinate clauses, you may
+want to know what type of clause it is, but once you have removed the
+CP-level, this is no longer accessible. If you code the CP type before
+removing this information, however, it will always be available. An
+extended example of using coding in this way is included <a
+href="CSLiteEx.htm#example4">here</a>.
+
+<p><br><br>
+
+<a name="simulating_or_with_coding">
+<h2>Simulating OR</h2></a>
+
+CorpusSearch does not include an OR function that joins search function
+calls; that is, you can not ask it to give you a file containing one
+structure OR a different structure. If you want a file containing two
+disparate structures you have to do each search separately then search both
+outputfiles (see an example <a
+href="CSLiteEx.htm#example3">here</a>). With coding, however, you can
+simulate a search function OR. This is done by simply assigning the same
+label to two different structures in the coding condition. Both structures
+will then have the same label in the specified column and can be extracted,
+if desired, by searching on the coding string.
+
+<p>
+
+The following example is for searching the PPCME2. It is part of a coding
+condition that codes for type of NP, negative (label <b>"g"</b>),
+quantified (<b>"q"</b>), and positive (<b>"n"</b>). While positive and
+quantified NPs are quite easy to find, negatives are more
+difficult. Negative quantifiers are not explicitly labelled in the PPCME2
+but all start with the letter <b>n</b>. The problem is that the negative quantifier
+may be buried inside a QP. In order to find all the negative quantifiers,
+therefore, we need to find two different structures.
+
+<blockquote>
+<pre>
+
+(NP-OB1 (Q none))
+
+(NP-OB1 (QP (Q no) (QR more))
+	(N money))
+
+</pre>
+</blockquote>
+
+Instead of making two output files we can simply code both structures with
+the same label, here <b>"g"</b> (note this is only part of the coding
+condition, and will not actually label the positive NPs properly as it
+stands).
+
+<blockquote>
+<pre>
+
+7: {
+        ...
+        g: ((NP-OB* iDoms Q*)
+           AND (Q* iDoms N*|n*))
+        g: (((NP-OB* iDoms QP*)
+           AND (QP* iDoms Q*))
+           AND (Q* iDoms N*|n*))
+        q: (NP-OB* iDoms Q*)
+        n: ELSE
+   }
+
+</pre>
+</blockquote>
+
+If we want a file containing all the negative NPs, we can <a
+href="#searching_coding">search on the coding string</a> and extract all the
+tokens with "g" in column 7. The following two examples show both the
+structures we are interested in coded "g" in column 7.
+
+<blockquote>
+<pre>
+
+/~*
+And vur+termor, +te loue of +tyn emcristene is departyd in two: in-to  
+innocence and beneficience. +Tat is to seyn, +tat +tu greue ne harme noman,  
+bote do good and profyt to as manye as +tu my+gt -  
+(CMAELR3,36.281)  
+*~/ 
+
+
+(0  (0 CODING _:_:_:e:e:x:g:g:x:1:1:x:00)
+    (1 IP-SUB (2 NP-SBJ (3 PRO +tu))
+              (4 VBP (5 VBP greue) (6 CONJ ne) (7 VBP harme))
+              (8 NP-OB1 (9 Q+N noman)))
+    (10 ID CMAELR3,36.281))
+
+/~* and +tou+g he take no mo wit hym bote Petre, Iames and Ihon, and wit
+hem go+t in-to a pryue place, +git at +te hardeste behald aver how goode
+God took vp-on hym vre wrecchidnesse; (CMAELR3,46.610) *~/
+
+
+(0  (0 CODING _:_:_:e:e:x:g:g:x:2:2:x:00)
+    (1 IP-SUB (2 NP-SBJ (3 PRO he))
+              (4 VBP take)
+              (5 NP-OB1 (6 QP (7 Q no) (8 QR mo))
+                        (9 PP *ICH*-1))
+              (10 PP (11 P wit)
+                     (12 NP (13 PRO hym)))
+              (14 PP-1 (15 P bote)
+                       (16 NP (17 NR Petre) (18 , ,) (19 NR Iames) (20 CONJ and) (21 NR Ihon))))
+    (22 ID CMAELR3,46.610))
+
+</pre>
+</blockquote>
+
+<p><br>
+<hr>
+<br>
+
+<a name="searching_special_nodes">
+<h1>Searching "special" nodes</h1></a>
+
+Every token in the corpus is contained within a <a
+href="#structure_of_tokens">wrapper</a>, the outermost (unlabelled) set of
+parentheses which contains at the minimum the token itself and an ID
+node. The wrapper may also contain a CODE which contains the DOE identifier
+and/or a CODING node which contains a coding string. CorpusSearch normally
+only searches the token, and cannot access any of the nodes in the
+wrapper. Special commands are needed to access these nodes.
+
+<p><br><br>
+
+<a name="searching_id">
+<h2>Searching the ID node (inID)</h2></a>
+
+Every token in the corpus has an ID node which includes information about
+the source of the token (text, page/line number, DOE identifier, etc.)  as
+well as a token number unique to that file. Because the ID node is
+contained only in the token <a href="#structure_of_tokens">wrapper</a> it
+is outside the area which CorpusSearch normally accesses for a search and
+cannot be searched directly. The purpose of the <i>inID</i> command
+therefore is to allow you to search the ID. The content of the ID node is
+always a single string with no spaces, so if you are trying to access part
+of it, remember to use asterisks before and after.
+
+<p>
+
+The following is part of a coding file that codes for date based on the
+title of the text included in the ID node. As can be seen from the
+examples, a different date code is assigned based on the information in the
+ID node.
+
+<blockquote>
+<pre>
+1: {
+        894: (*orosiu* inID)
+        897: (*boeth* inID)
+        887: (*bede* inID)
+        912: (*blick* inID)
+        884: (*gregdC* inID)
+        999: (*gregdH* inID)
+        893: (*cura* inID)
+        1001: (*otest* inID)
+        850: (*wsgosp* inID)
+    }
+
+</pre>
+</blockquote>
+
+<blockquote>
+<pre>
+/~*
+& seo ea Danai irn+d +tonan su+dryhte on westhealfe Alexandres herga;
+(coorosiu,Or_1:1.8.23.108)
+*~/
+
+(0  (0 CODING 894)
+    (1 IP-MAT (2 CONJ &)
+              (3 NP-NOM (4 D^N seo) (5 N^N ea)
+                        (6 NP-PRN (7 NR Danai)))
+              (8 VBPI irn+d)
+              (9 ADVP-DIR (10 ADV^D +tonan))
+              (11 ADVP-DIR (12 ADV^D su+dryhte))
+              (13 PP (14 P on)
+                     (15 NP (16 N westhealfe)
+                            (17 NP-GEN (18 NP-GEN (19 NR^G Alexandres))
+                                       (20 N^G herga))))
+              (21 . ;))
+    (22 ID coorosiu,Or_1:1.8.23.108))
+
+/~*
+So+dlice Abraham gestrynde Isaac;
+(cowsgosp,Mt_[WSCp]:1.2.4)
+*~/
+
+(0  (0 CODING 850)
+    (1 CODE &lt;T06410000300,1.2&gt;)
+    (2 IP-MAT (3 ADVP (4 ADV So+dlice))
+              (5 NP-NOM (6 NR^N Abraham))
+              (7 VBD gestrynde)
+              (8 NP-ACC (9 NR^A Isaac))
+              (10 . ;))
+    (11 ID cowsgosp,Mt_[WSCp]:1.2.4))
+
+/~*
+Suelcum monnum Dryhten cidde +durh +done witgan,
+(cocura,CP:1.27.12.98)
+
+*~/
+(0  (0 CODING 893)
+    (1 CODE &lt;T06560002400,1.27.12&gt;)
+    (2 IP-MAT (3 NP-DAT (4 ADJ^D Suelcum) (5 N^D monnum))
+              (6 NP-NOM (7 NR^N Dryhten))
+              (8 VBD cidde)
+              (9 PP (10 P +durh)
+                    (11 NP-ACC (12 D^A +done) (13 N^A witgan)))
+              (14 . ,))
+    (ID cocura,CP:1.27.12.98))
+
+</pre>
+</blockquote>
+
+<p><br>
+
+<a name="searching_coding">
+<h2>Searching the CODING node (column#)</h2></a>
+
+The coding function adds a node <b>CODING</b>, which contains the coding
+string, inside the token <a href="#structure_of_tokens">wrapper</a>
+immediately before the parsed material. Like the <a href="#searching_id">ID
+node</a> it is outside the normal search area and must be accessed by a
+special command <i>column#</i>. A coding string search specifies a column
+number and the desired contents of that column. When searching coding
+strings you will probably want to set <a
+href="#nodes_only"><i>nodes_only</i></a> to false, since otherwise your
+output will consist of only the coding string without the rest of the
+token. Searches of coding strings can be combined with searches of
+structure using AND in the usual way.
+
+<p>
+
+The following query searches a file that contains coding strings. It finds
+all tokens with either 2, 3, or 4 in column 3 and with 0 in column 8.
+
+<blockquote>
+<pre>
+nodes_only: f
+query: ((CODING col3 2|3|4)
+AND (CODING col8 0))
+
+</pre>
+</blockquote>
+
+<blockquote>
+<pre>
+/~*
+Him wear+d +ta ges+ad to so+tum +tinge, +t+at +da godes hi gegripon for hyre
+godnysse.    
+(coaelive,+ALS_[Eugenia]:110.253
+*~/ 
+
+/*
+1 CODING t:1:2:p:p:d:al:0:991
+*/
+
+
+(0 NODE (1 CODING t:1:2:p:p:d:al:0:991)
+        (2 IP-SUB (3 NP-NOM (4 D^N +da) (5 N^N godes))
+                  (6 NP-ACC (7 PRO^A hi))
+                  (8 VBDI gegripon)
+                  (9 PP (10 P for)
+                        (11 NP (12 PRO$ hyre) (13 N godnysse))))
+        (14 ID coaelive,+ALS_[Eugenia]:110.253))
+
+/~*
+and hyre geb+ada ne geswac o+d+d+at Cornelius, +t+ara cristenra biscop, hi    
+dearnunga gefullode fram eallum fulnyssum.    
+(coaelive,+ALS_[Eugenia]:333.393)
+*~/ 
+
+/*
+1 CODING a:0:4:p:p:n:al:0:991
+*/
+
+(0 NODE (1 CODING a:0:4:p:p:n:al:0:991)
+        (2 IP-SUB (3 NP-NOM (4 NR^N Cornelius)
+                            (5 , ,)
+                            (6 NP-NOM-PRN (7 NP-GEN (8 D^G +t+ara) (9 N^G cristenra))
+                                          (10 N^N biscop)))
+                  (11 , ,)
+                  (12 NP-ACC (13 PRO^A hi))
+                  (14 ADVP (15 ADV dearnunga))
+                  (16 VBD gefullode)
+                  (17 PP (18 P fram)
+                         (19 NP-DAT (20 Q^D eallum) (21 N^D fulnyssum))))
+        (22 ID coaelive,+ALS_[Eugenia]:333.393))
+
+</pre>
+</blockquote>
+
+<p><br>
+<hr>

@@ -1,0 +1,415 @@
+<HTML>
+<HEAD>
+<TITLE>PPCME2, Syntactic Annotation, Introduction to Syntactic 
+Annotation</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<a name="syntactic_annotation_intro">
+<H2>Introduction to Syntactic Annotation </H2></a>
+
+<DL><DT>
+<DL>
+<DT><a href="#general_principles">General parsing principles</a>
+<DT><a href="#internal_phrase_syntax">Phrasal syntax</a>
+<DT><a href="syn-detailed-toc.htm">Table of contents</a>
+</DL></DL>
+
+<P>
+The PPCME2 parsing scheme uses a limited tree representation in the
+form of labelled parentheses. All open parentheses have an associated
+label, either a phrase label (NP, ADJP, etc.)  or a word label (N,
+ADJ, etc.), representing nodes in a tree. Word-level labels are
+provided for every word, but phrasal labels are not included in every
+case in which a fully labelled tree would require them. Intermediate
+levels of structure (N', ADJ', etc.) are never represented explicitly.
+Thus the trees are quite flat.
+
+<P>
+This approach has no theoretical import, but rather was adopted purely for
+practical reasons.  Some phrases were omitted because their boundaries are
+too difficult to define. This is the case for VP, which, especially in
+Early Middle English where the order of the verb and its complements is
+still in flux (at least on the surface), cannot easily be included. Other
+phrases, such as DP, were omitted because in our opinion, the cost of
+including them outweighs their usefulness.  Intermediate levels of
+structure are omitted for both reasons. In no case should the lack of any
+particular phrase label be taken as implying that we do or do not believe
+that Middle English syntax failed to include such a phrase. The trees are
+simply underspecified.
+
+<P>
+This introduction to our parsing scheme includes only a basic outline of
+the general principles we followed in parsing and details on the most
+common structures. All examples in the present document are made up and
+given in Modern English so as to be maximally accessible. For complete
+documentation of the system with Middle English examples, see the <a
+href="syn-detailed-toc.htm">full documentation</a>.
+
+<P>
+Full lists of the labels used in the PPCME2 are included in the last
+section of the <a href="Contents.htm">main table of contents</a>.
+
+<a name="general_principles">
+<H3>General parsing principles</H3></a>
+
+<OL>
+
+<LI>
+PPCME structure is very flat. Most nodes are multiply branching. A typical
+PPCME parse in tree form looks like this:
+
+<P>
+<CENTER><IMG SRC="syn-tree1.GIF" HEIGHT=160 WIDTH=450></CENTER>
+
+<P>
+Note that: <OL> <LI> IP (in this case, IP-MAT, a matrix IP)
+immediately dominates all verbs and sentence level constituents; that is,
+there are no intemediate I' levels or a VP.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (HVP has)
+        (BEN been)
+        (VAG meaning)
+        (IP-INF (TO to)
+                (VB go))
+        (PP (P for)
+            (NP (D a) (N week))))
+
+</PRE>
+
+<LI>
+In addition to verbs, a small number of other word-level constituents are
+immediately dominated by IP. These are: particles (RP), sentential
+conjunctions (CONJ) and single-word interjections (INTJ)
+
+<PRE>
+(IP-MAT (CONJ And)                  <--- sentential conjunction
+        (NP-SBJ (NPR Mary))
+        (VBD looked)
+        (RP up)                     <--- particle
+        (NP-OB1 (NP-GEN (NPR Jane) ($ 's))
+                (N number)))
+
+(IP-MAT-SPE (INTJ Alas)             <--- single-word interjection
+            (IP-MAT-PRN (VBD cried)
+                        (NP-SBJ (NPR Mary)))
+            (NP-SBJ (PRO I))
+            (HVP have)
+            (VBD lost)
+            (NP-OB1 (PRO$ my) (NS glasses)))
+
+</PRE>
+
+<LI>
+Within phrasal constituents, the phrasal node immediately dominates the
+head; there are no intermediate levels of structure (N', ADJ' etc.).
+
+<PRE>
+(NP (D the ) (N girl))
+
+(PP (P in)
+    (NP (D the) (N spring)))
+
+(ADJP (ADV very) (ADJ big))
+
+</PRE>
+
+<LI>
+Pre-head modifiers do not project phrasal nodes when they consist of a
+single word, but do when they are multi-word. Because of the lack of
+intermediate levels of structure, all modifiers appear as sisters of the
+head.
+
+<PRE>
+(NP (D a) (ADJ big) (N cat))
+
+(NP (D a)
+    (ADJP (ADV very) (ADJ big)) 
+    (N cat))
+
+</PRE>
+
+<LI> Post-head constituents project phrasal nodes in all cases. Like
+pre-head modifiers, they are sisters to the head.
+
+<PRE>
+(IP-MAT (PP (P From)
+            (ADVP (ADV above)))
+        (MD shall)
+        (VB come)
+        (NP-SBJ (D +te) (N judge)
+                (ADJP (ADJ fierce) (CONJ and) (ADJ angry)))
+        (E_S ;))
+
+(IP-MAT (NP-SBJ (PRO He))
+        (ADVP-TMP (ADV never))
+        (VBD found)
+        (NP-OB1 (D a) (N woman)
+                (ADJP (ADJ good))))
+
+(IP-MAT (NP-SBJ (D The) (N king))
+        (VBD gave)
+        (NP-OB2 (PRO him))
+        (NP-OB1 (D an) (N island)
+                (RRC (VAN forsaken))))      <--- RRC = reduced relative clause
+
+(IP-MAT (NP-SBJ (PRO$ Our) (N life)
+                (ADVP-LOC (ADV here)))
+        (BEP is)
+        (ADJP (ADV very) (ADJ comfortable)))
+
+(IP-MAT (NP-SBJ (PRO She))
+        (VBD came)
+        (NP-TMP (D the) (ADJ fifth) (N day)
+                (ADVP-TMP (ADV+WARD afterward))))
+
+</PRE>
+
+</OL>
+
+<LI> The PPCME labels for both form and function. In general, the basic
+label indicates the form of the constituent (NP, PP, ADJP, etc.), while
+additional labels (separated by a hyphen) indicate function (NP-SBJ =
+subject, ADVP-TMP = temporal adverb, CP-REL = relative clause, etc.). Not
+all constituents are marked for function; in most cases there is at most
+one additional label, but there may be more (IP-INF-PRP = purpose
+infinitive, IP-IMP-SPE = direct speech imperative, etc.).
+
+<OL>
+
+<LI>
+Among sentence level constituents (i.e., all phrases immediately dominated
+by IP), function is marked on all noun phrases (NP-SBJ = SUBJECT, NP-MSR =
+MEASURE NP, etc.). Bare NPs are either complements of a non-verbal head
+(e.g., a preposition), or part of a conjunction structure (see Section
+<A HREF="syn-conj.htm#conjunction">CONJUNCTION</A>).
+
+<PRE>
+(IP-MAT (NP-TMP (N Yesterday))
+        (NP-SBJ (NPR Mary))
+        (VBD told)
+        (NP-OB2 (NPR Jane))
+        (CP-THT (C that)
+                (IP-SUB (NP-SBJ (PRO she))
+                        (VBD studied)
+                        (NP-MSR (QP  (ADVR too) (Q much)))
+                        (PP (P during)
+                            (NP (D the) (N+N weekend))))))
+
+</PRE>
+
+<LI>
+Argument and adjunct PPs are not distinguished, nor are any PPs marked for
+function.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD put)
+        (NP-OB1 (D the) (N book))
+        (PP (P on)
+            (NP (D the) (N table)))
+        (PP (P on)
+            (NP (NPR Saturday))))
+
+</PRE>
+
+<LI>
+Only locative, temporal and directional adverbs are marked for function;
+others are unmarked.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (ADVP (ADV happily))
+        (VBD put)
+        (NP-OB1 (D the) (N book))
+        (ADVP-LOC (ADV there))
+        (ADVP-TMP (ADV+WARD afterward)))
+
+</PRE>
+
+<LI>
+All clauses are labelled by type. Matrix clauses are labelled IP-MAT; they
+may be further characterized as direct speech (<TT>IP-MAT-SPE</TT>) or
+parentheticals (<TT>IP-MAT-PRN</TT>) Other IP clauses have their own labels,
+such as <TT>IP-IMP</TT>, imperative, <TT>IP-SMC</TT>, small clause, <TT>IP-INF</TT>, infinitive, etc. All CPs also have extended labels to indicate type: <TT>
+CP-THT</TT>, that clause, <TT>CP-ADV</TT>, adverbial clause, etc.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD forgot)
+        (IP-INF (TO to)
+                (VB tell)
+                (NP-OB2 (NPR Jane))
+                (CP-THT (C that)
+                        (IP-SUB (NP-SBJ (PRO she))
+                                (MD should)
+                                (VB buy)
+                                (NP-OB1 (N milk))))))
+
+</PRE>
+
+</OL>
+
+<LI>
+In cases where the attachment level of constituents is ambiguous or
+difficult to determine, the default is always to attach high, rather than
+to embed.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD saw)
+        (NP-OB1 (D the) (N man))
+        (PP (P with)
+            (NP (D the) (N telescope))))
+
+</PRE>
+</OL>
+
+<a name="internal_phrase_syntax">
+<H3>Phrasal syntax</H3></a>
+
+The internal syntax of all phrasal categories (excluding IP and CP) is
+fundamentally similar.
+
+<OL> 
+
+<LI> The phrasal node (NP, PP, ADJP, etc.) immediately dominates the head
+category (N, P, ADJ, etc.); that is, there are no intermediate bar-levels
+indicated.
+
+<LI> With two exceptions, heads always project a phrasal node.  First,
+certain heads, such as D (determiner), RP (particle) and all verbs, never
+project a phrase.  Second, single-word pre-head modifiers do not project a
+phrasal node when that node is predictable on the basis of the head within
+the PPCME2 schema.
+
+<LI> Complements and post-head modifiers always project a phrasal node,
+whether they consist of a single word or not.
+
+Thus in the PPCME2 schema, both modifiers and complements are sisters of
+the head.
+
+<P>
+<CENTER><IMG SRC="syn-tree2.GIF" HEIGHT=135 WIDTH=450></CENTER>
+
+<PRE>
+(XP (Y single_word_modifier) (X head)
+    (ZP complement_or_post_head_modifier))
+
+(XP (W single_word_modifier) (Y single_word_modifier) (X head)
+    (ZP complement_or_post_head_modifier))
+
+(XP (YP multi_word_modifier)
+    (X head)
+    (ZP complement_or_post_head_modifier))
+
+(NP (D the) (NS girls)
+    (PP (P on)
+        (NP (D the) (N beach))))
+
+(NP (Q many) (ADJ happy) (NS girls)
+    (PP (P on)
+        (NP (D the) (VAN overcrowded) (N beach))))
+
+(NP (ADJP (ADJ happy) (CONJ and) (VAN excited))
+    (NS girls))
+
+(NP (Q many)
+    (ADJP (ADV very) (ADJ happy))
+    (NS girls)
+    (PP (P on)
+        (NP (D the) (VAN overcrowded) (N beach))))
+
+(NP (QP (ADV very) (Q many))
+    (ADJP (ADV very) (ADJ happy)) 
+    (NS girls)
+    (PP (P on)
+        (NP (D the) (N beach)
+            (PP (P with)
+                (NP (D the) (ADJ big) (NS dunes))))))
+
+</PRE>
+
+<P>
+<CENTER><IMG SRC="syn-tree3.GIF" WIDTH=450 HEIGHT=185></CENTER>
+
+<P>
+<CENTER><IMG SRC="syn-tree4.GIF" WIDTH=550 HEIGHT=250></CENTER>
+
+<P>
+Other phrases have the same structure as NPs.
+
+<PRE>
+(ADJP (ADV very) (ADJ happy))
+
+(ADJP (ADJ full)
+      (PP (P of)
+          (NP (N water))))
+
+(PP (ADV especially)
+    (P on)
+    (NP (NPRS Saturdays)))
+
+(PP (ADV right)
+    (P up)
+    (NP (D the) (N street)))
+
+(ADVP (ADV very) (ADV slowly))
+
+</PRE>
+
+<LI> In general the head of a phrase will be overt and match the category
+of the phrase level. In certian cases, however, there is no matching
+head. In some cases this is because the head is actually empty (by elision,
+etc.), which we do not indicate; in other cases, it may be an artifact of
+the PPCME schema in which some words receive a more specific label than
+simply <TT>N</TT>, <TT>ADJ</TT>, etc. For example, pronouns are labelled <TT>
+PRO</TT>, but act as heads of NPs. Most instances of the word "one" are
+labelled <TT>ONE</TT> and in some cases this word may be the head of the
+constituent. Thus, the lack of a word-level constituent that matches the
+phrase in category indicates either (1) the head has been elided; or (2)
+the head has a more specific label than its general category label.
+
+Most cases of the latter are found in NPs and ADJPs. The most common types
+of correspondences are the following:
+
+<OL>
+<LI> nominal elements not labelled <TT>N</TT> (<TT>NS</TT>, etc.)
+
+<PRE>
+PRO, EX, MAN, OTHERS, ?PRO$, ?ONE, ?OTHER, ?D, ?Q, (QR, etc.)
+
+</PRE>
+
+<LI> adjectival elements not labelled <TT>ADJ</TT> (<TT>ADJS</TT>, etc.)
+
+<PRE>
+VAN, VAG, (HAN, HAG, etc.), SUCH, QR, ?ONE, ?OTHER 
+
+</PRE>
+
+</OL>
+
+As indicated by the question marked elements in the above lists, it is not
+always clear in some cases whether the word is the head or the head is
+elided. It is mainly for this reason that we do not make this distinction
+for these words.
+
+The most common elision case is of the NPs containing only an adjective
+or, more commonly, a determiner and adjective. 
+
+<PRE>
+(IP-MAT (IP-MAT-1 (NP-SBJ (NPR Mary))
+                  (VBD gave)
+                  (NP-OB2 (NPR Jane))
+                  (NP-OB1 (D a) (ADJ red) (N ribbon)))
+        (CONJP (CONJ and)
+               (IP-MAT=1 (NP-OB2 (NPR Lucy))
+                         (NP-OB1 (D a) (ADJ blue)))))   <--- elided head noun
+
+</PRE>
+
+</OL>

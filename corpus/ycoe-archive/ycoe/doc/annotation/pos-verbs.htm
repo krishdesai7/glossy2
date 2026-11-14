@@ -1,0 +1,262 @@
+<HTML>
+<HEAD>
+<TITLE>PPCME2, POS Annotation, Verbs</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<a name="verbs">
+<H2>Verbs</H2></a>
+
+<DL><DT>
+<DL>
+<DT><a href="#main_and_aux_verbs">Main Verbs and Auxiliary Use of HAVE, BE,
+DO</a>
+	<DL>
+	<DT><a href="#modals_as_main_verbs">Modals used as main verbs</a>
+	<DT><a href="#subjunctives">Subjunctives</a>
+	<DT><a href="#present_participle_for_infinitive">Present participle for infinitive</a>
+	</DL>
+<DT><a href="#participles">Participles</a>
+	<DL>
+	<DT><a href="#a-hunting">The A-HUNTING construction</a>
+	</DL>
+<DT><a href="#modals">Modals (MD, MD0)</a>
+<DT><a href="#infinitive_markers">Infinitive markers (TO, FOR, FOR+TO)</a>
+<DT><a href="pos-toc.htm">Table of Contents</a>
+</DL></DL>
+
+<a name="main_and_aux_verbs">
+<H3>Main Verbs and Auxiliary Use of HAVE, BE, DO</H3></a>
+
+<DL>
+<DT> The verb BE </DT>
+
+<PRE>
+        BE      infinitive
+        BEI     imperative
+        BEP     present (including present subjunctive)
+        BED     past (including past subjunctive)
+        BAG     present participle
+        BEN     perfect participle
+</PRE>
+
+<DT> The verb HAVE </DT>
+
+<PRE>
+        HV      infinitive 
+        HVI     imperative
+        HVP     present (including present subjunctive)
+        HVD     past (including past subjunctive)
+        HAG     present participle
+        HVN     perfect participle
+        HAN     passive participle (verbal or adjectival)
+</PRE>
+
+<DT> The verb DO </DT>
+
+<PRE>
+        DO      infinitive
+        DOI     imperative
+        DOP     present (including present subjunctive)
+        DOD     past (including past subjunctive)
+        DAG     present participle
+        DON     perfect participle
+        DAN     passive participle (verbal or adjectival)
+</PRE>
+
+<DT> All other verbs </DT>
+
+<PRE>
+        VB      infinitive
+        VBI     imperative
+        VBP     present (including present subjunctive)
+        VBD     past (including past subjunctive)
+        VAG     present participle
+        VBN     perfect participle
+        VAN     passive participle (verbal or adjectival)
+</PRE>
+</DT>
+
+The forms of the verbs BE, HAVE, and DO are distinguished from all
+other verbs, but no distinction is made in the tag for auxiliary and
+main verb use for BE, HAVE, and DO. In the syntactically annotated
+(parsed) files, auxiliary forms of BE and HAVE can be distinguished
+from main verb forms by the presence of a participle in the clause,
+for BE either a perfect or passive/adjectival participle and for HAVE
+a perfect participle.  Periphrastic DO is always accompanied by an
+infinitive. In the POS files, however, empty categories are not added,
+and thus care must be taken to distinguish main verb use of BE, HAVE,
+and DO, from cases in which the untensed verb has been elided..
+
+<PRE>
+        therefore_ADV+P aske_VBI what_WPRO ye_PRO 
+        woll_VBP els_ADV ,_,
+
+        I_PRO woll_VBP well_ADV ,_, '_' seyde_VBD
+        Balan_NPR ,_, '_' that_C ye_PRO so_ADV do_DOP
+
+</PRE>
+
+<a name="modals_as_main_verbs">
+<H3>Modals used as main verbs</H3></a>
+
+Modal verbs are tagged as main verbs when this reading is forced; that is,
+when a reading with the main verb elided is not available.
+
+<PRE>
+        therefore_ADV+P ye_PRO may_MD sey_VB what_WPRO 
+        ye_PRO woll_MD ,_.
+
+        '_' I_PRO woll_VBP well_ADV ,_, '_' seyde_VBD Balan_NPR ,_, 
+        '_' that_C ye_PRO so_ADV do_DOP ;_;
+        
+</PRE>
+
+<a name="subjunctives">
+<H3>Subjunctives</H3></a>
+
+Subjunctive forms are not distinguished from indicative forms in any tense.
+
+<PRE>
+        but_P yf_P your_PRO$ persone_N be_BEP there_ADV
+
+        but_P yf_P he_PRO juste_VBP with_P the_PRO
+
+</PRE>
+
+<a name="present_participle_for_infinitive">
+<H3>Present participle for infinitive</H3></a>
+
+In some early texts (notably the Trinity Homilies) a present participle
+form is commonly used for the infinitive. In such cases the word is
+tagged by function rather than form, that is, as an infinitive <TT>VB</TT>.
+
+<PRE>
+        Alse_P ge_PRO hauen_HVP giwer_PRO$ lichame_N don_DON 
+        to_TO hersumiende_VB fule_ADJ lustes_NS ;_, and_CONJ 
+        unriht_ADJ ,_, alse_ALSO do+d_DOI giwer_PRO$ lichame_N 
+        he+denfor+d_ADV to_TO hersumiende_VB clennesse_N ._, and_CONJ
+        rihtwisnesse_N ._, and_CONJ holinesse_N ._,
+</PRE>
+
+<a name="participles">
+<H3>Participles</H3></a>
+
+Verbal and adjectival use of the present and perfect participles is not
+distinguished, that is, they are both tagged <TT>VAN</TT> or
+<TT>VAG</TT>. The nominal use of the present participle, on the other hand,
+is tagged as a noun <TT>N</TT>.
+
+<PRE>
+        for_CONJ he_PRO ys_BEP the_D mervaylyste_ADJS knyght_N
+        that_C ys_BEP now_ADV lyvynge_VAG ._.
+
+        but_CONJ traveillynge_VAG men_NS are_BEP ofte_ADV wery_ADJ
+
+        I_PRO was_BED but_FP late_ADJ at_P a_D justynge_N
+
+        and_CONJ she_PRO graunted_VBD hem_PRO with_P wepynge_N it_PRO
+        shold_MD be_BE done_DAN rychely_ADV
+
+        Nero_NPR and_CONJ his_PRO$ peple_NS were_BED destroyed_VAN
+
+        the_D blessid_VAN body_N of_P oure_PRO$ Lord_NPR Jesu_NPR Cryst_NPR
+</PRE>
+
+<a name="a-hunting">
+<H3>The A-HUNTING construction</H3></a>
+
+The A-HUNTING construction is treated as phrasal:
+
+<PRE>
+        he_PRO made_VBD hym_PRO redy_ADJ with_P many_Q knyghtes_NS
+        to_TO ryde_VB on_P huntynge_N
+
+        and_CONJ there_ADV mette_VBD with_P a_D knyght_N that_C 
+        had_HVD bene_BEN an_P hontynge_N
+
+</PRE>
+
+For present participle forms used as infinitives, see Section
+<A HREF="#present_participle_for_infinitive">PRESENT PARTICIPLE FOR
+INFINITIVE</A>.
+
+<a name="modals">
+<H3>Modals (MD, MD0)</H3></a>
+
+<PRE>
+        MD      Modal verb
+        MD0     Untensed modal verb (second of two modals)
+</PRE>
+
+Forms of the following verbs when accompanied by a main verb are tagged as
+modals:
+
+<PRE>
+        CAN, DARE, MAY, MUST, SHALL, THARF, UTEN, WILL
+
+</PRE>
+
+Modal verbs used in main verb sense are tagged as main verbs when that
+reading is forced. In cases where elipsis of the main verb is also
+possible, the default is to tag the verb as a modal.
+
+<PRE>
+        therefore_ADV+P ye_PRO may_MD sey_VB what_WPRO 
+        ye_PRO woll_MD ,_.
+
+        '_' I_PRO woll_VBP well_ADV ,_, '_' seyde_VBD Balan_NPR ,_, 
+        '_' that_C ye_PRO so_ADV do_DOP ;_;
+
+</PRE>
+
+The tag <TT>MD0</TT> is used in cases in which a second untensed modal
+verb is present as well as an untensed main verb.
+
+<PRE>
+        supposyng_VAG +tat_C he_PRO schuld_MD cun_MD0 best_ADVS 
+        rede_VB +te_D booke_N ,_.
+
+        Dowtyr_N ,_, whan_P +tu_PRO art_BEP in_P Heuyn_NPR ,_, 
+        +tu_PRO xalt_MD mown_MD0 askyn_VB what_WPRO +tu_PRO wylt_MD ,_.
+
+</PRE>
+
+<a name="infinitive_markers">
+<H3>Infinitive markers (TO, FOR, FOR+TO)</H3></a>
+
+<PRE>
+     TO        Infinitival TO, TIL, AND AT
+     FOR       Infinitival FOR in FOR TO
+     FOR+TO    Cliticized FOR+TO
+
+</PRE>
+
+TO is used to tag any form of the infinitive marker. When it is cliticized to the verb, the
+combination is tagged <TT>TO+VB</TT>, etc.
+
+<PRE>
+        and_CONJ desyred_VBD to_TO have_HV lyen_VBN by_P her_PRO
+
+        +te_D riht_ADJ +tidir_ADV at_TO cume_VB +tai_PRO sal_MD 
+        haue_HV ,_.
+
+        Gyf_VBI +tien_PRO$ entent_N til_TO understand_VB 
+        +tis_D wrytyng_N 
+
+</PRE>
+
+FOR in conjunction with an infinitive is always labelled <TT>FOR</TT> and
+treated as part of the auxiliary rather than as a preposition. If TO
+is cliticized to FOR, the combination is labelled <TT>FOR+TO</TT>.
+
+<PRE>
+        and_CONJ fondede_VBD forto_FOR+TO slee_VB 
+        Iustinianus_NPR ._.
+
+        &_CONJ +te_D eadie_ADJ katerine_NPR bigon_VBD 
+        forte_FOR+TO seggen_VB ._.
+
+</PRE>
+

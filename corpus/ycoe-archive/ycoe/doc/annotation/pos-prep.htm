@@ -1,0 +1,419 @@
+<HTML>
+<HEAD>
+<TITLE>PPCME2, POS Annotation, Prepositions</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<a name="prepositions">
+<H2>Prepositions and subordinating conjunctions (P)</H2></a>
+
+<DL><DT>
+<DL>
+<DT><a href="#prepositions_and_particles">Prepositions and particles</a>
+	<DL>
+	<DT><a href="#adown">ADOWN</a>
+	</DL>
+<DT><a href="#prepositions_in_ward">Prepositions in -WARD</a>
+<DT><a href="#prep_rpronouns">Preposition with R-pronoun</A>
+<DT><a href="#for+ti_for+tan_etc">Preposition with demonstrative
+(FOR+TI, FOR+TAN, etc.)</a>
+	<DL>
+	<DT><a href="#forwhi">FORWHI</a>
+	</DL>
+<DT><a href="#subordinating_conjunctions">Subordinating conjunctions</a>
+<DT><a href="#comparative_prepositions">Comparative SO, AS, THAN</a>
+<DT><a href="#prepositional_a">Prepositional A (IN,ON)</a>
+<DT><a href="#prepositions_words">Treatment of individual words</a>
+	<DL>
+	<DT><a href="#so_swa">SO, SWA</a>
+	<DT><a href="#preposition_also">ALSWA, etc.</a>
+		<DL>
+		<DT><a href="#in_adverbial_as_clauses">In adverbial AS clauses</a>
+		<DT><a href="#such_as">SUCH AS</a>
+		</DL>
+	<DT><a href="#because_amid_beside">BECAUSE, AMID(DES), BESIDE(S)</a>
+	<DT><a href="#notwithstanding_saving_touching">NOTWITHSTANDING, SAVING, TOUCHING</a>
+	<DT><a href="#+ta+ta">+TA +TA</a>
+	<DT><a href="#a+tet">A+TET</a>
+	</DL>
+<DT><a href="pos-toc.htm">Table of Contents</a>
+</DL></DL>
+
+<P>
+
+Prepositions are tagged <TT>P</TT>.
+
+<PRE>
+        on_P your_PRO$ wey_N
+        with_P Merlyn_NPR
+        to_P the_D kynge_N
+        of_P Tyntigayll_NPR
+
+</PRE>
+
+<a name="prepositions_and_particles">
+<H3>Prepositions and particles</H3></a>
+
+When one of the list of adverbial particles (see Section <A
+HREF="pos-other.htm#adverbial_particles">ADVERBIAL PARTICLES</A>)
+precedes a preposition immediately, it is tagged as a particle, even in
+cases such as IN TO or UP ON which might be interpreted as cases of split
+prepositions.  For a list of cases treated as split prepositions, see
+Section <A HREF="pos-split-join.htm#unitary_prepositions">PREPOSITIONS</A>.
+
+<PRE>
+        oute_RP of_P the_D byggest_ADJS castell_N
+        doune_RP to_P the_D erthe_N
+
+        &_CONJ earnin_VB him_PRO crune_N up_RP o_P crune_N
+
+        me_MAN droh_VBD hire_PRO +tus_ADV in_RP to_P dorkest_ADJS wan_N
+
+</PRE>
+
+<a name="adown">
+<H3>ADOWN</H3></a>
+
+The cliticized preposition+particle combination ADOWN is tagged <TT>
+  P+RP</TT>.
+
+<PRE>
+        &_CONJ dude_DOD swa_P +tt_C hit_PRO +geat_VBD adun_P+RP 
+        of_P +te_D +gerden_NS 
+
+        &_CONJ com_VBD sihinde_VAG adun_P+RP softe_ADV from_P 
+        heouene_NPR
+
+        and_CONJ so_ADV he_PRO leyde_VBD hym_PRO adowne_P+RP 
+        by_P sir_NPR Launcelot_NPR
+
+</PRE>
+
+<a name="prepositions_in_ward">
+<H3>Prepositions in -WARD</H3></a>
+
+Prepositions in -WARD (TOWARD, FROWARD, etc) are tagged <TT>P</TT>; see
+Section <A HREF="pos-words.htm#ward">WARD</A>.
+
+<PRE>
+        and_CONJ makede_VBD his_PRO$ weie_N toward_P ierusalem_NPR
+
+        &_CONJ firse+d_VBP him_PRO awei_P froward_P vre_PRO$ steuene_N
+
+</PRE>
+
+<a name="prep_rpronouns">
+<H3>Preposition with R-pronoun</H3></A>
+
+Prepositions cliticized to R-pronouns are labelled <TT>ADV+P</TT>.
+
+<PRE>
+         and_CONJ therewith_ADV+P he_PRO fylle_VBD in_P a_D sowne_N
+
+         and_CONJ so_ADVR muche_Q meete_N was_BED sette_VAN thereon_ADV+P
+
+         and_CONJ therein_ADV+P was_BED a_D jantillwoman_ADJ+N
+
+</PRE>
+
+<a name="for+ti_for+tan_etc">
+<H3>Preposition with demonstrative (FOR+TI, FOR+TAN, etc.)</H3></a>
+
+A preposition may be followed by a demonstrative (FOR +TI, FOR +TAN, FOR
++TAT, IN +TAT, WI+T +TAN, etc.) either absolutely, or followed by a clause
+or NP. In all cases these are tagged <TT>D</TT>, or if the preposition and
+demonstrative are cliticized, <TT>P+D</TT>.  See also Section <A
+HREF="syn-phrases.htm#preposition_plus_demonstrative_plus_clause">PREPOSITIONS
+WITH A DEMONSTRATIVE PLUS CLAUSE OR NP</A>.
+
+<PRE>
+        after_P +dan_D +de_C here_PRO$ herte_N leste_VBD ,_, 
+        ic_PRO hem_PRO fol+gede_VBD ._. '_'
+
+        Ach_CONJ ear_P +tenne_D +te_D biddunge_N areare_VBP 
+        ani_Q scheonde_N ._, ear_ADV dei+ge_VBP martir_N in_P 
+        hire_PRO$ meoseise_N ._.
+        
+        for_P +ti_D +tt_C +tu_PRO ne_NEG wilnest_VBP bute_FP to_TO 
+        seo_VB mi_PRO$ wlite_N ._, ne_NEG speoke_VBI bute_FP to_P me_PRO ._.
+
+        be_P +tan_D +tet_C scele_N a-li+gt_VBP be_P grace_N tek+t_VBP ._.
+
+        We_PRO ben_BEP tau+gt_VAN in_P +tat_D +tat_C we_PRO seon_VBP 
+        in_P suche_SUCH creatures_NS +te_D wonder_ADJ werkes_NS of_P 
+        vre_PRO$ Creatour_N ;_.
+
+        and_CONJ for+ti_P+D it_PRO es_BEP lastandar_ADJR 
+        and_CONJ sykerar_ADJR
+
+        For+dan_P+D hie_PRO bie+d_BEP godes_NPR$ wi+derwinen_NS
+
+        For+di_P+D +dat_C ich_PRO nabbe_NEG+HVP ihafd_HVN 
+        rihte_ADJ ileaue_N
+
+</PRE>
+
+<a name="forwhi">
+<H3>FORWHI</H3></a>
+
+FORWHI when used as a subordinator (similar to FOR+TI) is labelled <TT>P+WADV</TT>or if separate <TT>for_P whi_WADV</TT>.
+
+<PRE>
+         forwhi_P+WADV Jesabel_NPR his_PRO$ wijf_N 
+         excitide_VBD him_PRO
+
+         for_P whi_WADV tho_D ben_BEP wordis_NS of_P 
+         euerlastyng_ADV+VAG lif_N
+
+</PRE>
+
+<a name="subordinating_conjunctions">
+<H3>Subordinating conjunctions</H3></a>
+
+Subordinating conjunctions are treated as prepositions taking a clausal
+complement and tagged <TT>P</TT>. This includes WHEN introducing an adverbial
+clause, but not in questions, where it is tagged <TT>WADV</TT>.
+
+<PRE>
+        and_CONJ wolde_VBD +tat_C his_PRO$ doughtres_NS
+        were_BED mariede_VAN or_P +tat_C he_PRO deide_VBD ._.
+
+        And_CONJ after_P +tat_C +tis_D Donewal_NPR
+        was_BED $dede_ADJ ,_, his_PRO$ sones_NS +tat_C
+        he_PRO hade_HVD ,_, departede_VBD +te_D lande_N
+        bituene_P ham_PRO
+
+        When_P syre_NPR Ector_NPR beheld_VBD the_D swerd_N 
+        he_PRO retorned_VBD ageyne_ADV
+
+        When_P I_PRO cam_VBD home_N for_P my_PRO$ broders_N$ 
+        swerd_N I_PRO fond_VBD nobody_Q+N at_P home_N
+</PRE>
+
+<a name="comparative_prepositions">
+<H3>Comparative SO, AS, THAN</H3></a>
+
+Comparative clauses and complements are introduced by SO/SWA/SE/etc.,
+AS/ALSE/ALSWA/etc.  and THAN, all of which are tagged <TT>P</TT> in this
+context. Separated AL SWA is tagged <TT>al_Q swa_P</TT>.
+
+<PRE>
+        hie_PRO hauen_HVP al_Q swa_ADVR michel_Q swa_P hie_PRO 
+        +dar_ADV uppe_P l+anden_VBP ,_,
+
+        Nis_NEG+BEP me_PRO nan_Q ofrende_N swa_ADVR lief_ADJ 
+        swa_P godes_NPR$ luue_N and_CONJ alre_Q mannes_NS$
+
+        Toward_P +te_D preostes_N$ tiden_N hercni+d_VBI se_ADVR 
+        for+d_ADV se_P +ge_PRO ma+gen_MD ,_.
+
+        he_PRO nis_NEG+BEP nawiht_NEG alse_ADVR leful_ADJ alse_P 
+        him_PRO bi-houede_VBD
+
+        ha_PRO make_VBD him_PRO sunegen_VB on_P hire_PRO swa_ADVR
+        hali_ADJ as_P he_PRO wes_BED
+
+        Al_Q swa_P +de_D angel_N was_BED +gedriuen_VAN ut_RP of_P heuene_N 
+        riche_N for_P modinesse_N ,_, swa_ADV was_BED Adam_NPR ,_,
+
+        for_CONJ alswa_P weter_N acwenche+d_VBP fur_N ;_, alswa_ADV
+        acwenche+d_VBP sunne_N ._.
+
+        and_CONJ swa_ADV se_P +tu_PRO for+geuest_VBP +tam_D monne_N 
+        +te_C wi+d_P +te_PRO agulte+d_VBP ;_, swa_ADV +tin_PRO$ drihten_NPR
+        for+geue+d_VBP +te_PRO +tine_PRO$ misdede_N ._.
+
+        Nan_Q +ting_N ne_NEG fli+d_VBP mon_N sonre_ADVR +tenne_P his_PRO$
+        a+gen_ADJ heorte_N ._.
+
+        and_CONJ nime+d_VBP him_PRO .vii._NUM deofle_NS +te_C
+        beo+d_BEP muchele_Q wurse_ADJR +tenne_P he_PRO
+
+        but_CONJ I_PRO wote_VBP wel_ADV ye_PRO are_BEP of_P an_D 
+        hyher_ADJ blood_N than_P I_PRO wende_VBD {of}_CODE ye_PRO were_BED
+
+        for_CONJ as_ADV21 swa_ADV22 as_P mon_N islein_VAN is_BEP 
+        grislich_ADJ &_CONJ atelich_ADJ in_P monnes_N$ ech+ge_N 
+        alswa_ADV is_BEP +te_D sunnefule_ADJ bifor_P godes_NPR$ 
+        echnen_NS ._.
+
+</PRE>
+
+<a name="prepositional_a">
+<H3>Prepositional A (IN,ON)</H3></a>
+
+This preposition often appears incorporated with the following word (AMISS,
+AWAY, ADAY, ANIGHT, ALIVE, ASUNDER, etc.), although in at least some cases
+it can appear separately as well.  The treatment of these words is outlined
+in Section <A HREF="pos-split-join.htm#words_sometimes_separate">WORDS THAT
+ARE SOMETIMES TREATED AS SEPARATE PARTS</A>.
+
+<a name="prepositions_words">
+<H3>Treatment of individual words</H3></a>
+
+<a name="so_swa">
+<H3>SO, SWA</H3></a>
+
+SO in a purpose or result SO THAT clause is tagged <TT>P</TT>.
+
+<PRE>
+        but_CONJ he_PRO come_VBD a+geynes_P him_PRO
+        with_P a_D strong_ADJ power_N ,_, so_P +tat_C
+        Morgan_NPR derst_MD nou+gt_NEG abide_VB ._,
+</PRE>
+
+For SO/SWA in comparatives, see Section <A HREF="#comparative_prepositions">COMPARATIVE SO, AS, THEN</A>.
+
+<a name="preposition_also">
+<H3>ALSWA, etc.</H3></a>
+
+ALSWA appears both separated and together, and in various reduced
+forms (ALSO, ALSE, ALS, AS, AS SWA).  In prepositional use, when
+separated, it is tagged <TT>al_Q swa_P</TT>, and when together just as
+<TT>P</TT>. It is tagged <TT>alswa_P</TT> or <TT>al_Q swa_P</TT> in the
+following cases:
+
+<a name="in_adverbial_as_clauses">
+<H3>In adverbial AS clauses</H3></a>
+
+<PRE>
+        Luue_VBI +dine_PRO$ nexte_ADJ al_Q swa_P +de_PRO seluen_N ,_,
+
+        '_' I_PRO wylle_VBP wel_ADV ,_, '_' said_VBD the_D kynge_N ,_, 
+        '_' as_P thow_PRO wilt_MD have_HV it_PRO ._. '_'
+
+        and_CONJ the_D same_ADJ nyght_N ,_, as_P I_PRO shal_MD 
+        ansuer_VB unto_P God_NPR ,_, this_D child_N was_BED 
+        begoten_VAN upon_P me_PRO
+
+</PRE>
+
+<a name="such_as">
+<H3>SUCH AS</H3></a>
+
+AS is labelled <TT>P</TT> following SUCH.
+
+<PRE>
+        and_CONJ suche_SUCH knyghtes_NS as_P Uther_NPR Pendragon_NPR 
+        loved_VBD best_ADVS
+
+        ye_PRO shall_MD sende_VB unto_P me_PRO three_NUM knyghtes_NS 
+        of_P youres_PRO$ suche_SUCH as_P ye_PRO truste_VBP
+
+</PRE>
+
+For ALSWA in comparatives, see Section <A HREF="#comparative_prepositions">COMPARATIVE SO, AS, THEN</A>.
+
+When non-subordinating, ALSWA is tagged <TT>alswa_ADV</TT>, <TT>al_Q
+swa_ADV</TT>, or <TT>as_ADV21 swa_ADV22</TT>. See Section
+<A HREF="pos-adj-adv.htm#adj_adv_so_as">SO, AS</A>.
+
+<a name="because_amid_beside">
+<H3>BECAUSE, AMID(DES), BESIDE(S)</H3></a>
+
+BECAUSE and AMID(DES) are always tagged <TT>P+N</TT> (because they can take OF
+complements), and when separated <TT>by_P cause_N, a_P mid_N</TT>, but
+BESIDE(S) is tagged <TT>P</TT>, and when separated <TT>be_P21 side(s)_P22</TT>.
+
+<PRE>
+        And_CONJ bycause_P+N of_P his_PRO$ armoure_N and_CONJ 
+        shylde_N I_PRO am_BEP sure_ADJ I_PRO shall_MD ryde_VB 
+        in_P pease_N
+
+        but_CONJ Balynes_NPR$ oste_N myght_MD $not_NEG be_BE 
+        lette_VAN in_RP because_P+N he_PRO had_HVD no_Q lady_N
+
+        and_CONJ wente_VBD into_P meny_Q londes_NS <P_VI,23>_CODE 
+        by_P cause_N of_P marchaundise_N
+
+        Me_MAN weorp_VBD ham_PRO mid_P tis_D ilke_ADJ word_N 
+        amidde_P +te_D leie_N
+
+        Her_ADV amidde_P+N wes_BED +tis_D meiden_N iset_VAN
+
+        a_P mid_N +te_D menske_N of_P +ti_PRO$ neb_N
+
+        &_CONJ he_PRO shal_MD dye_VB bisides_P +te_D Marche_N 
+        of_P a_D straunge_ADJ lande_N
+
+        and_CONJ tealde_VBD +te_D herdes_NS +te_C wakeden_VBD 
+        ouer_P here_PRO$ oref_N ._, biside_P +te_D burch_N belleem_NPR ._.
+
+        and_CONJ al_Q ny+gt_N +tat_D cloude_N abood_VBD by_P21 sides_P22
+        his_PRO$ tente_N
+
+        Wickednes_N shal_MD cumpasse_VB hym_PRO day_N and_CONJ 
+        ny+gt_N vp_P his_PRO$ walles_NS ,_, and_CONJ trauail_N 
+        and_CONJ vnry+gtfulnes_N amiddes_P+N of_P hym_PRO ._.
+
+</PRE>
+
+Note that AMIDEWARDE used as a preposition is tagged simply <TT>P</TT>
+following the rules for prepositions with WARD. See Section <A
+HREF="pos-words.htm#ward">WARD</A>.
+
+<a name="notwithstanding_saving_touching">
+<H3>NOTWITHSTANDING, SAVING, TOUCHING</H3></a>
+
+NOTWITHSTANDING, SAVING, and TOUCHING are tagged <TT>P</TT> when they take a
+complement noun or clause. NOTWITHSTANDING is tagged <TT>ADV</TT> when
+used absolutely.
+
+<PRE>
+        and_CONJ chalenged_VBD +te_D crowne_N ,_, 
+        notwithstandyng_P his_PRO$ oth_N +tat_C he_PRO 
+        had_HVD mad_VBN ._.
+
+        And_CONJ notwithstanding_P +te_D emperour_N in_P his_PRO$ 
+        owne_ADJ persone_N exhorted_VBD him_PRO to_P +tis_D 
+        vnite`_N ,_, and_CONJ he_PRO hite_VBD +te_D emperour_N +tat_C 
+        he_PRO schuld_MD withdrawe_VB his_PRO$ obediens_N fro_P 
+        +tat_D same_ADJ Petir_NPR ,_, al_Q availed_VBD not_NEG ,_.
+        but_CONJ natwythstondyng_ADV his_PRO$ worshyp_N 
+        is_BEP knowyn_VAN in_P many_Q dyverse_ADJ contreis_NS ._.
+
+        alle_Q the_D remenaunt_N of_P Normandy_NPR ,_, savyng_P
+        Chyrborowe_NPR
+
+        +tou_PRO wost_VBP neuer_ADV what_WPRO ,_, sauyng_P +tat_C 
+        +tou_PRO felist_VBP in_P +ti_PRO$ wille_N a_D nakid_ADJ 
+        entent_N vnto_P God_NPR ._.
+
+        and_CONJ in_P hym_PRO was_BED +te_D ende_N of_P +te_D 
+        empere_N touchynge_P Charles_NPR his_$ ofspringe_N ._.
+
+</PRE>
+
+Note that TOUCHING in AS TOUCHING X is tagged <TT>VAG</TT>.
+
+<a name="+ta+ta">
+<H3>+TA +TA</H3></a>
+
++TA +TA in the meaning WHEN (THAT) is tagged <TT>+ta_P +ta_C</TT>.
+
+<PRE>        
+        Godd_NPR he_PRO unwur+dede_VBD +da_P +ta_C he_PRO +dolede_VBD 
+        +dat_C his_PRO$ wi+derwine_N him_PRO ouercam_VBD
+
+</PRE>
+
+<a name="a+tet">
+<H3>A+TET</H3></a>
+
+A+TET (and variations) meaning UNTIL is treated as a unit, since it takes
+NP complements as well as clauses.
+
+<PRE>
+        +Teos_D Meiden_N +tet_C ich_PRO munie_VBP stot_VBD +turh_P 
+        +teos_D steauene_N stercliche_ADV istrenget_VAN ant_CONJ 
+        abad_VBD baldeliche_ADV a+det_P me_MAN com_VBD
+
+        +tt_C neauer_ADV a+det_P tes_D dei_N ne_NEG funde_VBD we_PRO 
+        nohwer_Q+WADV nan_Q swa_ADVR deop_ADV ilearet_VAN +te_C 
+        durste_MD sputi_VB wi+d_P us_PRO
+
+        ne_CONJ we_PRO nusten_NEG+VBD hwet_WPRO we_PRO duden_DOD 
+        a_P21 +det_P22 he_PRO undutte_VBD us_PRO
+</PRE>
+

@@ -1,0 +1,2322 @@
+<HTML>
+<HEAD>
+<TITLE>PPCME2, Syntactic Annotation, PPCME2 Lite</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<H2>PPCME2 Lite:<BR> A Brief Introduction to the Syntactic Annotation 
+System of the PPCME2</H2>
+Ann Taylor<BR>
+August 1999<BR>
+
+<H2>Introduction</H2>
+
+The PPCME2 parsing scheme uses a limited tree representation in the form of
+labelled parentheses. All open parentheses have an associated label, either
+a phrase label (NP, ADJP, etc.)  or a word label (N, ADJ, etc.),
+representing nodes in a tree. Word-level labels are provided for every
+word, but phrasal labels are not included in every case in which a fully
+labelled tree would require them. Intermediate levels of structure (N',
+ADJ', etc.) are never represented explicitly. Thus the trees are quite
+flat.</P>
+
+This approach has no theoretical import, but rather was adopted purely for
+practical reasons.  Some phrases were omitted because their boundaries are
+too difficult to define. This is the case for VP, which, especially in
+Early Middle English where the order of the verb and its complements is
+still in flux (at least on the surface), cannot easily be included. Other
+phrases, such as DP, were omitted because in our opinion, the cost of
+including them outweighs their usefullness.  Intermediate levels of
+structure are omitted for both reasons. In no case should the lack of any
+particular phrase label be taken as implying that we do or do not believe
+that Middle English syntax failed to include such a phrase. The trees are
+simply underspecified.</P>
+
+This introduction to our parsing scheme includes only a basic outline of
+the general principles we followed in parsing and details on the most
+common structures. All examples in the present document are made up and
+given in Modern English so as to be maximally accessible. For complete
+documentation of the system with Middle English examples, see the <a
+href="syn-detailed-toc.htm">full documentation</a>.  </P>
+
+<a name="general_principles"></a>
+<H2>General parsing principles</H2>
+
+<OL>
+
+<LI>
+PPCME structure is very flat. Most nodes are multiply branching. A typical
+PPCME parse in tree form looks like this:
+
+<IMG SRC="syn-tree1.GIF" HEIGHT=160 WIDTH=450>
+
+<P>
+Note that:
+<OL TYPE="a">
+<LI>
+IP (in this case, IP-MAT, a matrix IP)  immediately dominates all verbs and sentence level
+constituents; that
+is, there are no intemediate I' levels or a VP.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (HVP has)
+        (BEN been)
+        (VAG meaning)
+        (IP-INF (TO to)
+                (VB go))
+        (PP (P for)
+            (NP (D a) (N week))))
+
+</PRE>
+
+<LI>
+In addition to verbs, a small number of other word-level constituents are
+immediately dominated by IP. These are: particles (RP), sentential
+conjunctions (CONJ) and single-word interjections (INTJ)
+
+<PRE>
+(IP-MAT (CONJ And)                  <--- sentential conjunction
+        (NP-SBJ (NPR Mary))
+        (VBD looked)
+        (RP up)                     <--- particle
+        (NP-OB1 (NP-POS (NPR Jane) ($ 's))
+                (N number)))
+
+(IP-MAT-SPE (INTJ Alas)             <--- single-word interjection
+            (IP-MAT-PRN (VBD cried)
+                        (NP-SBJ (NPR Mary)))
+            (NP-SBJ (PRO I))
+            (HVP have)
+            (VBD lost)
+            (NP-OB1 (PRO$ my) (NS glasses)))
+
+</PRE>
+
+<LI>
+Within phrasal constituents, the phrasal node immediately dominates the
+head; there are no intermediate levels of structure (N', ADJ' etc.).
+
+<PRE>
+(NP (D the ) (N girl))
+
+(PP (P in)
+    (NP (D the) (N spring)))
+
+(ADJP (ADV very) (ADJ big))
+
+</PRE>
+
+<LI>
+Pre-head modifiers do not project phrasal nodes when they consist of a
+single word, but do when they are multi-word. Because of the lack of
+intermediate levels of structure, all modifiers appear as sisters of the
+head.
+
+<PRE>
+(NP (D a) (ADJ big) (N cat))
+
+(NP (D a)
+    (ADJP (ADV very) (ADJ big)) 
+    (N cat))
+
+</PRE>
+
+<LI>
+Post-head constituents project phrasal nodes in all cases. Like
+pre-head modifiers, they are sisters to the head.
+
+<PRE>
+(IP-MAT (PP (P From)
+            (ADVP (ADV above)))
+        (MD shall)
+        (VB come)
+        (NP-SBJ (D +te) (N judge)
+                (ADJP (ADJ fierce) (CONJ and) (ADJ angry)))
+        (. ;))
+
+(IP-MAT (NP-SBJ (PRO He))
+        (ADVP-TMP (ADV never))
+        (VBD found)
+        (NP-OB1 (D a) (N woman)
+                (ADJP (ADJ good))))
+
+(IP-MAT (NP-SBJ (D The) (N king))
+        (VBD gave)
+        (NP-OB2 (PRO him))
+        (NP-OB1 (D an) (N island)
+                (RRC (VAN forsaken))))      <--- RRC = reduced relative clause
+
+(IP-MAT (NP-SBJ (PRO$ Our) (N life)
+                (ADVP-LOC (ADV here)))
+        (BEP is)
+        (ADJP (ADV very) (ADJ comfortable)))
+
+(IP-MAT (NP-SBJ (PRO She))
+        (VBD came)
+        (NP-TMP (D the) (ADJ fifth) (N day)
+                (ADVP-TMP (ADV+WARD afterward))))
+
+</PRE>
+
+</OL>
+
+<LI> The PPCME labels for both form and function. In general, the basic
+label indicates the form of the constituent (NP, PP, ADJP, etc.), while
+additional labels (separated by a hyphen) indicate function (NP-SBJ =
+subject, ADVP-TMP = temporal adverb, CP-REL = relative clause, etc.). Not
+all constituents are marked for function; in most cases there is at most
+one additional label, but there may be more (IP-INF-PRP = purpose
+infinitive, IP-IMP-SPE = direct speech imperative, etc.).
+
+<OL TYPE="a">
+
+<LI>
+Among sentence level constituents (i.e., all phrases immediately dominated
+by IP), function is marked on all noun phrases (NP-SBJ = SUBJECT, NP-MSR =
+MEASURE NP, etc.). Bare NPs are either complements of a non-verbal head
+(e.g., a preposition), or part of a conjunction structure (see Section
+<a href="#conjunction">CONJUNCTION</a>).
+
+<PRE>
+(IP-MAT (NP-TMP (N Yesterday))
+        (NP-SBJ (NPR Mary))
+        (VBD told)
+        (NP-OB2 (NPR Jane))
+        (CP-THT (C that)
+                (IP-SUB (NP-SBJ (PRO she))
+                        (VBD studied)
+                        (NP-MSR (QP  (ADVR too) (Q much)))
+                        (PP (P during)
+                            (NP (D the) (N+N weekend))))))
+
+</PRE>
+
+<LI>
+Argument and adjunct PPs are not distinguished, nor are any PPs marked for
+function.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD put)
+        (NP-OB1 (D the) (N book))
+        (PP (P on)
+            (NP (D the) (N table)))
+        (PP (P on)
+            (NP (NPR Saturday))))
+
+</PRE>
+
+<LI>
+Only locative, temporal and directional adverbs are marked for function;
+others are unmarked.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (ADVP (ADV happily))
+        (VBD put)
+        (NP-OB1 (D the) (N book))
+        (ADVP-LOC (ADV there))
+        (ADVP-TMP (ADV+WARD afterward)))
+
+</PRE>
+
+<LI>
+All clauses are labelled by type. Matrix clauses are labelled IP-MAT; they
+may be further characterized as direct speech (<TT>IP-MAT</TT>) or
+parentheticals (<TT>IP-MAT-PRN</TT>) Other IP clauses have their own labels,
+such as <TT>IP-IMP</TT>, imperative, <TT>IP-SMC</TT>, small clause, <TT>IP-INF</TT>,
+infinitive, etc. All CPs also have extended labels to indicate type: <TT>
+CP-THT</TT>, that clause, <TT>CP-ADV</TT>, adverbial clause, etc.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD forgot)
+        (IP-INF (TO to)
+                (VB tell)
+                (NP-OB2 (NPR Jane))
+                (CP-THT (C that)
+                        (IP-SUB (NP-SBJ (PRO she))
+                                (MD should)
+                                (VB buy)
+                                (NP-OB1 (N milk))))))
+
+</PRE>
+
+</OL>
+
+<LI>
+In cases where the attachment level of constituents is ambiguous or
+difficult to determine, the default is always to attach high, rather than
+to embed.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD saw)
+        (NP-OB1 (D the) (N man))
+        (PP (P with)
+            (NP (D the) (N telescope))))
+
+</PRE>
+</OL>
+
+<a name="internal_syntax_of_phrases">
+<H2>Internal syntax of phrases</H2></a>
+
+The internal syntax of all phrasal categories (excluding IP and CP) is
+fundamentally similar.
+
+<OL> 
+
+<LI> The phrasal node (NP, PP, ADJP, etc.) immediately dominates the head
+category (N, P, ADJ, etc.); that is, there are no intermediate bar-levels
+indicated.
+
+<LI> With two exceptions, heads always project a phrasal node.  First,
+certain heads, such as D (determiner), RP (particle) and all verbs, never
+project a phrase.  Second, single-word pre-head modifiers do not project a
+phrasal node when that node is predictable on the basis of the head within
+the PPCME2 schema.
+
+<LI> Complements and post-head modifiers always project a phrasal node,
+whether they consist of a single word or not.
+
+Thus in the PPCME2 schema, both modifiers and complements are sisters of
+the head.
+
+<P>
+<CENTER><IMG SRC="syn-tree2.GIF" HEIGHT=135 WIDTH=450></CENTER>
+
+<PRE>
+(XP (Y single_word_modifier) (X head)
+    (ZP complement_or_post_head_modifier))
+
+(XP (W single_word_modifier) (Y single_word_modifier) (X head)
+    (ZP complement_or_post_head_modifier))
+
+(XP (YP multi_word_modifier)
+    (X head)
+    (ZP complement_or_post_head_modifier))
+
+(NP (D the) (NS girls)
+    (PP (P on)
+        (NP (D the) (N beach))))
+
+(NP (Q many) (ADJ happy) (NS girls)
+    (PP (P on)
+        (NP (D the) (VAN overcrowded) (N beach))))
+
+(NP (ADJP (ADJ happy) (CONJ and) (VAN excited))
+    (NS girls))
+
+(NP (Q many)
+    (ADJP (ADV very) (ADJ happy))
+    (NS girls)
+    (PP (P on)
+        (NP (D the) (VAN overcrowded) (N beach))))
+
+(NP (QP (ADV very) (Q many))
+    (ADJP (ADV very) (ADJ happy)) 
+    (NS girls)
+    (PP (P on)
+        (NP (D the) (N beach)
+            (PP (P with)
+                (NP (D the) (ADJ big) (NS dunes))))))
+
+</PRE>
+
+<P>
+<CENTER><IMG SRC="syn-tree3.GIF" WIDTH=450 HEIGHT=185></CENTER>
+
+<IMG SRC="syn-tree4.GIF" WIDTH=550 HEIGHT=250>
+
+<P>
+Other phrases have the same structure as NPs.
+
+<PRE>
+(ADJP (ADV very) (ADJ happy))
+
+(ADJP (ADJ full)
+      (PP (P of)
+          (NP (N water))))
+
+(PP (ADV especially)
+    (P on)
+    (NP (NPRS Saturdays)))
+
+(PP (ADV right)
+    (P up)
+    (NP (D the) (N street)))
+
+(ADVP (ADV very) (ADV slowly))
+
+</PRE>
+
+<LI> 
+In general the head of a phrase will be overt and match the category of the
+phrase level. In certian cases, however, there is no matching head. In some
+cases this is because the head is actually empty (by elision, etc.), which we
+do not indicate; in other cases, it may be an artifact of the PPCME schema
+in which some words receive a more specific label than simply N, ADJ,
+etc. For example, pronouns are labelled <TT>PRO</TT>, but act as heads of
+NPs. Most instances of the word "one" are labelled <TT>ONE</TT> and in some
+cases this word may be the head of the constituent. Thus, the lack of a
+word-level constituent that matches the phrase in category indicates either
+(1) the head has been elided; or (2) the head has a more specific label
+than its general category label. </P>
+
+Most cases of the latter are found in NPs and ADJPs. The most common types
+of correspondences are the following:
+
+<OL TYPE="a">
+<LI> nominal elements not labelled N (NS, etc.)
+
+<PRE>
+PRO, EX, MAN, OTHERS, ?PRO$, ?ONE, ?OTHER, ?D, ?Q (QR, etc.)
+
+</PRE>
+
+<LI> adjectival elements not labelled ADJ (ADJS, etc.)
+
+<PRE>
+VAN, VAG, (HAN, HAG, etc.), SUCH, QR, ?ONE, ?OTHER 
+
+</PRE>
+
+</OL>
+
+As indicated by the question marked elements in the above lists, it is not
+always clear in some cases whether the word is the head or the head is
+elided. It is mainly for this reason that we do not make this distinction
+for these words.
+
+The most common elision case is of the NPs containing only an adjective
+or, more commonly, a determiner and adjective. 
+
+<PRE>
+(IP-MAT (IP-MAT-1 (NP-SBJ (NPR Mary))
+                  (VBD gave)
+                  (NP-OB2 (NPR Jane))
+                  (NP-OB1 (D a) (ADJ red) (N ribbon)))
+        (CONJP (CONJ and)
+               (IP-MAT=1 (NP-OB2 (NPR Lucy))
+                         (NP-OB1 (D a) (ADJ blue)))))   <--- elided head noun
+
+</PRE>
+
+</OL>
+
+<H2>Sentence constituents</H2>
+
+This section discusses the constituents that occur immediately dominated by
+IP (i.e., at sentence level). 
+
+<H3>Word-level constituents</H3>
+
+The following word classes are or may be immediately dominated by IP: all
+verbs and modals, particles (RP and FP), conjunctions (CONJ) and
+interjections (INTJ).
+
+<H3>Verbs and modals</H3>
+
+Verbs and modals are always dominated by IP.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (MD will)
+        (VB want)
+        (IP-INF (TO to)
+                (VB see)
+                (NP-OB1 (D that) (N movie))
+                (ADVP (ADV too))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (HVP has)
+        (BEN been)
+        (VAG buying)
+        (NP-OB1 (NS groceries))
+        (ADVP-LOC (ADV there))
+        (PP (P for)
+            (NP (NS years))))
+
+</PRE>
+
+<H3>Adverbial particles (RP)</H3>
+
+Adverbials particles (RP) generally are dominated by IP, but they can
+appear in other configurations as well, the most common being as specifiers
+of PP.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD woke)
+        (RP up)
+        (ADVP-TMP (ADV late))
+        (NP-TMP (D this) (N morning)))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD walked)
+        (PP (RP up) (P to)
+            (NP (D the) (N beach))))
+
+(IP-MAT (NP-SBJ (D The) (N raising) (RP up)
+		(PP (P of)
+		    (NP (D the) (NS walls))))
+	(VBD took)
+	(NP-MSR (NUM three) (NS days)))
+
+</PRE>
+
+<H3>Focus particles (FP)</H3>
+
+Focus particles when they focus the verb are dominated by IP.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (FP even)
+        (VBP likes)
+        (NP-OB1 (ADJ green) (N jelly) (NS beans)))
+
+</PRE>
+
+<H3>Sentential conjunctions (CONJ)</H3>
+
+Sentential conjunctions are immediately dominated by IP. For other types of
+conjunction, see Section <a href="#conjunction">CONJUNCTION</a>.
+
+<PRE>
+(IP-MAT (CONJ And)
+        (NP-SBJ (NPR Mary))
+        (VBD wanted)
+        (NP-ACC (QR more)))
+
+(IP-MAT (CONJ But)
+        (NP-SBJ (NPR Mary))
+        (VBD left)
+        (ADVP-TMP (ADV early)))
+
+</PRE>
+
+<a name="intj"></a>
+<H3>Single-word interjections (INTJ)</H3>
+
+Finally, single word interjections are immediately dominated by IP. For
+interjections phrases (INTJP), see section <a href="#intjp">INTERJECTION PHRASES</a>.
+
+<PRE>
+(IP-MAT-SPE (INTJ Damn)
+            (NP-SBJ (D this))
+            (BEP is)
+            (ADJP (ADVR too) (ADJ small))
+            (IP-MAT-PRN (VBD said)
+                        (NP-SBJ (NPR Mary))))
+
+</PRE>
+
+<H3>Phrasal constituents</H3>
+
+All other constituents of the IP are always treated as phrasal.
+
+<H3>Noun phrases (NP)</H3>
+
+Every noun phrase at sentence level is labelled for function. Bare <TT>NP</TT>
+labels only occur within non-clausal constituents (e.g., as the complements
+of prepositions, in conjunction structures, etc.)
+
+<a name="np-sbj"></a>
+<H3>Subjects (NP-SBJ)</H3>
+
+Subjects are labelled <TT>NP-SBJ</TT>. Most clause types are required
+to have a subject. The exceptions are: imperatives (see Section <a
+href="#imperatives">IMPERATIVES</a>), non-ECM infinitives (see Section
+<a href="#infinitives">INFINITIVES</a> and participial clauses (see Section
+<a href="#participials">PARTICIPIAL CLAUSES</a>). In any other type of
+clause, if the subject is missing, an empty subject is supplied. </P>
+
+There are four types of empty subjects: (1) subjects elided under
+conjunction <TT>(NP-SBJ *con*)</TT>; (2) arbitrary PRO subject in ECM
+infinitives <TT>(NP-SBJ *arb*)</TT>; (3) empty expletive subjects
+<TT>(NP-SBJ *exp*)</TT>; and (4) missing subjects that do not fall into any
+of the other categories <TT>(NP-SBJ *pro*)</TT>. Empty expletives are used
+much more widely in Middle English than in Modern English; for the details
+on the environments in which an empty expletive subject is added, see <a
+href="syn-empty.htm#empty_exp">EMPTY EXPLETIVE SUBJECTS</A> in the full
+documentation.  The last category is a "kitchen sink" category that
+includes a number of different kinds of cases including, but not limited
+to, potential cases of "small pro", i.e., pro-drop. For details and
+examples, see <a href="syn-empty.htm#empty_pro">OTHER EMPTY SUBJECTS</a> in
+the full documentation. </P>
+
+For examples of overt subjects, see examples throughout.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD bought)
+        (NP-OB1 (D a) (N cat)))
+(IP-MAT (CONJ and)
+        (NP-SBJ *con*)      <--- subject elided under conjunction
+        (VBD took)
+        (NP-OB1 (PRO it))
+        (NP-DIR (N home)))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD helped)
+        (IP-INF (NP-SBJ *arb*)   <--- an "arbitrary pro" subject is added in  
+                (VB buy)              ECM cases without a specified subject
+                (NP-OB1 (D the) (N car))))
+
+(IP-MAT (PP (P On)
+            (NP (D the) (N corner)))
+        (NP-SBJ-1 *exp*)    <--- empty expletive in locative context
+        (BEP is)
+        (NP-1 (D a) (N bank)))
+
+(IP-MAT (NP-OB2 (PRO me))
+        (NP-SBJ-1 *exp*)    <--- empty expletive in impersonal context
+        (VBP thinketh)
+        (CP-THT-1 (C that)
+                  (IP-SUB (NP-SBJ (NPR Mary))
+                          (BEP is)
+                          (ADJP (ADJ late)))))
+
+</PRE>
+
+<H3>Objects (NP-OB1, NP-OB2)</H3>
+
+The PPCME2 distinguishes two objects, labelled <TT>NP-OB1</TT> and <TT>
+NP-OB2</TT>. These correspond roughly, but not exactly, to accusitive and
+dative/genitive objects, or to direct and indirect objects. For details on
+how the objects are distinguished, see <a
+href="syn-const.htm#first_and_second_objects">FIRST OBJECT AND SECOND
+OBJECT</a> in the full documentation.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD gave)
+        (NP-OB2 (NPR Jane))
+        (NP-OB1 (D a) (N present)))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD bought)
+        (NP-OB2 (NPR Jane))         <--- benefactives are labelled NP-OB2
+        (NP-OB1 (D a) (N present)))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD told)
+        (NP-OB2 (NPR Jane))
+        (IP-INF (TO to)
+                (VB buy)
+                (NP-OB1 (NS vegetables))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD encouraged)
+        (NP-OB1 (NPR Jane))
+        (IP-INF (TO to)
+                (VB buy)
+                (NP-OB1 (NS vegetables))))
+
+(IP-MAT (NP-SBJ-1 (PRO It))
+        (VBP behooves)
+        (NP-OB2 (NPR Mary))         <--- objects of impersonal verbs are NP-OB2
+        (IP-INF-1 (TO to)
+                  (BE be)
+                  (ADJP (QR more) (ADJ careful))))
+
+</PRE>
+
+<H3>Possessive and genitive noun phrases (NP-POS, NP-COM)</H3>
+
+Multi-word possessive NPs are labelled <TT>NP-POS</TT>. For single
+word possessives the phrasal level is not indicated, following general
+principles (cf. Section <a href="#general_principles">GENERAL PARSING
+PRINCIPLES</a>). In addition, the label <TT>NP-COM</TT> is used to
+indicate relations between nouns or noun phrases where no preposition
+or other overt indication of the relationship is present.  Note that
+in Middle English, the possessive is generally indicated by -S rather
+than 'S. When 'S or HIS is used as the possessive morpheme, it is
+separated from the head word and labelled <TT>$</TT>.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR$ Marys) (N cat))
+        (VBD ran)
+        (ADVP-DIR (ADV away)))
+
+(IP-MAT (NP-SBJ (NP-POS (NPR Mary) ($ 's))
+                (N cat))
+        (VBD ran)
+        (ADVP-DIR (ADV away)))
+
+(IP-MAT (NP-SBJ (NP-POS (NPR Mary) ($ his))
+                (N cat))
+        (VBD ran)
+        (ADVP-DIR (ADV away)))
+
+(IP-MAT (NP-SBJ (NP-POS (D the) (ADJ tall) (N$ girls))
+                (N mother))
+        (BEP is)
+        (ADJP (ADV very) (ADJ smart)))
+
+</PRE>
+
+Most non-possessive uses of <TT>NP-COM</TT> are not possible in Modern
+English. The most common one is bare NP complements of HALF, MANNER, and
+SIDE.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Arthur))
+        (VBD ruled)
+        (PP (P on)
+            (NP (D this) (N half)
+                (NP-COM (NPR Humber)))))
+
+(IP-MAT (NP-SBJ (NUM Two) (N manner)
+                (NP-COM (NS men)))
+        (BEP are)
+        (PP (P in)
+            (NP (ADJ holy) (NPR Church))))
+
+</PRE>
+
+<a name="reflexives"></a>
+<H3>Reflexives (NP-RFL)</H3>
+
+Only inherent reflexives are given the reflexive NP label <TT>
+NP-RFL</TT>. Reflexive objects of transitive verbs (<I>Mary washed
+herself</I>) are not labelled as reflexive, but just as regular
+objects (NP-OB1 or NP-OB2). Emphatic reflexives (<I>Mary wrote the
+book herself</I>) are labelled as appositives (see Section <a
+href="#appositives_and_parentheticals">APPOSITIVES AND
+PARENTHETICALS</A>).  Most of these inherent reflexive uses are no
+longer current in Modern English.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD went)
+        (NP-RFL (PRO her))
+        (PP (P to)
+            (NP (N church))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD prayed)
+        (NP-RFL (PRO her))
+        (PP (P to)
+            (NP (NPR God))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD washed)
+        (NP-OB1 (PRO+N herself)))      <--- reflexive object of transitive verb
+
+(IP-MAT (NP-SBJ (NPR Mary)
+                (NP-PRN (PRO+N herself)))  <--- emphatic reflexive
+                (VBD wrote)
+                (NP-OB1 (D the) (N book)))
+
+(IP-MAT (NP-SBJ (NPR Mary)
+                (NP-PRN *ICH*-1))
+        (VBD wrote)
+        (NP-OB1 (D the) (N book))
+        (NP-PRN-1 (PRO+N herself)))         <--- emphatic reflexive
+
+</PRE>
+
+<H3>Vocative noun phrases (NP-VOC)</H3>
+
+Vocatives are labelled <TT>NP-VOC</TT>.
+
+<PRE>
+(IP-IMP-SPE (VBI Come)
+            (RP on)
+            (NP-VOC (NPR Mary))
+            (IP-MAT-PRN (VBD shouted)
+                        (NP-SBJ (NPR Jane))))
+
+</PRE>
+
+<H3>Left-dislocated noun phrases (NP-LFD)</H3>
+
+Left-dislocated NPs are labelled <TT>NP-LFD</TT>. The resumptive element has
+<TT>-RSP</TT> as its last element. There is no coindexing as there is only
+ever one dislocated-resumptive pair per sentence. The connection between
+the two may be quite loose.
+
+<PRE>
+(IP-MAT (NP-LFD (NPR Mary))
+        (NP-SBJ-RSP (PRO she))
+        (ADVP-TMP (ADV always))
+        (VBP wins))
+
+(IP-IMP (NP-LFD (PRO he)
+                (CP-REL (WNP-1 (WPRO who))
+                        (C 0)
+                        (IP-SUB (NP-SBJ *T*-1)
+                                (HVP has)
+                                (NP-OB1 (NS ears)))))
+        (VBI let)
+        (IP-INF (NP-SBJ-RSP (PRO him))
+                (VB hear)))
+
+</PRE>
+
+<H3>Measure noun phrases (NP-MSR)</H3>
+
+Only NP measure phrases are labelled as such. PP measure phrases (<I>
+during the night</I>, etc.), in keeping with our policy not to mark
+function on PPs, are not indicated. Quantifiers and quantifier phrases
+indicating measure are labelled as NPs. The internal structure of some
+measure phrases is fairly complex. For details, see <a
+href="syn-const.htm#np_measure">MEASURE PHRASES</a> in the full
+documentation.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBP loves)
+        (NP-OB1 (PRO$ her) (NS cats))
+        (NP-MSR (QP (ADV very) (Q much))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD worked)
+        (NP-MSR (Q all) (N night)))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD walked)
+        (NP-MSR (NUM ten) (NS miles))
+        (PP (P during)
+            (NP (D the) (N night))))
+
+</PRE>
+
+<H3>Directional noun phrases (NP-DIR)</H3>
+
+NPs indicating direction are labelled <TT>NP-DIR</TT>. These are not very
+common, the only frequent ones being HOME and phrases including WAY.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD went)
+        (NP-DIR (N home))
+        (PP (P at)
+            (NP (N noon))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD went)
+        (NP-DIR (D that) (N way))
+        (IP-INF-PRP (TO to)
+                    (VB avoid)
+                    (NP-OB1 (D the) (N traffic))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD went)
+        (NP-DIR (N south))
+        (IP-INF-PRP (TO to)
+                    (VB enjoy)
+                    (NP-OB1 (D the) (N sun))))
+
+</PRE>
+
+<H3>Adverbial noun phrases (NP-ADV)</H3>
+
+The label <TT>NP-ADV</TT> is used for a number of cases (see Section <a
+href="syn-const.htm#np_adverb">NP ADVERBS</a> in the full documentation for
+an exhaustive list). Some common ones are exemplified here.
+
+<PRE>
+(IP-MAT (NP-SBJ (PRO They))
+        (VBD bound)
+        (NP-OB1 (PRO her))
+        (NP-ADV (N hand) (CONJ and) (N foot)))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (DOD did)
+        (NP-OB1 (PRO it))
+        (NP-ADV (PRO$ her) (N way)))
+
+(IP-MAT (NP-SBJ (PRO They) (Q all))
+        (VBD came)
+        (RP in)
+        (NP-ADV (NP (ONE one))
+                (PP (P at)
+                    (NP (D a) (N time)))))
+
+(IP-MAT (NP-ADV (CP-FRL (WNP-1 (WPRO+ADV Whatever))
+                        (C 0)
+                        (IP-SUB (NP-SBJ *T*-1)
+                                (VBP happens))))
+        (NP-SBJ (NPR Mary))
+        (MD will)
+        (NEG not)
+        (VB give)
+        (RP up))
+
+</PRE>
+
+<H3>Noun phrase secondary predicates (NP-SPR)</H3>
+
+NP secondary predicates are labelled <TT>NP-SPR</TT>. The most common type can
+be paraphrased with AS. Adjectival secondary predicates are also indicated;
+see Section <a href="#adjp">ADJECTIVE PHRASES</A>.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD died)
+        (NP-SPR (D a) (N martyr)))
+
+</PRE>
+
+<H3>Datives of possession (NP-DOP)</H3>
+
+In early texts the dative of possession occassionally appears. The clear
+cases always immediately precede a PP, and are represented as filling the
+specPP position (i.e., precede the head). Only datives which can not be
+interpreted in any other way are labelled <TT>NP-DOP</TT>; other potential
+cases are simply labelled as second object <TT>NP-OB2</TT>.
+
+<PRE>
+(IP-MAT (NP-SBJ (PRO He))
+        (VBP falls)
+        (PP (NP-DOP (D the) (NPR devil)) <--- ``he falls into the devil's hand''
+            (P into)
+            (NP (N hand))))
+
+</PRE>
+
+<H3>Adjunct Noun phrases (NP-ADT)</H3>
+
+The label <TT>NP-ADT</TT> is used in any case where none of the labels
+given above applies. It is not a unified category. For some examples of the
+kinds of NPs labelled this way, see Section <a
+href="syn-const.htm#nonarguments">NON-ARGUMENT NP</a> in the full 
+documentation.
+
+<a name="adjp"></a>
+<H3>Adjective phrases (ADJP)</H3>
+
+An <TT>ADJP</TT> at sentence level without any further specification is the
+primary predicate. Two other types of ADJPs are distinguished: secondary
+adjectival predicates <TT>ADJP-SPR</TT> and locative adjectives <TT>
+ADJP-LOC</TT>. A locative ADJP may also be the primary predicate.
+
+<PRE>
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (BEP is)
+        (ADJP (ADV very) (ADJ intelligent)))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD arrived)
+        (ADJP-SPR (ADJ alone)))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD sat)
+        (ADJP-LOC (ADJ near)
+                  (NP (NPR Jane))
+                  (PP (P at)
+                      (NP (N lunch)))))
+
+(IP-MAT (NP-SBJ (NPR Washington))
+        (BEP is)
+        (ADJP-LOC (ADJ far)
+                  (PP (P from)
+                      (NP (NPR Houston)))))
+
+</PRE>
+
+<H3>Adverb phrases (ADVP)</H3>
+
+Locative, temporal and directional adverbs are labelled for function; all
+others (mostly manner and sentential adverbs) are left bare.
+
+<PRE>
+(IP-MAT (CONJ And)
+        (ADVP (ADV so))
+        (ADVP-TMP (ADV+WARD afterwards))
+        (NP-SBJ (NPR Mary))
+        (BED was)
+        (ADJP (ADJ sorry)
+              (PP (P for)
+                  (NP (PRO$ her) (NS actions)))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD lived)
+        (ADVP-LOC (ADV there))
+        (ADVP (ADV happily))
+        (PP (P for)
+            (NP (NUM ten) (NS years))))
+
+(IP-MAT (ADVP (ADV again))
+        (NP-SBJ (NPR Mary))
+        (VBD went)
+        (ADVP-DIR (ADV thither)))
+
+</PRE>
+
+<H3>Prepositional phrases (PP)</H3>
+
+Argument and adjunct PPs are not distinguished because of the difficulty of
+making these judgements consistently. PPs are not labelled for function.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD went)
+        (PP (P to)                  <--- argument PP
+            (NP (NPR London)))
+        (PP (P on)                  <--- adjunct PP
+            (NP (NPR Saturday))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD put)
+        (NP-OB1 (D the) (N book))
+        (PP (P on))                 <--- argument PP
+        (NP (D the) (N table))
+        (PP (P for)                 <--- adjunct PP
+            (NP (NPR Jane))))
+
+</PRE>
+
+<a name="intjp"></a>
+<H3>Interjection phrases (INTJP)</H3>
+
+The INTJP label is used in two cases: 
+
+<UL>
+<LI> for words used as interjections which are not labelled
+<TT>INTJ</TT><BR>
+
+<LI> for interjections of more than a single word.
+
+</UL>
+
+In general the <TT>INTJ</TT> label is used only for words which cannot
+easily be labelled in any other way. Thus ALAS is always labelled
+<TT>INTJ</TT> but, GOD is labelled <TT>NPR</TT>, even when it is used
+as an interjection. In the latter case, however, it projects an INTJP
+phrasal label. Multi-word interjections, whether the parts are
+labelled INTJ or not, are INTJPs. See section <a
+href="#intj">SINGLE-WORD INTERJECTIONS</A> for interjections not
+dominated by INTJP.
+
+<PRE>
+(IP-MAT (INTJP (NPR God))
+        (NP-SBJ (D that))
+        (BED was)
+        (NP-OB1 (D a) (ADJ long) (N lecture)))
+
+(INTJP (INTJ Lo)
+       (CP-QUE (WADVP-1 (WADV how))
+               (C 0)
+               (IP-SUB (NP-SBJ (D the) (ADJ mighty))
+                       (HVP have)
+                       (VBN fallen))))
+
+(IP-MAT (INTJP (INTJ Alas) (CONJ and) (INTJ welladay))
+        (NP-SBJ (PRO$ my) (N cat))
+        (HVP has)
+        (VBN run)
+        (ADVP-DIR (ADV away)))
+
+</PRE>
+
+<H3>Punctuation</H3>
+
+There are basically two types of punctuation: final and non-final. Any
+non-final punctuation is tagged with a comma, while all final punctuation
+is tagged with a period. Final in this context means sentence-final as
+defined by PPCME. 
+
+<H3>Non-linguistic labels</H3>
+
+The following non-linguistic labels are used to distinguish parts of the text:
+
+<PRE>
+quotation phrase    QTP
+Latin sequences     LATIN (or other language FRENCH, HEBREW, etc.)
+references          REF
+meta-text material  CODE
+
+</PRE>
+
+<a name="qtp"></a>
+<H3>Quotation phrase (QTP)</H3>
+
+The label <TT>QTP</TT> is used to enclose non-sentential sequences
+that are quoted, either as direct speech or when &quot;mentioned&quot;
+rather than &quot;used&quot;. Speech made up of a full IP-SPE or CP-SPE is
+indicated with the extended label <TT>-SPE</TT>.
+
+<PRE>
+(CP-QUE-SPE (IP-SUB-SPE (MD Shall)
+                        (NP-SBJ (PRO we))
+                        (VB go)
+                        (PP (P to)
+                            (NP (D the) (N park))))
+            (, ?)
+            (IP-MAT-PRN (VBD asked)
+                        (NP-SBJ (NPR Mary))))
+(QTP (INTJ No)
+     (IP-MAT-PRN (VBD answered)
+                 (NP-SBJ (NPR Jane)))
+     (PP (P to)
+         (NP (D the) (N beach))))
+
+(CP-QUE-SPE (WADVP-1 (WADV Why))
+            (IP-SUB-SPE (ADVP *T*-1)
+                        (DOD did)
+			(NP-SBJ (PRO you))
+			(DO do)
+			(NP-OB1 (PRO it))
+			(, ?)
+			(IP-MAT-PRN (VBD asked)
+				    (NP-SBJ (NPR (Mary))))))
+(IP-MAT (NP-SBJ (NPR Jane))
+        (VBD answered)
+        (ADVP (ADV shortly))
+        (QTP (NP (Q no) (N reason))))
+
+(IP-MAT (NP-SBJ (NPR Esther))
+        (VBP means)
+        (" ")
+        (QTP (VAN hidden))
+        (" ")
+        (PP (P in)
+            (NP (NPR English))))
+
+(IP-MAT (NP-SBJ (NPR Saint) (NPR Augustine))
+        (VBD said)
+        (QTP (LATIN (FW Caveat) (FW emptor))))
+
+</PRE>
+
+<H3>Latin and other foreign language sequences (LATIN)</H3>
+
+Foreign language sequences of more than a single word are labelled
+with the name of the language. This is overwhelmingly <TT>LATIN</TT>,
+but <TT>FRENCH</TT> and <TT>HEBREW</TT> also occur occasionally.  A
+unknown foreign language sequence is labelled <TT>LATIN</TT>. Direct
+speech is additionally labelled <TT>QTP</TT> (see Section <a
+href="#qtp">QUOTATION PHRASE</A>). Latin (or other foreign language)
+words or phrases clearly functioning in some role in the sentence
+(subject, object, etc.) are additionally labelled with their function.
+
+<PRE>
+(IP-MAT (NP-SBJ (D The) (ADJ third))
+        (BEP is)
+        (NP-OB1 (LATIN (FW cordis) (FW grauitas)))
+        (. .))
+
+(IP-MAT (CONJ but)
+        (PP (P in)
+            (NP (NPR Latin)))
+        (NP-SBJ (PRO it))
+        (VBP highte)
+        (NP-OB1 (LATIN (FW Centesimus) (FW fructus)))
+        (. .))
+
+</PRE>
+
+<H3>References (REF)</H3>
+
+If the source of a passage or quotation is given without any explicit
+relationship to the rest of the text, it is labelled <TT>REF</TT>. When
+possible these are separated from the text (i.e., if they occur at the
+beginning or end of the relevant portion of text).
+
+<PRE>
+(REF (LATIN (FW Augustinus) 
+            (, ,)
+            (FW De) (FW Civitate) (FW libro) (FW nono))
+     (. .))
+
+(IP-MAT (CONJ and)
+        (PP (ADV+P therfore))
+        (VBP seith)
+        (NP-SBJ (NPR Seint) (NPR Paul))
+        (REF (LATIN (FW Ad) (FW Ephesios) (FW quinto))) <--- ``in Ephesians 5''
+        (, ,)
+        (CP-THT (C that)
+                (IP-SUB (NP-SBJ (D an) (ADJ avaricious) (N man))
+                        (BEP is)
+                        (PP (P in)
+                            (NP (D the) (N thraldom)
+                                (PP (P of)
+                                    (NP (N ydolatrie)))))))
+        (. .))
+
+</PRE>
+
+<H3>Meta-textual material (CODE)</H3>
+
+Any material included in the file that is not part of the ``text'' such as
+page numbers, some headers, comments, etc. are labelled CODE. Note that in
+searching such material is automatically omitted.
+
+<a name="conjunction"></a>
+<H2>Conjunction</H2>
+
+<H3>Phrasal conjunction</H3>
+
+The basic form of conjunction is as follows:
+
+<PRE>
+(XP (XP first_conjunct)
+    (CONJP (CONJ conjunction)
+           (YP second_conjunct)))
+
+</PRE>
+
+The conjunction phrase (CONJP) is sister to the first conjunct, while
+the head of the CONJP (the conjunction) takes the second conjunct as a
+complement. This applies to the conjunction of all phrasal categories
+except IP, which is a special case (see Section <a
+href="#ip_conjunction">IP CONJUNCTION</a>).  Conjunction of word-level
+categories (e.g., verbs) and cases with potential shared modifiers are
+also treated slightly differently. See further below.
+
+<PRE>
+(NP (NP (D the) (N cat))
+    (CONJP (CONJ and)
+           (NP (D the) (N dog))))
+
+(ADJP (ADJP (ADV very) (ADJ happy))
+      (CONJP (CONJ or)
+             (ADJP (ADV very) (ADJ sad)))))
+
+(PP (PP (P on)
+        (NP (N land)))
+    (CONJP (CONJ or)
+           (PP (P on)
+               (NP (N sea)))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD said)
+        (CP-THT (CP-THT (C that)
+                        (IP-SUB-(NP-SBJ (NPR Jane))
+                                (MD should)
+                                (VB go)
+                                (PP (P to)
+                                    (NP (D the) (N store)))))
+                (CONJP (CONJ and)
+                       (CP-THT (C that)
+                               (IP-SUB (NP-SBJ (PRO she))
+                                       (MD should)
+                                       (VB demand)
+                                       (NP-OB1 (PRO$ her) (N money))
+                                       (ADVP (ADV back)))))))
+
+</PRE>
+
+<H3>Word-level conjunction</H3>
+
+If both conjuncts are single words, all internal structure is omitted. The
+conjunction of word-level categories (e.g. verbs) is similar, except that
+the dominating category is also word-level.
+
+<PRE>
+(NP (NS cats) (CONJ and) (NS dogs))
+
+(ADJP (ADJ happy) (CONJ and) (ADJ sad))
+
+(ADVP (ADV quickly) (CONJ or) (ADV slowly))
+
+(VBP (VBP sings) (CONJ and) (VBP dances))
+
+(MD (MD could) (CONJ or) (MD would))
+
+(RP (RP up) (CONJ and) (RP down))
+
+</PRE>
+
+<H3>Conjunction with potentially shared modifiers</H3>
+
+In cases where the first conjunct includes modifiers which may or may
+not also apply to the second conjunct (<I> old women and men</I>), and
+thus the phrase level of the second conjunct is not clear, the
+following structure is used where <TT>YX</TT> is <TT>NX, ADJX</TT>
+or <TT>ADVX</TT>. Note that in this case the CONJP is sister to the
+head of the first conjunct rather than to the first conjunct itself.
+
+<PRE>
+(XP (X first_conjunct)
+    (CONJP (CONJ conjunction)
+           (YX second_conjunct)))
+
+(NP (ADJ old) (NS women)
+    (CONJP (CONJ and)
+           (NX (NS men))))
+
+(ADJP (ADV very) (ADJ gloomy)
+      (CONJP (CONJ and)
+             (ADJX (ADJ sad))))
+
+(ADVP (ADV very) (ADV slowly)
+      (CONJP (CONJ and)
+             (ADVX (ADV carefully))))
+
+</PRE>
+
+<a name="ip_conjunction"></a>
+<H3>IP Conjunction</H3>
+
+The conjunction of IPs is a special case. Each clause containing a tensed
+verb is treated as a separate token even if the clauses are conjoined. In
+these cases the conjunction itself is just treated as a sentence
+constituent, rather than heading a CONJP.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD came)
+        (NP-DIR (N home)))
+
+(IP-MAT (CONJ and)
+        (NP-SBJ *con*)
+        (VBD put)
+        (NP-OB1 (PRO$ her) (NS feet))
+        (RP up))
+
+</PRE>
+
+IPs are conjoined like other phrases
+
+<UL>
+<LI> when the tensed verb of the second conjunct has been elided <BR>
+
+<LI> when they are complements (i.e, in subordinate clauses)
+
+</UL>
+
+In the first case the clauses are coindexed using
+equal-sign coindexing, which indicates that the clause with the equal-sign
+index is incomplete but may be reconstructed on the basis of the coindexed
+clause.
+
+<PRE>
+(IP-MAT (IP-MAT-1 (NP-SBJ (NPR Mary))
+                  (BED was)
+                  (VAG eating)
+                  (NP-OB1 (N dinner)))
+        (CONJP (CONJ and)
+               (IP-MAT=1 (VAG reading)
+                         (NP-OB1 (D a) (N book)))))
+
+(IP-MAT (IP-MAT-1 (NP-SBJ (NPR Mary))
+                  (MD will)
+                  (VB buy)
+                  (NP-OB1 (NS groceries)))
+        (CONJP (CONJ and)
+               (IP-MAT=1 (VB cook)          <--- note that no empty categories are 
+                         (NP-OB1 (N dinner))     added in clauses with an equal-sign 
+                         (PP (P after)           index
+                             (NP (N work))))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD said)
+        (CP-THT (C that)
+                (IP-SUB (IP-SUB (NP-SBJ (NPR Jane))
+                                (VBD bought)
+                                (NP-OB1 (NS groceries)))
+                        (CONJP (CONJ and)
+                               (IP-SUB (NP-SBJ *con*) <--- when only the subject is elided
+                                       (VBD cooked)         under conjunction, an empty 
+                                       (NP-OB1 (N dinner)))))))   subject is added
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD said)
+        (CP-THT (C that)
+                (IP-SUB (IP-1 (NP-SBJ (NPR Jane))
+                              (MD will)
+                              (VB buy)
+                              (NP-OB1 (NS groceries)))
+                        (CONJP (CONJ and)
+                               (IP=1 (VB cook)
+                                     (NP-OB1 (N dinner)))))))
+
+</PRE>
+
+<H2>Empty categories</H2>
+
+The following empty catgories are used in the PPCME2.
+
+<PRE>
+(NP-SBJ *con*)  subject elided under conjunction
+(NP-SBJ *exp*)  empty expletive subject
+(NP-SBJ *pro*)  "small pro" subject
+(NP-SBJ *arb*)  arbitrary PRO subject in ECM infinitives
+
+(XP *T*)        wh- trace (XP = NP, ADJP, or ADVP)
+(XP *ICH*)      non-wh trace (XP = any phrase)
+
+(XP *)          - without an index indicates elided or understood constituent
+
+                - with an index indicates coreference of empty position with
+                  a constituent in another clause
+
+</PRE>
+
+<H3>Empty subjects</H3>
+
+Four types of empty subjects are distinguished. For details, see Section <a
+href="#np-sbj">SUBJECTS</a> above, or for more detail, <a
+href="syn-const.htm#subjects">SUBJECTS</a> in the full documentation.
+
+<H3>Wh-traces (XP *T*)</H3>
+
+For details on wh-traces, see under the specific clause-types in which they
+occur.
+
+<H3>Non-wh traces (XP *ICH*) (XP *)</H3>
+
+Two types of non-wh traces are indicated: (1) traces of A'-bar
+movement (<TT>(XP *ICH*)</TT> where XP is any label); and (2) a
+limited number of traces of A-movement (<TT>(XP *)</TT> with an
+index, where XP is any category). </P>
+
+A'-bar movement is included in any case in which it has obviously
+occurred. In practice this generally means in any case in which one
+constituent has been moved out of another constituent, as, for example, an
+extraposed relative clause or degree clause leaves an A'-bar trace inside
+its antecedent. Cases in which sentence-level constituents may have been
+reordered (e.g., topicalization) are not indicated.
+
+<PRE>
+(IP-MAT (ADJP (ADVR So) (ADJ happy) <--- topicalization not indicated
+              (CP-DEG *ICH*-1))     <--- extraposition of degree clause
+              (BED was)                        indicated
+              (NP-SBJ (NPR Mary))
+              (CP-DEG-1 (C that)
+                        (IP-SUB (NP-SBJ (PRO she))
+                                (VBD danced)
+                                (NP-OB1 (D a) (N jig)))))
+
+</PRE>
+
+A-bar movement is also only indicated in cases in which the moved element
+has been extracted from another constituent. Thus passivization is
+indicated if the passivized NP is extracted from an infinitive, small
+clause or PP, but not if it is simply passivized from object position. 
+
+<PRE>
+(IP-MAT (NP-SBJ-1 (PRO She))
+        (BED was)
+        (VAN called)
+        (IP-SMC (NP-SBJ *-1)
+                (NP-OB1 (NPR Mary)))
+        (PP (P after)
+            (NP (PRO$ her) (N grandmother))))
+
+</PRE>
+
+For more details, see <a href="syn-empty.htm#traces">TRACES</a> in the full
+documentation.
+
+<H3>Generic empty category (XP *)</H3>
+
+The generic empty category <TT>(XP *)</TT> (where XP is any label) is used
+for various other cases which do not fall into any of those listed
+above. For details, see <a href="syn-empty.htm#generic_empty_category">A
+GENERIC EMPTY CATEGORY</a> in the full documentation.
+
+<H2>The syntax of the matrix clauses</H2> 
+
+A matrix clause is labelled <TT>IP</TT> and includes one matrix
+verb. Because the system does not include a VP level, the IP is very
+flat (see Section <a href="#general_principles">GENERAL PARSING PRINCIPLES</a>;
+all matrix constituents are represented at the same level as the verb
+and its auxiliaries if present.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBP likes)
+        (NP-OB1 (NS cats)))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (BEP is)
+        (VAG buying)
+        (NP-OB1 (D a) (N cat)))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD bought)
+        (NP-OB1 (D a) (N cat))
+        (PP (P on)
+            (NP (NPR Tuesday))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (MD might)
+        (HV have)
+        (VBN bought)
+        (NP-OB1 (D a) (N cat))
+        (PP (P on)
+            (NP (NPR Tuesday))))
+
+</PRE>
+
+Cases of (potential) VP conjunction (<I> Mary bought a cat and took it
+home</I>) are treated as two separate IPs with an elided subject, represented
+by <TT>(NP-SBJ *con*)</TT> in the second IP.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD bought)
+        (NP-OB1 (D a) (N cat)))
+
+(IP-MAT (CONJ and)
+        (NP-SBJ *con*)
+        (VBD took)
+        (NP-OB1 (PRO it))
+        (NP-DIR (N home)))
+
+</PRE>
+
+Conjoined intransitive verbs (<I> Mary sang and danced at the party</I>) or
+conjoined transitive verbs which share a single object (<I> Mary wrote and
+directed the film</I>) are conjoined at the word level and included in the
+same IP rather than being separated.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD (VBD sang) (CONJ and) (VBD danced))
+        (PP (P at)
+            (NP (D the) (N party))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD (VBD wrote) (CONJ and) (VBD directed))
+        (NP-OB1 (D the) (N film)))
+
+</PRE>
+
+<a name="imperatives"></a>
+<H3>Imperatives (IP-IMP)</H3>
+
+Imperative clauses are labelled <TT>IP-IMP</TT>. They contain a subject only
+if there is an overt subject in the sentence.
+
+<PRE>
+(IP-IMP (VBI hurry)
+        (RP up))
+
+(IP-IMP (VBI gather)
+        (NP-SBJ (PRO ye))
+        (NP-OB1 (N+NS rosebuds))
+        (PP (P while)
+            (CP-ADV (C 0)
+                    (IP-SUB (NP-SBJ (PRO ye))
+                            (MD may)
+                            (VB *)))))
+
+</PRE>
+
+<H3>Direct speech (-SPE)</H3>
+
+IPs and CPs are additionally labelled with the tag <TT>-SPE</TT> when they are
+direct speech. Other phrases in direct speech are labelled <TT>QTP</TT>; see
+Section <a href="#qtp">QUOTATION PHRASE</a>.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD said)
+        (IP-MAT-SPE (NP-SBJ (PRO I))
+                    (VBP want)
+                    (NP-OB1 (N cake))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD said)
+        (CP-QUE-SPE (WNP-1 (WPRO what))
+                    (IP-SUB-SPE (NP-OB1 *T*-1)
+                                (BEP is)
+                                (NP-SBJ (D the) (N matter))
+                                (NP-VOC (NPR Jane))))
+        (. ?))
+
+</PRE>
+
+<a name="appositives_and_parentheticals"></a>
+<H3>Appositives and parentheticals (-PRN)</H3>
+
+The label <TT>-PRN</TT> is added to any constituent acting as an appositive
+or parenthetical. Some common types are appositives on NPs, explanatory
+sentences (<I>that is..., that is to say...</I>), speech parentheticals
+(<I>he said, quoth she</I>, etc.), and emphatic reflexives (see Section <a
+href="#reflexives">REFLEXIVES</a> for the latter). For more details on
+other types, see <a href="syn-const.htm#appositive">APPOSITIVE OR
+PARENTHETICAL</a> in the full documentation.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary)
+                (NP-PRN (NPR$ Janes) (N sister)))
+        (VBD bought)
+        (NP-OB1 (D a) (N car)))
+
+(NP (D this) (N virtue)
+    (, ,)
+    (IP-MAT-PRN (NP-SBJ (D that))
+                (BEP is)
+                (IP-INF (TO to)
+                        (VB say)
+                        (NP-OB1 (N maidenhood) (CONJ or) (N chastity)))))
+
+(IP-IMP-SPE (VBI Come)
+            (RP on)
+            (IP-MAT-PRN (VBD cried)
+                        (NP-SBJ (NPR Mary))))
+
+</PRE>
+
+<H2>The syntax of the subordinate clauses</H2>
+
+Subordinate clauses which are headed by a complementizer (whether
+overt or not) are labelled <TT>CP</TT>. Clauses in which the verb is
+standardly assumed to have moved to the C position (direct questions,
+yes/no questions, V1 conditionals) are also labelled CP, although in
+the PPCME schema they lack a labelled C position and the movement of
+the verb to this position is not indicated. Clauses without a
+complementizer position are labelled <TT>IP</TT>. All clauses are
+further labelled for function (relative clause, adverbial clause,
+infinitive, small clause, etc.).
+
+<H3>IP subordinate clauses</H3>
+
+Subordinate clauses labelled as IPs are the following: 
+
+<PRE>
+complement infinitive    IP-INF    
+purpose infinitive       IP-INF-PRP 
+adjunct infinitive       IP-INF-ADT
+small clause             IP-SMC
+participial clause       IP-PPL
+absolute                 IP-ABS
+
+</PRE>
+<a name="infinitives"></a>
+<H3>Infinitives (IP-INF)</H3>
+
+The internal structure of an infinitive includes necessarily only the
+verb. It may also include an auxiliary TO or FOR TO and, following an
+ECM verb, a subject position. The controlled PRO subject position in
+regular infinitives is not represented. Complement infinitives are
+labelled <TT>IP-INF</TT>, purpose infinitives <TT>IP-INF-PRP</TT>
+and other adjunct infinitives <TT>IP-INF-ADT</TT>.
+
+<PRE>
+(IP-SUB (NP-SBJ (NPR Mary))
+        (VBD wanted)
+        (IP-INF (TO to)
+                (VB go)
+                (PP (P to)
+                    (NP (NPR Paris)))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD bought)
+        (NP-OB1 (D the) (N car))
+        (IP-INF-PRP (TO to)
+                    (VB commute)
+                    (PP (P to)
+                        (NP (N work)))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD helped)             <--- ECM verb 
+        (IP-INF (NP-SBJ (NPR Jane))
+                (VB buy)
+                (NP-OB1 (D a) (N car))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD helped)
+        (IP-INF (NP-SBJ *arb*)   <--- an "arbitrary pro" subject is added in  
+                (VB buy)              ECM cases without a specified subject
+                (NP-OB1 (D the) (N car))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (DOD did)
+        (NP-OB1 (N wrong))
+        (IP-INF-ADT (TO to)
+                    (VB steal)
+                    (NP-OB1 (D the) (N car))))
+
+</PRE>
+
+<H3>Small clauses (IP-SMC)</H3>
+
+Small clauses include only a subject and a predicate. Only small clauses in
+which the predicate is nominal or adjectival are represented as such.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBP considers)
+        (IP-SMC (NP-SBJ (NPR Jane))
+                (NP-OB1 (D a) (N friend))))   <--- nominal predicate
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBP considers)
+        (IP-SMC (NP-SBJ (NPR Jane))
+                (ADJP (ADJ friendly))))       <--- adjectival predicate
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBP considers)
+        (IP-SMC (NP-SBJ (D the) (N battle))
+                (VAN lost)))              <--- adjectival participle predicate
+
+(IP-MAT (NP-SBJ (N People))
+        (VBP call)
+        (IP-SMC (NP-SBJ (PRO her))
+                (NP-OB1 (NPR Mary))))
+
+(IP-SUB (NP-SBJ (PRO She))
+        (BEP is)
+        (VAN called)
+        (IP-SMC (NP-SBJ *-1)     <--- passivization of subject of small clause
+                (NP-OB1 (NPR Mary))))
+
+</PRE>
+
+<a name="participials"></a>
+<H3>Participial clauses (IP-PPL)</H3>
+
+Participial clauses are headed by a participle, present or past, and have a
+controlled PRO subject (not represented in our system). Participial clauses
+with an overt subject are treated as absolutes (see Section
+<a href="#absolutes">ABSOLUTE CLAUSES</a>).
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD ran)
+        (PP (P down)
+            (NP (D the) (N street)))
+        (IP-PPL (VAG shouting)
+                (IP-IMP-SPE (VBI Charge)))
+        (. !))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD saw)
+        (NP-OB1 (NPR Jane))
+        (IP-PPL (VAG sitting)
+                (PP (P under)
+                    (NP (D a) (N tree)))))
+
+(IP-MAT (PP (P On)
+            (IP-PPL (VAG looking)
+                    (PP (RP up) (P from)
+                        (NP (PRO$ her) (N work)))))
+        (NP-SBJ (NPR Mary))
+        (VBD saw)
+        (NP-OB1 (NPR Jane)))
+
+(IP-MAT (IP-PPL (VAN lost)
+                (PP (P in)
+                    (NP (N thought))))
+        (NP-SBJ (NPR Mary))
+        (VBD missed)
+        (NP-OB1 (PRO$ her) (N bus) (N stop)))
+
+</PRE>
+
+<a name="absolutes"></a>
+<H3>Absolute clauses (IP-ABS)</H3>
+
+Absolutes are similar to participials but include an overt subject.
+
+<PRE>
+(IP-MAT (IP-ABS (NP-SBJ (NPR Jane))
+                (VAG having)
+                (VBN fallen)
+                (PP (P in)
+                    (NP (D the) (ADJ third) (N lap))))
+        (NP-SBJ (NPR Mary))
+        (ADVP (ADV easily))
+        (VBD won)
+        (NP-OB1 (D the) (N race)))
+
+(IP-MAT (PP (P With)
+            (IP-ABS (NP-SBJ (NPR Jane))
+                    (BAG being)
+                    (VAN disqualified)))
+        (NP-SBJ (NPR Mary))
+        (ADVP (ADV easily))
+        (VBD won)
+        (NP-OB1 (D the) (N race)))
+
+</PRE>
+
+<H3>Sentence fragments (FRAG)</H3>
+
+The label <TT>FRAG</TT> is used when the ``sentence'' is grammatical, but
+there is not enough structure present (for whatever reason) to construct
+an IP. FRAG is not used for ungrammatical material.
+
+<PRE>
+(FRAG (ADVP-TMP (ADV Never))
+      (PP (P on)
+          (NP (D a) (NPR Sunday))))
+
+</PRE>
+
+<H3>CP subordinate clauses</H3>
+
+CP subordinate clauses can be divided into types on the basis of their
+internal syntax: those which are +WH and thus include a wh-position and
+those which are -WH and do not.
+
+<H3>+WH subordinate clauses</H3>
+
+The following types of CPs always inlcude a wh-operator (<TT>WNP,
+WADJP, WADVP, WPP</TT>) coindexed to a trace (<TT>*T*</TT>). The
+wh-operator may be overt or empty. When empty, its content is
+represented by <TT>0</TT> (i.e., zero). The trace is always the first
+element in the IP complement, no matter what its function. All these
+CPs except direct questions also include a complementizer position
+(<TT>C</TT>), which may be overt or empty. When empty, it is
+represented by <TT>0</TT>.
+
+<PRE>
+wh-questions                  CP-QUE
+relative clauses              CP-REL
+free relative clauses         CP-FRL
+clause-adjoined relative      CP-CAR
+comparative clauses           CP-CMP
+some adverbial clauses        CP-ADV
+tough-movement complements    CP-TMC
+it-cleft                      CP-CLF
+
+</PRE>
+
+<a name="wh-questions"></a>
+<H3>Wh-questions (CP-QUE)</H3>
+
+Both direct and indirect questions are labelled
+<TT>CP-QUE</TT>. Indirect questions include both a wh-position
+(technically specCP, represented implicitly in our system as the
+position immediately preceding the head) and a complementizer
+position, which may be empty. Direct question include only the
+wh-position. The complementizer position in direct questions is
+generally assumed to be filled by the tensed verb, an assumption we
+accept but do not represent in our system; rather, no complementizer
+position is included and the verb is first in the complement IP
+(following the trace if there is one). This applies to all
+constructions in which the verb is clearly in C, including yes/no
+questions and verb-first conditionals (see Sections <a
+href="#yes_no_questions">YES/NO QUESTIONS</a> and <a
+href="#cp-adv">ADVERBIAL CLAUSES</a>).
+
+<H3>Direct questions</H3>
+
+<PRE>
+(CP-QUE (WNP-1 (WPRO What))
+        (IP-SUB (NP-OB1 *T*-1)
+                (DOP does)
+                (NP-SBJ (NPR Mary))
+                (VB want))
+        (. ?))
+
+(CP-QUE (WADVP-1 (WADV Where))
+        (IP-SUB (ADVP-LOC *T*-1)
+                (DOD did)
+                (NP-SBJ (NPR Jane))
+                (VB go)
+                (. ?)))
+
+</PRE>
+
+<H3>Indirect questions</H3>
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBP knows)
+        (CP-QUE (WADVP-1 (WADV why))
+                (C 0)
+                (IP-SUB (ADVP *T*-1)
+                        (NP-SBJ (NPR Jane))
+                        (VBD bought)
+                        (NP-OB1 (D the) (N car)))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD asked)
+        (CP-QUE (WNP-1 (WD what) (N time))
+                (C 0)
+                (IP-SUB (NP-TMP *T*-1)
+                        (NP-SBJ (NPR Jane))
+                        (BED was)
+                        (VAG coming))))
+
+</PRE>
+
+While in Modern English the complementizer position in indirect questions
+is always empty, in Middle English it could be filled (<I> Mary asked what
+time that Jane was coming</I>).
+
+<a name="cp-rel"></a>
+<H3>Relative clauses (CP-REL)</H3>
+
+Relative clauses have the same internal structure as indirect
+questions (see Section <a
+href="#wh-questions">WH-QUESTIONS</a>). Relative clauses are treated
+as post-modifiers of their antecedent. In simple cases the relative
+clause will be a sister of the head noun of its antecedent. While in
+Modern English it is usual for only the wh-operator or the
+complementizer to be overt, but not both, in Middle English both
+positions can be filled (<I> the cat which that Mary saw</I>).
+
+<PRE>
+(NP (D the) (N cat)
+    (CP-REL (WNP-1 0)
+            (C that)
+            (IP-SUB (NP-OB1 *T*-1)
+                    (NP-SBJ (NPR Mary))
+                    (VBD saw))))
+
+(NP (NPR Mary)
+    (CP-REL (WNP-1 (WPRO who))    <--- restrictive and non-restrictive 
+            (C 0)                      relatives are not distinguished
+            (IP-SUB (NP-SBJ *T*-1)
+                    (VBD saw)
+                    (NP-OB1 (D the) (N cat)))))
+
+</PRE>
+
+When relative clauses are associated with conjoined NPs (<I> the cats and
+the dogs which play in the park</I>), the attachment level of the relative can
+be difficult to distinguish. The general rule in these cases (lacking
+contextual evidence to the contrary) is that the relative clause attaches
+as high as possible; that is, it applies to the whole NP rather than any
+internal part of it. This is shown by making the relative a sister to the
+other constituents of the highest NP. (For the treatment of conjunction,
+see Section <a href="#conjunction">CONJUNCTION</a>).
+
+<PRE>
+(NP (NP (D the) (NS cats))
+    (CONJP (CONJ and)
+           (NP (D the) (NS dogs)))
+    (CP-REL (WNP-1 (WPRO which))
+            (C 0)
+            (IP-SUB (NP-SBJ *T*-1)
+                    (VBP play)
+                    (PP (P in)
+                        (NP (D the) (N park))))))
+
+</PRE>
+
+<H3>Free relative clauses (CP-FRL)</H3>
+
+The internal structure of free relatives is the same as that of
+relatives and indirect questions (see Sections <a
+href="#wh-questions">WH-QUESTIONS</a> and <a href="#cp-rel">RELATIVE
+CLAUSES</a>). Free relatives, however, have no antecedent. The
+function of a free relative in the clause is indicated by enclosing it
+within an otherwise empty set of appropriately labelled parens.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD bought)
+        (NP-OB1 (CP-FRL (WNP-1 (WPRO what))
+                        (C 0)
+                        (IP-SUB (NP-SBJ (PRO she))
+                                (BED was)
+                                (VAN told)
+                                (IP-INF (NP-OB1 *T*-1)
+                                        (TO to)
+                                        (VB buy))))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (ADVP-TMP (ADV always))
+        (VBP travels)
+        (ADVP-LOC (CP-FRL (WADVP-1 (WADV where) (ADV ever))
+                          (C 0)
+                          (IP-SUB (NP-SBJ (PRO she))
+                                  (VBP wants)
+                                  (IP-INF (ADVP-LOC *T*-1)
+                                          (TO)
+                                          (VB *))))))
+
+</PRE>
+
+Free relatives can sometimes be difficult to distinguish from indirect
+questions. We distinguish them strictly as follows: If the verb can take an
+indirect question (test with a <I> why</I> question), then the construction
+is treated as a question; if not, it is treated as a free relative. </P>
+
+In Middle English, free relatives may be headed by THAT or THERE (or less
+commonly in the early texts by other th-words). For details on how these
+cases are treated, see <a href="syn-sub.htm#non-wh_free_relatives">NON-WH
+FREE RELATIVES</a> in the full documentation.
+
+<H3>Clause-adjoined relative clauses (CP-CAR)</H3>
+
+Clause-adjoined relatives are either continuative relatives which
+refer back to the whole sentence (<I> Mary ate all the cake, which
+made Jane angry</I>), or wh-demonstratives, which although matrix
+clauses, have the syntax of embedded wh-constructions (<I> The captain
+sank the ship; the which captain was court-marshalled</I>). Because
+the antecedent of the wh-demonstrative is usually in the preceding
+sentence, we adjoin these relatives to the preceding sentence.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD ate)
+        (NP-OB1 (Q all) (D the) (N cake))
+        (CP-CAR (WNP-1 (WPRO which))
+                (C 0)
+                (IP-SUB (NP-SBJ *T*-1)
+                        (VBD made)
+                        (IP-SMC (NP-SBJ (NPR Jane))
+                                (ADJP (ADJ angry))))))
+
+(IP-MAT (NP-SBJ (D The) (N captain))
+        (VBD sank)
+        (NP-OB1 (D the) (N ship))
+        (CP-CAR (WNP-1 (D the) (WD which) (N captain))
+                (C 0)
+                (IP-SUB (NP-SBJ *T*-1)
+                        (BED was)
+                        (VAN court-marshalled))))
+
+</PRE>
+
+<H3>Reduced relatives (RRC)</H3>
+
+Reduced relative clauses are labelled but no effort is made to reconstruct
+their internal structure. 
+
+<PRE>
+(IP-MAT (NP-SBJ (D The) (N girl)
+                (RRC (VAG wearing)
+                     (NP-OB1 (D the) (ADJ red) (N hat))))
+        (VBD won)
+        (NP-OB1 (D the) (N race)))
+
+(IP-MAT (NP-SBJ (D The) (N candidate)
+                (RRC (VAN elected)
+                     (PP (P by)
+                         (N panel))))
+        (BED was)
+        (NP-OB1 (D a) (N crook)))
+
+</PRE>
+
+Reduced relatives can sometimes be difficult to distinguish from adjunct
+participial clauses. See <a href="syn-sub.htm#reduced_relatives">REDUCED
+RELATIVES</a> in the <a href="general-intro.htm">General Introduction</a>
+for details on how the two cases are distinguished.
+
+<H3>Empty Operator CP (CP-EOP)</H3>
+
+The label <TT>CP-EOP</TT> is used to label non-wh infinitival relatives and
+purpose infinitives with a gap. These two cases are often difficult to
+distinguish and so we do not attempt to do so (even when it is
+possible). The antecedent of the trace receives the same index as the
+trace, rather than being contained within it as in the case of other
+relative clauses. Only infinitival relatives/purpose infinitives with an
+object or object of preposition gap are treated this way (currently)
+[POLICY UNDER REVIEW]. Thus <I> Mary needs a plumber to fix the sink</I> is
+treated as a simple purpose infinitive and labelled <TT>IP-INF-PRP</TT>.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD bought)
+        (NP-OB1-1 (D a) (N wrench))
+        (CP-EOP (WNP-1 0)
+                (IP-INF (TO to)
+                        (VB fix)
+                        (NP-OB1 (D the) (N sink)
+                                (PP (P with)
+                                    (NP *T*-1))))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (HVP has)
+        (NP-OB1-1 (Q+N nothing))
+        (CP-EOP (WNP-1 0)
+                (IP-INF (NP-OB1 *T*-1)
+                        (TO to)
+                        (DO do))))
+
+</PRE>
+
+<H3>Comparative clauses (CP-CMP)</H3>
+
+Comparative clauses have an empty operator co-indexed to a trace indicating
+the function of what is being compared. They also have a complementizer
+position. They appear as complements to the prepositions AS and THAN. Often
+much of the comparative clause is elided. If the entire clause following
+the subject has been elided (<I> Mary is taller than Jane</I>), the
+preposition is represented as taking an NP complement rather than a
+clause. Infinitives may likewise appear as the complement to these
+prepositions (<I> Mary likes to swim more than to ski</I>). In other cases,
+in order to make the structure clearer the missing parts have been added
+(in Modern English) inside braces.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD ate)
+        (NP-OB1 (QP (ADVR as) (Q much))
+                (N cake))
+        (PP (P as)
+            (CP-CMP (WNP-1 0)
+                    (C 0)
+                    (IP-SUB (NP-OB1 *T*-1)
+                            (NP-SBJ (NPR Jane))
+                            (DOD did)
+                            (VB *))))))
+
+(IP-MAT (NP-SBJ (PRO She))
+        (MD ought)
+        (ADVP (ADV rather)
+              (PP *ICH*-1))
+        (TO to)
+        (BE be)
+        (VAN praised)
+        (PP-1 (P than)
+              (CP-CMP (WADVP-2 0)
+                      (C 0)
+                      (IP-SUB (ADVP *T*-2)
+                              (CODE {she_ought_to_be})
+                              (VAN yblamed)))))
+
+</PRE>
+
+<a name="wh-cp-adv"></a>
+<H3>WH Adverbial clauses (CP-ADV)</H3>
+
+Some AS adverbial clauses contain a gap, which may be either adverbial or
+nominal. When adverbial, AS can be paraphrased as <I>in the same way
+that</I>. When nominal, AS can be paraphrased as WHICH, and the trace is a
+nominal argument.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBP votes)
+        (PP (P in)
+            (NP (Q every) (N election)))
+        (PP (P as)
+            (CP-ADV (WADVP-1 0)
+                    (C 0)
+                    (IP-SUB (ADVP *T*-1)
+                            (NP-SBJ (D a) (ADJ good) (N citizen))
+                            (MD should)
+                            (VB *)))))
+
+(IP-MAT (PP-PRN  (P As)
+                 (CP-ADV (WNP-1 0)
+                         (C 0)
+                         (IP-SUB (NP-OB1 *T*-1)
+                                 (NP-SBJ (NPR Mary))
+                                 (ADVP-TMP (ADV always))
+                                 (VBP says))))
+        (NP-SBJ (N tomorrow))
+        (BEP is)
+        (NP-OB1 (D+OTHER another) (N day)))
+
+</PRE>
+
+<H3>Tough-movement complements (CP-TMC)</H3>
+
+Tough movement complements of adjectives (<I> Mary is easy to please</I>)
+have the same structure as infinitival relatives. The relation between the
+subject of the matrix clause and the object of the infinitive (which is
+predictable) is not indicated.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (BEP is)
+        (ADJP (ADJ easy)
+              (CP-TMC (WNP-1 0)
+                      (IP-INF (NP-OB1 *T*-1)
+                              (TO to)
+                              (VB please)))))
+
+</PRE>
+
+<H3>It-clefts (CP-CLF)</H3>
+
+It-clefts have the same internal structure as relative clauses (see Section
+<a href="#cp-rel">RELATIVE CLAUSES</a>).
+
+<PRE>
+(IP-MAT (NP-SBJ (PRO It))
+        (BEP is)
+        (NP-OB1 (NPR Mary))
+        (CP-CLF (WNP-1 (WPRO who))
+                (C 0)
+                (IP-SUB (NP-SBJ *T*-1)
+                        (VBP knows)
+                        (NP-OB1 (D the) (N answer)))))
+
+</PRE>
+
+<H3>-WH subordinate clauses</H3>
+
+In the remaining types of CP subordinate clauses the complementizer
+position is always indicated (whether over or empty) but the specCP
+position doesn't contain a wh-element.
+
+<PRE>
+yes/no questions         CP-QUE
+that complements         CP-THT
+adverbial clauses        CP-ADV
+degree clauses           CP-DEG
+
+</PRE>
+
+<a name="yes_no_questions"></a>
+<H3>Yes/no questions (CP-QUE)</H3>
+
+YES/NO questions, like other verb-first constructions (see Sections <a
+href="#wh-questions">WH-QUESTION</a> and <a href="#cp-adv">ADVERBIAL
+CLAUSES</a>) where the verb has moved to C, are represented as having
+no C position and the verb first in IP (after any traces).
+
+<PRE>
+(CP-QUE (IP-SUB (BEP Are)
+                (NP-SBJ (PRO you))
+                (VAG coming))
+        (. ?))
+
+(CP-QUE (IP-SUB (DOD Did)
+                (NP-SBJ (PRO you))
+                (VB want)
+                (IP-INF (TO to)
+                        (VB go)))
+        (. ?))
+
+</PRE>
+
+<H3>That clauses (CP-THT)</H3>
+
+That clauses occur as complements to verbs, adjectives and nouns.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD said)
+        (CP-THT (C that)
+                (IP-SUB (NP-SBJ (PRO she))
+                        (VBD liked) 
+                        (NP-OB1 (NS cats)))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD said)
+        (CP-THT (C 0)
+                (IP-SUB (NP-SBJ (PRO she))
+                        (VBD liked) 
+                        (NP-OB1 (NS cats)))))
+
+(IP-MAT (NP-SBJ (D the) (N fact)
+                (CP-THT (C that)
+                        (IP-SUB (NP-SBJ (D the) (N world))
+                                (BEP is)
+                                (ADJP (ADJ round)))))
+        (HVD had)
+        (NEG not)
+        (VBN escaped)
+        (NP-OB1 (NPR Mary)))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (BEP is)
+        (ADJP (ADJ happy)
+              (CP-THT (C that)
+                      (IP-SUB (NP-SBJ (NPR Jane))
+                              (VBD won)
+                              (NP-OB1 (D the) (N prize))))))
+
+</PRE>
+
+<a name="cp-adv"></a>
+<H3>Adverbial clauses (CP-ADV)</H3>
+
+In the PPCME2, most subordinators (subordinate conjunctions) are treated as
+prepositions, and thus many adverbial clauses are represented as PPs in
+which the preposition takes a clausal complement. While in Modern English
+the complementizer position in such clauses is generally empty, it was
+often filled in Middle English (<I> After that Mary arrived, we watched
+the movie</I>).
+
+<PRE>
+(IP-IMP (PP (P If)
+            (CP-ADV (C 0)
+                    (IP-SUB (NP-SBJ (PRO you))
+                            (VBP want)
+                            (NP-OB1 (D a) (N ride)))))
+        (VBI ask)
+        (NP-OB2 (NPR Mary)))
+
+(IP-MAT (PP (P When)
+            (CP-ADV (C 0)
+                    (IP-SUB (NP-SBJ (D the) (N party))
+                            (BED was)
+                            (RP over))))
+        (NP-SBJ (NPR Mary))
+        (VBD went)
+        (NP-DIR (N home)))
+
+</PRE>
+
+Bare adverbial clauses, i.e. headed by THAT, are common in Middle English
+and generally indicate purpose or result.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (VBD invested)
+        (ADVP (ADV wisely))
+        (CP-ADV (C that)            <--- i.e., "so that"
+                (IP-SUB (NP-SBJ (PRO she))
+                        (MD might)
+                        (VB retire)
+                        (PP (P in)
+                            (NP (N comfort)))
+                        (NP-TMP (ONE one) (N day)))))
+
+</PRE>
+
+Verb-first conditionals are given the same structure as other
+constructions in which the verb is in C (see Sections <a
+href="#wh-questions">WH-QUESTIONS</a> and <a
+href="#yes_no_questions">YES/NO QUESTIONS</a>); i.e., the
+complementizer position is not represented and the verb is first in
+IP.
+
+<PRE>
+(IP-MAT (CP-ADV (IP-SUB (HVD had)
+                        (NP-SBJ (PRO she))
+                        (FP but)
+                        (VBN known)))
+        (NP-SBJ (NPR Mary))
+        (MD would)
+        (ADVP-TMP (ADV never))
+        (HVP have)
+        (VBN trusted)
+        (NP-OB1 (NPR Jane)))
+
+</PRE>
+
+<H3>Degree clauses (CP-DEG)</H3>
+
+Degree clauses are complements of SUCH and phrases containing degree words,
+usually SO.  Degree clauses are generally extraposed if they are not
+underlyingly sentence final.
+
+<PRE>
+(IP-MAT (NP-SBJ (NPR Mary))
+        (BEP is)
+        (ADJP (ADVR so) (ADJ friendly)
+              (CP-DEG (C that)
+                      (IP-SUB (NP-SBJ (PRO she))
+                              (ADVP-TMP (ADV always)
+                                        (VBP stops)
+                                        (IP-INF (TO to)
+                                                (VB chat)))))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (BEP is)
+        (NP-OB1 (ADJP (SUCH such)
+                      (CP-DEG *ICH*-1))
+                (D a) (ADJ good) (N player)
+                (CP-DEG-1 (C that)
+                          (IP-SUB (NP-SBJ (PRO she))
+                                  (ADVP-TMP (ADV always))
+                                  (VBP wins)))))
+
+(IP-MAT (NP-SBJ (NPR Mary))
+        (ADVP (ADVR so)
+              (CP-DEG *ICH*-1))
+        (VBD wanted)
+        (IP-INF (TO to)
+                (VB pass)
+                (NP-OB1 (D the) (N exam)))
+        (CP-DEG-1 (C that)
+                  (IP-SUB (NP-SBJ (PRO she))
+                          (VBD studied)
+                          (NP-TMP (Q every) (N night)))))
+
+</PRE>

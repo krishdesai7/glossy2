@@ -1,0 +1,233 @@
+<HTML>
+<HEAD>
+<TITLE>PPCME2, YCOE, differences</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<BASEFONT SIZE=4>
+
+<h2>The major ways in which the YCOE differs from the PPCME2</h2>
+
+<br><p>
+
+<dl><dt>
+<ul>
+<li>In the YCOE case is a major formal category, in some cases replacing
+the function labels of the PPCME2, in other being used in conjunction with
+them. Case is labelled at both word and phrase level. It is important to
+note that we do not label every inflected word and phrase for case. Our
+system of case labelling is based on formal identification and we do not
+resolve certain kinds of ambiguities, resulting in an underspecified system
+of labelling. This means that some NPs (and other nominal categories) do
+not have a case label despite the fact that they are inflected for case
+(whether or not the case can be determined from context). Thus a search for
+NP-ACC (accusative NP), for instance, will not extract all accusative NPs
+from the corpus; some accusatives may just be labelled NP with no
+case-label. The idea is that all NPs (etc.) labelled accusative are
+definitely accusative, but we make no claims about NPs without a case
+label. They may or may not be accusative (or dative or genitive).  
+<p>
+
+Nominative NPs, on the other hand, are always identified by case, at least
+at the phrasal level, because, as in the PPCME2, subjects in the YCOE have
+special status. Every complete finite clause has a subject (overt or
+empty), and it is always possible to distinguish the subject argument from
+all others.  
+<p>
+
+The <a href="YcoeLite.htm#case">summary</a> in the YCOE Lite manual of our
+system of case-labelling will be sufficient for most investigations. If,
+however, case is crucial to the investigation, then the <a
+href="YcoePos.htm#case">detailed explanation</a> in the POS Manual should
+be consulted.
+
+<p><br>
+
+<li>Mood is labelled on verbs when it is unambiguous: VBPI: present
+tense indicative, VBDS: past tense subjunctive, VBD: past tense
+ambiguous for mood. See the POS Manual: <a href="YcoePos.htm#mood">Mood</a>.
+
+<p><br>
+
+<li> The part-of-speech label for proper nouns in the YCOE is <b>NR</b>
+(rather than <b>NPR</b> as in the PPCME2). This change was introduced to
+remove the confusions that arise when using NP* as a search-term (it
+matches both NPs (noun phrases) and NPRs (proper nouns), generally not a
+desirable combination). See the POS Manual: <a
+href="YcoePos.htm#proper_nouns">Proper nouns</a>.
+
+<p><br>
+<li> The YCOE distinguishes between complete and incomplete clauses more
+explicitly than the PPCME2. In both corpora a system of equal-sign
+coindexing is used to indicate clauses in which elision has taken
+place. Thus, in the PPCME2, a clause label ending in =# (where # stands for
+any number, e.g., IP-SUB=1) is an incomplete clause patterned on a clause
+with a matching -# index (IP-SUB-1).  In the YCOE the same system is used
+(although for technical reasons the index is always =0, =00 or =000);
+however, the clause label of the incomplete clause is also different being,
+IPX (or CPX) rather than IP (or CP). This is simply to make it easier to
+distinguish complete and incomplete clauses when searching.  Using IP-* in
+a search will only extract complete clauses, while IP* will extract all
+clauses, complete or incomplete. See the Reference Manual: <a
+href="YcoeRef.htm#complete_and_incomplete_clauses">Complete and incomplete
+clauses</a> for the definitions of "complete" and "incomplete".
+
+<p><br>
+
+<li>In the PPCME2 adverbial clauses are headed by prepositions taking CP-ADV
+complements.
+
+<pre>
+(PP (P swa)
+    (CP-ADV (C +t+at)
+           (IP-SUB ...)))
+
+</pre>
+
+In the YCOE all such clauses are headed by CP-ADV and the preposition is
+incuded in the CP. This change was introduced purely for ease of searching
+and has no theoretical import. It makes it possible to access the
+preposition without searching outside the CP. See the Reference Manual <a
+href="YcoeRef.htm#adverbial_clauses_headed_by_prep">Adverbial clauses
+headed by a preposition</a>.
+
+<pre>
+(CP-ADV (P swa)
+        (C +t+at)
+        (IP-SUB ...))
+
+</pre>
+
+<p><br>
+<li> Conjunct subordinate clauses are labelled IP-SUB-CON. This additional
+label was introduced for ease of searching since it makes it possible to
+distinguish subordinate conjunct clauses without searching outside the
+IP. In matrix conjunct clauses the conjunction is included within the IP
+and is thus accessible in any case.
+
+<pre>
+(CP-THT (C +t+at)
+        (IP-SUB (IP-SUB (...))
+		(CONJP (CONJ and)
+		       (IP-SUB-CON (...)))))
+
+</pre>
+
+<p><br>
+
+<li>The label IP-IMP is not used in the YCOE. Since imperatives are sometimes
+ambiguous with subjunctives all clauses with imperative (or
+imperative/subjunctive ambiguous) verbs are simply labelled IP-MAT. See the
+Reference Manual: <a href="YcoeRef.htm#imperatives">Imperatives</a>.
+
+<p><br>
+
+<li> In both corpora expletive subjects whether overt or empty are coindexed
+with an extraposed subject clause. In the PPCME2 this indexing is
+numerical; in the YCOE, for technical reasons, the index is always <b>-x</b>
+on both expletive and clause. See the Reference Manual: <a href="YcoeRef.htm#expletive_constructions">Expletive constructions.</a>
+
+<p><br>
+
+<li> There are major differences in the treatment of comparatives between
+the two corpora; see the Reference Manual: <a
+href="YcoeRef.htm#comparative_clauses">Comparative
+clauses</a>. Additionally, SWA clauses in the YCOE are not treated in
+exactly the same way as AS clauses in the PPCME2. See the Reference Manual:
+<a href="YcoeRef.htm#so-that">SWA +T+AT and FOR+TON +TE
+purpose/result/cause/degree clauses</a> and <a
+href="YcoeRef.htm#temporal_swa_clauses">Temporal SWA clauses including SONA
+SWA</a>.
+
+<p><br>
+
+<li> The YCOE uses a formal category, participle phrase (PTP), to cover
+the three functional categories, adjunct participial (IP-PPL), participial
+absolute (IP-ABS) and reduced relative (RRC) of the PPCME2. The labels
+IP-PPL and IP-ABS do not occur at all in the YCOE, and RRC is fairly rare and
+is only used in cases where the reduced relative has no verbal material at
+all (<i>Claudius, once emperor in Rome</i>). Adjunct participials and
+reduced relatives are both labelled PTP with case if applicable, thereby
+obviating the need to distinguish between them, while absolutes are
+labelled PTP-CASE-ABS (where CASE = NOM, ACC, DAT). See the Reference
+Manual: <a href="YcoeRef.htm#participle_phrases">Participle phrases</a>
+
+<p><br> 
+
+<li>The label for non-complement infinitives in the YCOE is
+IP-INF-NCO. While most of these are purpose infinitives (IP-INF-PRP in the
+PPCME2), no effort is made to distinguish types.
+
+<p><br>
+
+<li> In the PPCME2 post-head modifiers always project a phrase. The
+situation in the YCOE is rather more complicated and the section on <a
+href="YcoeRef.htm#general_modifiers">Modifiers</a> in the Reference Manual
+should be consulted.
+
+<p><br>
+
+<li>In the PPCME2 the QP label never occurs at IP-level; it is always
+dominated by an NP. In the YCOE floated and adverbial quantifiers are
+labelled QP at IP-level. See the Reference
+Manual: <a href="YcoeRef.htm#quantifier_phrases">Quantifier phrases</a>.
+
+<p><br>
+
+<li>In the YCOE arbitrary PRO subjects are not indicated in infinitives as
+they are in the PPCME2.
+
+<p><br>
+
+<li> In the YCOE THERE is always taken as locative and never as
+presentational expletive THERE.
+
+<p><br>
+
+<li>In the YCOE all pronouns except possessives that are coreferent with
+the subject of the clause are labelled reflexive (-RFL). In the PPCME2
+reflexives that act as arguments are labeled according to function and only
+the reflexive pronoun with inherently reflexive verbs is labelled
+NP-RFL. See the Reference
+Manual: <a href="YcoeRef.htm#reflexives">Reflexives</a>.
+
+<p><br>
+
+<li>The class of adjuncts is less finely divided, and there are some
+differences in the functions represented.  See the Reference Manual: <a
+href="YcoeRef.htm#args_vs_adjuncts">Arguments vs. adjuncts</a>.
+
+<p><br>
+<li> In the PPCME2 free relative clauses are always surrounded by another
+set of labels which indicate function. In the YCOE, bare CP-FRL clauses are
+complements of the verb (subjects are labelled CP-FRL-SBJ), while all
+non-argument free relatives have a function label attached directly to the
+CP-FRL label (e.g., CP-FRL-LOC a locative free relative). See the Reference
+Manual: <a href="YcoeRef.htm#free_relatives">Free relative clauses</a>.
+
+<p><br>
+
+<li> There are some differences in the use of the empty verb/VP constituent
+<b>(VB *)</b>. See the Reference Manual: <a
+href="YcoeRef.htm#generic_empty">The generic empty category</a>.
+
+<p><br>
+
+<li> All negative words in the YCOE have a POS tag beginning with NEG;
+e.g., (NEG+Q^N nan), (NEG+ADV^T neauer), (NEG+ADV na) in order to
+facilitate searching for them. See the POS Manual: <a
+href="YcoePos.htm#negation">Negation</a>.
+
+<p><br>
+
+<li> Wh-quantifiers, which are much more common in Old than Middle English,
+are labelled Q at word-level, rather than as wh-words as in the PPCME2. See
+the POS Manual: <a href="YcoePos.htm#quantifiers">Quantifiers</a>.
+
+<p><br>
+<li> The YCOE uses a function label -EXT (extent) which is not synonymous
+with the PPCME2 label -MSR (measure). See the Reference Manual: <a
+href="YcoeRef.htm#nps_of_extent">NPs of extent</a>.
+
+</ul></dl>

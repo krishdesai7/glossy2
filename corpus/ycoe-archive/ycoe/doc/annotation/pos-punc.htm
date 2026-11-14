@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<TITLE>PPCME2, POS Annotation, Punctuation</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<a name="punctuation">
+<H2>Punctuation</H2></a>
+
+Final punctuation indicates the end of a token and is tagged with a
+period in the POS files and <TT>E_S</TT> in the parsed files. Note,
+however, that tokens can terminate without any punctuation.
+
+<PRE>
+        For_CONJ I_PRO have_HVP bene_BEN at_P kynge_NPR 
+        Royns_NPR$ ,_. CMMALORY,45.25_ID
+
+        for_CONJ hit_PRO was_BED tolde_VAN me_PRO there_EX
+        were_BED passyng_ADV good_ADJ knyghtes_NS ;_.
+        CMMALORY,45.26_ID
+
+        and_CONJ he_PRO and_CONJ all_Q his_PRO$ knyghtes_NS hath_HVP
+        assayde_VBN CMMALORY,45.27_ID
+
+        and_CONJ none_Q can_MD spede_VB ._. '_' CMMALORY,45.28_ID
+
+</PRE>
+
+All punctuation which does not coincide with the end of token is tagged
+with a comma. 
+
+<PRE>
+        +tet_D an_ONE is_BEP rihte_ADJ ileue_N ._, +tet_D 
+        o+der_OTHER ;_, fulluht_N ._, +tet_D +dridde_ADJ ;_, 
+        feir_ADJ lif_N to_TO leden_VB on_P +tisse_D liue_N ._. 
+        CMLAMB1,73.7_ID
+
+</PRE>
+
+Single and double quotation marks are tagged as such. Directionality is not
+preserved. In general, quotation marks beginning continuing lines of quoted
+speech have been removed from the text, while those beginning continuing
+paragraphs of quoted speech have been retained.
+
+<PRE>
+        '_' Thys_D ys_BEP a_D grete_ADJ mervayle_N ,_, '_' 
+        seyde_VBD Arthure_NPR ._. CMMALORY,45.29_ID
+
+        and_CONJ seyde_VBD ,_, '_' "_" For_P thy_PRO$ love_N 
+        I_PRO leffte_VBD my_PRO$ contrey_N ,_. CMMALORY,641.3990_ID
+
+        and_CONJ syth_P ye_PRO sholl_MD departe_VB frome_P 
+        me_PRO oute_RP of_P thys_D worlde_N ,_, leve_VBI 
+        me_PRO som_Q $tokyn_N that_C I_PRO may_MD thynke_VB 
+        on_P you_PRO ._. "_" '_' CMMALORY,641.3991_ID
+
+</PRE>
+
+Periods in the text which are not used as sentential punctuation, such
+as periods indicating abbreviation, surrounding numbers and certain
+words (e.g., <TT>.x. .Mon. etc.</TT>), are not separated from the word
+they belong to.
+
+<PRE>
+        Ne_NEG mei_MD na_Q .Mon._MAN cume_VB in_RP to_P 
+        godes_NPR$ riche_N bote_P he_PRO beo_BEP ifulhted_VAN ._.
+        CMLAMB1.73.17_ID
+
+        +Tis_D word_N .credo._NPR Mon_MAN mei_MD understonden_VB 
+        ._, on_P +tro_NUM wise_N ._. CMLAMB1.75.43_ID
+
+        +Te_D .v._NUM is_BEP dunt_N ._, CMANCRIW,II.150.2043_ID
+
+        ant_CONJ segge+d_VBI In_FW nomine_FW Patris_FW ,_, 
+        etc._FW ,_. CMANCRIW,I.54.128_ID
+
+</PRE>

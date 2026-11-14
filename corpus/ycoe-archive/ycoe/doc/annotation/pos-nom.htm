@@ -1,0 +1,644 @@
+<HTML>
+<HEAD>
+<TITLE>PPCME2, POS Annotation, Nominals</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<a name="nominals">
+<H2>Nominals</H2></a>
+
+<DL><DT>
+<DL>
+<DT><a href="#pronouns">Pronouns (PRO, PRO$)</a>
+	<DL>
+	<DT><a href="#reflexive_pronouns">Reflexives (HERSELF, etc.)</a>
+	<DT><a href="#possessive_pronouns">Possessive pronouns</a>
+	<DT><a href="#cases_in_which_PRO_is_not_used">Pronominal cases
+in which PRO is not used</a>
+	</DL>
+<DT><a href="#existential_there">Existential THERE (EX)</a>
+<DT><a href="#common_nouns">Common nouns (N, N$, NS, NS$, $)</a>
+	<DL>
+	<DT><a href="#singular_and_collective_nouns">Singular, plural,
+and collective nouns </a>
+		<DL>
+		<DT><a href="#units_of_measure">Units of measure (DAY,
+YEAR, POUND, etc)</a>
+		</DL>
+	<DT><a href="#possessives_and_genitives">Possessives and
+genitives</a>
+		<DL>
+		<DT><a href="#dollar_tag">The $ tag</a>
+		</DL>
+	<DT><a href="#compass_points">Compass points</a>
+	<DT><a href="#nouns_words">Treatment of individual words</a>
+		<DL>
+		<DT><a href="#kind">KIND</a>
+		<DT><a href="#manner">MANNER</a>
+		<DT><a href="#half_and_side">HALF and SIDE</a>
+		</DL>
+	</DL>
+<DT><a href="#proper_nouns">Proper nouns (NPR, NPR$, NPRS, NPRS$)</a>
+	<DL>
+	<DT><a href="#names_of_people">Names of people</a>
+	<DT><a href="#names_of_places">Names of places</a>
+	<DT><a href="#unique_objects">Unique objects</a>
+	<DT><a href="#named_periods_of_time">Named days, months, and periods of time</a>
+	<DT><a href="#named_events">Named events</a>
+	<DT><a href="#names_of_languages">Names of languages</a>
+	</DL>
+<DT><a href="pos-toc.htm">Table of Contents</a>
+</DL></DL>
+
+<a name="pronouns">
+<H3>Pronouns (PRO, PRO$)</H3></a>
+
+<PRE>
+        PRO     Pronoun
+        PRO$    Pronoun, possessive
+</PRE>
+
+All pronouns are labelled <TT>PRO</TT> with the exception of pronominal
+ONE and indefinate ME/MAN.
+
+<PRE>
+        she_PRO
+        her_PRO
+        hym_PRO
+        hit_PRO
+        us_PRO
+
+</PRE>
+
+<a name="reflexive_pronouns">
+<H3>Reflexives (HERSELF, etc.)</H3></a>
+
+Reflexive forms (HERSELF, etc.) are tagged <TT>PRO+N</TT> or <TT>PRO$+N</TT>
+when cliticized. SELF is always tagged as a singular noun, whatever its form.
+
+<PRE>
+        hymself_PRO+N
+        hym_PRO self_N
+        herself_PRO+N (by default)
+        myself_PRO$+N
+</PRE>
+
+<a name="possessive_pronouns">
+<H3>Possessive pronouns</H3></a>
+
+Possessive pronouns are tagged <TT>PRO$</TT> whether or not they modify a noun.
+
+<PRE>
+        hys_PRO$ son_N
+        thy_PRO$ baptym_N
+
+        the_D lyon_N was_BED nat_NEG myne_PRO$
+
+        and_CONJ therefore_ADV+P ye_PRO shall_MD loose_VB
+        youres_PRO$ !_. '_'
+</PRE>
+
+<a name="cases_in_which_PRO_is_not_used">
+<H3>Pronominal cases in which PRO is not used</H3></a>
+
+The tag <TT>PRO</TT> is not used in the following two cases: 
+
+<OL>
+<LI> the pronominal use of ONE (see Section <A HREF="pos-words.htm#one">ONE</A>)
+
+<LI> ME, MAN when it means ONE (see Section <A HREF="pos-words.htm#man">MAN</A>)
+</OL>
+
+<a name="existential_there">
+<H3>Existential THERE (EX)</H3></a>
+
+Existential THERE is tagged <TT>EX</TT>.  When THERE is ambiguous between a
+locative and an existential reading, the default is existential.
+
+<PRE>
+        whe+ter_WQ +tere_EX were_BED mo_QR of_P his_PRO$ predecessours_NS
+        in_P paradys_N o+ter_CONJ in_P helle_N
+
+        and_CONJ +tere_EX were_BED i-seie_VAN wonder_ADV false_ADJ 
+        si+gtes_NS and_CONJ fals_ADJ tokenes_NS
+</PRE>
+
+<a name="common_nouns">
+<H3>Common nouns (N, N$, NS, NS$, $)</H3></a>
+
+<PRE>
+        N       Noun, singular and collective
+        N$      Noun, possessive/genitive
+        NS      Noun, plural
+        NS$     Noun, plural, possessive/genitive
+        $       Possessive clitic HIS or 'S if separated from word
+</PRE>
+
+<a name="singular_and_collective_nouns">
+<H3>Singular, plural, and collective nouns</H3> </a>
+
+Singular and collective nouns (HORS, FOLK, PEOPLE etc.) are tagged
+<TT>N</TT>. In early texts, before the universalization of plural -S, it
+can be quite difficult to distinguish reliably in all cases between
+singular and plural.  Therefore, for the period M1, we have tried to follow
+the translation accompanying the edition used when one is available, or
+else a separate translation.
+
+<a name="units_of_measure">
+<H3>Units of measure (DAY, YEAR, POUND, etc)</H3></a>
+
+Units of measure after numbers (TEN YEAR, etc.) are labelled as
+singular or plural based on overt marking as follows: forms in <I>
+  -s, -a, or -en</I> are marked as plural, all others as singular.
+
+<PRE>
+        vii_NUM +gere_N
+        .xxx._NUM +gera_NS
+        .xx._NUM yeres_NS
+        three_NUM hondred_NUM wynter_N
+        ueale_Q hund_NUM wintra_NS
+        xl_NUM daies_NS
+        sex_NUM monthis_NS
+        ix_NUM c_NUM pound_N
+
+</PRE>
+
+<a name="possessives_and_genitives">
+<H3>Possessives and genitives</H3></a>
+
+All common nouns used as possessives are tagged <TT>N$, NS$</TT>. As with
+the plural, genitive marking in early texts predates universal -S and thus
+in these cases <TT>N$, NS$</TT> indicates the function GENITIVE/POSSESSIVE
+rather than any particular form. In general only nouns in relationship with
+other nouns are marked as genitive/possessive. The two exceptions to
+this are:
+
+<OL>
+  
+<LI> when the head noun in a genitive/possessive NP is empty. In this case
+other words, usually, quantifiers, but potentially other categories as
+well, can be tagged with <TT>$</TT>.
+  
+<LI> in essentially superlative adjectival and adverbial expressions like
+ALRE FIRST/LAST/MOST (FIRST/LAST/MOST OF ALL), ALRE BEST (BEST OF ALL),
+etc., ALRE is tagged <TT>Q$</TT>. See Section <A
+HREF="pos-quant.htm#genitive-possessive_quantifiers">GENITIVE/POSSESSIVE
+QUANTIFIERS</A>.
+
+</OL>
+
+<PRE>
+        +te_D mannes_N$ shrifte_N               the man's shrift
+        +te_D sowle_N$ fode_N                   the soul's food
+        his_PRO$ sinne_N$ sore_N                sorrow of his sin
+        +te_D apostles_NS$ mu+des_NS            the apostles' mouths
+        +ter_PRO$ apostlene_NS$ lore_N          the apostles' teaching
+        kinges_NS$ sunes_NS                     kings' sons
+        alre_Q kinge_NS$ king_N                 king of all kings
+
+        here_PRO$ beire_Q$ friend_N             friend of them both
+        o+dres_OTHER$ pine_N                    (an)other's pain
+
+        alre_Q$ mast_QS                         most of all
+        alre_Q$ earst_ADV                       first of all
+        alra_Q$ swi+dest_ADVS                   quickest of all
+        alre_Q$ best_ADJS                       best of all
+</PRE>
+
+<a name="dollar_tag">
+<H3>The $ tag</H3></a>
+
+The tag <TT>$</TT> is used for HIS in the JOHN HIS BOOK construction, as
+well as for the possessive clitic 'S. The possessive clitic really
+antedates the texts in this corpus, although it occasionally appears
+in the edited texts.
+
+<PRE>
+        Peter_NPR his_$ peny_N
+        +Te_D kyng_N his_$ wyf_N
+        in_P a_D man_N 's_$ saule_N
+        a_D man_N 's_$ thoghte_N
+</PRE>
+
+<a name="compass_points">
+<H3>Compass points</H3></a>
+
+Compass points are tagged <TT>N</TT>, both when used alone and in
+combination with another noun.  Only when the adjectival suffix -ERN
+is present is the form tagged <TT>ADJ</TT> (e.g., NORTHERN, SOUTHERN,
+EASTERN, WESTERN).
+
+<PRE>
+        if_P we_PRO gone_VBP toward_P +te_D north_N
+
+        Thomas_NPR Grey_NPR ,_, a_D knyte_N of_P +te_D north_N
+
+        Fro_P <font>_CODE Cathay_NPR </font>_CODE go_VBP
+        men_NS toward_P the_D est_N be_P many_Q iorneyes_NS
+
+        and_CONJ ano+tere_D+OTHER fram_P +te_D North_N 
+        into_P +te_D South_N ,_, +tat_C was_BED callede_VAN 
+        Ikenyle_NPR strete_NPR
+
+        +de_D nor+d_N half_N
+
+        +te_D nor+t_N hille_N
+
+        +te_D nor+tside_N+N
+
+        cf. ADJECTIVAL USE 
+        all_Q +te_D host_N +tat_C cam_VBD with_P +te_D 
+        king_N were_BED robbid_VAN be_P northen_ADJ men_NS
+</PRE>
+
+<a name="nouns_words">
+<H3>Treatment of individual words</H3></a>
+
+<a name="kind">
+<H3>KIND</H3></a>
+
+In early texts, the construction is:
+
+<PRE>
+        sumes_Q kennes_N$ fisc_N        
+</PRE>
+
+where SOME KIND is the genitive complement of FISH (i.e, FISH
+OF SOME KIND). Later this is reanalyzed, with KIND as the head and
+FISH the complement, SOME KIND(S) OF FISH.
+
+<PRE>
+        some_Q kinds_NS fish_N
+</PRE>
+
+<PRE>
+        +Des_D fower_NUM kinnes_N$ teares_NS  <--- early texts
+
+        eches_Q kinnes_N$ chapman_N+NS
+
+        that_D ylke_ADJ kynde_N compassyone_N
+
+        any_Q kynne_N +ting_N
+
+</PRE>
+
+<a name="manner">
+<H3>MANNER</H3></a>
+
+In early texts MANNER mayy take a gentive.
+
+<PRE>
+        ech_Q manyere_N lykinges_N$
+
+        +teose_D twa_NUM manere_N meonestrales_N$
+</PRE>
+
+Later, when bare genitives are generally no longer used in this fashion, it
+often continues to appear without OF or any genitive marking. At this
+stage the complement noun (LIKING) is simply labelled <TT>N</TT>.
+
+<PRE>
+        each_Q manner_N liking_N
+        
+        eny_Q maner_N wyse_N
+
+        a_D maner_N fals_ADJ drede_N
+</PRE>
+
+<a name="half_and_side">
+<H3>HALF and SIDE</H3></a>
+
+HALF and SIDE also routinely take bare NP complements. The complement
+NP in these cases is tagged simply as <TT>N(S)</TT> (unless it clearly
+shows genitive marking).
+
+<PRE>
+        euery_Q side_N +tat_D Gentil_ADJ Erl_N
+        +tis_D half_N +ta_D muntes_NS
+        +tis_D half_N Rome_NPR
+</PRE>
+
+<a name="proper_nouns">
+<H3>Proper nouns (NPR, NPR$, NPRS, NPRS$)</H3></a>
+
+<PRE>
+        NPR     Proper noun
+        NPR$    Proper noun, possessive
+        NPRS    Proper noun, plural
+        NPRS$   Proper noun, plural, possessive
+</PRE>
+
+<a name="names_of_people">
+<H3>Names of people</H3></a>
+
+<OL>
+<LI> Noun-noun pairs, like KING ARTHUR, EARL THOMAS, are treated as
+compound nouns, and so both parts are proper.
+
+<PRE>
+        kynge_NPR Arthure_NPR
+        sire_NPR Thomas_NPR
+        seynt_NPR Gregory_NPR
+        Jhesu_NPR Crist_NPR
+</PRE>
+
+Following THE and possessives, these are always treated as appositives,
+although this is almost certainly the wrong analysis in some cases.
+
+<PRE>
+        my_PRO$ lorde_N Arthure_NPR
+        the_D kynge_N Royns_NPR of_P Northe_NPR Walis_NPR
+        the_D grete_ADJ Lady_N Lyle_NPR of_P Avilion_NPR
+        +te_D gentil_ADJ Erl_N Thomas_NPR
+</PRE>
+
+Offices on their own (THE KING, THE ARCHBISHOP, THE EARL) are not proper
+nouns.
+
+<PRE>
+        +te_D kynge_N
+        +te_D pope_N 
+        archebisshop_N of_P Caunterbury_NPR
+</PRE>
+
+<LI> In adjective-noun pairs, like ALMIGHTY GOD, the adjective is <I>
+not</I> considered part of the name, as long as the head noun is, by itself, a
+proper noun (or part of a noun-noun compound).
+
+<PRE>
+        god_NPR almihtin_ADJ    <--- GOD, CHURCH etc. are NPR when alone
+        holy_ADJ cherche_NPR
+
+</PRE>
+
+<LI> French and other foreign names are treated in toto as proper nouns,
+so all parts are NPR, including LE and DE or DU.
+ 
+<PRE>
+        Petir_NPR de_NPR Luna_NPR
+        Melyot_NPR de_NPR Logyrs_NPR
+        Sagramour_NPR le_NPR Desyrus_NPR
+</PRE>
+
+<LI> In English names, only the actual name is tagged <TT>NPR</TT>, any NP or
+PP epithets are treated separately.
+
+<PRE>
+        seint_NPR iohan_NPR baptiste_N
+        Iohannes_NPR +de_D godspellere_N
+        Daui+d_NPR +de_D profiete_N
+        Iosepe_NPR +de_D smi+de_N
+        Gy_NPR of_P Marchia_NPR
+        seint_NPR Patrik_NPR of_P Irlond_NPR
+</PRE>
+
+However, when a specific epithet which belongs to a specific person is used
+alone to refer to that person, then it is tagged <TT>NPR</TT>.
+
+<PRE>
+        the_D Baptist_NPR       (when referring to John)
+        the_D Conqueror_NPR     (when referring to William, etc)
+        the_D Ironside_NPR      (when referring to Edmund)
+</PRE>
+
+<LI> The names of peoples and groups are proper nouns. These are marked as
+singular or plural based on overt plural marking. The rules for noun-noun
+and adjective-noun pairs are the same as above. 
+
+<PRE>
+        +te_D Iewys_NPRS
+        +te_D Normans_NPRS
+        +te_D Scottes_NPRS
+        sarasyn_NPR
+        Sarsyns_NPRS
+        Englischmen_NPRS
+        +te_D Lolardis_NPRS
+        his_PRO$ kyngdom_N of_P West_NPR Saxons_NPRS
+</PRE>
+
+<LI> Names and epithets of God (GOD, LORD, CHRIST, CREATOR, HEALER,
+SAVIOUR, etc.) and the devil (DEVIL, SATAN, FIEND, UNWIHT, WURSE, etc.)
+are always proper. This includes the names of the members of the Trinity:
+FATHER, SON, and HOLY GHOST.
+
+<PRE>
+        Lord_NPR                Lord_NPR God_NPR Almyghty_ADJ
+        God_NPR                 Lord_NPR Iesu_NPR
+        Crist_NPR               oure_PRO$ Lord_NPR Jhesu_NPR Crist_NPR
+        ure_PRO$ helende_NPR    Oure_PRO$ Lorde_NPR Godd_NPR
+        Oure_PRO$ Lorde_NPR     hali_NPR gast_NPR
+        Trinity_NPR             +trumnesse_NPR    
+</PRE>
+
+</OL>
+
+<a name="names_of_places">
+<H3>Names of places</H3></a>
+
+<OL>
+
+<LI> As with names of people, noun-noun pairs are always considered compounds
+and both parts are labelled <TT>NPR</TT>.
+
+<PRE>
+        Penteney_NPR Abbey_NPR
+        London_NPR Brigge_NPR
+        North_NPR Galys_NPR
+</PRE>
+
+As with THE KYNGE ROYNS, noun-noun place names preceded by a determiner are
+treated as appositives.
+
+<PRE>
+        the_D castell_N Nygurmous_NPR
+        +te_D flum_N Iordan_NPR
+        +te_D brynke_N of_P +te_D water_N Ponte_NPR
+        +te_D Castell_N Aungel_NPR
+</PRE>
+
+When the ``name'' part is not a noun, it is tagged <TT>NPR</TT> anyway.
+
+<PRE>
+        the_D Castell_N Terrable_NPR
+        the_D Sege_N Perelous_NPR
+</PRE>
+
+<LI> In adjective-noun pairs, if the head noun is a proper name in its own
+right, the adjective is not part of the name. 
+
+<PRE>
+        New_ADJ Troye_NPR
+</PRE>
+
+If the head noun is not a proper name on its own, the adjective is part of
+the name.
+
+<PRE>
+        the_D rede_NPR see_NPR
+        Holy_NPR Lond_NPR
+</PRE>
+
+THE X OF PLACE/PERSON is tagged as follows:
+        
+<PRE>
+        the_D Castell_N of_P Four_NPR Stonys_NPR
+        the_D cite`_N of_P Camelot_NPR
+        +te_D citee_N of_P Acres_NPR
+        +te_D covent_N of_P Coventre_NPR
+        +te_D cherch_N of_P Chestir_NPR
+        +te_D Abbay_N of_P Kyng_NPR Edward_NPR
+</PRE>
+
+CHRISTENDOM is tagged <TT>NPR</TT> when it is being used locatively, but <TT>
+N</TT> when it means CHRISTIANITY or CHRISTIAN FAITH.
+
+<PRE>
+        +Dre_NUM +ting_NS ben_BEP +tat_C elch_Q man_N habben_HV mot_MD ._,
+        +te_C wile_MD his_PRO$ cristendom_N leden_VB ._.
+
+        +De_D rihte_ADJ bileue_N setten_VBP +te_D twolue_NUM apostles_NS on_P
+        write_N ;_, ar_P hie_PRO ferden_VBD in_RP to_P al_Q middeneard_NPR
+        to_TO bodien_VB cristendome_N ._.
+
+        Hie_PRO is_BEP anginn_N of_P alle_Q cristendome_NPR ,_.
+
+</PRE>
+
+</OL>
+
+<a name="unique_objects">
+<H3>Unique objects</H3></a>
+
+For names given to special things, and nouns denoting things of which
+there is only one, the rules for noun-noun and adjective-noun pairs are the
+same as above. If the head noun is not a proper name on its own, then the
+adjective is also labelled <TT>NPR</TT>.
+
+<PRE>
+        Excalibir_NPR
+        the_D Sankgreall_NPR
+        the_D bible_NPR
+        scripture_NPR
+        +te_D chirche_NPR  <--- when referring to the entity, not buildings
+
+        hooli_ADJ chirche_NPR
+        hooly_ADJ scripture_NPR
+
+        haly_NPR writte_NPR
+        +De_D hali_NPR gast_NPR
+        the_D elde_NPR testament_NPR
+        the_D Rounde_NPR Table_NPR
+
+</PRE>
+
+Note that for HOLY WRIT, HOLY BOOK, and THE OLD/NEW TESTAMENT, the
+head nouns are not proper on their own, therefore the adjectives are
+tagged <TT>NPR</TT>. This differs from HOLY SCRIPTURE and HOLY BIBLE
+because SCRIPTURE and BIBLE are proper on their own.
+
+Book titles in general are not treated as proper names, as this would hide
+their internal syntax. Only a small number of books (as above) which can be
+seen as having names rather than titles are treated this way. In addition,
+certain common Latin canticles and prayers as well as the creed (CREDO) are
+tagged <TT>NPR</TT>, not <TT>FW</TT>.
+
+<PRE>
+        Credo_NPR
+        Pater_NPR Noster_NPR
+        Te_NPR Deum_NPR Laudamus_NPR
+        Ave_NPR Maria_NPR
+</PRE>
+
+<a name="named_periods_of_time">
+<H3>Named days, months, and periods of time</H3></a>
+
+<OL> 
+
+<LI> Days of the week
+
+<PRE>
+        Thursday_NPR 
+        Satirday_NPR 
+        Sonday_NPR
+
+</PRE>
+
+<LI> Months
+
+<PRE>
+        Decembyr_NPR
+        Juylle_NPR
+        Janyver_NPR
+        Novembre_NPR
+
+</PRE>
+
+<LI> Holidays and holy days
+
+<PRE>
+        Estern_NPR Day_NPR 
+        Wittsunday_NPR
+        +te_D Ascencioun_NPR day_NPR 
+        Lamasse_NPR
+        Seint_NPR Edward_NPR$ day_NPR
+
+</PRE>
+
+But note that in adjective-noun pairs in which the noun is in itself
+proper, the adjective is tagged <TT>ADJ</TT>.
+
+<PRE>
+        Goode_ADJ Fryday_NPR
+        Holy_ADJ Saturday_NPR
+</PRE>
+</OL>
+
+<a name="named_events">
+<H3>Named events</H3></a>
+
+<PRE>
+        +te_D incarnacion_NPR
+        +te_D Assumpcioun_NPR
+        the_D Resurreccion_NPR and_CONJ the_D Passion_NPR
+</PRE>
+
+In phrases like THE FEAST OF X in which X is a named event, only the event
+is tagged <TT>NPR</TT>.
+
+<PRE>
+        the_D feste_N of_P Pentecoste_NPR
+        +te_D fest_N of_P Ascencion_NPR
+</PRE>
+
+In phrases like THE FEAST OF X in which X is not a named event, no part
+is a proper noun. 
+
+<PRE>
+        +te_D feste_N of_P +te_D camel_N
+        +te_D day_N of_P doom_N
+</PRE>
+
+NOTE: this gives clearly the wrong reading in some cases in which both
+nouns are common on their own, but the denotation of the phrase is clearly
+proper (e.g. THE WAR OF THE ROSES). This problem currently remains
+unsolved.
+
+<a name="names_of_languages">
+<H3>Names of languages</H3></a>
+
+The names of languages are proper nouns: 
+
+<PRE>
+        Latyn_NPR
+        English_NPR
+        the_D langage_N of_P English_NPR
+</PRE>
+
+When used adjectively, however, they are tagged <TT>ADJ</TT>. 
+
+<PRE>
+        Englissh_ADJ tonge_N
+        Latyn_ADJ bible_NPR
+</PRE>
+

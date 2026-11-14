@@ -9,9 +9,6 @@ wheels/
 # Virtual environments
 .venv
 
-# YCOE: licensed for private scholarly research, must not be redistributed
-corpus/ycoe-archive/
-
 # Secrets
 .env
 

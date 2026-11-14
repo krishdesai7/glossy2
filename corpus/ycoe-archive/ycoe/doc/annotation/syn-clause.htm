@@ -1,0 +1,888 @@
+<HTML>
+<HEAD>
+<TITLE>PPCME2, Syntactic Annotation, Internal Structure of Clauses</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<a name="internal_structure_of_clauses">
+<H2>Internal Structure of Clauses</H2></a>
+
+<DL><DT>
+<DL>
+<DT><a href="#internal_structure_IP">Internal Structure of Matrix Clauses (IP-MAT)</a>
+        <DL>
+        <DT><a href="#imperatives">Imperatives</a>
+        </DL>
+<DT><a href="#internal_structure_CP">Internal Structure of Subordinate Clauses (CP)</a>
+        <DL>
+        <DT><a href="#non-wh_cps">Non-wh CPs</a>
+                <DL>
+                <DT><a href="#spec_cp">The specCP position</a>
+                <DT><a href="#all_be_it_etc">ALL BE IT etc.</a>
+                </DL>
+        <DT><a href="#wh_cps">Wh-CPs</a>
+        </DL>
+<DT><a href="syn-detailed-toc.htm">Table of Contents</a>
+</DL></DL>
+
+<P>
+
+Clauses are labelled either <TT>IP</TT> or <TT>CP</TT> with an extended
+label in every case indicating type. Declarative matrix IPs are labelled
+<TT>IP-MAT</TT>, imperatives <TT>IP-IMP</TT>, and subordinate IPs, that is,
+those dominated by a CP, <TT> IP-SUB</TT>. Subordinate clauses with neither
+a complementizer nor wh- position are labelled IP with an extended label
+indicating type (e.g. infinitive <TT> IP-INF</TT>, small clause
+<TT>IP-SMC</TT>, etc. All CPs are also labelled for type. The basic types
+are as follows:
+
+<PRE>
+IP clauses                              CP clauses
+
+IP-MAT          declarative matrix IP   CP-ADV       adverbial clause
+IP-SUB          subordinate IP          CP-CMP       comparative
+IP-INF          infinitive              CP-DEG       degree complement
+IP-INF-PRP      purpose infinitive      CP-FRL       free relative
+IP-INF-ADT      adjunct infinitive      CP-QUE       question
+IP-INF-DEG      degree infinitive       CP-CAR       clause-adjoined relative
+IP-INF-ABS      absolute infinitve      CP-REL       relative clause
+IP-ABS          absolute                CP-THT       that complement
+IP-PPL          participial adjunct     CP-CLF       it-cleft
+IP-SMC          small clause            CP-TMC       tough-movement complement
+IP-IMP          imperative              CP-EOP       empty-operator CP
+</PRE>
+
+<a name="internal_structure_IP">
+<H3>Internal Structure of Matrix Clauses (IP-MAT)</H3></a>
+
+All clauses except infinitives and imperatives without an overt subject
+have a subject indicated. See Sections <a
+href="syn-sub.htm#infinitives">INFINITIVAL CLAUSES</a> and <a
+href="#imperatives">IMPERATIVES</a>. If the subject is not overt, an empty
+subject is added (see Section <a
+href="syn-empty.htm#empty_subjects">EMPTY SUBJECTS</a>). The PPCME2,
+like the PPCME1, does not generally include a VP level (but see Section <A
+HREF="syn-const.htm#vp">VERB PHRASE</A>). This follows from our
+decision not to make controversial decisions, since in many cases the
+boundaries of the VP are not clear.  Thus, generally, within the clause
+constituents are phrasal with the exception of all verbal material
+(auxiliaries, modals, verbs, participles). In addition, particles,
+sentential conjunctions (including ELSE and ALSO in matrix clauses,
+single-word interjections within a clause, and floated quantifiers appear
+without a containing phrasal category.
+
+<PRE>
+( (IP-MAT-SPE (' ')
+              (INTJ Yes)  <--- interjection
+              (, ,)
+              (' ')
+              (IP-MAT-PRN (NP-SBJ (PRO he))
+                          (VBD seyde))  <--- verb
+              (, ,)
+              (' ')
+              (NP-SBJ (PRO I))
+              (MD shall)       <--- modal
+              (VB promyse)     <--- verb
+              (NP-OB2 (PRO you))
+              (IP-INF-SPE (TO to)  <--- auxiliary
+                      (VB fullfylle)
+                      (NP-OB1 (PRO$ youre) (N desyre)))
+              (E_S .)
+              (' '))
+  (ID CMMALORY,667.4880)) 
+
+( (IP-MAT-SPE (CONJ for)    <--- conjunction
+              (NP-SBJ (PRO he)
+                      (CP-REL-SPE (WNP-1 0)
+                                  (C that)
+                                  (IP-SUB-SPE (NP-SBJ *T*-1)
+                                              (MD shall)
+                                              (VB pulle)
+                                              (NP-OB1 (PRO hit))
+                                              (RP oute))))    <--- particle
+              (MD shall)    <--- modal
+              (DO do)       <--- verb
+              (NP-OB1 (PRO hit))
+              (PP (P with)
+                  (NP (Q litill) (N myght)))
+              (E_S .)
+              (' '))
+  (ID CMMALORY,46.1512))
+
+( (IP-MAT-SPE (CONJ and) <--- conjunction
+              (ADVP (ADV ellis))
+              (NP-SBJ (PRO I))
+              (MD wolde) <--- modal
+              (HV have)  <--- auxiliary
+              (BEN bene) <--- verb
+              (ADJP (ADJ lothe)
+                    (PP (P as)
+                        (NP (Q ony) (N knyght)
+                            (CP-REL-SPE (WNP-1 0)
+                                        (C that)
+                                        (IP-SUB-SPE (NP-SBJ *T*-1)
+                                                    (VBP lyvith)))))
+                    (IP-INF-SPE (FOR for) (TO to)      <--- for to 
+                                (VB sle)
+                                (NP-OB1 (D a) (N lady))))
+              (E_S .)
+              (' '))
+  (ID CMMALORY,51.1701)) 
+
+( (IP-MAT (CONJ and)
+          (NP-SBJ *con*)
+          (VBD smote)
+          (NP-OB1 (NPR sir) (NPR Sagramoure))
+          (ADVP (ADVR so) (ADV sore)
+                (CP-DEG (C that)
+                        (IP-SUB (NP-SBJ (N horse) (CONJ and) (N man))
+                                (VBD wente)
+                                (Q bothe)      <--- floated quantifier
+                                (PP (P to)
+                                    (NP (D the) (N erthe))))))
+          (E_S .))
+  (ID CMMALORY,200.3170)) 
+
+</PRE>
+
+<a name="imperatives">
+<H3>Imperatives (IP-IMP)</H3></a>
+
+Imperatives are labelled <TT>IP-IMP</TT>. They contain a subject only if
+an overt subject is present.
+
+<PRE>
+( (IP-IMP-SPE (CONJ but)
+              (VBI saye)
+              (CP-THT-SPE (C 0)
+			  (IP-SUB-SPE (NP-SBJ (PRO ye))
+				      (BEP are)
+				      (VAN diseased)))
+              (E_S ,)) 
+  (ID CMMALORY,4.83))
+
+( (IP-IMP (CONJ for)
+          (VBI witte)
+          (NP-SBJ (PRO ye))
+          (ADVP (ADV wele))
+          (CP-THT (C +tat)
+                  (IP-SUB (NP-SBJ (NPR god))
+                          (MD may)
+                          (VB se)
+                          (NP-OB1 (CONJ ba+te) (N iuil) (CONJ and) (N gude))))
+          (E_S ;))
+  (ID CMBENRUL,12.418))
+
+</PRE>
+
+<a name="internal_structure_CP">
+<H3>Internal Structure of Subordinate Clauses (CP)</H3></a>
+
+<a name="non-wh_cps">
+<H3>Non-wh CPs</H3></a>
+
+Degree complements (<TT>CP-DEG</TT>), THAT complements (<TT>CP-THT</TT>), and
+some adverbial clauses (<TT>CP-ADV</TT>), have the following structure:
+
+<PRE>
+(CP (C THAT/0)
+    (IP ...))
+</PRE>
+
+That is, the complementizer position is always indicated, whether or not it
+is filled. The empty position is indicated by <TT>(C 0)</TT>. 
+
+<PRE>
+(NODE (PP (P so)
+          (CP-ADV (C that)
+                  (IP-SUB (NP-MSR (NP (NUM thre) (NS dayes))
+                                  (CONJP (CONJ and)
+                                         (NP (NUM thre) (NS nyghtes))))
+                          (NP-SBJ (PRO he))
+                          (BED was)
+                          (ADJP (ADJ specheles)))))
+      (ID CMMALORY,6.172)) 
+
+(NODE (PP (P til)
+          (CP-ADV (C that)
+                  (IP-SUB (NP-SBJ (PRO ye))
+                          (VBP see)
+                          (CP-THT (C 0)
+                                  (IP-SUB (NP-SBJ (PRO ye))
+                                          (VBP go)
+                                          (PP (P unto)
+                                              (NP (D the) (ADJR wers))))))))
+      (ID CMMALORY,13.393))
+
+(NODE (PP (P whan)
+          (CP-ADV (C 0)
+                  (IP-SUB (NP-SBJ (NP (D the) (N duke))
+                                  (CONJP (CONJ and)
+                                         (NP (PRO$ his) (N wyf))))
+                          (BED were)
+                          (VBN comyn)
+                          (PP (P unto)
+                              (NP (D the) (N kynge))))))
+      (ID CMMALORY,2.11)) 
+
+(NODE (IP-SUB (NP-SBJ (PRO we))
+              (VBP departe)
+              (PP (P from)
+                  (ADVP (ADV hens)))
+              (ADVP (ADV sodenly))
+              (, ,)
+              (CP-ADV (C that)
+                      (IP-SUB (NP-SBJ (PRO we))
+                              (MD maye)
+                              (VB ryde)
+                              (NP-MSR (Q all) (N nyghte))
+                              (PP (P unto)
+                                  (NP (PRO$ oure) (ADJ owne) (N castell))))))
+      (ID CMMALORY,2.18)) 
+
+(NODE (IP-SUB (NP-SBJ (PRO he))
+              (VBD understood)
+              (CP-THT (C that)
+                      (IP-SUB (NP-SBJ (NPR syre) (NPR Ector))
+                              (BED was)
+                              (NEG not)
+                              (NP-OB1 (PRO$ his) (N fader)))))
+      (ID CMMALORY,9.271)) 
+
+( (IP-MAT (CONJ and)
+          (NP-SBJ (PRO he))
+          (VBD said)
+          (CP-THT (C 0)
+                  (IP-SUB (NP-SBJ (PRO he))
+                          (HVD had)
+                          (NP-OB1 (Q lytyl) (N ado))
+                          (IP-INF-PRP (TO to)
+                                      (VB telle)
+                                      (NP-OB1 (PRO hym)))))
+          (E_S .)
+          (' '))
+  (ID CMMALORY,3.51)) 
+
+(NODE (ADVP (ADVR so) (ADV harde)
+            (CP-DEG (C that)
+                    (IP-SUB (NP-SBJ (N horse) (CONJ and) (N man))
+                            (VBD felle)
+                            (PP (P to)
+                                (NP (D the) (N erthe))))))
+      (ID CMMALORY,17.538)) 
+
+(NODE (ADVP (ADVR so) (ADV merveillously)
+            (CP-DEG (C that)
+                    (IP-SUB (NP-OB1 (N doubte))
+                            (NP-SBJ-1 (PRO it))
+                            (BED was)
+                            (IP-INF-1 (TO to)
+                                      (VB here)
+                                      (PP (P of)
+                                          (NP (D that) (N bataille))))
+                            (PP (P for)
+                                (NP (D the) (ADJ grete) (N blood) (N shedynge))))))
+      (ID CMMALORY,68.2325)) 
+
+</PRE>
+
+<a name="spec_cp">
+<H3>The specCP position</H3></a>
+
+The specifier position is not explicitly indicated in our annotation system
+for any phrasal category; constituents filling this position appear within
+the phrase in pre-head position (but note that this is not the only use of
+this position; see below). In adverbial clauses, fronting out of the clause
+is to the specPP position since the fronted element precedes the
+preposition (subordinating conjunction) (see Section <A
+HREF="syn-phrases.htm#fronting_in_subordinate_clauses">FRONTING IN
+SUBORDINATE CLAUSES</A>).  Apart from left-dislocated elements,
+constituents fronted out of the IP are coindexed to a trace in the IP. In
+subordinate clauses not headed by a preposition, fronted elements appear in
+specCP before the complementizer position.
+
+<PRE>
+(NODE (IP-SUB (NP-SBJ (PRO hie))
+              (VBP make+d)
+              (CP-THT (NP-LFD (D +danne) (N man)  <--- left-dislocated NP in specCP
+                              (CP-REL (WNP-1 0)
+                                      (C +de)
+                                      (IP-SUB (NP-OB2 *T*-1)
+                                              (NP-SBJ (NPR godd))
+                                              (NP-OB1 (PRO his))
+                                              (VBD to-sant))))
+                      (C +tat)
+                      (IP-SUB (NP-SBJ-RSP (PRO he))
+                              (VBP +turwune+d)
+                              (PP (P on)
+                                  (NP (PRO$ his) (N godnesse))))))
+      (ID CMVICES1,149.1875)) 
+
+( (IP-MAT-SPE (CONJ &)
+              (NP-SBJ *con*)
+              (NP-LFD (PRO$ ti) (N wil))
+              (VBP iwur+de)
+              (NP-OB1-RSP (PRO hit))
+              (NP-VOC (ADJ deorwur+de) (NPR lauerd))
+              (CP-ADV-SPE (CP-ADV-SPE (C +tt)
+				      (IP-SUB-SPE (NP-SBJ (PRO ich))
+						  (PP (P +turh)
+						      (NP (PRO$ +ti) (N streng+de)))
+						  (MD mahe)
+						  (VB stonden)
+						  (PP (P wi+d)
+						      (NP (PRO him)))))
+			  (, .)
+			  (CONJP (CONJ &)
+				 (CP-ADV-SPE (NP-LFD (PRO$ his) (ADJ muchele) (N ouergart)) <--- left-dislocated NP in specCP
+					     (C +tt)
+					     (IP-SUB-SPE (NP-SBJ (PRO ich))
+                                                         (NP-OB1-RSP (PRO hit))
+                                                         (MD mote)
+                                                         (VB afeallen)))))
+              (E_S .))
+	      (ID CMMARGA,70.251))
+
+</PRE>
+
+Similar cases with a complementizer before and after the fronted element
+are treated as CP-recursion. See Section <A
+HREF="syn-sub.htm#cp_recursion">CP RECURSION</A>.
+
+<PRE>
+( (IP-MAT (CONJ for)
+          (NP-SBJ (NPR sain) (NPR paul))
+          (VBP sais)
+          (CP-THT (C +tat)      <--- CP recursion
+                  (CP-THT (NP-LFD (PRO +tai)
+                                  (CP-REL (WNP-1 0)
+                                          (C +tat)
+                                          (IP-SUB (NP-SBJ *T*-1)
+                                                  (DOP dos)
+                                                  (NP-OB1 (ADJ wicke) (NS dedis)))))
+                          (, ,)
+                          (C +tat)
+                          (IP-SUB (NP-SBJ-RSP (PRO tay))
+                                  (VBP giue)
+                                  (NP-OB1 (PRO+N +tam-selffe))
+                                  (PP (P til)
+                                      (NP (D +te) (NPR deuil))))))
+          (E_S ,))
+  (ID CMBENRUL,21.735)) 
+
+(NODE (IP-SUB (NP-SBJ-2 (EX tare))
+              (BEP be)
+              (NP-2 (Q lytil) (N entirual))
+              (, ,)
+              (CP-ADV (C +tat)  <--- CP recursion
+                      (CP-ADV (NP-LFD (D ta)
+                                      (CP-REL (WNP-3 0)
+                                              (C +tat)
+                                              (IP-SUB (NP-SBJ *T*-3)
+                                                      (MD sal)
+                                                      (VB ga)
+                                                      (PP (P til)
+                                                          (NP (NS laburs))))))
+                              (, ,)
+                              (C +tat)
+                              (IP-SUB (NP-SBJ-RSP (PRO tay))
+                                      (MD may)
+                                      (HV haue)
+                                      (NP-OB1 (D +te) (N morning))
+                                      (PP (P in)
+                                          (NP (D +te) (N begining)
+                                              (PP (P of)
+                                                  (NP (D +te) (N lyth)))))
+                                      (PP (P to)
+                                          (NP (PRO$ +tair) (N labur)))))))
+      (ID CMBENRUL,15.546)) 
+
+</PRE>
+
+In wh- clauses, material can appear before the wh-element, although in this
+case, it is to be interpreted as adjoined to CP rather than filling the
+specifier position (since the wh-element is in that position).
+
+<PRE>
+(NODE (IP-SUB (NP-SBJ (D tes) (ADJ unseli))
+              (NEG ne)
+              (MD +turue)
+              (NEG nawt)
+              (VB seggen)
+              (, .)
+              (CP-QUE-SPE (NP-LFD (PRO$ +ti) (NPR lauerd)
+                                  (CP-REL-SPE (WNP-1 0)
+					      (C +tt)
+					      (IP-SUB-SPE (IP-SUB-SPE (NP-SBJ (PRO tu))
+								      (VBP leuest)
+								      (PP (P on)
+									  (NP *T*-1)))
+							  (, .)
+							  (CONJP (CONJ &)
+								 (IP-SUB-SPE (NP-SBJ *T*-1)
+									     (MD schulde)
+									     (NP-OB1 (PRO$ +ti) (N scheld))
+									     (BE beon))))))
+                          (, .)
+                          (WADVP-2 (WADV hwer))
+                          (IP-SUB-SPE (ADVP-LOC *T*-2)
+				      (BEP is)
+				      (NP-SBJ-RSP (PRO he))
+				      (ADVP-TMP (ADV nu+de)))))
+      (ID CMJULIA,122.464)) 
+
+( (IP-IMP (VBI loke)
+          (ADVP-TMP (ADV +tenne))
+          (PP (ADV+P her-bi))
+          (, .)
+          (CP-QUE (NP-LFD (CP-FRL (WNP-1 (WPRO+ADV hwa-se))
+                                  (C 0)
+                                  (IP-SUB (NP-SBJ *T*-1)
+                                          (PP (P of)
+                                              (NP (PRO$ hire) (N mei+dhad)))
+                                          (, ;)
+                                          (VBP lihte+d)
+                                          (PP (P in-to)
+                                              (NP (N wedlac))))))
+                  (, ;)
+                  (WPP-2 (P bi)
+                         (WNP (WQP (WADV hu) (Q monie))
+                              (NS degrez)))
+                  (C 0)
+                  (IP-SUB (PP *T*-2)
+                          (NP-SBJ-RSP (PRO ha))
+                          (VBP falle+d)
+                          (ADVP-DIR (RP+WARD dunewardes))))
+          (E_S .))
+  (ID CMHALI,144.244)) 
+
+( (IP-MAT (CONJ and)
+          (NP-SBJ *con*)
+          (VBD tolde)
+          (NP-OB2 (PRO hym))
+          (CP-QUE (PP-1 (P whyle)
+                        (CP-ADV (C 0)
+                                (IP-SUB (NP-SBJ (PRO he))
+                                        (VBD tarryed)
+                                        (ADVP-LOC (ADV there)))))
+                  (WADVP-2 (WADV how))
+                  (C 0)
+                  (IP-SUB (ADVP *T*-2)
+                          (PP *ICH*-1)
+                          (NP-SBJ (NPR Nero))
+                          (BED was)
+                          (VAN (VAN destroyed) (CONJ and) (VAN slayne))
+                          (PP (P with)
+                              (NP (Q all) (PRO$ his) (N oste)))))
+          (E_S .))
+  (ID CMMALORY,57.1905)) 
+
+( (IP-MAT (CONJ &)
+          (NP-SBJ *con*)
+          (VBD (VBD +girnde) (CONJ &) (VBD walde))
+          (ADVP (ADV +georne))
+          (CP-THT (PP-2 (P +gef)
+                        (CP-ADV (C 0)
+                                (IP-SUB (NP-SBJ (NPR$ godes) (N wil))
+                                        (BED were))))
+                  (, ;)
+                  (C +tt)
+                  (IP-SUB (PP *ICH*-2)
+                          (NP-SBJ (PRO ha))
+                          (MD moste)
+                          (BE beon)
+                          (NP-OB1 (ONE an)
+                                  (PP (P of)
+                                      (NP (D +te) (Q moni) (N+NS moder-bern)
+                                          (CP-REL (WNP-1 0)
+                                                  (C +tt)
+                                                  (IP-SUB (NP-SBJ *T*-1)
+                                                          (NP-OB1 (QP (ADVR swa) (Q muchel)))
+                                                          (VBD drohten)
+                                                          (PP (P for)
+                                                              (NP (NPR drihtin)))))))))))
+  (ID CMMARGA,56.22)) 
+
+</PRE>
+
+Verbs are also sometimes fronted to this position. See Section <A
+HREF="syn-sub.htm#verb_fronting_in_free_relatives">VERB FRONTING IN
+FREE RELATIVE CLAUSES</A>.
+
+<PRE>
+( (IP-MAT-SPE (CONJ for)
+              (NP-SBJ (D +tt))
+              (VBP stont)
+              (ADVP (ADV studeuest))
+              (NP-ADV (CP-FRL-SPE (VBP-LFD falle)
+				  (WNP-1 0)
+				  (C +tt)
+				  (IP-SUB-SPE (NP-SBJ *T*-1)
+					      (VBP-RSP falle))))
+              (E_S .))
+  (ID CMJULIA,124.520)) 
+
+( (IP-MAT-SPE (CONJ for)
+              (NP-SBJ (PRO ich))
+              (BEP am)
+              (ADVP-TMP (ADV eauer))
+              (PP (P wi+d)
+                  (NP (PRO +te)))
+              (, .)
+              (NP-ADV (CP-FRL-SPE (DOP-LFD do)
+				  (WNP-1 0)
+				  (C +tt)
+				  (IP-SUB-SPE (NP-OB1 *T*-1)
+					      (NP-SBJ (MAN me))
+					      (DOP-RSP do)
+					      (NP-OB2 (PRO +te)))))
+              (E_S .))
+  (ID CMKATHE,42.375)) 
+
+(NODE (PP (VB-1 spede)
+          (P +gyf)
+          (CP-ADV (C 0)
+                  (IP-SUB (NP-SBJ (PRO I))
+                          (MD may)
+                          (VB *ICH*-1))))
+      (ID CMKEMPE,142.3283))
+
+(NODE (NP-ADV (CP-FRL (VB-2 sei)
+                      (WNP-1 0) 
+                      (C +tt)
+                      (IP-SUB (VB *ICH*-2)
+                              (NP-OB1 *T*-1)
+                              (NP-SBJ (PRO tu))
+                              (MD wult)
+                              (ADVP-TMP (ADV nu)))))
+      (ID CMKATHE,34.237))
+
+</PRE>
+
+<a name="all_be_it_etc">
+<H3>ALL BE IT etc.</H3></a>
+
+The phrase ALL BE IT THAT, SO BE IT THAT, etc. are treated in the same way
+as V1 conditionals (Section <A HREF="syn-sub.htm#v1_conditionals">V1
+CONDITIONALS</A>), except that ALL/SO is immediately dominated by
+CP-ADV. This is not meant to be a correct analysis of this construction,
+but rather one which fits with they way we annotate V1 conditionals.
+
+<PRE>
+( (IP-MAT (CONJ and)
+          (PP (P atte)
+              (NP (N risyng)
+                  (PP (P of)
+                      (NP (D the) (N sonne)))))
+          (NP-SBJ (PRO I))
+          (VBD fond)
+          (NP-OB1 (D the) (ADJ secunde) (N degre)
+                  (PP (P of)
+                      (NP (NPR Aries))))
+          (IP-PPL (VAG sittyng)
+                  (PP (P upon)
+                      (NP (PRO$ myn) (N est) (N orisonte))))
+          (, ,)
+          (CP-ADV (ADVP (Q all))        <--- ALL BE IT THAT
+                  (IP-SUB (BEP be)
+                          (NP-SBJ-1 (PRO it))
+                          (CP-THT-1 (C that)
+                                    (IP-SUB (NP-SBJ (PRO it))
+                                            (BEP was)
+                                            (ADJP (FP but) (ADJ litel))))))
+          (E_S .))
+  (ID CMASTRO,673.C1.364)) 
+
+( (IP-MAT-SPE (CONJ And)
+              (, ,)
+              (CP-ADV-SPE (ADVP (Q al))
+			  (IP-SUB-SPE (BED were)
+				      (NP-SBJ-1 (PRO it))
+				      (ADVP (ADV so))
+				      (CP-THT-SPE-1 (C that)
+						    (IP-SUB-SPE (NP-SBJ (PRO she))
+								(ADVP-TMP (ADV right) (ADV now))
+								(BED were)
+								(ADJP (ADJ deed))))))
+              (, ,)
+              (NP-SBJ (PRO ye))
+              (NEG ne)
+              (MD oughte)
+              (NEG nat)
+              (, ,)
+              (PP (P as)
+                  (PP (P for)
+                      (NP (PRO$ hir) (N deeth))))
+              (, ,)
+              (NP-OB1 (PRO$+N youreself))
+              (TO to)
+              (VB destroye)
+              (E_S .))
+  (ID CMCTMELI,217.C1b.18)) 
+
+( (IP-MAT-SPE (CONJ and)
+              (NP-SBJ (Q all))
+              (MD $shal)
+              (BE be)
+              (VAN delyverde)
+              (, ,)
+              (PP (P so)
+                  (CP-ADV-SPE (C 0)
+			      (IP-SUB-SPE (NP-SBJ (PRO thou))
+					  (MD wolte)
+					  (VB telle)
+					  (NP-OB2 (PRO me))
+					  (NP-OB1 (PRO$ thy) (N name)))))
+              (, ,)
+              (CP-ADV-SPE (ADVP (ADV so)) <--- SO BE IT THAT
+			  (IP-SUB-SPE (BEP be)
+			              (NP-SBJ-1 (PRO hit))
+			              (CP-THT-SPE-1 (C that)
+			                            (IP-SUB-SPE (NP-SBJ (PRO thou))
+			                                        (BEP be)
+			                                        (NEG nat)
+			                                        (NP-OB1 (NPR sir) (NPR Launcelot))))))
+              (E_S .)
+              (' '))
+  (ID CMMALORY,191.2824)) 
+
+</PRE>
+
+For CP-recursion, see above and section <A
+HREF="syn-sub.htm#cp_recursion">CP RECURSION</A>.
+
+<a name="wh_cps">
+<H3>Wh-CPs</H3></a>
+
+Comparative clauses (<TT>CP-CMP</TT>), relative clauses (<TT>CP-REL</TT>),
+free relatives (<TT>CP-FRL</TT>), clause-adjoined relatives
+(<TT>CP-CAR</TT>), questions (<TT>CP-QUE</TT>), it-clefts
+(<TT>CP-CLF</TT>), tough-movement complements (<TT>CP-TMC</TT>), and a
+certain type of adverbial (<TT>CP-ADV</TT>) have both a wh- position and
+the complementizer position indicated in every clause. This is to allow for
+the case in which both positions are filled. An empty position is indicated
+by <TT>0</TT> (ZERO). The wh-operator is coindexed to a trace of the same
+category. By convention this trace is always the first element in the IP
+complement, unless it has been extracted from a lower constituent (PP,
+IP-INF, etc.), in which case it appears within that constituent (see
+Section <A HREF="syn-empty.htm#position_of_traces">POSITION OF TRACES</A>).
+
+<OL>
+
+<LI> both positions filled
+
+<PRE>
+( (CP-QUE (WADVP-1 (WADV how))
+          (C that)
+          (IP-SUB (ADVP *T*-1)
+                  (NP-SBJ (NPR sir) (NPR Gawayne))
+                  (MD shall)
+                  (VB revenge)
+                  (NP-OB1 (NP-POS (PRO$ his) (N$ fadirs)
+                                  (NP-PRN *ICH*-2))
+                          (N deth)
+                          (CODE <em>)
+                          (NP-PRN-2 (NPR kynge) (NPR Lot))
+                          (CODE </em>))
+                  (PP (P on)
+                      (NP (NPR kynge) (NPR Pellynore)))))
+  (ID CMMALORY,61.2043)) 
+
+( (CP-REL (WNP-1 (WPRO whyche))
+          (C that)
+          (IP-SUB (NP-OB1 *T*-1)
+                  (NP-SBJ (PRO thou))
+                  (MD wolte)
+                  (HV have)
+                  (PP (P to)
+                      (NP (PRO$ thy) (N peramour)))))
+  (ID CMMALORY,184.2551)) 
+
+( (CP-FRL (WNP-1 (WPRO Who))
+          (C +tat)
+          (IP-SUB (NP-SBJ *T*-1)
+                  (MD may)
+                  (VB take)
+                  (NP-OB1 (D +tys) (N vertu))))
+  (ID CMAELR3,26.10)) 
+
+( (CP-ADV (WQ Whether)
+          (C that)
+          (IP-SUB (NP-SBJ (PRO I))
+                  (VBP (VBP lyve) (CONJ other) (VBP dye))))
+  (ID CMMALORY,203.3290)) 
+
+( (CP-FRL (WNP-1 (WD what) (N seruise))
+          (C +tat)
+          (IP-SUB (NP-OB1 *T*-1)
+                  (NP-SBJ (PRO +tu))
+                  (VBP canst)))
+  (ID CMAELR3,40.417)) 
+
+(NODE (CP-QUE (WPP-5 (P with)
+                     (WNP (WD which) (N degre)
+                          (PP (P of)
+                              (NP (D the) (N zodiak)))))
+              (C that)
+              (IP-SUB (PP *T*-5)
+                      (NP-SBJ (D the) (N mone))
+                      (VBP arisith)
+                      (PP (P in)
+                          (NP (Q any) (N latitude)))))
+      (ID CMASTRO,663.C2.34)) 
+
+</PRE>
+
+<LI> neither position filled
+
+<PRE>
+(NODE (NP-OB1 (D the) (N despite)
+              (CP-REL (WNP-3 0)
+                      (C 0)
+                      (IP-SUB (NP-OB1 *T*-3)
+                              (NP-SBJ (PRO ye))
+                              (DOD dud)
+                              (NP-TMP (D thys) (N day))
+                              (PP (PP (P unto)
+                                      (NP (NPR kynge) (NPR Arthure)))
+                                  (CONJP (CONJ and)
+                                         (PP (P to)
+                                             (NP (PRO$ his) (N courte))))))))
+      (ID CMMALORY,51.1696)) 
+
+(NODE (NP (Q al)
+          (CP-REL (WNP-1 0)
+                  (C 0)
+                  (IP-SUB (NP-OB1 *T*-1)
+                          (NP-SBJ (PRO +tu))
+                          (VBD suffredest))))
+      (ID CMAELR3,53.854))
+
+(NODE (NP (D the) (N feith)
+          (CP-REL (WNP-2 0)
+                  (C 0)
+                  (IP-SUB (NP-OB1 *T*-2)
+                          (NP-SBJ (PRO she))
+                          (VBD ought)
+                          (PP (P to)
+                              (NP (PRO hym))))))
+      (ID CMMALORY,5.121))
+
+(NODE (NP (D +te) (N blys)
+          (CP-REL (WNP-1 0)
+                  (C 0)
+                  (IP-SUB (NP-SBJ (PRO he))
+                          (VBD boght)
+                          (NP-OB1 (PRO vs))
+                          (PP (P to)
+                              (NP *T*-1)))))
+      (ID CMMIRK,5.112))
+
+</PRE>
+
+<LI> complementizer position only filled
+
+<PRE>
+(NODE (NP (D the) (ADJS byggest) (N castell)
+          (CP-REL (WNP-1 0)
+                  (C that)
+                  (IP-SUB (NP-OB1 *T*-1)
+                          (NP-SBJ (PRO he))
+                          (HVP hath))))
+      (ID CMMALORY,2.32)) 
+
+(NODE (NP-OB1 (D the) (NPR holy) (NPR lond)
+              (CP-REL (WNP-1 0)
+                      (C +tat)
+                      (IP-SUB (NP-SBJ (NS men))
+                              (VBP callen)
+                              (IP-SMC (NP-SBJ *T*-1)
+                                      (NP-OB1 (D the) (N lond)
+                                              (PP (PP (P of)
+                                                      (NP (N promyssioun)))
+                                                  (CONJP (CONJ or)
+                                                         (PP (P of)
+                                                             (NP (N beheste))))))))))(ID CMMANDEV,1.2)) 
+
+(NODE (NP-MSR (D the) (ADJ+N meanwhyle)
+              (CP-REL (WADVP-1 0)
+                      (C that)
+                      (IP-SUB (ADVP-TMP *T*-1)
+                              (NP-SBJ (D thys) (N knyght))
+                              (BED was)
+                              (VAG makynge)
+                              (IP-SMC (NP-SBJ (PRO hym))
+                                      (ADJP (ADJ redy)
+                                            (IP-INF (TO to)
+                                                    (VB departe)))))))
+      (ID CMMALORY,48.1589)) 
+
+(NODE (NP-SBJ (D Thys) (N swerde)
+              (CP-REL (WNP-1 0)
+                      (C that)
+                      (IP-SUB (NP-SBJ (PRO I))
+                              (BEP am)
+                              (VAN gurte)
+                              (PP (P withall)
+                                  (NP *T*-1))))) <--- trace in lower constituent
+      (ID CMMALORY,45.1496)) 
+
+</PRE>
+
+<LI> wh-position only filled
+
+<PRE>
+(NODE (NP (D a) (ADJ new) (N batayle)
+          (CP-REL (WNP-1 (WPRO whych))
+                  (C 0)
+                  (IP-SUB (NP-SBJ *T*-1)
+                          (BED was)
+                          (ADJP (ADJ sore) (CONJ and) (ADJ harde)))))
+      (ID CMMALORY,26.832))
+ 
+(NODE (NP-ADV (CP-FRL (WNP-1 (WPRO what) (ADV euere))
+                      (C 0)
+                      (IP-SUB (NP-OB1 *T*-1)
+                              (NP-SBJ (PRO heo))
+                              (BEP be))))
+      (ID CMAELR3,26.4))
+ 
+(NODE (NP (D the) (N castel)
+          (PP (P of)
+              (NP (NPR Terrabyl)))
+          (, ,)
+          (CP-REL (WNP-1 (D the) (WPRO whiche))
+                  (C 0)
+                  (IP-SUB (NP-SBJ *T*-1)
+                          (HVD had)
+                          (NP-OB1 (Q many) (NS yssues)
+                                  (CONJP (CONJ and)
+                                         (NX (NS posternes)))
+                                  (RP oute)))))
+      (ID CMMALORY,3.36))
+ 
+(NODE (NP-OB1 (Q alle) (D the) (N cause)
+              (CP-QUE (WADVP-1 (WADV how))
+                      (C 0)
+                      (IP-SUB (ADVP *T*-1)
+                              (NP-SBJ (PRO it))
+                              (BED was)
+                              (PP (P by)
+                                  (NP (NPR$ Merlyns) (N counceil))))))
+      (ID CMMALORY,5.134)) 
+
+(NODE (NP (CP-FRL (WNP-1 (WD what) (ADJ poure) (N man))
+                  (C 0)
+                  (IP-SUB (NP-OB1 *T*-1)
+                          (NP-SBJ (PRO ye))
+                          (VBP mete)
+                          (PP (P at)
+                              (NP (D the) (N posterne) (N yate)
+                                  (PP (P of)
+                                      (NP (D the)
+                                          (N castel))))))))
+      (ID CMMALORY,6.149))
+
+</PRE>
+</OL>

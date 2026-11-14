@@ -1,0 +1,5413 @@
+<HTML>
+<HEAD>
+<TITLE>YCOE, POS Annotation</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+<BASEFONT SIZE=4>
+
+<a name="introduction">
+
+<H1>York-Toronto-Helsinki Parsed Corpus<br> 
+of Old English Prose</H1>
+<h2>Part-of-speech Reference Manual</h2>
+Ann Taylor, University of York<br>
+March 2003
+
+<br>
+
+<BR>
+<a href="YcoePosToc.htm">Table of Contents</a>
+
+<p><br>
+
+<h1>Introduction</h1>
+
+This manual focuses on the part-of-speech labels assigned to the lexical
+items in the corpus. In the fully annotated corpus, the part-of-speech tag
+(or word-level label) is the label on the minimal pair of parentheses
+surrounding the word. Part-of-speech tagged files, in which the tag is
+attached to the word by an underscore are also available in the <a
+href="../../YcoeContents.htm">pos directory</a>. In this manual, the
+tags will be presented as in the fully annotated corpus.
+
+<blockquote>
+<pre>
+(PRO^D him)       <-- pos tag in fully annotated corpus (psd file)
+
+(N^N hlaford)
+
+him_PRO^D         <-- pos tag in part-of-speech tagged file (pos file)
+
+hlaford_N^N
+
+</pre>
+</blockquote>
+
+While some part-of-speech tags are based on the lexical item itself, others
+are dependent on the syntactic environment in which the word is found. This
+manual includes syntactic information only to the extent that it affects
+the assignment of tags. Syntactic information can be found at an
+introductory level in the <a href="YcoeLiteToc.htm">Ycoe Lite</a> manual.
+
+<p><br>
+<hr>
+<br>
+
+<a name="punctuation">
+<h1>Punctuation</h1></a>
+
+<PRE>
+
+      final punctuation         . (period)
+      non-final punctuation     , (comma)
+
+</PRE>
+
+Any punctuation that ends a token (periods, commas, semi-colons, question
+marks, etc.) is tagged with a period. Any punctuation which does not
+coincide with the end of token is tagged with a comma. Tokens can also
+terminate without any punctuation. A <a
+href="YcoeRef.htm#definition_of_token">token</a> consists of one main verb
+and its associated arguments and adjuncts. Conjoined subordinate clauses
+are included within the same token. When searching with <a
+href="../corpussearch/CSLiteToc.htm">CorpusSearch</a>, the default is for
+punctuation to be ignored.
+
+<p>
+
+Periods in the text which are not used as sentential punctuation, such
+as periods indicating abbreviation, surrounding numbers and certain
+words (e.g., <B>.x. .Mon. etc.</B>), are not separated from the word
+they belong to.
+
+<blockquote>
+<PRE>
+(LATIN (FW XII.) (FW KAL.) (FW DECEMBRES))
+
+(NP-NOM (N .+a.))
+
+</PRE>
+</blockquote>
+
+<p><br>
+<hr>
+<br>
+
+<a name="metalinguistic_info">
+<h1>Metalinguistic information</h1></a>
+
+A certain amount of metalinguistic information is included in the
+corpus. Some, such as Dictionary of Old English (DOE) identifiers and
+titles, and YCOE ID labels, are outside the units which are routinely
+searched. Others, like comments, are within the parsed text, but are
+ignored by CorpusSearch by default. All metalinguistic information is
+contained within a node labelled <b>CODE</b>. For an explanation of the
+various types of metalinguistic information included in the corpus, see <a
+href="YcoeMeta.htm">Metalinguistic markup</a>.
+
+<pre>
+(CODE &lt;T03020_+ALS_[Christmas]_B1.3.2&gt;)     <-- DOE title
+
+(CODE &lt;T03020000400,5&gt;)                     <-- DOE identifier
+
+(CODE &lt;TEXT:se+de&gt;)                         <-- comments
+
+(CODE &lt;COM:emendation_from_ms.B&gt;)
+
+</pre>
+
+<p><BR>
+<hr>
+<BR>
+
+<a name="case">
+<H1>Case</H1></a>
+
+<DL>
+<DT><a href="#instrumental_case">Instrumental case</a>
+<DT><a href="#ambiguous_case">Case on ambiguous items</a>
+<DT><DL>
+    <DT><a href="#nom-acc_ambiguity">Nom/acc ambiguities</a>
+    <DT><a href="#oblique_ambiguities">Ambiguities among oblique cases</a>
+    </DL>
+<DT><a href="#difficult_cases">Some difficult cases</a>
+<DT><a href="#case_with_prepositions">Case with prepositions</a>
+<DT><a href="#case_with_adjectives">Case with adjectives</a>
+<DT><a href="#genitive_with_nouns">Genitive case marking relations between substantives</a>
+<DT><a href="#case_on_quantifiers">Case on quantifiers</a>
+<DT><a href="#case_with_quantifiers">Case with quantifiers</a> 
+<DT><a href="#case_participles">Case on participles</a>
+<DT><DL>
+    <DT><a href="#pples_part_of_verb_sequence">Participles as part of the main verb sequence</a>
+    <DT><a href="#pples_as_predicates_in_small_clauses">Participles as predicates of small clauses</a> 
+    <DT><a href="#modifying_pples">Modifying and attributive participles</a> 
+    </DL>
+<DT><a href="#case_left-dislocations">Case on left-dislocations</a>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><BR>
+
+While case is a fully productive category in Old English, many case forms
+are formally ambiguous, and sometimes remain ambiguous even in context. Our
+basic approach to indicating case in the prose corpus is to mark it when it
+is clear, but not when it is ambiguous, or potentially ambiguous, tempered
+by considerations of the effort involved and the needs of the system as a
+whole.
+
+<p>
+
+Case is indicated by a label attached to the main formal category label (N,
+ADJ, D, etc.) with a carat <b>^</b>.
+
+<blockquote>
+<PRE>
+nominative        N (N^N, ADJ^N, D^N, etc.)
+accusative	  A (N^A, ADJ^A, D^A, etc.)
+genitive          G
+dative            D
+instrumental      I
+</PRE>
+</blockquote>
+
+<a name="case-inflecting_words"></a>
+The following parts of speech <b>may</b> be labelled for case:
+<p>
+
+<dl><dt>
+<UL>
+<LI> nouns
+<LI> adjectives
+<LI> quantifiers
+<LI> determiners
+<LI> numbers
+<LI> participles
+</UL>
+</dl>
+
+<p>
+
+In addition, the so-called <a href="#inflected_infinitives">"inflected
+infinitive"</a> is labelled with dative case (VB^D).
+
+<p>
+
+<a name="items_never_taking_case"></a>
+Certain items are never labelled for case. These are:
+
+<dl><dt>
+<UL>
+<LI> <a href="#participles">present participles</a> in -e (LIFIGENDE) when part of the main
+verb sequence
+<LI> <a href="#participles">past participles</a> with no overt inflection
+when part of the main verb sequence (GERIDEN).
+<LI> uninflected <a href="#cardinal_numbers">cardinal numbers</a> above three
+<LI> the <a href="#undeclined_quantifiers">undeclinable quantifiers</a> MA,
+LYT, FELA, L+AS
+<LI> 3rd person <a href="#possessive_pronouns">possessive pronouns</a>
+(HIS, HIRE, HEORA)
+<LI> the title SANCTE/SANCTA/SANCTUS (see <a href="#names_of_people">Names
+of people</a>)
+<LI> <a href="#names_of_places">place names</a> with no common element
+(ASIA is not labelled for case, while ENGLALAND is)
+</UL>
+</dl>
+
+<p>
+The following categories are not labelled for case under certain
+circumstances:
+<p>
+
+<dl><dt>
+<UL> 
+<LI> uninflected <a href="#eall">quantifier EALL</a> when not immediately
+preceding an agreeing substantive
+<LI>  the <a href="#cardinal_numbers">cardinal numbers</a> AN, TWEGEN, +TRY
+as the digits in a compound number (TWA AND TWENTIG, TWA HUND)
+<LI> some endingless <a href="#case_on_quantifiers">quantifiers used
+adverbially</a> (M+AST, L+AST, L+AS, HWON, HW+ATHUGU, NAHT, OHT) 
+</UL>
+</dl>
+
+<p>
+
+<a name="labelling_case"></a>
+Case is labelled on all case-inflecting words in the following circumstances:
+<p>
+
+<dl><dt>
+<UL>
+<LI> when the case is morphologically unambiguous; that is, when it is apparent
+from the lexical item in isolation (e.g. datives in -UM, genitives in -RA
+or -ENA, accusatives in -NE, most determiners, etc.)
+
+<PRE>
+(N^D handum)   <-- unambiguous dative in isolation
+
+(N^G halgena)  <-- unambiguous genitive in isolation
+
+(D^A +disne)   <-- unambiguous accusative in isolation
+
+</PRE>
+
+<LI> when at least one word in a constituent is lexically unambiguous for
+case, all other words in the same constituent inherit its case, whether
+they themselves are ambiguous or not (e.g. SIGE is nom/acc/dat ambiguous in
+the singular, but in +TONE SIGE it is labelled accusative because of
++TONE); but note that different rules apply for <a href="#instrumental_case">instrumental case</a>
+
+<PRE>
+(NP-ACC (D^A +tone) (ADJ^A h+a+denan) (N^A wogere))
+     --> h+a+denan and wogere are ambiguous in isolation, but +tone is not
+
+(NP-ACC (D^A +ta) (N^A anlicnyssa))
+     --> anlicnyssa is acc/gen ambiguous, but +ta can only be accusative
+
+(NP-DAT (Q^D mycclum) (N^D geleafan)
+
+(NP-DAT (D^D +dam) (ADJ^D bysmorfullum) (N^D h+a+denscype)
+
+</PRE>
+
+<LI> a constituent ambiguous for case inherits case from an unambiguously
+marked conjoined constituent (e.g. in METE & DRINC in non-subject use,
+DRINC is unambiguously accusative, while METE is acc/dat ambiguous, but
+would be labelled accusative, inheriting this case from DRINC)
+
+<PRE>
+(NP-ACC (N^A cristendom) (CONJ and) (N^A cl+annysse))
+     --> CL+ANNYSSE is acc/gen/dat ambiguous, but CRISTENDOM is acc
+
+(NP-ACC (N^A gyfernesse) (CONJ and) (N^A forlygr) (CONJ and) (N^A gitsunge))
+     --> GYFERNESSE and GITSUNGE get acc. case from FORLYGR
+
+(NP-ACC (N^A gemynd) (CONJ and) (N^A andgit) (CONJ and) (N^A wyllan))
+     --> WYLLAN gets acc. case from GEMYND and ANDGIT
+
+</PRE>
+
+<LI> a constituent ambiguous for case inherts case from an unambiguously
+marked appositive and vice versa
+
+<PRE>
+     --> both EUGENIAN and D+AHTER are ambiguous, but get dative case from 
+         +TAM HALGAN M+ADENE
+
+(NP-DAT (D^D +tam) (ADJ^D halgan) (N^D m+adene)
+	(NP-DAT-PRN (NR^D Eugenian))
+	(, ,)
+	(NP-DAT-PRN (NP-GEN (NR^G Philyppus))
+		    (N^D d+ahter)))
+
+</PRE>
+
+</UL>
+</dl>
+
+Decisions about case are based on the gender of the noun as listed in Clark
+Hall (A Concise Anglo-Saxon Dictionary, Fourth Edition, 1960). Nouns listed
+with more than one gender are treated as ambiguous if the noun would be
+ambiguous in that form under any of the listed genders. Therefore a
+singular noun in -E listed as mf (masculine or feminine) will be treated as
+ambiguous and unlabelled for case rather than being labelled dative (as it
+would be if it were masculine). Note that this is done regardless of the
+usage of the noun in any particular text; that is, if a noun listed as mfn
+in Clark Hall is always (where it is possible to tell) masculine in some
+particular text, it is still treated as ambiguous in any context
+where it would be ambiguous if it were feminine. In practice this usually
+means that any noun which includes feminine in its possible genders is
+treated as feminine, since feminines are ambiguous in more contexts than
+masculines or neuters.
+
+<p>
+
+Although number is not labelled on nouns in our system, number may affect
+the assignment of case since the range of possible ambiguities is often
+different in the singular and plural. When the number of a noun is not
+clear from its form alone, it is taken from the translation (if there is
+one) or context. If it is not possible to determine the number this may
+affect the labelling of case since more ambiguities exist if number is not
+known.
+
+<p><BR>
+
+<a name="instrumental_case">
+<h2>Instrumental case</h2></a>
+
+Only masculine/neuter determiners, quantifiers and adjectives are labelled
+with instrumental case. For all feminine forms, and for masculine nouns,
+the instrumental is always ambiguous with the dative, and is labelled
+dative by default. Our approach at word-level is to label only unambiguous
+instrumental forms as instrumental. Note that we are fairly literal about
+this, and some forms labelled instrumental may be degraded forms of other
+cases (+TAN = +TAM?). The result of this labelling policy is constituents
+with mixed case, some forms instrumental and others dative. At
+phrase-level, all constituents containing an instrumental are labelled
+dative. In our system instrumental is a subcase of dative and the case
+inherited by ambiguous items from an unambiguous instrumental, is
+dative. 
+
+<blockquote>
+<PRE>
+(PP (P +ar)
+    (NP-DAT (D^I +tan)))
+
+(PP (P For)
+    (NP-DAT (D^I +di)))
+
+(PP (P mid)
+    (NP-DAT (Q^I ealle)))
+
+(QP-DAT-ADT (Q^I micle)) 
+
+(NP-DAT (D^I +dan) (N^D sancte)
+
+(NP-DAT (Q^I mycle) (N^D weorede))
+
+(ADVP (Q^I myccle) (ADVR swi+dor))
+
+(NP-DAT (D^I +ty) (ADJR^D m+arran) (N^D hungre))
+
+(NP-DAT (D^I +dan) (ADJ^D so+dan) (N^D geleafan))
+
+</PRE>
+</blockquote>
+
+<a name="ambiguous_case">
+<h2>Case on ambiguous items</h2></a>
+
+The marking of case on words which are not unambiguous in isolation, and
+which do not inherit case in any of the <a href="#labelling_case">specified
+ways</a> depends on a series of rules for resolving (or failing to resolve)
+the ambiguity.
+
+<p><BR>
+
+<a name="nom-acc_ambiguity">
+<h2>Nom/acc ambiguities</h2></a>
+
+Because subjects have special status in our system, nom/acc formal
+ambiguity is almost always resolved and subjects and formally nom/acc
+ambiguous complements are virtually always labelled for case in the
+annotation.
+
+<p>
+We make the following assumptions:
+
+<p>
+<dl><dt>
+<UL>
+<LI> Subjects of finite clauses are always nominative.
+<LI> Subjects of infinitives are accusative.
+<LI> Subjects of small clauses are accusative unless there is clear
+evidence to the contrary (as occasionally if the verb takes another case).
+<LI> Subjects of dative absolutes are dative.
+<LI> Predicates of BE (and other predicate verbs) are the same case as the
+subject (nomininative in finite clauses and accusative in infinitives) 
+<LI> Predicates in small clauses are nominative if the subject has been
+passivized and accusative (or the case of the subject) in all other cases
+except with verbs of naming where both nominative and accusative occur
+<LI> Left-dislocations are the same case as the resumptive element or they
+are nominative
+<LI> In the glossing construction THAT IS, the gloss is either the same
+case as the item being glossed or it is nominative
+</UL>
+</dl>
+<p>
+
+Given the above assumptions, there are only a small number of contexts
+where nom/acc formal ambiguity cannot be resolved and a form which is
+nom/acc ambiguous will not be labelled for case.
+
+<p>
+
+<dl><dt>
+<UL>
+<LI> In the predicates of small clauses of naming both nominative and
+accusative predicates occur (both with accusative subjects) so nom/acc
+ambiguity cannot be resolved 
+
+<PRE>
+(NODE (IP-MAT (NP-ACC-1 (NP-GEN (NR^G Godes))
+                        (N^A bydelas))
+              (NP-NOM (PRO^N he))
+              (VBDI het)
+              (IP-SMC (NP-ACC-SBJ *ICH*-1)
+                      (NP-PRD (N heofonas))) <-- nom/acc ambiguous 
+              (. .))
+      (ID cocathom1,+ACHom_I,_35:477.36.6927))
+
+
+(NODE (IP-MAT (ADVP (ADV For+d+am))
+              (VBDI heton)
+              (NP-NOM (ADJ^N woroldwise) (N^N menn))
+              (IP-SMC (NP-PRD (N wordsawere))
+                      (NP-ACC-SBJ (D^A +done) (ADJ^A +a+delan) (N^A lareow)
+                                  (NP-NOM-PRN (NR^N Paulus))))
+              (. .))
+      (ID cocura,CP:15.97.3.632))
+
+</PRE>
+
+
+<LI> Nom/acc ambiguous left-dislocations which are resumed by an accusative
+may be either nominative or accusative
+
+<PRE>
+( (CODE &lt;T03080008600,234&gt;)
+  (IP-MAT-SPE (NP-LFD (D +T+at)  <-- nom/acc ambiguous
+                      (CP-REL-SPE (WNP-ACC-1 (D^A +t+at))
+                              (C 0)
+                              (IP-SUB-SPE (NP-ACC *T*-1)
+                                      (NP-NOM (PRO^N ic))
+                                      (VBD gelyfde))))
+              (NP-ACC-RSP (D^A +t+at)) <-- accusative resumptive
+              (NP-NOM (PRO^N ic))
+              (VBP geseo)
+              (. ,)) (ID coaelive,+ALS[Agnes]:234.1870))
+
+</PRE>
+
+<LI> In THAT IS glosses on accusatives, the gloss is either nominative or
+accusative
+
+<PRE>
+(NP-ACC (D^A +done) (ADJ^A illcan) (N^A lareow)
+	(, ,)
+	(IP-MAT-PRN (NP-NOM (D^N +d+at))
+		    (BEPI is)
+		    (XP (NP (NR Crist))))) <-- nom/acc ambiguous
+
+(NP-ACC (NP-GEN (D^G +t+as) (ADJ^G halgan) (N^G gastes))
+        (N^A swurd)
+	(, .)
+        (IP-MAT-PRN (NP-NOM (D^N +t+at))
+		    (BEPI is)
+                    (XP (NP (NP-GEN (NR^G Godes))
+			    (N word)))))     <--- nom/acc ambiguous
+
+</PRE>
+</UL>
+</dl>
+
+<a name="oblique_ambiguities">
+<h2>Ambiguities among oblique cases</h2></a>
+
+As far as the oblique cases are concerned, fewer assumptions are
+made. Apart from in copular constructions where acc/gen/dat ambiguous forms
+are always taken as dative, no attempt is made to resolve acc/dat ambiguity
+for any verb which takes only dative and/or accusative complements (i.e.,
+all verbs except those listed in Mitchell as potentially taking
+genitive). Thus the pronouns ME, +TE, UNC, EOW are virtually always
+unlabelled for case (apart from in copular constructions or in conjunction
+with unambiguously marked items), as are most feminine singulars in
+isolation since they are formally acc/gen/dat ambiguous, and masculines and
+neuters with a nominative in -E (acc/dat ambiguous).
+
+<PRE>
+(NODE (IP-MAT-SPE (ADJP-NOM-PRD (ADJ^N Unea+de))
+                  (NP-DAT (PRO^D me))  <-- otherwise acc/dat ambiguous pronoun labelled dative in copular construction
+                  (BEPI is)
+                  (NP-NOM (D^N +dis)))
+      (ID coaelive,+ALS[Pr_Moses]:246.2996))
+
+(NODE (IP-SUB-SPE (NP-DAT (PRO^D us))  <-- otherwise acc/dat ambiguous pronoun labelled dative in copular construction
+                  (BEPI is)
+                  (NP-NOM (PRO$^N +tin) (N^N lif))
+                  (ADJP-NOM-PRD (ADJ^N nydbehefe))
+                  (ADVP-TMP (ADV^T git)))
+      (ID coaelive,+ALS_[Apollinaris]:223.4706))
+
+( (IP-MAT-SPE (NP-NOM (D^N +tis) (ADJ^N earme) (N^N wif))
+              (NP (PRO me)) <-- in non-copular construction pronoun not labelled for case 
+              (VBD gesohte)
+              (. ,)) (ID coaelive,+ALS_[Basil]:172.565))
+
+( (IP-MAT-SPE (NP-NOM (PRO^N he)
+                      (ADJP-NOM (ADJ^N sylf)))
+              (VBPI forgif+d)
+              (NP (N mihte) (CONJ and) (N streng+de)) <-- acc/gen/dat ambiguous feminines not labelled for case 
+              (NP-DAT (PRO$ his) (N^D folce))
+              (. ;)) (ID copreflives,+ALS_[Pref]:19.11))
+
+( (IP-MAT (CONJ and)
+          (NP-NOM *con*)
+          (VBD lede)
+          (NP-DAT (PRO^D him))
+          (NP (PRO$ his) (N mete)) <-- acc/dat ambiguous masculine not labelled for case
+          (. .)) (ID coaelive,+ALS_[Basil]:427.753))
+
+</PRE>
+
+<p>
+When a verb is listed in Mitchell (Old English Syntax, 1985) as potentially
+taking genitive, case is not labelled if the form of the complement is
+ambiguous among the cases the verb is listed as taking. Thus, most feminine
+singulars will be ambiguous with a verb which takes genitive or dative
+(even accompanied by a determiner or adjective), while if the verb takes
+accusative or genitive, unmodified feminine singulars will be ambiguous (as
+always) but modified feminine singulars mostly will not be (depending on
+whether the modification is strong or weak). Plurals in -A, however, may be
+ambiguous with verbs which take accusative or genitive (while they would
+not be with verbs taking accusative and/or dative). Thus in the singular,
+the primary ambiguity is gen/dat, while in the plural it is
+acc/gen. Dat/gen ambiguous complements of verbs which only take genitive
+are labelled genitive, but note that acc/gen/dat ambiguity in the feminine,
+and acc/dat ambiguity in the masculine/neuter is still not resolved for
+these verbs.
+
+
+<PRE>
+( (CODE &lt;T03030003200,112&gt;)
+  (IP-MAT (ADVP-TMP (ADV^T +Ta))
+          (VBD gelyfde) <-- geliefan takes acc/gen/dat
+          (NP-NOM (D^N se) (N^N f+ader))
+          (NP (D +t+are) (N leasunga))) <-- gen/dat ambiguous
+  (ID coaelive,+ALS_[Eugenia]:112.254))
+
+( (IP-MAT (CONJ and)
+          (NP-NOM *con*)
+          (NP (PRO$ his) (N wundra)) <-- acc/gen ambiguous 
+          (VBD wiste)) <-- takes acc/gen
+  (ID coaelive,+ALS_[Maur]:48.1523))
+
+
+( (IP-MAT-SPE (CONJ and)
+              (NP-NOM (PRO^N ic))
+              (NEG ne)
+              (VBP gemune) <-- takes acc/gen, not dative 
+              (NP-GEN (NEG^Q nanre) <-- gen/dat ambiguous but labelled genitive
+                      (NP-GEN (PRO$ his) (N^G synna))
+                      (CP-REL (WNP-1 0) 
+                              (C +te)
+                              (IP-SUB (NP *T*-1)
+                                      (NP-NOM (PRO^N he))
+                                      (VBD gefremode))))
+              (. .)) (ID coaelive,+ALS[Ash_Wed]:153.2789))
+
+( (IP-MAT (NP-NOM *con*)
+          (VBD +tancode)
+          (NP (PRO$ his) (N +tingunge)) 
+          (. ,)) (ID coaelive,+ALS_[Basil]:198.581))
+	      <-- acc/gen/dat ambiguous feminine so unlabelled despite the 
+	          fact that +tancian only take genitive 
+
+</PRE>
+
+<p><br>
+
+<a name="difficult_cases">
+<h2>Some difficult cases</h2></a>
+
+Feminines in -UNG sometimes have singular forms in -A rather than -E. Often
+these are datives, but genitives and accusatives also occur. If the noun is
+clearly plural, an -A form is taken as acc/gen ambiguous and will be
+labelled accusative, genitive or not labelled, according to the <a
+href="#oblique_ambiguities">usual rules</a>. In the singular, however,
+-UNGA is always treated as acc/gen/dat ambiguous, just like -UNGE.
+
+<blockquote>
+<PRE>
+(PP (P mid)
+    (NP (N herunga)))
+
+(NP (NP-GEN (D^G +t+ara) (N^G halgena))
+    (N +trowunga))
+
+(NP (PRO$ his) (ADJ m+arlican) (N drohtnunga))
+
+(NODE (IP-SUB-SPE (INTJ La)
+                  (NP-NOM-VOC (N^N f+ader))
+                  (, ,)
+                  (HVDI h+afdest)
+                  (NP-NOM (PRO^N +du))
+                  (ADVP-TMP (ADV^T gyt))
+                  (NP-ACC (NUM^A ane) (N^A bletsunga))) <-- acc sg in -A
+      (ID cootest,Gen:27.38.1130))
+
+</PRE>
+</blockquote>
+
+For a number of nouns with gen/dat sg. and nom/acc/gen pl. in -A
+(esp. HAND, WUDU, DURU, FELDA) it is often difficult to decide with
+certainty the number of the noun since both make sense in context (<i>he
+put it in his hand/hands; they opened the door/doors</i>). Consistent with
+our policy of not resolving acc/dat ambiguity, for these nouns all forms
+in -A, whether singular or plural are considered ambiguous unless the
+ambiguity is resolved according the <a href="#oblique_ambiguities">usual
+rules</a>. The -A forms are thus treated as acc/gen/dat ambiguous in the
+same way as the feminine singular in -E. Similar nouns like SUNU and NOSU
+are not generally a problem since the number of sons/noses is usually
+clear.
+
+<blockquote>
+<PRE>
+(NP (PRO$ his) (N handa))
+
+(PP (P on)
+    (NP (N handa)))
+
+(PP (P +at)
+    (NP (NP-GEN (D^G +t+ara) (N^G cyrcan))
+	(N dura)))
+
+(PP (P mid)
+    (NP (N wuda)))
+
+(PP (P to)
+    (NP (N wuda)))
+
+</PRE>
+</blockquote>
+
+-AN is taken as a form of the dative ending -UM in the following
+circumstances:
+<p>
+
+<dl><dt>
+<UL>
+<LI> a constituent initial adjective in -AN is followed by a masculine or
+neuter noun in a form that can be taken as dative
+
+<blockquote>
+<PRE>
+(NP-DAT (ADJ^D godcundan) (N^D ege)))
+
+(NP-DAT (ADJ^D so+tan)(N^D geleafan))
+
+</PRE>
+</blockquote>
+
+When the following noun is feminine, -AN is not labelled for case
+
+<blockquote>
+<PRE>
+(NP (ADJ easteweardan) (N worulde))
+
+(NP (ADJ ands+atan) (N wiglunge))
+
+(NP (ADJ godcundan)(N foresceawunga)))
+
+</PRE>
+</blockquote>
+
+<LI> an adjective alone used as a substantive; most of these are in common
+prepositional phrases
+
+<blockquote>
+<PRE>
+(PP (P to)
+    (NP-DAT (ADJ^D so+dan)))
+
+(PP (P to)
+    (NP-DAT (ADJ^D gewissan)))
+
+</PRE>
+</blockquote>
+
+</UL>
+</dl>
+
+We treat family members as follows. While forms of MODOR, DOHTOR, and
+BRO+TOR with an -O- root vowel are primarily accusitive or genitive, dative
+forms do occur. Thus these forms as well as F+ADER and SWEOSTOR are
+acc/gen/dat ambiguous. MEDER, DEHTER, BRE+TER are primarily dative, but
+also occur as genitives and are thus treated as genitive/dative ambiguous.
+
+<p><BR><br>
+
+<a name="case_with_prepositions">
+<h2>Case with prepositions</h2></a>
+
+The complements of prepositions are treated in much the same way as
+complements of verbs. Acc/dat ambiguity is never resolved.
+
+<blockquote>
+<PRE>
+(PP (P to)
+    (NP (N munde)))
+
+(PP (P to)
+    (NP (N blisse)))
+
+(PP (NP (PRO eow))
+    (P to))
+
+</PRE>
+</blockquote>
+
+Few prepositions take genitive, and of those which do, only TO and WI+D are
+common. With TO the genitive is fairly rare and we thus resolve gen/dat
+ambiguities in favour of dative. Thus only unambiguous genitives are
+labelled genitive, all others are labelled as dative (if the ambiguity is
+gen/dat) or ambiguous (if the ambiguity is acc/gen/dat).
+
+<blockquote>
+<PRE>
+(PP (P to)  <-- unambiguous dative
+    (NP-DAT (ADJ^D langum) (N^D gemynde))) 
+
+(PP (P to)  <-- unambiguous genitive
+    (NP-GEN (N^G nones)))
+
+(PP (P to)  <-- gen/dat ambiguity resolved in favour of dative
+    (NP-DAT (D^D +t+are) (ADJ^D ecan) (N^D h+ale)))
+
+(PP (P to)  <-- acc/dat ambiguity not resolved
+    (NP (PRO$ his) (N rice)))
+
+(PP (P to)  <-- acc/gen/dat ambiguity not resolved
+    (NP (N getrymminge)))
+
+</PRE>
+</blockquote>
+
+With WI+T, on the other hand, the cases seem more evenly distributed, and
+we thus treat WI+T on par with verbs which take acc/gen/dat and only
+unambiguous forms are labelled for case.
+
+<blockquote>
+<PRE>
+(PP (P wi+d)  <-- unambiguous accusative 
+    (NP-ACC (PRO^A hine)))
+
+(PP (P wi+d)  <-- unambiguous dative 
+    (NP-DAT (VAG^D $licgendum) (N^D feo)))))
+
+(PP (P wi+d)  <-- unambiguous genitive 
+    (NP-GEN (PRO^G his)))
+
+(PP (P wi+d)  <-- acc/gen (pl) ambiguous
+    (NP (NP-GEN (N^G deofles))
+	(N syrwunga)))
+
+(PP (P wi+d)  <-- acc/dat ambiguous
+    (NP (PRO eow)))
+
+(PP (P wi+d)  <-- acc/gen/dat ambiguous
+    (NP (N unrihtwisnysse)))
+
+</PRE>
+</blockquote>
+
+<p><BR>
+
+<a name="case_with_adjectives">
+<h2>Case with adjectives</h2></a>
+
+Adjectives take either genitive or dative complements, or both. In copular
+constructions it is difficult in all cases to distinguish dative
+complements of adjectives from datives of interest. An NP which may be
+complement of the predicate adjective or a dative of interest in a copular
+construction is labelled dative even when acc/dat ambiguous. The same is
+true in constructions with the verb +TYNCAN <i>to seem</i>. Datives of
+interest in other constructions follow the normal rules for <a
+href="#oblique_ambiguities">disambiguating case</a>. If the adjective takes
+only genitive, the complement is labelled genitive, even when acc/gen/dat
+ambiguous. Although some adjectives take both dative and genitive
+complements, most of this type strongly favour the genitive and we have
+therefore in all cases of gen/dat ambiguity with these adjectives (FULL,
+GEMYNDIG, WEOR+D, etc.)  labelled the complement genitive, rather than
+leaving it unlabelled.
+
+<PRE>
+( (CODE &lt;T03020009900,215&gt;)
+  (IP-MAT (ADVP (ADV Witodlice))
+          (NP-NOM (D^N +ta) (ADJ^N arleasan))
+          (BEPI beo+d)
+          (NP-DAT (PRO$ heora) (ADJ^D yfelum) (N^D weorcum)) <-- dative with predicate ADJP
+          (ADJP-NOM-PRD (ADJ^N gelice))
+          (. .)) (ID coaelive,+ALS_[Christmas]:215.170))
+
+( (IP-MAT (CONJ and)
+          (NP-NOM *con*)
+          (NP-DAT-RFL (PRO^D him)) <-- dative with predicate ADJP
+          (ADVP-TMP (ADV^T +ta))
+          (ADJP-NOM-PRD (ADJ^N bli+de))
+          (BEDI w+as)
+          (. .)) (ID coaelive,+ALS_[Basil]:195.579))
+
+( (CODE &lt;T03030002600,92&gt;)
+  (IP-MAT (NP-NOM (NR^N Eugenia))
+          (ADVP-TMP (ADV^T +ta))
+          (VBD wunode)
+          (PP (P on)
+              (NP-DAT (D^D +tam) (N^D mynstre)))
+          (PP (P mid)
+              (NP-DAT (ADJ^D w+arlicum) (N^D mode)))
+          (CP-ADV (P +teah)
+		  (C +te)
+		  (IP-SUB (NP-NOM (PRO^N heo))
+			  (NP-NOM-PRD (N^N m+aden))
+			  (BEDS w+are)))
+          (, ,)
+          (PP (P mid)
+              (NP-DAT (PRO$ hyre) (NUM^D twam) (N^D cnihtum)))
+          (, ,)
+          (ADJP-NOM (ADJ^N uncu+d)
+                    (NP-DAT (Q^D gehwam))) <-- dative with non-predicate ADJP
+          (. ,)) (ID coaelive,+ALS_[Eugenia]:92.241))
+
+(NODE (IP-MAT (NP-NOM-x *exp*)
+              (NP-DAT (PRO^D Us)) <-- acc/dat ambiguous labelled dative with +TYNCAN and predicate
+              (VBPI +dinc+d)
+              (ADJP-NOM-PRD (ADV to) (ADJ^N menigfeald))
+              (CP-THT-x (C +t+at)
+                        (IP-SUB (NP-NOM (PRO^N we))
+                                (ADVP (ADVR swi+dor))
+                                (PP (P embe)
+                                    (NP-ACC (D^A +dis)))
+                                (VBPS sprecon)))
+              (. .))
+      (ID cotempo,+ATemp:10.24.345))
+
+(ADJP-NOM (ADJ^N efenece) (CONJ &) (ADJ^N gelic)
+	  (NP-DAT (PRO$ his) (N^D f+ader))) <-- acc/gen/dat ambiguous labelled dative with adjective taking only dative
+
+(ADJP-NOM (ADJ^N orwena)
+	  (NP-GEN (N^G lifes))) <-- genitive complement 
+
+(ADJP-NOM-PRD (NP-GEN (N^G bealwes))
+	      (ADJ^N full))
+
+(ADJP-NOM-PRD (ADJ^N wyr+de)
+	      (NP-GEN (D^G +t+as) (N^G fyrstes)))
+
+(ADJP-NOM (ADJ^N f+agen)
+	  (NP-GEN (PRO$ his) (N^G gecyrrednysse))) <-- gen/dat ambiguous N labelled genitive with adjective taking gen/dat
+
+</PRE>
+
+The dative of comparison is always labelled dative even when ambiguous.
+
+<PRE>
+(ADJP-NOM-PRD (ADJR^N w+algrimre) (CONJ &) (ADJR^N strengre)
+	      (NP-DAT (Q^D eallum) (D^D +tam) (N^D +argedonum)))
+
+(ADJP-NOM-PRD (ADJR^N wyrson)
+	      (NP-DAT (D^D +tam) (ADJR^D +arran)))
+
+</PRE>
+
+<p><br>
+
+<a name="genitive_with_nouns">
+<h2>Genitive case marking relations between substantives</h2></a>
+
+Genitive case is labelled on all parts of a potentially genitive nominal
+constituent which stands in relation (often, but not always, possessive) with
+another substantive. As usual, items which are <a
+href="#items_never_taking_case">never labelled for case</a> are not labelled
+for case in genitive constructions either.
+
+<PRE>
+(NP-NOM (NP-GEN (PRO$ his) (N^G halgena))    <-- unambiguous genitive
+	(N^N wundra))
+
+(NP-DAT (NP-GEN (D^G +t+are) (N^G hl+addre)) <-- gen/dat ambiguous labelled genitive
+	(N^D stapum))
+
+(NP (NP-GEN (N^G helle)) <-- acc/gen/dat ambiguous labelled genitive 
+    (N wite))
+
+(NP-NOM (NP-GEN (N^G galnysse))
+	(N^N ontendnyss))
+
+(NP-GEN (NR Sancte) (NR^G Stephanes) <-- Sancte is never labelled for case
+
+(NP-ACC (Q^A eall)
+	(NP-GEN (NR $Breotene)) <-- place names are never labelled for case
+	(N^A gem+aro))
+
+</PRE>
+
+<p><br>
+
+<a name="case_on_quantifiers">
+<h2>Case on quantifiers</h2></a>
+
+Case is labelled on inflecting quantifiers used as modifiers or
+substantives according to the <a href="#case">usual rules</a>
+
+<p>
+
+The quantifiers MICEL, LYTEL, HWON/NATESHWON, MA, L+AS, MARE, L+ASSE,
+M+AST, L+AST, AHT, NAHT, EALL, HW+ATHUGU may also be used adverbially. Case
+is labelled on MICEL, LYTEL, and EALL in all such cases since they occur in
+a range of cases in adverbial function, as well as MARE and L+ASSE; other
+quantifers in adverbial use generally have zero inflection, and are only
+labelled for case in the few situations in which the inflection is not
+zero. Of these MA, LYT, L+AS never inflect under any circumstances, while
+HWON and HW+ATHUGU only occur with zero inflection in adverbial use (note
+that HWENE, original instrumental of HWON is labelled as an
+adverb). AHT/NAHT occur overwhelmingly with zero inflection in adverbial
+use, but there are very occasional uses of the The "zero inflection"
+therefore represents either an invariant form or original accusative case.
+dative which are labelled for case. The adverbial forms of MARE and L+ASSE
+are accusative.
+
+<blockquote>
+<PRE>
+(Q aht) <-- adverbial
+(Q^A aht)  <-- modifier or substantive
+
+(NEG+Q naht) <-- adverbial
+(NEG+Q^A naht) <-- modifier or substantive
+(NEG+Q^D nahte) <-- adverbial or modifier/substantive
+
+(Q^A micel)   <-- always labelled for case
+(Q^D miclum)
+(Q^I micle)
+
+(Q hwon)      <-- adverbial
+(Q^A hwon)    <-- modifier or substantive
+(NEG+Q nateshwon) <-- always adverbial
+
+(QR ma)       <-- never labelled for case
+(QR l+as)
+
+(QS m+ast)    <-- adverbial
+(QS^A m+ast)  <-- modifier or substantive
+
+</PRE>
+</blockquote>
+
+HWON and HW+ATHUGU may modify adjectives and adverbs as well as nouns; in
+the latter case they are case-marked, in the former they are not.
+
+<blockquote>
+<PRE>
+(NP-ACC (Q^A hwon) (N^A sealt))
+
+(ADVP-DIR (Q hwon) (ADV^D nor+tan))
+
+(ADJP-ACC (Q hwon) (ADJ^A lange))
+
+(NP-ACC (Q^A hw+athugu) (N^A get+ase))
+
+(ADVP (Q hw+athwega) (ADV wynsumlice))
+
+</PRE>
+</blockquote>
+
+<P><br>
+
+<a name="case_with_quantifiers">
+<h2>Case with quantifiers</h2></a>
+
+The nom/acc/gen pl ambiguous complement of an <a
+href="#undeclined_quantifiers">undeclinable quantifier</a> (FELA, MA, LYT,
+L+AS) is labelled genitive, while with all other quantifiers it is labelled
+as agreeing with the quantifier. This is a default decision that goes with
+the majority occuring pattern for each type, although there are clear
+examples of both that follow the other pattern.
+
+<PRE>
+(NP (Q fela)  <-- acc/gen ambiguous taken as genitive with FELA
+    (NP-GEN (N^G wundra)))
+
+(NP-NOM (Q fela) (N^N men)) <-- unambiguous non-genitive with FELA
+
+(NP-ACC (Q fela) (N^A +almyssan))
+      <-- non-genitive because the complement of FELA is always plural
+
+(NP-ACC (Q^A manega) (N^A tacna)) <-- acc/gen ambiguous taken as agreeing with non-FELA quantifier
+
+</PRE>
+
+<p><br>
+
+<a name="case_participles">
+<H2>Case on participles</H2></a> 
+
+<a name="pples_part_of_verb_sequence">
+<h2>Participles as part of the main verb sequence</h2></a>
+
+When participles are part of the main verb sequence or constitute the
+predicate of a small clause, they are only labelled for case if the case is
+overt (i.e., non-zero) in the case of past participles, or not -E in the
+case of present participles. Note that overt inflection in the present
+participle outside small clauses is exceedingly rare (one example so far).
+
+<PRE>
+(IP-MAT (NP-NOM (N^N Gescead))
+	(BEPI is)
+	(NP-DAT (D^D +d+are) (N^D sawle))
+	(VBN forgifen)) <-- no overt case, no case label
+
+(IP-MAT (ADVP-TMP (ADV^T Nu))
+	(NP-NOM (PRO^N ge))
+	(HVPI habba+d)
+	(VBN gehered) <-- no overt case, no case label
+	(...))
+
+(IP-MAT (NP-NOM (D^N +Ta) (N^N andgitu))
+	(BEPI sint)
+	(VBN^N gehatene) <-- overt case labelled
+	(ADVP (ADV +tus)))
+
+(IP-MAT (ADVP-TMP (ADV^T Symble))
+	(NP-NOM (PRO^N he))
+	(BEPI bi+d)
+	(VAG gyfende)) <-- no overt case, no case label
+
+(IP-SUB (NP-NOM (D^N +teos) (ADJ^N andwearde) (N^N world))
+	(BEPI is)
+	(VAG^N (VAG^N gewitendu) (CONJ &) (VAG^N feallendu))) <-- overt case labelled
+
+(IP-SMC-SPE (NP-ACC-SBJ (PRO$^A minne) (NR^A Crist))
+	    (VAG^A cigendne)  <-- overt case labelled
+	    (NP-ACC (PRO^A me) (CONJ &) (NR^A Paulus)))
+
+</PRE>
+
+Participles with BE are taken to agree with the subject, and those with
+HABBAN to agree with the object.
+
+<PRE>
+(IP-MAT (NP-NOM (D^N +Ta) (N^N andgitu))
+	(BEPI sint)
+	(VBN^N gehatene) <-- agrees with subject
+	(ADVP (ADV +tus)))
+
+(IP-SUB (NP-NOM (D^N +ta) (N^N h+a+tenan))
+	(HVDI h+afdon)
+	(NP-ACC (PRO^A hi))
+	(VBN^A besetene)) <-- agrees with object
+
+</PRE>
+
+<p><br>
+
+<a name="pples_as_predicates_in_small_clauses">
+<h2>Participles as predicates of small clauses</h2></a>
+
+As predicates in small clauses participles are treated the same as when <a
+href="#pples_part_of_verb_sequence">part of the main verb sequence</a>;
+that is, they are only given a case label when case is overtly marked.
+
+<PRE>
+(IP-SMC (NP-ACC-SBJ (D^A +tone) (VAG^A scinendan) (N^A +ancgel))
+	(VAG cumende) <-- no overt case marking, no case label
+	(PP (P of)
+	    (NP-DAT (N^D heofenum))))
+
+(IP-SMC (NP-ACC-SBJ (PRO^A hine))
+	(VAG^A libbendne))  <-- overt case marking
+
+
+(IP-SMC (NP-ACC-SBJ (D^A +tone) (N^A apostol))
+	(QP-DAT-ADT (Q^D micclum))
+	(VBN gebysgod)) <-- no overt case marking, no case label
+
+(IP-SMC (NP-ACC-SBJ (NUM^A +anne) (N^A mann))
+	(VBN^A afeallene)) <-- overt case marking
+
+</PRE>
+
+<p><br>
+
+<a name="modifying_pples">
+<h2>Modifying and attributive participles</h2></a>
+
+In the majority of cases modifying participles are appropriately
+case-marked, although there are a small number of exceptions (e.g.,
+acc.sg. in zero rather than -NE). Thus, with one exception (<a
+href="#naming_participles">naming participles</a>),
+modifying and attributive participles are labelled with the case of the
+item they modify, whether the participle is overtly or appropriately
+case-marked or not.
+
+<blockquote>
+<PRE>
+(NP-NOM (Q^N ealle) (RP+VBN^N oferdone) (N^N +ting))
+
+(NP-ACC (D^A +tonne) (RP+VBN^A fores+adan) (NR^A Eubolum))
+
+(NP-GEN (PRO$^G +tines) (VBN^G gefr+atowodan) (N^G temple))
+
+(NP-DAT (D^D +tam) (VBN^D gebogenan) (N^D m+adene))
+
+</PRE>
+</blockquote>
+
+<a name="naming_participles"></a>
+The exceptional case is that of "naming" participles (GEHATEN, GECIGEN,
+etc.) which rarely if ever inflect in attributive use. These are therefore
+not labelled for case unless it is overt, in the same way as participles
+which are part of the main verb sequence.
+
+<blockquote>
+<PRE>
+(NP-NOM (Q^N sum) (N^N bisceop)
+	(PTP (NP-NOM-PRD (NR^N Helenus))
+	     (VBN gehaten))) <-- not labelled for case
+
+(NP-ACC (Q^A sumne) (N^A messepreost)
+	(, ,)
+	(PTP (NP-NOM-PRD (NR^N Eutropius))
+	     (VBN gehaten)))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="case_left-dislocations">
+<H2>Case on left-dislocations</H2></a>
+
+Left-dislocated NPs may be in the nominative case even when the resumptive
+element is oblique. This means that in the case of a left-dislocated
+nom/acc ambiguous NP with an accusative resumptive element, the ambiguity
+cannot be resolved, and thus the left-dislocated NP is not labelled for
+case. The following rules are applied for labelling case on left-dislocated
+NPs.
+
+<p>
+
+<dl><dt>
+<UL>
+<LI> a nom/acc ambiguous left-dislocated NP with a nominative resumptive
+element is labelled nominative
+<LI> a nom/acc ambiguous left-dislocated NP with an accusative  resumptive element is
+unmarked for case
+<LI> a nom/acc ambiguous left-dislocated NP with an oblique resumptive element is labelled
+nominative 
+<LI>a acc/gen/dat ambiguous left-dislocated NP is given the same case as
+the resumptive element; if the resumptive element is ambiguous for case
+then so is the left-dislocation
+</UL>
+</dl>
+
+<PRE>
+( (IP-MAT-SPE (CONJ and)
+              (NP-NOM-LFD (D^N se)      <-- nominative left-dislocation
+                          (CP-REL-SPE (WNP-NOM-1 0)
+                                      (C +de)
+                                      (IP-SUB-SPE (NP-NOM *T*-1)
+                                                  (NP (PRO me))
+                                                  (VBPI +dena+d))))
+              (, ,)
+              (NP-ACC-RSP (PRO^A hine)) <-- accusative resumptive
+              (VBPI $gearwur+da+d)
+              (NP-NOM (PRO$^N min) (N^N F+ader))
+              (. .))
+  (ID coaelhom,+AHom_11:542.1768)) 
+
+( (IP-MAT (CONJ and)
+          (NP-NOM-LFD (D^N $se)         <-- nominative left-dislocation
+                      (CP-REL (WNP-NOM-1 0)
+                              (C $+de)
+                              (CODE &lt;TEXT:se+de&gt;)
+                              (IP-SUB (NP-NOM *T*-1)
+                                      (NEG ne)
+                                      (MDPI m+ag)
+                                      (PP (P for)
+                                          (NP (N sceame)))
+                                      (NP-ACC (PRO$ his) (N^A gyltas))
+                                      (NP-DAT (NUM^D anum) (N^D menn))
+                                      (VB geandettan))))
+          (, ,)
+          (NP-NOM *exp*)
+          (NP-DAT-RSP (PRO^D him))      <-- dative resumptive 
+          (MDPI sceal)
+          (ADVP-TMP (ADV^T +tonne))
+          (VB sceamian)
+          (PP (P +atforan)
+              (NP-DAT (N^D heofonwarum) (CONJ and) (N^D eor+dwarum) (CONJ and) (N^D helwarum)))
+          (. ,))
+      (ID coaelive,+ALS[Ash_Wed]:172.2796))
+
+( (CODE &lt;T03080008600,234&gt;)
+  (IP-MAT-SPE (NP-LFD (D +T+at) <-- nom/acc ambiguous left-dislocation unlabelled for case
+                      (CP-REL-SPE (WNP-ACC-1 (D^A +t+at))
+				  (C 0)
+				  (IP-SUB-SPE (NP-ACC *T*-1)
+					      (NP-NOM (PRO^N ic))
+					      (VBD gelyfde))))
+              (NP-ACC-RSP (D^A +t+at)) <-- accusative resumptive
+              (NP-NOM (PRO^N ic))
+              (VBP geseo)
+              (. ,)) (ID coaelive,+ALS[Agnes]:234.1870))
+
+</PRE>
+
+<p><BR>
+<hr>
+<BR>
+
+<a name="nominals">
+<H1>Nouns and pronouns</H1></a>
+<p>
+<DL>
+<DT><a href="#pronouns">Pronouns (PRO, PRO$)</a>
+<DT><DL>
+    <DT><a href="#personal_pronouns">Personal pronouns (PRO)</a>
+    <DT><a href="#reflexive_pronouns">Reflexive pronouns</a>
+    <DT><a href="#possessive_pronouns">Possessive pronouns (PRO$) </a>
+    <DT><a href="#man">Indefinite MAN (MAN)</a>
+    </DL>
+<DT><a href="#common_nouns">Singular, plural, and collective common nouns
+(N)</a> 
+<DT><DL>
+    <DT><a href="#adverbial_use_of_nouns">Adverbial use of nouns and adjectives</a>
+    </DL>
+<DT><a href="#proper_nouns">Proper nouns (NR)</a>
+<DT><DL>
+    <DT><a href="#names_of_people">Names of people</a>
+    <DT><a href="#names_of_places">Names of places</a>
+    <DT><a href="#named_periods_of_time">Days of the week, months, and religious
+festivals/seasons</a>
+    <DT><a href="#names_of_languages">Names of languages</a>
+    <DT><a href="#names_of_god">Names of God</a>
+    </DL>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><BR>
+
+<a name="pronouns">
+<H2>Pronouns (PRO, PRO$)</H2></a>
+
+<PRE>
+
+        PRO       Pronoun
+        PRO$      Pronoun, possessive
+	MAN^N     Indefinite MAN (always nominative)
+
+</PRE>
+
+<a name="personal_pronouns">
+<h2>Personal pronouns (PRO)</h2></a>
+
+All personal pronouns are labelled <B>PRO</B> with the exception of
+indefinite MAN.  Pronouns are tagged for case according to the <a
+href="#case">case-marking rules</a>. First and second person sg/pl
+pronouns are acc/dat ambiguous and thus are not generally labelled for case
+except in <a href="YcoeRef.htm#copular_constructions">copular
+constructions</a>.
+
+<blockquote>
+<PRE>
+(PRO^N he) (PRO^A hine) (PRO^D him) (PRO^G his)
+
+(PRO^N ic) (PRO^A me) (PRO^D me) (PRO me) (PRO^G min)
+
+(PRO^N we) (PRO^A unc) (PRO^D unc) (PRO unc) (PRO^G ure)
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="reflexive_pronouns">
+<H2>Reflexive pronouns</H2></a>
+
+Personal pronouns can be used as reflexives in Old English, but they are
+not marked as such at the part-of-speech level, but rather in the <a
+href="YcoeRef.htm#reflexives">syntactic annotaton</a>.
+
+Forms of SELF are tagged <B>ADJ</B>. The occasional uses of
+pronoun-plus-SELF (HIMSELF, THEMSELVES etc.) are split to faciliate parsing
+and comment is included to indicate this (see <a href="#word_division">Word
+division</a>).
+
+<blockquote>
+<PRE>
+(NP-NOM (PRO^N hi) 
+	(ADJP-NOM (ADJ^N sylfe)))
+
+(NP-DAT (PRO^D $him)
+	(ADJP-DAT (ADJ^D $selfum))
+        (CODE &lt;TEXT:himselfum&gt;))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="possessive_pronouns">
+<H2>Possessive pronouns (PRO$)</H2></a>
+
+The following are tagged as possessive pronouns:
+
+<BLOCKQUOTE>
+MIN, +TIN, HIS, HIRE, UNCER, URE, INCER,
+EOWER, HEORA
+</BLOCKQUOTE>
+
+Of these HIS, HIRE, and HEORA are not tagged for case. The other possessives
+are declined like adjectives and are therefore labelled for case according
+to the <a href="#case">usual rules</a>. Notice that all these forms can
+also be tagged PRO^G if the use is clearly genitival rather than
+possessive.
+
+<blockquote>
+<PRE>
+(NP-NOM (PRO$^N ure) (N^N h+alend))
+
+(NP-ACC (PRO$^A eower) (N^A mod))
+
+(NP-ACC (PRO$^A eowerne) (N^A geleafan))
+
+(NP-GEN (PRO$^G minra) (N^G wimmanna))
+
+(NP-DAT (PRO$^D eowrum) (N^D gereorde))
+
+(NP-DAT (PRO$ his) (N^D folce)) <-- 3rd person not labelled for case
+
+(NP-DAT (PRO$ hire) (N^D leohte))
+
+(NP-DAT (PRO$ heora) (N^D +tenungum))
+
+</PRE>
+</blockquote>
+
+URE and EOWER sometimes fail to agree with a following noun, in which case
+they are tagged simply <B>PRO$</B> without case. URE is taken as agreeing
+with masc nom sg, neut nom/acc sg, masc/fem/neuter nom/acc pl and all
+feminine sgs (with simplification of -RR- in gen/dat). In all other cases
+(masc/neut dat/gen sg, masc/fem/neut gen/dat pl and masc acc sg), it is
+labelled <B>PRO$</B>. EOWER agrees with masc/fem nom sg and neut nom/acc
+sg; in all other cases it is labelled <B>PRO$</B>. In addition EOWRE (like
+URE) agree with all feminine non-nominatives in -E because of possible
+simplification of -RR- in the gen/dat. Note that while URE and EOWRE agree
+with otherwise unambiguous feminine singulars, they are not sufficient to
+decide case in an otherwise ambiguous constituent.
+
+
+<PRE>
+(NP-GEN (PRO$ ure) (N^G goda))                           (masc. gen.pl.)
+
+(NP-DAT (PRO$ ure) (ADJ^D lenctenlicum) (N^D f+astene))  (neut. dat.sg.)
+
+(NP-GEN (PRO$ ure) (N^G un+tances) )                     (masc. gen.sg.)
+
+(NP-GEN (PRO$ eower) (N^G wifa))                         (neut. gen.pl.)
+
+(PP (P +durh)
+    (NP (PRO$ eower) (N hiwr+adene)))                    (fem. acc/dat/gen.sg.)
+
+</PRE>
+
+In the first two following cases, URE/EOWRE is not sufficient to
+disambiguate case with a feminine in -E; in the latter two, URE is
+disambiguated by context, as either dative or genitive according to the <a
+href="#case">usual rules</a>.
+
+<PRE>
+(NP (PRO$ eowre) (N gewitleaste)               (fem. acc/dat/gen.sg.)
+
+(NP (PRO$ ure) (N +teode))                     (fem. acc/dat/gen.sg.)
+
+(PP (P mid)
+    (NP-DAT (Q^D ealre) (PRO$^D ure) (N^D heortan)))  <-- URE dative because of MID and EALRE
+
+(NP-NOM (NEG+Q^N nan) (N^N neod)
+	(NP-GEN (PRO$^G ure)(N^G herunge))) <-- URE genitive because possessive
+
+</PRE>
+
+Note that the form O+TRE of adjective O+TER is likewise ambiguous with
+feminine singulars and is treated exactly like URE/EOWRE.
+
+<p><BR><br>
+
+<a name="man">
+<h2>Indefinite MAN (MAN^N)</h2></a>
+
+Indefinite MAN (ME in late texts) is tagged <B>MAN^N</B>. It is always a
+subject so always case-marked nominative.
+
+<P><BR><BR>
+
+<a name="common_nouns">
+<H2>Singular, plural, and collective common nouns (N)</H2></a>
+
+Singular, plural and collective nouns are all tagged N. All common
+nouns are tagged for case according to the <a
+href="#case">case-marking rules</a>. When an noun is ambiguous for case
+according to our rules, it is labelled simply <b>N</b>.
+
+<blockquote>
+<PRE>
+(N^N witega))
+
+(N^A ealdorman)
+
+(N^G d+ages)
+
+(N^D +drowungum)
+
+(N +teode)
+
+</PRE>
+</blockquote>
+
+<IMG SRC="bullets_ball3.gif"> Unlike in the <a
+href="pos-nom.htm#common_nouns">PPCME2</a>, in the YCOE no distinction is
+made between singular and plural nouns.
+
+<p><br><br>
+
+<a name="adverbial_use_of_nouns">
+<H2>Adverbial use of nouns and adjectives</H2></a>
+
+Many adverbs are in origin case-forms of nouns or adjectives. Many of these
+are already less than transparent in Old English, especially those in
+-E. Although it is difficult to know where to draw the line between these
+categories, our basic approach is that most nouns/adjectives in -E or with
+no ending used adverbially are labelled as adverbs, most recognizable
+adjectives/nouns in -ES and -UM used adverbially are labelled as nouns with
+case. Some common cases of the latter which always occur as single words
+and are thus labelled as adverbs are:
+
+<blockquote>
+HWILUM, HWILTIDUM, INST+APES, LIFES, -M+ALUM (STIC-, SCEAF-, etc.), NEDES,
+SELFWILLES, SO+DES
+</blockquote>
+
+<blockquote>
+<PRE>
+(ADVP-TMP (ADV^T hwilum))
+
+(ADVP (ADV lifes))
+
+(ADVP (ADV selfwilles))
+
+</PRE>
+</blockquote>
+
+Among case-forms of adjectives labelled as adverbs are:
+
+<blockquote>
+ANSTRECES, -LANGES (D+AG-, GEAR-, etc.), UNW+ARES, -WEARDES (UP-, NOR+D-
+etc.),
+</blockquote>
+
+<blockquote>
+<PRE>
+(ADVP-TMP (ADV^T d+aglanges))
+
+(ADVP-DIR (ADV^D upweardes))
+
+</PRE>
+</blockquote>
+Less transparent forms in -ES/-UM or without a corresponding noun/adjective
+labelled as adverbs include:
+
+<blockquote>
+ELLES, FUR+TUM, +DWYRES, BETWEONUM, EAHSYNES, ENDEMES, HW+ATHWEGNUNGES,
+(ON)SUNDRUM, STREAMRYNES, TOG+ADERES, TOGENES, WI+TERSYNES
+</blockquote>
+
+The adverbial use of nouns labelled as nouns is indicated in the parsing
+with the label <b>-ADT</b> (adjunct).
+
+<p>
+
+Note that unlike nouns, <a href="#quantifiers_used_adverbially">quantifiers
+used adverbially</a> are never labelled as adverbs.
+
+<P><BR><BR>
+
+<a name="proper_nouns">
+<H2>Proper nouns (NR)</H2></a>
+
+<p>
+
+<a name="names_of_people">
+<H2>Names of people</H2></a>
+
+All personal names are tagged <B>NR</B>. They are labelled for case
+following the same rules as for nouns. 
+
+<blockquote>
+<PRE>
+(NR^N Paulus)
+
+(NR Marian)
+
+</PRE>
+</blockquote>
+
+The word SANCTA/SANCTE/SANCTUS used in conjunction with a proper name is
+tagged <B>NR</B>, but other (native) words possibly used as titles are
+not. SANCTA/SANCTE/SANCTUS is not case-marked since it does not always
+inflect reliably.
+
+<blockquote>
+<PRE>     
+(NP-NOM (NR Sanctus) (NR^N Paulus))
+
+(NP-NOM (NR Sancte) (NR^N Dunstan))
+
+(NP-NOM (NR Sancta) (NR Maria))
+
+(NP-NOM (NR^N +A+telstan) (N^N cyning))
+
+</PRE>
+</blockquote>
+
+<a name="compound_names"></a>
+Two-part names like EAST ENGLA, NOR+T SEAXE, etc. when written as separate
+words are treated as <a href="#compounds">compounds</a>. Thus the first
+part is not tagged for case.
+
+<blockquote>
+<PRE>
+(NP-NOM (NR East) (NR^N Engle))
+
+(NP-NOM (NR Nor+t) (NR^N Walas))
+
+(NP-NOM (NR Middel) (NR^N Seaxe))
+
+(NP-NOM (NR Ald) (NR^N Seaxe))
+
+</PRE>
+</blockquote>
+
+Adjectives corresponding to proper nouns are tagged <B>ADJ</B>, even when
+used substantively.
+
+<blockquote>
+<PRE>
+(NP-NOM (ADJ^N Scittisc))                <I>the Scottish</I>
+(NP-NOM (ADJ^N Ebreisce) (N^N +a))       <I>Hebrew law</I>
+
+</PRE>
+</blockquote>
+
+<p><BR>
+
+<a name="names_of_places">
+<H2>Names of places</H2></a>
+
+It can be quite difficult to determine the case of place names unless they
+contain a common second part which inflects (-CEASTER, -FELD, TUN, etc.),
+at least in part because of overlapping forms between place names and the
+names of peoples. The names of places therefore do not generally carry case
+labels.
+<P>
+
+Proper place names in isolation never have a case label. Nor are they
+case-marked in conjunction with case-marked material or when the
+appropriate case can be inferred from the construction (e.g., genitive);
+but note that in these cases the phrasal level carries the appropriate
+case.
+
+<PRE>
+(PP (P to)
+    (NP (NR Antiochan)))
+
+(PP (P to)
+    (NP (NR Rome)))
+
+(NP-ACC (D^A +ta) (ADJ^A halgan) (NR Gerusalem)) 
+
+(PP (P Be)
+    (NP-DAT (NP-DAT (N|D gesetnysse)
+                    (NP-GEN (NP-GEN (NR Breotene)) <--- case on phrase but not word
+                            (CONJP (CONJ o+d+de)
+                                   (NP-GEN (NR Hibernia)
+                                           (NP-GEN-PRN (NP-GEN (NR|G Scotta))
+                                                       (N|G ealandes))))))))
+
+</PRE>
+
+When the name ends in a common noun, it is labelled for case according to
+the common part; in the usual way, if the common part is ambiguous for
+case, case is not added. Some common nouns as part of names do not inflect,
+and thus are never case-marked.
+
+<blockquote>
+<PRE>
+(NP-ACC (NR^A Englaland))
+
+(NP-DAT (NR^D Bretonlande))
+
+(NP-DAT (NR^D Wippedesfleote))
+
+(NP-ACC (NR^A Cerdicesford))
+
+(PP (P in)                            
+    (NP (NR Dorcesceastre)))         <--- ambiguous for case
+
+(PP (P +at)
+         (NP (NR Wintanceastre)))
+
+</PRE>
+</blockquote>
+
+Another type sometimes clearly contains a genitive (NOR+TYMBRA LOND <I>land
+of the Northumbrians</I>, CERDICES ORAN <I>Cerdic's shore</I>), but the
+name is often ambiguous or potentially ambiguous (ASIA LAND, ROME BYRIG) or
+has no (?overt) inflection (MOAB LOND). Thus, while at one end of the scale
+are clear genitives of the names of people/peoples, and at the other are
+fairly clear compounds although written as two words (e.g., BRETON LAND,
+rather than inflected BRETONE LAND), in the middle are many unclear cases,
+either because inflection is absent or unidentifiable, or because it is
+unclear whether the name is that of a people or a place.
+<P>
+There is no good solution to this problem that is not seriously
+time-consuming and we have not been particularly successful in solving
+it. Our solution is a compromise in which all of these cases are given the
+external structure of an NP with a genitive complement, but the name itself
+may or may not be labelled for case, depending on whether it seems to be
+the name of a place or a people. In large numbers of cases this is
+difficult to determine, and, in practice, the default tends to be that if
+the name ends in -A (but not -IA), it is taken as genitive plural and
+therefore (in most cases) the name of a people.
+
+<blockquote>
+<PRE>
+(NP-ACC (NP-GEN (NR^G Westseaxna))
+        (N^A lond))
+
+(NP-ACC (NP-GEN (NR^G Nor+tanhymbra))
+        (N^A lond))
+
+(PP (P to)
+    (NP (NP-GEN (NR^G Seaxna))
+        (N rice)))
+
+(PP (P on)
+    (NP-DAT (NP-GEN (NR^G Wihtgara))
+            (N^D byrg)))
+
+(NP-DAT (NP-GEN (NR^G Woddes))
+        (N^D beorge))
+
+(NP-NOM-PRD (NP-GEN (NR^G Cerdices))
+            (N^N ora))
+
+(NP-NOM-PRD (NP-GEN (NR Natan))    <--- no case label
+            (N^N leaga))
+
+(NP-ACC (NP-GEN (NR Wihte)) 
+        (N^A ealond))
+
+(PP (P on)
+    (NP-DAT (NP-GEN (NR Rome))
+            (N^D byrig)))
+
+</PRE>
+</blockquote>
+
+Cases with a determiner like ROME +T+ARE BYRIG are always treated as <a
+href="YcoeRef.htm#appositives">appositives</a>, including when the first or
+both parts are potentially genitive and one could be taken as dependent on
+the other (i.e., they are always interpreted as ROME, THE CITY rather than
+THE CITY OF ROME). Although in general appositives pick up case from their
+antecedants and vice versa (see <a
+href="YcoeRef.htm#case_on_appositives">Case on appositives</a>), in the
+case of place names, the proper name is not labelled for case even if the
+case of the appositive is clear.
+
+<blockquote>
+<PRE>
+(NP-DAT (NR Rome)                            <--- case on NP from appositive
+        (NP-DAT-PRN (D^D +t+are) (N^D byrig)))
+
+(PP (P ofer)
+    (NP-ACC (NR Nilus)
+            (NP-ACC-PRN (D^A +ta) (N^A ea))))
+
+(PP (P of)
+    (NP-DAT (NR Alexandria)
+            (, ,)
+            (NP-DAT-PRN (NP-GEN (NR^G Egypta))
+                        (N^D burge))))
+
+(NP-NOM (D^N +t+at) (N^N igland)
+        (NP-PRN (NR Deprobane)))
+
+(PP (P buton)
+    (NP-DAT (D^D +t+am) (N^D iglande)
+            (NP-PRN (NR Taprabane))))
+
+</PRE>
+</blockquote>
+
+<p><BR>
+
+
+<a name="named_periods_of_time">
+<H2>Days of the week, months, and religious festivals/seasons</H2></a>
+
+The names of the days of the week and months of the year are tagged as
+proper nouns. Religious seasons, such as Lent, and festivals, such as
+Easter, are also tagged <B>NR</B>. Massdays (HLAFM+ASS, CANDEM+LASS, etc.)
+and DOMES D+AG are not tagged ,b>NR</b>. 
+
+<blockquote>
+<PRE>
+(NR^D Sunnand+agum)
+
+(NR Eastron)
+
+(NR^A Easterd+ag)
+
+(N^A hlafm+ass)
+
+(NP-ACC (NP-GEN (N^G domes))
+	(N^A d+ag))
+
+</PRE>    
+</blockquote>
+
+LENCTEN is common when it means <I>spring</I>, but proper when it means the
+season of <I>Lent</I>. It can also be either a noun or an adjective. When
+preceding a noun (e.g., LENCTENES F+ASTENES) it is tagged as an adjective,
+otherwise a noun.
+
+<PRE>
+(NP-GEN (ADJ^G lenctenes) (N^G f+astenes))
+
+(NP-DAT (D^D +tam) (ADJ^D halgan) (NR^D Lenctene))
+
+(NP-NOM (N^N lencten) (CONJ and) (N^N sumer) (CONJ and) (N^N herfest) (CONJ and) (N^N winter))
+
+</PRE>
+
+Latin month names are tagged <b>NR</b> as long as they have English
+inflections. When they have Latin inflections, they are tagged <b>FW</b>.
+KALEND is not proper in phrases like MAIAS KALEND.
+
+<blockquote>
+<PRE>
+(NP-NOM (NP-GEN (NR^G Maias))    <I>the month of May</I>
+	(N^N kalend)) 
+
+</PRE>
+</blockquote>
+
+In conjunction with Latin-inflected month names KALEND- is tagged <B>FW</B>.
+
+<blockquote>
+<PRE>
+(LATIN (FW vi) (FW Kalend+a) (FW Novembris))
+
+(LATIN (FW iii) (FW Kalend+a) (FW IUNII))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="names_of_languages">
+<H2>Names of languages</H2></a>
+
+The names of languages are either proper nouns or adjectives.
+
+<blockquote>
+<PRE>
+(NP-ACC (NR^A Laden)
+
+(PP (P on)
+    (NP-ACC (ADJ^A englisc)))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="names_of_god">
+<H2>Names of God</H2></a>
+
+The following are taken as names of God and tagged <b>NR</b>: GOD,
+DRIHTEN, JESUS, CRIST. All other ways of referring to God (H+ALEND,
+SCYPPEND, HALIG GAST, F+A+DER, SUNU, etc.) are tagged as common nouns
+
+<p><BR>
+<hr>
+<BR>
+
+<a name="adjectives">
+<H1>Adjectives (ADJ)</H1></a>
+
+<DL>
+<DT><a href="#noun_adj_ambiguity">Weak adjective/noun ambiguity</a>
+<DT><a href="#ordinal_numbers">Ordinal numbers</a>
+<DT><a href="#o+tre">O+TRE</a>
+<DT><a href="#micel_lytel_adj">Adjectival use of quantifiers(MICEL and LYTEL)</a>
+<DT><a href="#neah_adj">NEAH (adjective)</a>
+<DT><a href="#swelc">SWELC and +TYLLIC</a>
+<DT><a href="#self">SELF</a>
+<DT><a href="#wintre">NUM + WINTRE (adjective)</a>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><br>
+
+<PRE>
+
+      ADJ       Positive adjective
+      ADJR      Comparative adjective
+      ADJS      Superlative adjective
+
+</PRE>
+
+<p><br>
+
+Adjectives are tagged for case according to the <a
+href="#case">case-marking rules</a>.
+
+<blockquote>
+<PRE>
+(NP-NOM (ADJ^N geleaffulle) (N^N f+aderas))
+
+(NP-NOM (D^N +ta) (ADJ^N l+awedan) (N^N men))
+
+(NP-ACC (D^A +tone) (ADJ^A halgan) (N^A gast))
+
+(NP-GEN (ADJ^G swylcera) (N^G gewrita))
+
+(NP-DAT (D^D +tam) (ADJ^D towerdum) (N^D mannum))
+
+(ADJP-NOM (ADJR^N wlitigre))
+
+(NP-ACC (PRO$^A minne) (ADJR^A swi+dran)) 
+
+(NP-GEN (D^G +t+as) (ADJR^G +arran) (N^G brydguman))
+
+(NP-DAT (D^D +tam) (ADJR^D s+alran) (N^D d+ale))
+
+(NP-NOM (D^N +ta) (ADJS^N yldostan) (N^N preostas))
+
+(NP-ACC (D^A +ta) (ADJS^A scortostan) (N^A wisan))
+
+(NP-GEN (D^G +t+as) (ADJS^G fracodostan) (N^G mennisces)
+
+(NP-DAT (PRO$ his) (ADJS^D leofestan) (N^D godum))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="noun_adj_ambiguity">
+<h2>Weak adjective/noun ambiguity</h2></a>
+
+When an adjective has a corresponding weak noun associated with it
+(e.g. HALIG/HALGA, CRISTEN/CRISTENA) many cases following a determiner are
+ambiguous between a noun and an adjective reading. The default tagging in
+these cases is that if the word precedes a noun or is used predicatively it
+is tagged as an adjective, but otherwise as a noun. Only cases with a weak
+noun form listed in Clark Hall fall under this rule; e.g. SEOCA is always
+an adjective because there is no noun SEOCA. The most common nouns affected
+by this policy are HALGA, CRISTENA, H+A+TENA, and NEXTA (<i>neighbour</i>).
+
+<blockquote>
+<PRE>
+(NP-ACC (D^A +done) (ADJ^A halgan) (N^A w+ar))
+    
+(NP-ACC (D^A +ta) (N^A halgan))
+
+(NP-NOM (D^A +ta) (N^N cristenan))
+
+(NP-ACC (PRO$^A +tinne) (N^A nyhstan))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="ordinal_numbers">
+<h2>Ordinal numbers</h2></a>
+
+Ordinal numbers are tagged <B>ADJ</B>. +AREST may also be tagged
+<B>ADVS^T</B> when used as a <a href="#temporal">temporal adverb</a>.
+
+<blockquote>
+<PRE>
+(NP-ACC (D^A +tone) (ADJS^A +arestan) (N^A fisc))
+
+(NP-DAT (D^D +dam) (ADJ^D +triddan) (N^D d+age))
+
+(ADVP-TMP (ADVS^T +arest))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="o+tre">
+<h2>O+TRE</h2></a>
+
+Like <a href="#possessive_pronouns">the possessive pronouns URE/EOWRE</a>
+the form O+TRE of the adjective O+TER is ambiguous with feminine singulars 
+because of the possibility of simplification of -RR-. It is therefore taken as
+agreeing with acc/gen/dat, but is not sufficient to disambiguate among
+these cases.
+
+<PRE>
+(NP-ACC (ADJ^A o+tre) (ADJ^A halige) (N^A gewrito)) <-- unambiguous accusative because of HALIGE
+
+(NP-ACC (Q^A sume) (ADJ^A o+tre) (N^A trymminge))
+
+(NP (ADJ o+dre) (N stowe))  <-- both O+DRE and STOWE are acc/gen/dat ambiguous
+
+(NP (ADJ o+tre) (N lare)
+
+</PRE>
+           
+<p><br>
+
+<a name="micel_lytel_adj">
+<h2>Adjectival use of quantifiers (MICEL and LYTEL)</h2></a>
+
+MICEL and LYTEL and their comparative forms are always tagged as <a
+href="#micel_lytel_q">quantifiers</a> even when they are clearly adjectival.
+
+<blockquote>
+<PRE>
+(NP-ACC (Q^A micel) (N^A fyr))
+
+(NP-NOM (PRO$ his) (Q^N micele) (N^N mod))
+
+(NP-ACC (QR^A l+assan) (N^A had))
+
+(NP-NOM-PRN (D^N se) (QR^N mara) (N^N bisceop))
+
+</PRE>
+</blockquote>
+
+<IMG SRC="bullets_ball3.gif"> Note that this is slightly different from the
+<a href="pos-adj-adv.htm#much_more_most_less_least">PPCME2</a> where in
+some cases, notably following a determiner and in copular constructions,
+these words are tagged as adjectives.
+
+<p><br><br>
+
+<a name="neah_adj">
+<h2>NEAH (adjective)</h2></a>
+
+NEAH is only tagged <B>ADJ</B> when it is overtly inflected or clearly part
+of a noun phrase. In all other cases it is tagged as an <a
+href="#neah">adverb</a>. Thus most cases of NEAH will be tagged <B>ADV</B>,
+even those in which although it is not overtly inflected it might be taken
+as agreeing with a masculine or neuter singular noun.
+
+<blockquote>
+<PRE>
+(NP-GEN (Q^G sumre) (ADJ^G neah) (N^G cyrican))
+
+(NP-DAT (D^D +tam) (ADJ^D neah) (N^D wuda))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="swelc">
+<h2>SWELC and +TYLLIC</h2></a>
+
+SWELC and +TYLLIC are tagged as adjectives. SWELCE may also be an <a
+href="#adverbs">adverb</a> or <a href="#prepositions">preposition</a>.
+
+<blockquote>
+<PRE>
+(ADJP-NOM-PRD (ADJ^N swylc))
+
+(NP-DAT (ADJ^D swylcum) (N^D frofre))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="self">
+<h2>SELF</h2></a>
+
+Forms of SELF are always tagged as adjectives.
+
+<blockquote>
+<PRE>
+(NP-NOM (PRO^N he)
+	(ADJP-NOM (ADJ^N sylf)))
+
+(NP-DAT-RFL (PRO^D us) 
+	    (ADJP-DAT (ADJ^D sylfum)))
+
+(ADJP-NOM (ADJ^N sylf))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="wintre">
+<h2>NUM + WINTRE (adjective)</h2></a>
+
+Adjectives ending in WINTRE (ANWINTRE, TWELFWINTRE) meaning <I>x years
+old,</I> are tagged <B>ADJ</B> when written as single words. When the
+numbers are written separately, WINTRE is still tagged <B>ADJ</B> and the
+other parts of the phrase are tagged literally.
+
+<blockquote>
+<PRE>
+(ADJ^N twelfwintre)
+
+(ADJP-NOM (NUM xviii) (ADJ^N wintre))
+
+(ADJP-NOM (NUM fif) (CONJ &) (ADJ^N sixtigwintre))
+
+</PRE>
+</blockquote>
+
+<P>
+<hr>
+<BR>
+
+<a name="quantifiers">
+<H1>Quantifiers (Q)</H1></a>
+<p>
+
+<DL>
+<DT><a href="#wh-indefinites">Wh-indefinites</a>
+<DT><a href="#quantifier+noun">Quantifier plus noun</a>
+<DT><a href="#negative_quantifiers">Negative quantifiers</a>
+<DT><a href="#either_neither">+AG+TER, NA+TOR (quantifiers)</a>
+<DT><a href="#micel_lytel_q">MICEL and LYTEL</a>
+<DT><a href="#undeclined_quantifiers">Undeclinable quantifiers FELA, LYT,
+MA, L+AS</a>
+<DT><a href="#quantifiers_used_adverbially">Quantifiers used adverbially</a>
+<DT><a href="#eall">Uninflected EALL</a>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<P><BR>
+
+<PRE>
+
+         Q         Positive quantifier
+         QR        Comparative quantifier
+         QS        Superlative quantifier
+         NEG+Q     Negative quantifier
+
+</PRE>
+
+<p><br>
+
+With two exceptions, the words on the following list are tagged Q
+or NEG+Q if negative, in all functions (modifying, abosolute, adverbial,
+etc.). The exceptions are the <a href="#wh-indefinites">wh-indefinites</a>
+(HWA, HWILC, HW+A+TER etc.) which are also tagged as <a
+href="#Wh_words">wh-words</a> and <a href="#either_neither">+AG+TER,
+NA+TOR</a> which are also tagged as <a
+href="#coordinating_conjunctions">conjunctions</a>.
+
+<BLOCKQUOTE>
+AWIHT/NAWIHT (AHT/NAHT), +ALC, +ANIG/N+ANIG, BEGEN, BUTU, EALL/NEALLE,
+FEAWE, FELA, HWA (and derivatives +AGHWA, GEHWA, etc.), HW+A+TER (and
+derivatives including AG+TER/NA+TOR), HWILC (and derivatives GEHWILC,
+etc.), HWON (and derivatives LYTHWON, NATESHWON), LYT, LYTEL/UNLYTEL,
+MANIG, MICEL, SUM
+</BLOCKQUOTE>
+
+The comparative quantifiers are L+AS, MA, MARE, L+ASSE. L+AS and MA do not
+inflect and are always tagged <b>QR</b>. MARE and L+ASSE inflect according
+to the weak pattern and so are labelled for case when appropriate according
+to the <a href="#case">rules</a>.
+
+<blockquote>
+<PRE>
+(QR ma) 
+
+(QR l+as)
+
+(NP-ACC (QR^A mare))
+
+(NP-ACC (QR^A maran) (N^A edlean))
+
+(NP (QR maran) (N mihte)
+
+(NP-ACC (QR^A l+assan) (N^A had))
+
+</PRE>
+</blockquote>
+
+The superlative quantifiers are L+AST, M+AST. When used adverbially they do
+not inflect and are always labelled <b>QS</b>. When modifying nounds they inflect,
+usually according to the weak pattern and are labelled for case when
+appropriate according to the <a href="#case">rules</a>.
+
+<blockquote>
+<PRE>
+(QS l+ast)
+
+(QS m+ast)
+
+(QP-NOM (QS m+ast) (Q^N ealle))  <-- adverbial, modifying quantifier
+
+(NP-NOM (D^N seo) (QS^N m+aste) (N^N m+aniu))
+
+(NP-ACC (D^A +tone) (QS^A m+astan) (N^A d+al))
+
+(NP-DAT (D^D +tysum) (QS^D l+astum))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="wh-indefinites">
+<h2>Wh-indefinites</h2></a>
+
+Note that the wh-words (HWA, HWILC, etc.) are also used as <a
+href="#Wh_words">wh-words</a> in questions, where they are not tagged
+<B>Q</B>, but <B>WPRO, WADJ</B>, etc.
+
+<blockquote>
+<PRE>
+Indefinite        Wh-word
+
+(Q^N hwa)         (WPRO^N hwa)
+(Q^A hwilcne)     (WADJ^N hwilcne)
+etc.
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="quantifier+noun">
+<h2>Quantifier plus noun</h2></a>
+
+A quantifier + noun combination, e.g., ANI+TING is tagged Q+N with case if
+appropriate. See also <a href="#negative_quantifiers">Negative
+quantifiers</a>. 
+
+<blockquote>
+<pre>
+(Q+N^A ani+ting)
+
+</pre>
+</blockquote>
+
+<p><br>
+
+<a name="negative_quantifiers">
+<h2>Negative quantifiers</h2></a>
+
+Negative quantifiers are tagged NEG+Q with case if appropriate.
+
+<blockquote>
+<PRE>
+(NEG+Q naht)
+
+(NEG+Q^D nahte)
+
+(NEG+Q nateshwon)
+
+(NEG+Q^A n+anigne)
+
+</PRE>
+</blockquote>
+
+There are a small number of cases of negative quantifiers attached to nouns
+<i>nan+ting</i> or other quantifiers (<i>namare</i>). These are tagged
+NEG+Q+N and NEG+Q+Q, with case if appropriate.
+
+<blockquote>
+<pre>
+(NEG+Q+N^N nan+ding)
+
+(NEG+Q+Q^N namare)
+
+</pre>
+</blockquote>
+
+<p><br>
+
+<a name="either_neither">
+<h2>+AG+TER, NA+TOR (quantifiers)</h2></a>
+
++AG+TER and NA+TOR are also used as <a
+href="#coordinating_conjunctions">conjunctions</a>, in which case they are
+tagged <B>CONJ</B> and <B>NEG+CONJ</B>, respectively.
+
+<P><BR><br>
+
+<a name="micel_lytel_q">
+<h2>MICEL and LYTEL</h2></a>
+
+Note especially that (UN)LYTEL and MICEL are consistently tagged Q, even
+when their meaning is more adjectival than quantificational, i.e. when
+LYTEL is better interpreted as <I>small</I> and MICEL as
+<I>great</I>. Distinguishing between the two readings can be quite
+difficult, especially with plural nouns, and we have not attempted to do
+so, despite the fact that it creates infelicitous readings in some cases.
+
+<blockquote>
+<PRE>
+(NP-DAT (D^D +tam) (Q^D mycclan) (N^D gewynne))
+
+(NP-DAT (NUM^D anre) (Q^D lytlan) (N^D byrig))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="undeclined_quantifiers">
+<h2>Undeclinable quantifiers FELA, LYT, MA, L+AS</h2></a>
+
+The undeclinable quantifiers  FELA, LYT, MA, L+AS are never tagged for case.
+
+<blockquote>
+<PRE>
+(Q fela) 
+
+(Q lyt)
+
+(QR ma) 
+
+(QR l+as) 
+
+</PRE>
+</blockquote>
+
+A quantifier used in conjunction with a nom/acc/gen plural ambiguous NP can
+often be taken as either a head with a genitive complement or a modifier of
+a nom/acc head. In these cases we apply the default rule that <a
+href="#undeclined_quantifiers">undeclinable quantifiers</a> (FELA, LYT, MA,
+L+AS) take a genitive complement, while all other quantifiers are taken as
+modifiers. This follows the majority pattern although there are clear
+examples of the other pattern for both types. See <a
+href="#case_with_quantifiers">Case with quantifiers</a>.
+
+<blockquote>
+<PRE>
+(NP (Q fela)
+    (NP-GEN (N^G suna)))
+
+(NP-NOM (Q^N manige) (N^N suna))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="quantifiers_used_adverbially">
+<h2>Quantifiers used adverbially</h2></a>
+
+The quantifiers MICEL, LYTEL, HWON/NATESHWON, MA, L+AS, MARE, L+ASSE,
+M+AST, L+AST, AHT, NAHT, EALL, HW+ATHUGU may be used adverbially. See <a
+href="#case_on_quantifiers"> Case on quantifiers</a>.
+
+<p><br><br>
+
+<a name="eall">
+<h2>Uninflected EALL</h2></a>
+
+When EALL has no overt inflection it is often difficult to distinguish
+floated quantifier from adverbial use. When EALL immediately precedes an NP
+with which it potentially agrees, it is taken as
+part of the NP and is tagged with the same case as the rest of the NP. In
+all other positions it is tagged only <B>Q</B> with no case. This includes
+cases when it follows a NP with which it potentially agrees.
+
+<blockquote>
+<PRE>
+(NP-ACC (Q^A all) (N^A woruld+ding))
+
+(NP-NOM (Q^N eall) 
+	(NP-GEN (D^G +t+as) (N^G cyninges))
+	(N^N r+ad))
+
+(IP-MAT (PP (P +After)
+	    (NP-DAT (D^D +tysum) (N^D worde)))
+	(NP-NOM (PRO^N he))
+	(BEDI wear+d)
+	(QP (Q eall))
+	(VBN geh+aled))
+
+(IP-MAT (CONJ and)
+	(NP-NOM *con*)
+	(VBD ar+arde)
+	(NP-ACC (D^A +t+at) (N^A mynster))
+	(QP (Q eall)) <-- EALL not labelled for case following agreeing noun
+	(PP (P be)
+	    (NP-DAT (NP-GEN (NR^G Maures))
+		    (N^D r+ade))))
+
+(IP-SUB (NP-NOM (NR^N God))
+	(BEPI is)
+	(ADVP-LOC (ADV^L +aghw+ar))
+	(QP (Q eall)))
+
+</PRE>
+</blockquote>
+
+<p><BR>
+<hr>
+<BR>
+
+
+<a name="adverbs">
+<h1>Adverbs (ADV)</h1></a>
+
+
+<DL>
+<DT><a href="#classes_of_adverbs">Classes of adverbs</a>
+<DT><DL>
+    <DT><a href="#locative">Locative adverbs(ADV^L)</a>
+    <DT><a href="#lexical_directional">Directional adverbs (ADV^D)</a>
+    <DT><a href="#temporal">Temporal adverbs (ADV^T)</a>
+    <DT><a href="#other">Other adverbs (ADV)</a>
+    </DL>
+<DT><a href="#negative_adverbs">Negative adverbs</a>
+<DT><a href="#adverbial_quantifiers">Adverbial quantifiers</a>
+<DT><a href="#adv_vs_prep">Adverb vs. preposition</a>
+<DT><a href="#neah">NEAH, GEHENDE, FEOR (adverb)</a>
+<DT><a href="#gelice_adv">GELICE</a>
+<DT><a href="#+arest">+AREST</a>
+<DT><a href="#ofer_to">OFER, TO, FOR</a>
+<DT><a href="#+ta_adverb">+TA (adverb) </a>
+<DT><a href="#home">HAM</a>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><BR>
+
+<PRE>
+
+       ADV       Adverb
+       ADVR      Comparative adverb
+       ADVS      Superlative adverb
+       ADV^T     Temporal adverb
+       ADV^L     Locative adverb
+       ADV^D     Directional adverb
+
+</PRE>
+
+<p><br>
+
+<a name="classes_of_adverbs">
+<h2>Classes of Adverbs</h2></a>
+
+Adverbs are tagged <B>ADV</B>. Four classes of adverbs are distinguished:
+
+<UL>
+<LI><a href="#locative">locative</a> (+T+AR, INNAN, etc.)
+<LI><a href="#lexical_directional">directional</a> (HYDER, HWIDER, etc.)
+<LI><a href="#temporal">temporal</a> (NU, GIET, etc.)
+<LI><a href="#other">other</a>
+</UL>
+
+<p><BR>
+
+<a name="locative">
+<H2>Locative adverbs (ADV^L)</H2></a>
+
+Locative adverbs indicate location. They may also be used to indicate a
+point to or from which the action takes place. (<i>she sat there, she went
+there</i>. We do not distinguish these two uses for adverbs which can be
+used in both ways; all are tagged as locatives (but see <a
+href="#lexical_directional">directional adverbs</a> for adverbs used only
+to indicate direction to/from). The following is a list of the most common
+locative adverbs; the list is not exhaustive.
+
+<BLOCKQUOTE>
++T+AR, BUFAN, GEHENDE, GEHW+AR, HER, INNAN, INNE, NEAH, NOR+T, SU+D, EAST,
+WEST and other compass points, FEOR, UPPE, UTAN, UTE, WI+DINNAN, WI+DUTAN,
+NAHW+AR
+</BLOCKQUOTE>
+
+Note that forms including HW+AR, such as +AGHW+AR, GEHW+AR, are tagged
+<B>ADV</B>, not <B>WADV</B>, when they are used as indefinites, as with all
+<a href="#wh-indefinites">wh-indefinites</a>.
+<P>
+<a href="#negation">Negated forms</a> such as NAHW+AR have a NEG prefix
+<B>NEG+ADV^L</B> in the usual way.
+<P>
+
++T+AR used as a relative pronoun, either alone or in +T+AR +T+AR
+combination is tagged <B>ADV^L</B>.
+
+Some locatives like BEFORAN, B+AFTAN, etc. may also be used <a
+href="#temporal">temporally</a> and labelled <b>ADV^T</b>. When a more
+specific use is not clear, they are just labelled <b>ADV</b>.
+
+<p><BR>
+
+<a name="lexical_directional">
+<H2>Directional adverbs (ADV^D)</H2></a>
+
+This set of adverbs is inherently directional. The list is exhaustive. All
+other adverbs used to indicate the end/start point of an action are
+labelled as <a href="#locative">locatives</a>.
+
+<BLOCKQUOTE>
++AGHWANON, +AGHWIDER, -B+AC(LING), FEOR, FEORRAN, GEHWANON, GEHWIDER, HAM,
+HEONAN, HIDER, -LANG(ES), NEAN, NOR+TAN, SU+TAN, EASTAN, WESTAN, and other
+compass points in -AN, +TANON, +TIDER, -RIHT(E), -WEARD(ES)
+</BLOCKQUOTE>
+
+Any word ending in -WEARD(ES) (apart from prepositional use) is tagged as an
+adverb. This includes HAMWEARD(ES). FEOR is included as "place to which"
+following Campbell. Note that NEAH, on the other hand, is locative.
+
+<P>
+Indefinite wh-forms like GEHWIDER are tagged <B>ADV</B> not <B>WADV</B>
+as usual.
+<P>
+Note that +TANON can also be used <a href="#temporal">temporally</a> in
+which case it is tagged <B>ADV^T</B>.
+
+<p><BR>
+
+<a name="temporal">
+<H2>Temporal adverbs (ADV^T)</H2></a>
+
+Temporal adverbs are tagged <B>ADV^T</B>. The class includes adverbs of
+duration, point in time, as well as frequency. Adverbs meaning primarily
+<I>quickly</I> but shading off into <I>right away, immediately</I>, such as
+HRA+DE, are considered members of the <a
+href="#other">other adverbs</a> class and are tagged <B>ADV</B>.
+The following are the most common words tagged as temporal adverbs; the
+list is not exhaustive.
+
+<BLOCKQUOTE>
++AFRE, +AFT(ER), +ANE(S), +AR (+AROR, etc.), +T+ARRIHTE, +TA, +TAGYT,
++TANON, +TONNE, +TRIWA, A, BEFORAN, EALNEG, EFT, GEFYRN, GEO, GYT,
+GYRSTAND+AG, HEONONFOR+D, IU, LANGE, LATE, NU, NUGYT, OFT (OFTOR, etc),
+SI+D+DAN, SIMBLE, SONA, TOD+AG(E), TOMERGEN, TUWA, N+AFRE
+</BLOCKQUOTE>
+
+Note that when +T+ARRIHTE is spelled as two words, it is tagged with the <a
+href="#words_sometimes_separate">PPCME2 numbering system</a>
+
+<blockquote>
+<PRE>
+(ADVP-TMP (ADV^T (ADV^T21 +t+ar) (ADV^T22 rihte)))
+
+</PRE>
+</blockquote>
+
+HEONAN FOR+T and +TANAN FOR+T as two words are treated as two constituents:
+
+<blockquote>
+<PRE>
+(ADVP-TMP (ADV^T heonan))
+(RP for+d)
+
+(ADVP-TMP (ADV^T +tanan))
+(RP for+d)
+
+</PRE>
+</blockquote>
+
+TOD+AG(E), TONIHT, and TOMERGEN(E) written as single words are labelled
+<b>ADV^T</b>. As two words they are prepositional phrases.
+
+<blockquote>
+<PRE>
+(ADVP-TMP (ADV^T tod+ag))
+
+(ADVP-TMP (ADV^T tod+age))
+
+(PP (P to)
+    (NP-ACC (N^A d+ag)))
+
+(PP (P to)
+    (NP-DAT (N^D d+ag)))
+
+(ADVP-TMP (ADV^T tomergen))
+
+(ADVP-TMP (ADV^T tomergene))
+
+(PP (P to)
+    (NP-ACC (N^A mergen)))
+
+(PP (P to)
+    (NP-DAT (N^D mergene)))
+
+</PRE>
+</blockquote>
+
+HWANNE when indefinite is labelled <b>ADV^T</b>, as usual with indefinites.
+
+<p><BR>
+
+<a name="other">
+<H2>Other adverbs (ADV)</H2></a>
+
+All other adverbs, including sentential and manner adverbs, are tagged
+<B>ADV</B>.
+
+<p><BR>
+
+<a name="negative_adverbs">
+<h2>Negative adverbs</h2></a>
+
+Negative adverbs like NA, NAHW+AR, N+AFRE are tagged <B>NEG+ADV</B>
+following general principles for <a href="#negation">negative elements</a>.
+
+<blockquote>
+<PRE>
+(NEG+ADV na)
+
+(NEG+ADV^L nahw+ar)
+
+(NEG+ADV^T n+afre)
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="adverbial_quantifiers">
+<H2>Adverbial quantifiers</H2></a>
+
+Quantifiers used adverbially, whether indeclinable (MA, L+AS, LYT) or case
+forms (MICCLUM, EALLES) are always tagged as <a
+href="#quantifiers">quantifiers</a> (<B>Q</B>). The inflected forms are
+also labelled for <a href="#case_on_quantifiers">case</a>.
+
+<p><BR>
+
+<a name="adv_vs_prep">
+<H2>Adverb vs. preposition</H2></a>
+
+Many words function as both adverbs and <a
+href="#prepositions">prepositions</a>. Such words are always tagged
+<b>P</b> with a complement and <b>ADV</b> or if they are on the <a
+href="#adverbial_particles">adverbial particles</a> list <b>RP/RPX</b>
+without. A preposition without a complement is tagged as P rather than ADV
+or RP/RPX when the complement has been elided.
+
+<p><BR>
+
+<a name="neah">
+<H2>NEAH, GEHENDE, FEOR (adverb)</H2></a>
+
+Although NEAH, GEHENDE, and FEOR act in some ways like prepositions in that
+they appear to take dative complements, they are also modified by such
+adverbs as SWA, SWI+DE, etc. in a non-prepositional way. We have therefore
+tagged these three words as <a href="#locative">locative adverbs</a> when
+they do not appear as part of an NP or are not overtly inflected (in which
+case they are tagged as <a href="#neah_adj">adjectives</a>).  The default
+tagging for cases where the expected inflection is zero is to take them as
+adverbs unless they occur within an NP. This includes the copular
+case. NEAN and FEORRAN are directional, while NEAH/NEAN <I>nearly</I> is
+simply labelled <b>ADV</b>.
+
+<blockquote>
+<PRE>
+(ADVP-LOC (ADV^L neah))
+
+(ADVP-LOC (ADV^L gehende))
+
+(ADVP-LOC (ADV^L feor))
+
+(ADVP (ADV neah)) <-- <i>nearly</i>
+
+(ADVP-DIR (ADV^D nean))
+
+(ADVP-DIR (ADV^D feorran))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="gelice_adv">
+<H2>GELICE</H2></a>
+
+GELICE is normally an adverb (or an inflected adjective), but it occurs in
+the subordinating construction "GELICE &" three times in Orosius and once
+in the Vercelli Homilies, where GELICE is tagged as a <a
+href="#gelice_prep">preposition</a> to make the subordinating nature of the
+construction clear.
+
+<p><BR>
+
+<a name="+arest">
+<H2>+AREST</H2></a>
+
++AREST is tagged <B>ADJS</B> when used as an <a
+href="#ordinal_numbers">ordinal number</a> and <B>ADVS^T</B> when used as
+a <a href="#temporal">temporal adverb</a>.
+
+<blockquote>
+<PRE>
+(NP-NOM (D^N +d+at) (ADJS^N +areste) (N^N godweb))
+
+(NP-NOM (D^N +da) (ADJS^N +arestan) (N^N men))
+
+(ADVP-TMP (ADV^T +arest))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="ofer_to">
+<H2>OFER, TO, FOR</H2></a>
+
+OFER, TO, and FOR when they mean <I>too, very</I> in combination with
+adjectives or adverbs are labelled <B>ADV</B>.
+
+<blockquote>
+<PRE>
+(ADJP-NOM (ADV ofer) (ADJ^N f+at))
+
+(ADVP-TMP (ADV to) (ADV^T lange))
+
+(ADJP-NOM (ADV to) (ADJ^N god))
+
+(ADVP (ADV for) (ADV wel))
+
+(ADVP-TMP (ADV for) (ADV^T oft))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="+ta_adverb">
+<H2>+TA</H2></a>
+
++TA can be ambiguous between an adverb, <a
+href="#prepositions">preposition</a> and a <a
+href="#determiners">determiner</a>. See <a href="#+ta">Disambiguating
++TA</a> for the algorithm used to distinguish the cases.
+
+<p><BR>
+
+<a name="home">
+<H2>HAM</H2></a>
+
+HAM is tagged as an adverb, virtually always <a
+href="#lexical_directional">directional</a>, but occasionally <a
+href="#locative">locative</a>. 
+
+<blockquote>
+<PRE>
+(ADVP-DIR (ADV^D ham))
+
+(ADVP-LOC (ADV^L ham))
+
+</PRE>
+</blockquote>
+
+<p>
+<BR><BR>
+<hr>
+<BR>
+
+
+<a name="prepositions">
+<H1>Prepositions (P)</H1></a>
+
+<DL>
+<DT><a href="#prep_rpronouns">Prepositions with R-pronouns</A>
+<DT><a href="#for+ti_for+tan_etc">Prepositions with demonstratives
+(FOR+TI, FOR+TAN, etc.)</a>
+<DT><a href="#prepositions_and_particles">Prepositions and
+particles</a>
+<DT><a href="#prepositions_taking_clauses">Prepositions taking clausal
+complements</a> 
+<DT> <DL>
+     <DT><a href="#swaswa_etc">Modified prepositions (SWA SWA, +TA +TA
+     etc.)</a>
+     </DL>
+<DT><a href="#swa_prep">SWA (preposition)</a>
+<DT><a href="#+tonne">+TONNE</a>
+<DT><a href="#weard">TO/etc....WEARD, BE...TWEONUM</a>
+<DT><a href="#+ty_las_+te">+TY L+AS (+TE)</a>
+<DT><a href="#+teah+te_etc">+TEAH+TE, O+T+TE etc.</a>
+<DT><a href="#to_middes_etc">TO MIDDES, BE SU+TAN, etc.</a>
+<DT><a href="#sam_sam">SAM ... SAM</a>
+<DT><a href="#buton">BUTON</a>
+<DT><a href="#gelice_prep">GELICE (preposition)</a>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><BR>
+
+Prepositions are tagged <B>P</B> and always have a complement. A potential
+preposition with no complement is labelled as an <a
+href="#adverbs">adverb</a> or an <a href="#adverbial_particles">adverbial
+particle</a>.
+
+<p><BR>
+
+<a name="prep_rpronouns">
+<H2>Prepositions with R-pronouns</H2></A>
+
+Prepositions cliticized to R-pronouns are labelled <B>ADV+P</B>.
+
+<blockquote>
+<PRE>
+(PP (ADV+P +t+arinne))
+
+(PP (ADV+P t+arbinnan))
+
+(PP (ADV+P +t+aron))
+
+(PP (ADV+P +t+ar+at))
+
+</PRE>
+</blockquote>
+
+Wh-adverbs cliticized to prepositions are treated the same way.
+
+<blockquote>
+<pre>
+(WADV+P (WADV+P hw+arto))
+
+</pre>
+</blockquote>
+
+When separated they are tagged:
+
+<blockquote>
+<PRE>
+(PP (ADVP-LOC (ADV^L +t+ar))
+    (P inne))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="for+ti_for+tan_etc">
+<H2>Prepositions with demonstratives (FOR+TI, FOR+TAN, etc.)</H2></a>
+
+A preposition may be followed by a demonstrative (FOR +TI, FOR +TAN, FOR
++TAT, IN +TAT, WI+T +TAN, etc.) either absolutely, or followed by a
+clause. In all cases the demonstrative is tagged <B>D</B> plus case. If the
+preposition and demonstrative are cliticized, the unit is tagged <B>P</B>
+if it introduces a clause, otherwise <B>ADV</B>. Occasional cases of
+cliticized preposition and demonstrative with compositional meaning are
+separated and parsed as PPs. A comment is included to mark the change.
+
+<blockquote>
+<PRE>
+(CP-ADV (P for) (D^I +ty)
+	(C 0)
+	(IP-SUB ...))
+
+(ADVP (ADV for+dy))            <-- <i>therefore</i>
+
+(PP (P $o+d)                   <-- <i>until that</i>
+    (NP-ACC (D^A $+t+at))
+    (CODE &lt;TEXT:o+d+t+at&gt;))
+
+(PP (P $+ar)                   <-- <i>before that</i>
+    (NP-DAT (D^I $+tan))
+    (CODE &lt;TEXT:+ar+tan&gt;))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="prepositions_and_particles">
+<H2>Prepositions and particles</H2></a>
+
+When one of the list of <A HREF="#adverbial_particles">adverbial
+particles</A> precedes a preposition immediately, it is tagged as a
+particle.
+
+<blockquote>
+<PRE>
+(PP (RP up) (P on)
+    (NP-DAT (D^D +tam) (N^D w+atere)))
+
+(PP (RP ongean) (P to)
+    (NP-DAT (PRO$ his) (ADJ^D ealdan) (N^D lareowe)))
+
+(PP (RP ut) (P of)
+    (NP-DAT (D^D +tam) (N^D temple)))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="prepositions_taking_clauses">
+<H2>Prepositions taking clausal complements</H2></a>
+
+Prepositions take a clausal complements.
+
+<blockquote>
+<PRE>
+(CP-ADV (P +teah)
+	(C +te)
+	(IP-SUB ...))
+
+(CP-ADV (P gif)
+	(C 0)
+	(IP-SUB ...))
+
+(CP-ADV (P for+dan)
+	(C +te)
+	(IP-SUB ...))
+
+(CP-ADV (P swa)
+	(C +t+at)
+	(IP-SUB ...))
+
+(CP-ADV (P +ar) (D^I +tan)
+	(C +te)
+	(IP-SUB ...))
+
+</PRE>
+</blockquote>
+
+Note that GIF is tagged <B>P</B> when introducing an adverbial clause,
+but <B>C</B> when <a href="#complementizer_gif">introducing an indirect
+question</a>.
+
+<p><BR>
+
+<a name="swaswa_etc">
+<H2>Modified prepositions (SWA SWA, +TA +TA, etc.)</H2></a>
+
+Modifying adverbs such as SWA, EALL, +TA, etc., which commonly appear
+before prepositions introducing adverbial clauses, can also occur written
+together with the preposition, SWASWA, EALLSWA, +TA+TA. In these cases the
+whole unit is labelled <B>P</B>.
+
+<blockquote>
+<PRE>
+(PP (ADV swa) (P swa)
+    (CP-CMP ...))
+
+(CP-ADV (ADV^T +ta) (P +ta)
+	(C 0)
+	(IP-SUB ...))
+
+(PP (P swaswa)
+    (CP-CMP ...))
+
+(CP-ADV (P +ta+ta)
+	(C 0)
+	(IP-SUB ...))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="swa_prep">
+<h2>SWA (preposition)</h2></a>
+
+SWA introduces various kinds of adverbial and comparative clauses. It is
+labelled as a preposition in all cases except as the second SWA in <a
+href="YcoeRef.htm#free_relatives">free relatives</a> of the SWA
+HW- SWA type and some kinds of <a
+href="YcoeRef.htm#corelative_comparison">corelative
+comparison</a> where it is treated as the complementizer. SWA is also
+used as an <a href="#other">adverb</a>.
+
+<blockquote>
+<PRE>
+(PP (P swa)
+    (CP-CMP ...))
+
+(CP-ADV (P swa)
+	(C +t+at)
+	(IP-SUB ...))
+
+(ADVP (ADV swa))
+
+(CP-FRL (WNP-ACC (ADV swa) (WPRO^A hw+at))
+	(C swa)
+	(IP-SUB ...))
+
+</PRE>
+
+</blockquote>
+
+<p><br>
+
+<a name="+tonne">
+<h2>+TONNE</h2></a>
+
++TONNE meaning <I>when</I> or introducing comparative clauses is tagged
+<B>P</B>
+
+<p><BR><br>
+
+<a name="weard">
+<H2>TO/etc...WEARD, BE...TWEONUM</H2></a>
+
+When WEARD and TWEONUM are separated from their introductory prepositions
+(TO/WI+T/etc. with WEARD(ES) and BE with TWEONUM), both parts are tagged <B>P</B>.
+Together the whole unit is tagged <B>P</B>. 
+
+<blockquote>
+<PRE>
+(PP (P wi+d)
+    (PP (NR Rome)
+	(P weard)))
+
+(PP (P toweard)
+    (NP-DAT (D^D +t+am) (N^D feo)))
+
+(PP (P be)
+    (PP (NP-DAT (PRO^D him))
+        (P tweonum)))
+
+(PP (P betweonum)
+    (NP-DAT (PRO^D him)))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="+ty_las_+te">
+<H2>+TY/+TE L+AS (+TE)</H2></a>
+
++TY/+TE L+AS (+TE) <I>unless</I> introducing a subordinate clause is
+treated parallel to <a href="#for+ti_for+tan_etc">prepositions with
+demonstratives</a>. +TYL+AS written as one word is tagged <b>P</b>, while
++TYL+AS+TE written as a single word is split to allow tagging of +TE as
+<b>C</b>. A comment is included to indicate the separation (see <a
+href="#word_division">Word division</a>).
+
+<blockquote>
+<PRE>
+(CP-ADV (D^I +ty) (P l+as)
+	(C +te)
+	(IP-SUB ...))
+
+(CP-ADV (P +tyl+as)
+	(C +te)
+	(IP-SUB ...))
+
+(CP-ADV (P $+tyl+as)
+	(C $+te)
+        (CODE &lt;TEXT:+tyl+as+te&gt;)
+	(IP-SUB ...))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="+teah+te_etc">
+<H2>+TEAH+TE, O+T+TE etc.</H2></a>   
+
+One-word combinations of a subordinating conjunction and +TE
+introducing a subordinate clause, such as +TEAH+TE <I>although</I>, O+T+TE
+<I>until</I> are separated and the two constituents tagged in the
+usual way. A comment is included to indicate the separation.
+
+<blockquote>
+<PRE>
+(CP-ADV (P $+teah)
+	(C $+te)
+        (CODE &lt;TEXT:+teah+te&gt;)
+	(IP-SUB ...))
+
+(CP-ADV (P $o+t)
+	(C $+te)
+        (CODE &lt;TEXT:o+t+te&gt;)
+	(IP-SUB ...))
+
+</PRE>
+</blockquote>
+
+Notice that this policy does not apply to <a
+href="#complementizer_that">+T+ATTE</a>, which is always tagged <b>C</b> in
+its entirety.
+
+<p><BR><br>
+
+<a name="to_middes_etc"><H2>TO MIDDES, BE SU+TAN, etc.</H2></a>
+
+When TOMIDDES, BESU+TAN, etc. are written as single words, they are tagged
+as prepositions when they take a complement and as <a
+href="#adverbs">adverbs</a> when used absolutely. When written separately
+they are tagged literally according to their constituent parts, whether
+used absolutely or taking a complement.
+
+<blockquote>
+<PRE>
+(CP-ADV (P mid) (D^I +ty)
+	(C +te)
+	(IP-SUB ...))
+
+(PP (P prep) (ADV adverb)
+    (NP ...))
+
+(PP (P to) (N^G middes)
+    (NP ...))
+
+(PP (P be) (ADV su+tan)
+    (NP-DAT (N^D ...)))
+
+(PP (P wi+t) (ADV nor+tan)
+    (NP-ACC (N^A ...)))
+
+(PP (P Be) (ADV su+tan)
+    (NP-DAT (D^D +t+am) (N^D mu+tan)))
+
+(PP (P besu+tan)
+    (NP-DAT (D^D +t+am) (N^D mu+tan)))
+
+(PP (P be) (ADV su+tan)
+    (NP-DAT (D^D +t+am) (N^D mu+tan)))
+
+(ADVP-DIR (ADV^D besu+tan))      <-- <i> to the south</i>
+
+(PP (P be) 
+    (ADVP (ADV su+tan)))
+
+</PRE>
+</blockquote>
+
+MIDDAN in ON/T0 MIDDAN is taken as MIDDUM with masc/neuter nouns
+and included in the NP. With feminines it is labelled <b>ADJ</b> and
+treated as part of a compound preposition, whether it precedes or follows
+the NP.
+
+<blockquote>
+<pre>
+(PP (P to)
+    (NP-DAT (ADJ^D middan) (D^D +tam) (N^D wyrhtum)))
+
+(PP (P to)
+    (NP-DAT (D^D +tam) (N^D feldan) (ADJ^D middan)))
+
+(PP (P on) (ADJ middan)
+          (NP-DAT (D^D +t+are) (N^D s+a)))
+
+(PP (P on)
+          (NP-DAT (D^D +t+are) (N^D s+a))
+          (ADJ middan))
+
+</pre>
+</blockquote>
+
+<p><br>
+
+<a name="sam_sam">
+<H2>SAM ... SAM</H2></a>
+
+SAM ... SAM meaning <I>whether ... or</I> is tagged <B>P</B>.
+
+<pre>
+( (CODE &lt;T06650004000,40&gt;)
+  (CP-QUE (WADVP-1 (WADV Hu))
+          (C 0)
+          (IP-SUB (ADVP *T*-1)
+                  (NP-NOM (Q^N +alc) (N^N wyrd))
+                  (BEPI beo+d)
+                  (ADJP-NOM-PRD (ADJ^N god))
+                  (, ,)
+                  (CP-ADV (P sam)
+			  (C 0)
+			  (IP-SUB (NP-NOM (PRO^N heo))
+				  (NP-DAT (N^D mannum))
+				  (ADJP-NOM-PRD (ADJ^N god))
+				  (VBPS +tince)))
+                  (, ,)
+                  (CP-ADV (P sam)
+			  (C 0) 
+			  (IP-SUB (NP-NOM (PRO^N heo))
+				  (NP-DAT (PRO^D him))
+				  (ADJP-NOM-PRD (ADJ^N yfel))
+				  (VBPS +tince))))
+          (. .)) (ID coboeth,BoHead:40.49))
+
+</pre>
+
+<p><br>
+
+<a name="buton">
+<H2>BUTON</H2></a>
+
+BUTON is tagged <B>P</B>, even when it means <I>but</I> and seems to
+function as a <a href="#coordinating_conjunctions">conjunction</a>. BUTON
+can also function as a <a href="#focus_particles">focus particle</a>.
+
+<p><BR><br>
+
+<a name="gelice_prep">
+<h2>GELICE</h2></a>
+
+GELICE is normally an adverb (or an inflected adjective), but it occurs in
+the subordinating construction "GELICE &" <i>as though</i> three times in
+Orosius and once in the Vercelli Homilies, where GELICE is tagged <B>P</B>
+to make the subordinating nature of the construction clear.
+
+<pre>
+(CP-ADV (P gelice) (CONJ &)
+	(C 0)
+	(IP-SUB ...))
+
+(NODE (CP-ADV (P for) (D^I +ton)
+	      (C +te)
+	      (IP-SUB (NP-NOM (NP-GEN (N^G elpendes))
+			      (N^N hyd))
+		      (MDP wile)
+		      (VB drincan)
+		      (NP (N w+atan))
+		      (, ,)
+		      (CP-ADV (P gelice) (CONJ &)
+			      (C 0) 
+			      (IP-SUB (NP-NOM (N^N spynge))
+				      (VBPI de+d)))))
+      (ID coorosiu,Or_5:7.121.29.2572))
+
+</pre>
+
+<p><br>
+<hr>
+<BR>
+
+<a name="determiners">
+<H1>Determiners (D)</H1></a>
+
+<p>
+<DL>
+<DT><a href="#an">Indefinite AN</a>
+<DT><a href="#+ta">Disambiguating +TA</a>
+<DT><a href="#+t+at">+T+AT</a>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<P><BR>
+
+All forms of SE and +TES are tagged <B>D</B> plus appropriate case tag
+according to the <a href="#case">usual rules</a>. This includes when used
+alone and forms of SE used as relative pronouns.
+
+<blockquote>
+<PRE>
+
+(D^N se)
+
+(D^A +tone)
+
+(D^G +tisses)
+
+(D^D +t+am)
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="an">
+<H2>Indefinite AN</H2></a>
+
+Although AN can sometimes be interpreted as an indefinite determiner, it is
+always tagged as a <a href="#cardinal_numbers"> cardinal number</a>.
+
+<p><BR>
+
+<a name="+ta">
+<H2>Disambiguating +TA</H2></a>
+
+In some cases, +TA is ambiguous between an <a href="#temporal">temporal
+adverb</a>, a <a href="#prepositions">preposition</a>
+introducing a clause, and a determiner. In difficult cases the ambiguity is
+resolved as follows.
+
+<p>
+
+<dl><dt>
+<UL>
+<LI> +TA +TA is always treated as a <a href="#swaswa_etc">preposition</a>
+
+<PRE>
+(CP-ADV (ADV^T +ta) (P +da)
+	(C 0)
+	(IP-SUB (NP-NOM (PRO^N he))
+		(VBD agylte)))
+
+</PRE>
+
+<LI> in balanced +TA... +TA... clauses, +TA is always treated as
+prepositional/adverbial (with the order "when... then..." if ambiguous)
+
+<PRE>
+(NODE (IP-MAT-SPE (CP-ADV-SPE (P +Ta)
+                              (C 0)
+                              (IP-SUB-SPE (NP-NOM (PRO^N hit))
+                                          (BEDI w+as)
+                                          (NP-NOM-PRD (D^N seo) (ADJ^N fifte) (N^N tid)
+                                                      (NP-GEN (D^G +t+are) (N^G nihte)))))
+                  (, ,)
+                  (ADVP-TMP (ADV^T +ta))
+                  (VBDI mynton)
+                  (NP-NOM (PRO^N we))
+                  (NP-RFL (PRO us))
+                  (VB gerestan)
+                  (. ,))
+      (ID coalex,Alex:19.2.215))
+
+</PRE>
+
+<LI> when +TA does not introduce a clause, if a noun of the right case/number
+follows, +TA is tagged as a determiner
+
+<PRE>
+(IP-SUB (NP-NOM (PRO^N he))
+	(VBD worhte)
+	(NP-ACC (D^A +ta) (N^A wundra))
+	(PP (P +turh)
+	    (NP-ACC (PRO^A hi))))
+
+</PRE>
+
+<LI> when an appropriate noun does not follow, +TA is treated as an
+argument if one is required, otherwise as adverbial
+
+<PRE>
+(IP-MAT (CONJ and)
+	(NP-NOM (PRO^N we))
+	(MDPI sceolan)
+	(ADVP (ADV f+astlice))
+	(NP-ACC (D^A +ta))
+	(VB gewri+tan))
+
+(IP-MAT (NP-NOM (PRO^N He))
+	(VBDI genam)
+	(NP-ACC (PRO^A hi))
+	(ADVP-TMP (ADV^T +ta))
+	(ADVP (ADV onsundron)))
+
+</PRE>
+</UL></dl>
+
+<p><br>
+
+<a name="+t+at">
+<H2>+T+AT</H2></a>
+
+Likewise, +T+AT can be ambiguous between a determiner functioning as
+wh-word and a <a href="#complementizers">complementiser</a> in
+relative-clause constructions. By default, +T+AT is treated as a determiner
+in these cases if it matches the antecedent in gender and number, and as a
+complementizer otherwise, except in <a
+href="YcoeRef.htm#rel-clause_glosses">non-restrictive glossing
+relatives</a> where the relative pronoun is invariantly +T+AT regardless of
+the number/gender of the antecedant. In these cases +T+AT is always treated
+as the relative pronoun. In addition +T+AT is always treated as the
+complementizer in <a
+href="YcoeRef.htm#temporal_and_locative_relatives">temporal and locative
+relative clauses</a>.
+
+<blockquote>
+<PRE>
+(C +t+at) <-- complementizer
+
+(D^N +t+at) <-- determiner or relative pronoun
+
+</PRE>
+</blockquote>
+
+<p><BR>
+<hr>
+<BR>
+
+
+<a name="cardinal_numbers">
+<H1>Numbers, cardinal (NUM)</H1></a>
+
+<p>
+<DL>
+<DT><a href="#case_on_numbers">Case on numbers</a>
+<DT><a href="#ana">Weak ANA</a>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<P><BR>
+
+All cardinal numbers except those in <A HREF="#foreign_words">foreign
+language</A> sequences are tagged <B>NUM</B> whether they are written out
+or in number form. Roman numerals are labelled <b>NUM</b> except in
+conjunction with other foreign words. HEALF is a tagged as a number except
+when it means <i>side</i>.
+
+<blockquote>
+<PRE>
+(NP-NOM (NUM^N An) (N^N woruldcynincg))
+
+(NP-NOM (NUM I))
+
+(NUMP (NUM eahta) (CONJ &) (NUM XX))
+
+(NP-ACC (NUM III) (N^A niht))
+
+(NP (FW VII) (FW kalendas) (FW Mai))
+
+(LATIN (FW INTERROGATIO) (FW VII)
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="case_on_numbers">
+<h2>Case on numbers</h2></a>
+
+Numbers up to three are generally inflected, while those over three
+generally are not. Therefore the numbers one, two, and three, are given
+case labels except when part of compound numbers. Numbers over three are
+only labelled for case if they are overtly inflected.
+This includes HUND and +TUSEND.
+
+<blockquote>
+<PRE>
+(NP-NOM (NUM^N An) (N^N woruldcynincg)  <--- inflected numerals
+
+(NP-NOM (PRO^N hi) (Q^N ealle) (NUM^N +try))
+
+(NP-ACC (D^A +disne) (NUM^A enne) (NR^A God))
+
+(NP-DAT (NUM^D twam) (N^D fotum))
+
+(NP-DAT (NUM feower) (N^D fotum))
+
+(NP-DAT (NUMP-DAT (NUM^D +trym) (CONJ and) (NUM^D +drittigum)) <-- inflected compound numeral  
+	(N^D mannum))
+
+(NUMP (NUM twa) (CONJ &) (NUM twentig))  <--- uninflected compound numeral
+
+(NUMP (NUM twa) (CONJ and) (NUM hundseofontig))
+
+(NUMP (NUM nigon) (NUM hund))  
+
+(NP (NUMP (NUM +treo) (NUM hund))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="ana">
+<H2>Weak ANA</H2></a>
+
+ANA, the weak form of AN, is tagged as a <a href="#focus_particles">focus
+particle</a>.
+
+<p><BR>
+<hr>
+<BR>
+
+<a name="Wh_words">
+<H1>Wh-words</H1></a>
+<p>
+<DL>
+<DT><a href="#wh-pronoun">Wh-pronoun (WPRO)</a>
+<DT><a href="#wh-adjective">Wh-adjective (WADJ)</a>
+<DT><a href="#wh-adverb">Wh-adverb (WADV)</a>
+<DT><a href="#whether">HW+A+TER (WQ)</a>
+<DT><a href="#sw+a+ter">SW+A+TER/SWA HW+A+TER (WADJ)</a>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<P><BR>
+
+<PRE>
+
+        WPRO            Wh-pronoun
+        WADJ            Wh-adjective
+        WADV            Wh-adverb
+        WQ              WHETHER (question particle)
+
+</pre>
+
+<p><br>
+
+<a name="wh-pronoun">
+<H2>Wh-pronoun (WPRO)</H2></a>
+
+Forms of HWA heading a wh-NP are labelled WPRO. HWILC and HW+A+DER when it
+means <I>which of two</I> are tagged as <a
+href="#wh-adjective">wh-adjectives</a> in all cases.
+
+<blockquote>
+<PRE>
+(WPRO^N hwa)    (WPRO^N hw+at)
+(WPRO^A hw+ane) (WPRO^A hw+at)
+(WPRO^G hw+as)
+(WPRO^D hw+am)
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="wh-adjective">
+<H2>Wh-adjective (WADJ)</H2></a>
+
+HWILC and HW+A+DER in the meaning <i>which of two</i> are tagged
+<B>WADJ</B> whether they modify a noun or not (as with other
+adjectives). Note that HWILC may also be used as a <a
+href="#wh-indefinites">wh-indefinite</a>, in which case it is tagged
+<b>Q</b> and HW+A+DER is tagged <b>WQ</b> when it introduces a <a
+href="YcoeRef.htm#yesno_whether_questions">yes/no whether question</a>.
+
+<blockquote>
+<PRE>
+(WADJ^N hwilc)
+
+(WADJ^A hwilcne)
+
+(WADJ^N hw+a+ter)
+
+(WADJ^A hw+a+ter) 
+
+(WADJ^A hw+a+derne)
+
+(WADJP-NOM (WADJ^N hwilc))
+
+(WNP-NOM (WADJ^N hwilc))
+
+(WNP-ACC (WADJ^A hwilce) (N^A mihte))
+
+(WNP-DAT (WADJ^D hwylcere) (N^D m+ag+de))
+
+</PRE>
+</blockquote>
+
+<IMG SRC="bullets_ball3.gif"> WHICH is tagged as a wh-determiner
+(<B>WD</B>) in the <a href="pos-other.htm#wh-determiner">PPCME2</a>.
+
+<p><br>
+
+<a name="wh-adverb">
+<H2>Wh-adverbs (WADV)</H2></a>
+
+Wh-adverbs (HU, HWONNE, HW+AR and HWI) are tagged <B>WADV</B>. Note that
++TA and +TONNE are tagged <B>P</B> when introducing a subordinate clause
+(see <a href="#prepositions">Prepositions</a>) and +T+AR is always tagged
+as an <a href="#locative">locative adverb</a> even when acting as a
+relative pronoun. HW+AR and HWONNE may also be used as a wh-indefinites in
+which case they are tagged <b>ADV^L</b> and <b>ADV^T</b> respectively.
+
+<blockquote>
+<PRE>
+(WADVP-LOC (WADV^L hw+ar))
+
+(WADVP (WADV hu))
+
+(WADVP-TMP (WADV^T hwonne))
+
+(WADVP (WADV hwi))
+
+(ADVP-LOC (ADV^L hw+ar))  <-- "anywhere"
+
+(ADVP-TMP (ADV^T hwonne)) <-- "sometime" 
+
+</PRE>
+</blockquote>
+
+When attached to a preposition the unit is tagged WADV+P (one eg.)
+
+<blockquote>
+<pre>
+(WADV+P (WADV+P hw+arto))
+
+</pre>
+</blockquote>
+
+<p><br>
+
+<a name="whether">
+<H2>HW+A+TER (WQ)</H2></a>
+
+When introducing a <a
+href="YcoeRef.htm#yesno_whether_questions">WHETHER question</a>,
+HW+A+DER is tagged <B>WQ</B>; when it acts as a wh-adjective meaning
+<I>which of two</I> it is tagged as a <a
+href="#wh-adjective">wh-adjective</a> <B>WADJ</B>. Note that GIF (=whether)
+in indirect questions is tagged as a <a
+href="#complementizer_gif">complementizer</a>.
+
+<blockquote>
+<PRE>
+(WQ hw+a+ter)
+
+(WADJ^N hw+a+ter)
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="sw+a+ter">
+<H2>SW+A+TER/SWA HW+A+TER (WADJ)</H2></a>
+
+SW+A+TER, the contracted form of SWA HW+A+TER, is labelled <b>WADJ</b> like
+<a href="#wh-adjective">HW+A+TER</a>.
+
+<blockquote>
+<PRE>
+(WADJ^N sw+a+ter)
+
+(WADJP-NOM (ADV swa) (WADJ^N hw+a+ter))
+
+</PRE>
+</blockquote>
+
+<p>
+<hr>
+<BR>
+
+<a name="verbs">
+<H1>Verbs</H1></a>
+
+
+<p>
+
+<DL>
+<DT><a href="#verb_categories">Categories of Verbs</a>
+<DT> <DL>
+     <DT><a href="#modals">Modal verbs (MD, etc.)</a>
+     <DT><a href="#auxiliaries">Auxiliary verbs (AX, etc.)</a>
+     <DT><a href="#have_and_be">HAVE and BE (HV, BE, etc.)</a>
+     <DT><a href="#utan">UTAN</a>
+     <DT><a href="#lexical_verbs">Lexical verbs (VB, etc.)</a>
+        </DL>
+<DT><a href="#particle_verbs">Particle verbs (RP+VB, etc.)</a>
+<DT><a href="#mood">Mood (indicative, subjunctive, imperative)</a>
+<DT><a href="#participles">Participles (VAG, VBN, etc.)</a>
+<DT><a href="#infinitives">Infinitives (VB, etc.)</a>
+<DT><DL>
+    <DT><a href="#inflected_infinitives">Inflected infinitives (VB^D,
+    etc.)</a> 
+    <DT><a href="#infinitive_markers">Infinitive marker TO (TO)</a>
+    </DL>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><BR>
+
+<a name="verb_categories">
+<H2>Categories of Verbs</H2></a>
+
+<p>
+
+<a name="modals">
+<H2>Modal verbs (MD, etc.)</H2></a>
+
+<PRE>
+
+        MD          infinitive
+        MDI         imperative
+        MDPI        present indicative
+        MDPS        present subjunctive
+        MDP         present tense (ambiguous subjunctive/indicative)
+        MDDI        past indicative
+        MDDS        past subjunctive
+        MDD         past tense (ambiguous subjunctive/indicative)
+
+</PRE>
+
+The following verbs are always tagged as modals, whether used with an
+infinitive or as main verbs.
+
+<BLOCKQUOTE>
+CUNNAN, DURRAN, MAGAN, MOTAN, SCULAN, +TURFAN, WILLAN, 
+</BLOCKQUOTE>
+
+<PRE>
+( (IP-MAT (NEG+CONJ ne)
+          (NP-DAT (PRO^D him))
+          (NP-NOM (NEG+Q^N nan) (N^N +ting))
+          (VB +atfleon)
+          (NEG ne)
+          (MDPI m+ag)  <-- modal use 
+          (. .)) (ID coaelive,+ALS_[Christmas]:43.31))
+
+( (CODE &lt;T03020003200,72&gt;)
+  (IP-MAT (NP-GEN (PRO^G His))
+          (NP-NOM (PRO^N we))
+          (MDPI magon)
+          (VB wundrian)
+          (. ,)) (ID coaelive,+ALS_[Christmas]:72.58))
+
+( (IP-MAT-SPE (CONJ and)
+              (NP-NOM (PRO^N hi))
+              (NP-ACC (PRO$ heore) (ADJ^A diglan) (N^A d+ada))
+              (NP (PRO eow))
+              (VB bedyrnan)
+              (NEG ne)
+              (MDDI mihton)
+              (. .))  (ID coaelive,+ALS_[Vincent]:137.7893))
+
+(NODE (IP-MAT-SPE (NEG Ne)
+                  (MDPI cann)  <-- main verb use of modal
+                  (NP-NOM (PRO^N ic))
+                  (NP (PRO eow))
+                  (PP (P to)
+                      (NP-DAT (ADJ^D so+tan))))
+      (ID colwstan1,+ALet_2_[Wulfstan_1]:142.197))
+
+(NODE (IP-MAT (NP-ACC (Q^A Sume) (N^A +ting))
+              (NP-NOM (PRO^N heo))
+              (MDP wyle)
+              (. ,))
+      (ID coaelive,+ALS_[Christmas]:225.180))
+
+( (IP-MAT (CONJ ac)
+          (NP-NOM (PRO^N he))
+          (NEG ne)
+          (MDD cu+te)
+          (NP (PRO$ his) (N geleafan))
+          (. ,))
+      (ID coaelive,+ALS_[Basil]:295.646))
+
+</PRE>
+
+The verb AGAN, however, is only tagged as a modal when it is used with a TO
+infinitive, meaning <I>have to</I> or <I>ought to</I>.
+
+<blockquote>
+<PRE>
+(NODE (IP-SUB (NP-NOM (PRO^N he))
+              (MDD ahte)
+              (IP-INF (NP-ACC *T*-4)
+                      (TO to)
+                      (HV^D habbanne)
+                      (PP (P to)
+                          (NP-DAT (NUM xii) (N^D mon+tum)))
+                      (PP (P of)
+                          (NP-DAT (D^D +d+are) (N^D scire)))))
+      (ID cochronE,ChronE_[Plummer]:1085.26.2811)) 
+
+(NODE (IP-SUB (NP-NOM (N^N sacerd))
+              (MDPI ah)
+              (IP-INF (NP-ACC *T*-2)
+                      (TO to)
+                      (VB^D donne))
+              (NP-DAT-ADT (N^D folce))
+              (PP (P to)
+                  (NP (N +tearfe)))
+              (, ,)
+              (CP-ADV (P gif)
+                      (C 0)
+                      (IP-SUB (NP-NOM (PRO^N he))
+                              (NP-DAT (PRO$ his) (NR^D Drihtne))
+                              (VBPI gecwem+d)
+                              (PP (P mid)
+                                  (NP-DAT (N^D rihte))))))
+      (ID coinspolX,WPol_2.1.1_[Jost]:130.180)) 
+
+</PRE>
+</blockquote>
+
+The present forms of SCULAN are distinguished for mood as follows. All
+forms with an -EN ending are labelled subjunctive (MDPS) as well as any
+form with a -Y- base vowel, no matter what the ending. All other forms
+(base vowel -EO-/-O-/-U- and non -EN ending) are labelled indicative
+(MDPI). Note that this approach may overgeneralize the indicative cases
+somewhat as a -U- base vowel is also possible in the subjunctive; that is,
+SCULON/SCULAN/SCULUN while more likely to be indicative, may also be
+subjunctive.
+
+<blockquote>
+<PRE>
+(MDPS scylen)
+
+(MDPS sculen)
+
+(MDPS scylon)
+
+(MDPI sculon)
+
+(MDPI sceolun)
+
+</PRE>
+</blockquote>
+
+
+<IMG SRC="bullets_ball3.gif"> Note that "modal" is a lexical category in
+the YCOE (apart from AGAN), unlike in the <a
+href="pos-verbs.htm#modals_as_main_verbs">PPCME2</a>, where modals used
+independently are tagged as lexical verbs.
+
+<p><BR><br>
+
+<a name="auxiliaries">
+<H2>Auxiliary verbs (AX etc.) </H2></a>
+
+<PRE>
+        AX          infinitive
+        AXI         imperative
+        AXPI        present indicative
+        AXPS        present subjunctive
+        AXP         present tense (ambiguous subjunctive/indicative)
+        AXPH        present tense (ambiguous subjunctive/imperative)
+        AXDI        past indicative
+        AXDS        past subjunctive
+        AXD         past tense (ambiguous subjunctive/indicative)
+        AXG         present participle
+        AXN         past participle
+
+</PRE>
+
+The following verbs may be tagged as auxiliaries.  Unlike the modals, these
+verbs are only tagged AX when used with a bare infinitive, or (?marginally)
+with a participle. When followed by a TO infinitive they are labelled as
+lexical verbs.
+
+<BLOCKQUOTE>
+AGINNAN, ONGINNAN, BEGINNAN, CUMAN, BECUMAN, FERAN, GAN, GEGAN, GEWITAN
+</BLOCKQUOTE>
+
+<PRE>
+
+( (IP-MAT (ADVP-TMP (ADV^T +ta))
+          (AXDI began)
+          (NP-NOM (D^N se) (N^N dema))
+          (ADVP-TMP (ADV^T eft))
+          (NP-ACC (PRO^A hi))
+          (VB herigan)
+          (. ,)) (ID coaelive,+ALS[Forty_Soldiers]:55.2504))
+
+( (CODE &lt;T03190010900,348&gt;)
+  (IP-MAT (NP-NOM (NR^N Hieu))
+          (ADVP-TMP (ADV^T +ta))
+          (AXD eode)
+          (PP (P to)
+              (NP (PRO$ his) (N gereorde)))
+          (VB sittan)
+          (. ,)) (ID coaelive,+ALS_[Book_of_Kings]:348.3924))
+
+( (CODE <T03060003600,118>)
+  (IP-MAT (ADVP-TMP (ADV^T +Ta))
+          (AXDI ongunnon)
+          (NP-NOM (PRO$ heora) (N^N magas))
+          (QP-DAT-ADT (Q^D mycclum))
+          (VB behreowsian)
+          (CP-THT (C +t+at)
+                  (IP-SUB (NP-NOM (PRO^N hi))
+                          (ADVP-TMP (ADV^T +afre))
+                          (NP-ACC (D^A +ta) (N^A martyras))
+                          (VB misl+aran)
+                          (MDDI woldon)))
+          (. ,)) (ID coaelive,+ALS_[Sebastian]:118.1282))
+
+( (CODE <T03080012100,336>)
+  (IP-MAT (ADVP-TMP (ADV^T +Ta))
+          (AXDI com)
+          (NP-NOM (NR^N Gallicanus))
+          (ADVP (ADV eac))
+          (PTP-NOM (PP (P to) 
+                       (NP-DAT (NR^D Gode)))
+                   (VBN^N gebogen))
+          (. ,)) (ID coaelive,+ALS[Agnes]:336.1944))
+
+</PRE>
+
+<p><br>
+
+<a name="utan">
+<h2>Utan (UTP)</h2></a>
+
+UTAN used to introduce imperative or hortatory clauses (<I>let us...</I>),
+is tagged UTP. 
+
+<PRE>
+( (CODE &lt;T03020005700,124&gt;)
+  (IP-MAT (UTP Uton)
+          (ADVP-TMP (ADV^T nu))
+          (VB behealden)
+          (NP-ACC (D^A +ta) (ADJ^A wundorlican) (N^A swyftnysse)
+                  (NP-GEN (D^G +t+are) (N^G sawle)))
+          (. :)) (ID coaelive,+ALS_[Christmas]:124.101))
+
+( (IP-MAT-SPE (CONJ ac)
+              (UTP uton)
+              (ADVP (ADV swa) (ADV +teah))
+              (VB biddan)
+              (NP-ACC (D^A +tas) (N^A bena))
+              (PP (P +at)
+                  (NP-DAT (NR^D Gode)))
+              (. .)) (ID coaelive,+ALS_[Basil]:515.819))
+
+</PRE>
+
+<p><br>
+
+<a name="have_and_be">
+<h2>HAVE and BE (HV, BE, etc.)</h2></a>
+
+<DL>
+<DT> The verb HAVE </DT>
+
+<PRE>
+        HV          infinitive
+        HVI         imperative
+        HVPI        present indicative
+        HVPS        present subjunctive
+        HVP         present tense (ambiguous subjunctive/indicative)
+	HVPH        present tense (ambiguous subjunctive/imperative)
+        HVDI        past indicative
+        HVDS        past subjunctive
+        HVD         past tense (ambiguous subjunctive/indicative)
+        HAG         present participle
+        HVN         past participle
+
+</PRE>
+
+<DT> The verb BE </DT>
+
+<PRE>
+        BE          infinitive
+        BEI         imperative
+        BEPI        present indicative
+        BEPS        present subjunctive
+        BEP         present tense (ambiguous subjunctive/indicative)
+	BEPH        present tense (ambiguous subjunctive/imperative)
+        BEDI        past indicative
+        BEDS        past subjunctive
+        BED         past tense (ambiguous subjunctive/indicative)
+        BAG         present participle
+        BEN         past participle
+
+</PRE>
+</DL>
+
+The forms of BE and HAVE are distinguished from all other verbs, but no
+distinction is made in the tag for auxiliary and main verb use for BE and
+HAVE.
+<P>
+
+
+All forms of BEON, WESAN, and (GE)WEOR+DAN are labelled with <B>BE</B>
+tags regardless of meaning.
+
+<PRE>
+
+( (IP-MAT-SPE (ADJP-NOM-PRD (ADJ^N Wundorlic))
+              (BEPI is)
+              (NP-NOM (NR^N God))
+              (PP (P on)
+                  (NP-DAT (PRO$ his) (N^D halgum)))
+              (. ;)) (ID copreflives,+ALS_[Pref]:19.10))
+
+( (CODE &lt;T03020002000,47&gt;)
+  (IP-MAT (ADVP-TMP (ADV^T Symble))
+          (NP-NOM (PRO^N he))
+          (BEPI bi+d)
+          (VAG gyfende)
+          (. ,)) (ID coaelive,+ALS_[Christmas]:47.33))
+
+( (IP-MAT-SPE (CONJ and)
+              (NP-GEN-1 (D^G +t+as))
+              (NEG ne)
+              (BEPI wur+d)
+              (NP-NOM (NP-GEN *ICH*-1)
+                      (NEG+Q^N nan) (N^N ende))
+              (. .)) (ID coaelive,+ALS_[Sebastian]:77.1255))
+
+( (IP-MAT (NP-NOM-x *exp*)
+          (ADVP-TMP (ADV^T +da))
+          (BEDI gewear+d)      <-- GEWEOR+TAN = <i>happen</i>
+          (NP-DAT (PRO$ his) (N^D +tegnum))
+          (CP-THT-x (C +t+at)
+                    (IP-SUB (NP-NOM (PRO^N hi))
+                            (NP-ACC (PRO^A hine))
+                            (VBDI acwealdon)))
+          (. ,)) (ID coaelive,+ALS_[Book_of_Kings]:456.3996))
+
+</PRE>
+
+<P>
+All forms of HABBAN are tagged <B>HV</B>.
+
+<PRE>
+( (CODE &lt;T03010000800,25&gt;)
+  (IP-MAT (NP-NOM (NUM^N An) (N^N woruldcynincg))
+          (HVPI h+af+d)
+          (NP (NP (Q fela)
+                  (NP-GEN (N^G +tegna)))
+              (CONJP (CONJ and)
+                     (NP-ACC (ADJ^A mislice) (N^A wicneras))))
+          (. ;)) (ID copreflives,+ALS_[Pref]:25.14))
+
+( (CODE &lt;T03020003600,84&gt;)
+  (IP-MAT (NP-NOM (PRO^N We))
+          (HVPI habba+d)
+          (NP (PRO eow))
+          (ADVP-TMP (ADV^T oft))
+          (VBN ges+ad)
+          (NP-ACC (PRO$^A eowerne) (N^A geleafan) 
+                  (PP (P be)
+                      (NP-DAT (D^D +t+are) (ADJ^D halgan) (N^D +drynnysse))))
+          (. ;)) (ID AelfLives,+ALS_[Pref]:25.14))
+
+</PRE>
+
+<IMG SRC="bullets_ball3.gif"> Note that DO is tagged as a lexical verb in
+the YCOE and not given a special tag as in the <a
+href="pos-verbs.htm#main_and_aux_verbs">PPCME2</a>.
+
+<p><BR><br>
+
+<a name="lexical_verbs">
+<h2>Lexical verbs (VB, etc.)</h2></a>
+
+<PRE>
+        VB          infinitive
+        VBI         imperative
+        VBPI        present indicative
+        VBPS        present subjunctive
+        VBP         present tense (ambiguous subjunctive/indicative)
+	VBPH        present tense (ambiguous subjunctive/imperative)
+        VBDI        past indicative
+        VBDS        past subjunctive
+        VBD         past tense (ambiguous subjunctive/indicative)
+        VAG         present participle
+        VBN         past participle
+
+</PRE>
+
+<p>
+All lexical verbs have labels beginning with <B>VB</B>. 
+
+<PRE>
+( (CODE &lt;T03010000100,1&gt;)
+  (IP-MAT (NP-NOM (NR^N +Alfric)) 
+          (VBPI gret)
+          (ADVP (ADV eadmodlice))
+          (NP-ACC (NR^A +A+delwerd) (N^A ealdorman))
+  (ID copreflives,+ALS_[Pref]:1.2))
+
+(NODE (IP-SUB (NP-NOM (PRO^N heo))
+	      (NP-ACC (N^A leahtres)) 
+	      (VBPS forbuge))
+      (ID coaelive,+ALS_[Christmas]:155.123))
+
+( (IP-MAT-SPE (CONJ and)
+              (NP-NOM (PRO^N ic))
+              (VBP singe)
+              (PP (P mid)
+                  (NP-DAT (N^D mode)))
+              (. .)) (ID coaelive,+ALS_[Christmas]:193.153))
+
+( (CODE &lt;T03350007400,264&gt;)
+  (IP-MAT (NP-NOM (D^N +Da) (ADJ^N re+tan) (N^N cwelleras))
+          (ADVP-TMP (ADV^T +ta))
+          (ADVP (ADV ra+te))
+          (ADVP (ADV swa))
+          (VBDI dydon)
+          (. ,)) (ID coaelive,+ALS_[Vincent]:264.7973))
+
+(NODE (IP-SUB (NP-NOM (PRO^N he))
+	      (RP+VBDS underfenge) 
+	      (NP (ADJ deorwur+de) (N gyrlan)))
+      (ID coaelive,+ALS_[Thomas]:155.7652))
+
+( (CODE &lt;T03340004100,151&gt;)
+  (IP-MAT (PP (P +After)
+              (NP-DAT (D^D +tysum) (N^D wordum)))
+          (NP-NOM (PRO^N he))
+          (VBD efste)
+          (PP (P to)
+              (NP-DAT (D^D +tam) (N^D cwearterne)))
+          (. ,)) (ID coaelive,+ALS_[Thomas]:151.7648))
+
+</PRE>
+
+Note that an inflected infinitive following TO is tagged as a dative form
+<B>VB^D</B> (see <a href="#inflected_infinitives">Inflected
+infinitives</a>).
+
+<blockquote>
+<PRE>
+(IP-INF-NCO (TO to)
+	    (VB^D gewyssienne))
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="particle_verbs">
+<h2>Particle verbs (RP+VB, etc.)</h2></a>
+
+Verbs with a particle cliticized to the beginning are tagged <b>RP+VB</b>,
+etc. All verbs beginning with a form on the <a
+href="#adverbial_particles">adverbial particles</a> list have a tag
+beginning <b>RP+</b>, with the following exceptions:
+
+<BLOCKQUOTE>
+ONBIDIAN, ONBRYRDAN, ONBYRGAN, ONCNAWAN, ONDR+ADAN, ONETTAN, ONGIERWAN,
+ONGIETAN, ONGINNAN, ONHAGIAN, ONMUNAN, ONSCUNIAN, ONTENDAN, ON+TRACIAN
+</BLOCKQUOTE>
+
+<blockquote>
+<pre>
+(RP+VBPI onliht)
+
+(RP+VBDI underf+ang)
+
+(RP+VBN oferswi+dod)
+
+(RP+VB oferstigan)
+
+(RP+VAG^N for+dst+appende)
+
+</pre>
+</blockquote>
+
+<p><BR><br>
+
+<a name="mood">
+<H2>Mood (indicative, subjunctive, imperative)</H2></a>
+
+The following four categories are distinguished: 
+
+<UL>
+<LI> morphologically unambiguous indicative  (tag ends in <B>-I</B>)
+<LI> morphologically unambiguous subjunctive  (tag ends in <B>-S</B>)
+<LI> ambiguous subjunctive/indicative (base form <B>VBP, MDP</B> etc.)
+<LI> ambiguous subjunctive/imperative (tag ends in <B>-H</B>)
+</UL>
+
+<p><BR>
+
+Mood (indicative or subjunctive) is labelled on verbs based on the form of
+the verb itself and <B>not</B> on context. Only unambiguous forms are
+labelled; ambiguous forms (e.g., past tense of 3rd sg. weak verbs in
+-EDE/-ODE) are unmarked.
+
+<p>
+The following forms are always indicative/subjunctive ambiguous:
+
+<p>
+<UL>
+<LI>1st singular present tense (LUFIE)
+<LI>3rd singular past tense of weak verbs (LUFODE)
+<LI>2nd singular past tense of strong verbs (DRIFE)
+<LI>plural forms in -E followed by a plural subject pronoun (+TURFE GE)
+</UL>
+
+<IMG SRC="bullets_ball3.gif"> Unlike in the <a
+href="pos-verbs.htm#subjunctives">PPCME2</a>, in the YCOE unambiguous
+subjunctive verb forms are distinguished from unambiguous indicative forms.
+
+<blockquote>
+<PRE>
+(VBPI forgif+d)
+
+(VBPI wur+ta+d)
+
+(VBDI stod)
+
+(VBDI awendon)
+
+(VBPS becume)  <-- with non 1st sg subject
+
+(VBP becume)   <-- with 1st sg subject
+
+(VBPS +toligen)
+
+(VBP secge)    <-- with 1st sg subject or preceding plural pronoun
+
+(VBPS secge)   <-- all other contexts
+
+(VBDS ongunnen)
+
+(VBD onhagode)
+
+(VBD come)     <-- with 2nd sg subject
+
+(VBDS come)    <-- all other contexts
+
+(VBPH wite)
+
+(BEPH beo)
+
+(VBI awurp)
+
+</PRE>
+</blockquote>
+
+<P>
+The past tense plural is difficult to deal with. While -ON/-AN/-UN
+correlates more with indicative than subjunctive (and vice versa for
+subjunctive), overall there is some overlap in both directions. Rather than
+label all past tense plurals as ambiguous, however, we have labelled
+-ON/-AN/-UN as indicative and -EN as subjunctive in all cases, even when
+the analysis is extremely unlikely in context.
+
+<P>
+In the present plural (of non-preterite-present verbs), any vowel plus -N
+is labelled subjunctive. Sometimes this is dependent on the tense context,
+as the present subjunctive and past plural can have the same root vowel
+(e.g., SCINEN, SCINON).
+
+<blockquote>
+<PRE>
+(VBPS scinen)
+
+(VBPS scinon)   <-- present context
+
+(VBDI scinon)   <-- past context
+
+</PRE>
+</blockquote>
+
+The imperative/subjunctive ambiguity affects the following forms: DO, GA,
+WITE, BEO (and derivatives), when in a context where the subject is
+2nd singular. Elsewhere they are clear subjunctives. For all other verbs
+the imperative and subjunctive are distinguished by form. Subjunctive forms
+apparently used as imperatives are distinguished in the parsing by the
+presence of a <a href="YcoeRef.htm#pro_subjects">*pro* subject</a>.
+
+<blockquote>
+<PRE>
+(VBPH do)
+
+(VBI bide)  <-- BIDDAN <i>pray</i>
+
+(VBPS bidde) 
+
+(VBI axa)
+
+(VBPS axie)
+
+</PRE>
+</blockquote>
+
+<a name="participles">
+<H2>Participles (VAG, VBN, etc)</H2></a>
+
+Only overt <a href="#case_participles">case</a> is marked on participles
+that are part of the main verb sequence. Therefore the following forms do
+not have a case label in this context.
+
+<p>
+<UL>
+<LI>past participles of weak verbs in -ED/-OD (e.g., LUFOD)
+<LI>past particples of strong verbs in -EN (e.g., (GE)DRIFEN)
+<LI>present participles in -E (e.g., LIFIGENDE)
+</UL>
+
+<p>
+
+When used as modifiers or attributively, all participles except GEHATEN,
+GECIGEN, and other verbs used in naming are labelled with the case of the
+head they modify. Note that this is so even in those few cases in
+which the participle does not inflect appropriately.
+
+<p>
+
+<IMG SRC="bullets_ball3.gif"> Unlike in the <a
+href="pos-verbs.htm#participles">PPCME2</a>, verbal and adjectival use of
+the present and past participles is not distinguished; that is, they are
+both tagged VAG or VBN (or HAG/HVN, etc).
+
+<blockquote>
+<PRE>
+(NP-ACC (D^A +ta) (VAG^A lifiendan) (N^A godas))
+
+(NP-ACC (VAG^A sw+agende) (N^A fyr))
+
+(NP-DAT (D^D +dam) (VAG^D lifigendan) (NR^D Drihtne))
+
+</PRE>
+</blockquote>
+
+<p>
+
+A form used adjectively is labelled as a participle if a related verb is
+listed in Clark Hall. When no related verb is listed the form is tagged as
+an adjective.
+
+<blockquote>
+<PRE>
+(VBN slegen)        (ADJ^N unofslegen)
+
+(VBN geendod)	    (ADJ^N ungeendod)
+
+(VAG^N berende)	    (ADJ^N unberende)
+
+(ADJ^A yfelh+abbende)  <-- no verb YFELHABBAN
+
+(ADJ^A la+twende)      <-- no verb LA+TWENDAN
+
+</PRE>
+</blockquote>
+
+Present participles are only tagged as nouns when used substantively if the
+form is listed as a noun in Clark Hall (regardless of whether a related
+verb exists); otherwise it is tagged as a particple and treated as an
+adjective used substantively.
+
+<blockquote>
+<PRE>
+(N^N swelgend) 
+
+(N^N h+alend)
+
+(N^N forest+append)
+
+(N^D scyppende)
+
+(N^D alysende)
+
+(N^N d+alnimende)
+
+</PRE>
+</blockquote>
+
+<p><br>
+
+<a name="infinitives">
+<H2>Infinitives (VB, etc)</H2></a>
+
+<a name="inflected_infinitives">
+<H2>Inflected infinitives (VB^D, etc.)</H2></a>
+
+Infinitives with -NE added to the base form are labelled with the infinitive tag <B>VB, HV</B>, etc. ^D.
+
+<blockquote>
+<PRE>
+(VB awriten)
+
+(VB gesettan)
+
+(VB onbryrdan)
+
+(VB^D getrymmenne)
+
+(VB^D gewilnienne)
+
+(VB^D geneal+acene) <-- with simplified -NN-
+
+(VB^D +tingiende))  <-- occasionally spelling with -ND-
+
+</PRE>
+</blockquote>
+
+<a name="infinitive_markers">
+<H2>Infinitive marker TO (TO)</h2></a>
+
+TO used with an infinitive is tagged TO. It is followed by both
+plain and <a href="#inflected_infinitives">inflected infinitives</a>,
+although far more commonly by the latter
+
+<blockquote>
+<PRE>
+(IP-INF (TO to)
+	(VB l+adan))
+
+(IP-INF (TO to)
+	(VB^D gewyssienne))
+
+(IP-INF (TO to)
+	(VB^D gewilnienne)
+	(...))
+
+</PRE>
+</blockquote>
+
+<p>
+<hr>
+<BR>
+
+<a name="complementizers">
+<H1>Complementizers (C)</H1></a>
+
+<DL>
+<DT><a href="#complementizer_that">+T+AT, +T+ATTE, +TE</a>
+<DT><a href="#complementizer_swa">SWA in free relative clauses</a>
+<DT><a href="#complementizer_gif">GIF in indirect questions</a>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><BR>
+
+All complementizers are labelled <b>C</b>.
+
+<p><br><br>
+
+<a name="complementizer_that">
+<H2>+T+AT, +T+ATTE, +TE</H2></a>
+
++T+AT, +T+ATTE and +TE introducing any kind of subordinate clause are
+tagged <B>C</B>. +T+AT introducing a <a
+href="YcoeRef.htm#relative_clauses">relative clause</a>, however, is taken
+as the relative pronoun (and thus tagged as a <a
+href="#determiners">determiner</a>) if it matches the antecedant for
+number/gender/case, or if it is in a <a
+href="YcoeRef.htm#rel-clause_glosses">non-restrictive glossing
+relative</a>. In any other case it is taken as the complementizer and
+tagged <B>C</B>.
+
+<p>
+
+Unlike <a href="#+teah+te_etc">+TEAH+TE and O+T+TE</a>, it is not clear
+that +T+AT+TE is best analyzed as +T+AT plus complementizer +TE, since it
+may introduce that-complements, adverbial and degree clauses as well as
+relatives; it is therefore treated as a simple alternative to +T+AT and
+never split, even in relatives.
+
+<p><BR><br>
+
+<a name="complementizer_swa">
+<H2>SWA in free relative clauses and corelative comparatives</H2></a>
+
+SWA is tagged <B>C</B> in <a
+href="YcoeRef.htm#free_relatives">free relatives</a> of the SWA
+HW- SWA type and in some <a
+href="YcoeRef.htm#corelative_comparison">corelative
+comparisons</a>.
+
+<p><BR><br>
+
+<a name="complementizer_gif">
+<H2>GIF in indirect questions</H2></a>
+
+When GIF introduces indirect questions, it is tagged <B>C</B> rather than
+<b>P</b> as when it introduces adverbial clauses.
+
+<pre>
+( (IP-MAT (NP-NOM *con*)
+          (MDD wolde)
+          (VB gewytan)
+          (CP-QUE (C gif)
+                  (IP-SUB (NP-NOM (PRO$ his) (N^N w+apnu))
+                          (VBDI coman)))
+          (. .)) (ID coaelive,+ALS_[Basil]:264.621))
+
+</pre>
+
+<p><BR>
+<hr>
+<BR>
+
+<a name="coordinating_conjunctions">
+<H1>Conjunctions (CONJ)</H1></a>
+
+<br>
+
+<DL>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<PRE>
+
+         CONJ         Conjunction
+         NEG+CONJ     Negative conjunction
+
+</PRE>
+
+The following are tagged <B>CONJ</B>, or <B>NEG+CONJ</B> if negative,
+when used as conjunctions:
+
+<BLOCKQUOTE>
++AG+TER, +TE, AC, GE, NA+TER, NE, OND, O+T+TE, SWA, &
+</BLOCKQUOTE>
+
+<p><BR>
+
+When there is more than one conjunction, (e.g., +AG+TER GE...GE), all are
+tagged <B>CONJ</B>.
+
+<blockquote>
+<PRE>
+(CONJ &)
+
+(NEG+CONJ ne)
+
+(NEG+CONJ na+ter) (NEG+CONJ ne)
+
+(CONJ +ag+ter) (CONJ ge)
+
+</PRE>
+</blockquote>
+
++AG+TER/NA+TER are also tagged as <a href="#either_neither">quantifiers</a>.
+
+<p>
+
+SWA is also tagged as a <a href="#swa_prep">preposition</a>, <a
+href="#other">adverb</a> or <a
+href="#complementizer_swa">complementizer</a>.
+<p>
+NE is also tagged as <a href="#negation">sentential negation</a> (<B>NEG</B>).
+
+<p><BR>
+<hr>
+<BR>
+
+<a name="negation">
+<H1>Negation (NEG)</H1></a>
+
+<DL>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<P><BR>
+
+The negative particle NE is tagged <B>NEG</B>. Contractions of NE and
+verb forms, adverbs and quantifiers are tagged NEG+-.
+
+<p>
+When NE is used as a <a href="#coordinating_conjunctions">conjunction</a>,
+it is tagged <B>NEG+CONJ</B>. In clauses with only one NE where NE could be
+a conjunction or negation, it is tagged as negation (<B>NEG</B>) if it
+immediately precedes the finite verb and as a conjunction (<B>NEG+CONJ</B>)
+if it does not.
+
+<p>
+NA is tagged as an <a href="#negative_adverbs">negative adverb</a>
+(<B>NEG+ADV</B>). NE not immediately preceding the finite verb (NEG) or
+sentence initial (NEG+CONJ) is taken as variant of NA and tagged
+<b>NEG+ADV</b>.
+
+<blockquote>
+<PRE>
+(NEG ne)        <-- negative particle preceding finite verb
+
+(NEG+CONJ ne)   <-- negative conjunction
+
+(NEG+ADV na)    <-- negative adverb
+
+(NEG+ADV ne)    <-- NE as a variant of NA
+
+</PRE>
+</blockquote>
+
+<p><BR>
+<hr>
+<BR>
+
+<a name="adverbial_particles">
+<H1>Adverbial particles (RP)</H1></a>
+
+<DL>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><BR>
+
+Adverbial particles are tagged <B>RP</B>. The following is an exhaustive
+list of all words tagged as particles except when they take a
+complement, in which case they are tagged as <a
+href="#prepositions">prepositions</a>. Preceding another preposition, they
+are tagged as particles (see <a
+href="#prepositions_and_particles">Prepositions and particles</a>).
+
+<BLOCKQUOTE>
+ADUN(E), +AFTER , AWEG, (OF)DUNE, FORE, FOR+D, FRAM, GEOND, IN, MID,
+NI+DER, OF, OFER, ONGEAN, ON, ONWEG, TO, +TURH, UNDER, UP, UT, WI+D,
+WI+DER, YMB(E).
+</BLOCKQUOTE>
+
+When a particle is cliticized to the beginning of a verb, the unit is
+tagged <B>RP+-</B>. With the following verbs initial ON- is not labelled as
+particle.
+
+<blockquote>
+ONBIDIAN, ONBRYRDAN, ONBYRGAN, ONCNAWAN, ONDR+ADAN, ONETTAN, ONGIERWAN,
+ONGIETAN, ONGINNAN, ONHAGIAN, ONMUNAN, ONSCUNIAN, ONTENDAN, ON+TRACIAN
+</blockquote>
+
+<blockquote>
+<PRE>
+(RP+VBPI onliht)
+
+(RP+VB understandan)
+
+(VB onfon)
+
+</PRE>
+</blockquote>
+
+<p><br>
+<hr>
+<BR>
+
+<a name="focus_particles">
+<H1>Focus particles (FP)</H1></a>
+
+<DL>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<P><BR>
+
+The following may be labelled as focus particles.
+
+<BLOCKQUOTE>
+ANA, BUTAN, HURU, FUR+DUM/FUR+DON/etc
+</BLOCKQUOTE>
+
+HURU and FUR+TUM are always labelled <b>FP</b>. 
+
+<p>
+
+ANA, the weak form of AN, is tagged as a focus particle, following Mitchell
+(1985:536) who takes ANA as an indeclinable adverbial constituent
+which acts as a focus particle. 
+
+<PRE>
+( (IP-MAT (CONJ ac)
+          (NP-NOM (D^N se) (N^N man) (FP ana))
+          (VBPI g+a+d)
+          (ADVP-DIR (ADV^D uprihte))
+          (. ,))
+      (ID AelfLives,+ALS_[Christmas]:56.68)) 
+
+</PRE>
+
+ANA is tagged <b>FP</b> in all cases except the following, where it is
+tagged <b>NUM</b> with case if appropriate.
+
+<dl><dt>
+<UL>
+<LI> when it precedes the noun it modifies, in which case it means <i>only,
+unique</b> in a non-focus sense (cf. <i>the only God</i> vs. <i>only
+God</i> or <i>God alone</i>)
+
+<PRE>
+(NP-NOM (D^N se) (NUM^N ana) (ADJ^N +almihtiga) (NR^N God))
+
+(NP-ACC (D^A +ta) (NUM^A ana) (N^A wundru)) <-- plural
+
+</PRE>
+
+<LI> when it is the primary predicate and it cannot be taken as a focus
+particle on the subject in context
+
+<PRE>
+(CP-ADV-SPE (ADV^T +Da) (P +da)
+	    (C 0)
+	    (IP-SUB-SPE (NP-NOM (PRO^N ic))
+			(IP-SMC-SPE (NP-ACC-SBJ (PRO^A +de)) 
+				    (NUMP-ACC-PRD (NUM^A ana))) 
+			(VBDI forlet)
+			(PP (P on)
+			    (NP-DAT (D^D +dam) (N^D +deostrum)))))
+
+
+Eac him gelamp sume d+age, +ta +ta he w+as ana, +t+at him w+as +at se
+costere. (GDC,GD_2_[C]:2.100.17.1162) 
+
+(NODE (IP-SUB (NP-NOM (PRO^N he))
+	      (BEDI w+as)
+	      (NUMP-NOM-PRD (NUM^N ana)))
+      (ID cogregdC,GD_2_[C]:2.100.17.1158))
+
+</PRE>
+
+</UL></dl>
+
+In many cases ANA may as well, or often even better, be taken as a
+secondary predicate meaning <i>alone</i>. It is difficult to distinguish
+between <i>he alone/only he prayed</i> and <i>he prayed alone</i>, both are
+constructed with ANA, since if the latter is true, so in some sense is the
+former, and the difference depends on pragmatics. Positional differences
+may be significant here but this cannot be determined with certainty
+without more study. We therefore label all cases of ANA <b>FP</b> except
+the two noted above.
+
+<PRE>
+(NODE (IP-SUB-SPE (NP-NOM (PRO^N ic)) <-- <i>I prayed alone</i>
+                  (NP-RFL (PRO me))
+                  (FP ana)
+                  (VBP gebidde))
+      (ID coaelive,+ALS[Agnes]:198.1845))
+
+</PRE>
+
+<p>
+
+BUTAN/BUTE is tagged as a focus particle in the NE...BUTAN construction. It
+also occurs a few times without the NE.
+
+<PRE>
+(NODE (IP-MAT-SPE (NP-NOM (PRO^N we))
+		  (NEG+HVPI nabba+d)
+		  (ADVP-LOC (ADV^L her))
+		  (NP-ACC (NP-ACC (FP butun) (NUM fif) (N^A hlafas))
+			  (CONJP (CONJ &)
+				 (NX-ACC (NUM^A twegen) (N^A fixas)))))
+      (ID cowsgosp,Mt_[WSCp]:14.17.940))
+
+( (CODE <T06420013900,4.34>)
+  (IP-MAT (NEG Ne)
+          (VBDI sp+ac)
+          (NP-NOM (PRO^N he))
+          (ADVP (NEG+ADV na))
+          (NP-ACC (FP butan) (N^A bispelle))
+          (. ;)) (ID cowsgosp,Mk_[WSCp]:4.34.2419))
+
+(NODE (IP-SUB (NP-NOM (D^N +da) (N^N gebro+dra))
+              (NEG+HVDI n+afdon)
+              (NP-ACC (FP buton) (NUM fif) (N^A hlafas))
+              (PP (P to)
+                  (NP (NP-GEN-RFL (PRO^G heora) (Q^G ealra))
+                      (N gereorde))))
+       (ID cocathom2,+ACHom_II,_11:100.293.2125))
+
+(NODE (IP-SUB (NP-NOM (D^N se) (N^N wer))
+	      (MDPI mot)
+	      (HV habban)
+	      (NP-ACC (FP butan) (NUM^A an) (N^A wif)))
+      (ID cochdrul,ChrodR_1:65.1.881))
+
+</PRE>
+
+<p><br>
+<hr>
+<BR>
+
+<a name="interjections">
+<H1>Interjections (INTJ)</H1></a>
+
+<DL>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><BR>
+
+In general the INTJ tag is used only if a word has no other use than as an
+interjection. When words with other functions as well are used as
+interjections, they are still tagged with their primary POS tag, and not
+with <B>INTJ</B>. Thus, HW+AT, is tagged WPRO (without case) when used as
+an interjection. Adverbs which are also used as interjections (EFNE,
++TONNE, HURU, etc.) are always tagged as adverbs since it is too difficult
+to consistently distinguish adverbial from interjection use. Finally GE,
+although it has other functions as a <a href="#pronouns">pronoun</a> and <a
+href="#coordinating_conjunctions">conjunction</a>, is tagged INTJ in
+interjection function (i.e., when it means <i>yes, yea</i>.
+
+The following are common interjections.
+
+<BLOCKQUOTE>
+AMEN, EALA, GE/GEA/GYSE, LA, NE/NESE, WA/WALA/WALAWA, WELLA
+</BLOCKQUOTE>
+
+<blockquote>
+<PRE>
+(INTJ amen)            <-- always an interjection
+
+(INTJP (WPRO hw+at))   <-- HW+AT in interjection use
+
+(ADVP (ADV efne))      <-- may be used as an interjection, 
+                           but never tagged as such
+</PRE>
+</blockquote>
+
+<p><br>
+<hr>
+<BR>
+
+<a name="foreign_words">
+<H1>Foreign words (FW)</H1></a>
+
+<DL>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><BR>
+
+Everything (words, symbols, numbers, etc.) except punctuation in foreign
+language sequences is labelled <B>FW</B>.
+<P>
+
+Outside of foreign language sequences, <a href="#names_of_people">foreign
+names</a> (PAULINUS, etc.)  are not tagged <B>FW</B>, but <B>NR</B>.
+
+<p>
+Latin liturgical terms (PATER NOSTER, TE DEUM, etc.) are tagged
+<B>FW</B>, except when they follow English inflectional patterns, in
+which case they are tagged <B>N</B>.
+
+<blockquote>
+<PRE>
+(NP (FW pater) (FW noster))
+
+(NP-DAT (D^D +tam) (N^D paternostre))
+
+</PRE>
+</blockquote>
+
+<p><br>
+<hr>
+<BR>
+
+<a name="unknown_words">
+<h1>Unknown or problematic words (XX)</h1></a>
+
+<DL>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><BR>
+
+Unknown or problematic words are tagged XX. The majority of these are
+either partial words arising from textual problems, or the part of speech
+of the word is indeterminate because of textual problems.
+
+<pre>
+(NODE (X (CONJ o+d+de)
+	 (CODE <COM:text_missing>)
+	 (NP-NOM (PRO^N hit))
+	 (XX $+afr)     <-- partial words
+	 (XX $+ade))
+      (ID codocu2,Ch_1445_[HarmD_18]:33.55))
+
+( (X (CODE <COM:text_missing>)
+     (XX $+t+at)        <-- indeterminate part-of-speech
+     (IP-SUB (NP-NOM (PRO^N $he))
+             (ADVP (ADV $swa))
+             (MDD $mihte)
+             (VB cy+dan)
+             (PP (P be)
+                 (NP (NP-GEN (NR^G Cristes))
+                     (N godcundnysse))))
+     (. .)) (ID coaelhom,+AHom_1:1.5))
+
+</pre>
+
+
+<p><BR>
+<hr>
+<BR>
+
+<a name="word_division">
+<h1>Word division</h1></a>
+
+<DL>
+<DT><a href="#words_always_separate">Words that are always separated</a>
+<DT><a href="#compound_tagging">Words given compound tags</a>
+<DT><a href="#words_sometimes_separate">Words treated as written</a>
+<DT><a href="#compounds">Compounds</a>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+<p><BR>
+
+<a name="words_always_separate">
+<h2>Words that are always separated</h2></a>
+
+In some case it is necessary to physically separate the parts of a single
+written unit in order to obtain the correct parse. The following
+combinations are always separated.
+
+<dl><dt>
+<ul>
+
+<LI> subject pronouns cliticised to verb forms. In some cases separated
+forms are emended for clarity, e.g. SCEALTU will be separated and emended
+to SCEALT TU. Such emendations are always marked with the emendation sign
+($) and a comment.
+
+<PRE>
+(VBPI $cymst) 
+(NP-NOM (PRO^N $tu))
+(CODE &lt;TEXT:cymstu&gt;)
+
+(VBPI $flitst)
+(NP-NOM (PRO^N $+du))
+(CODE &lt;TEXT:flits+du&gt;)
+
+</PRE>
+
+<LI> one-word combinations of a subordinating conjunction plus +TE
+introducing a subordinate clause, e.g. <a href="#+teah+te_etc">+TEAH+TE,
+O+T+TE</a>.
+
+<PRE>
+(CP-ADV (P $+teah) 
+	(C $+te)
+        (CODE &lt;TEXT:+teah+te&gt;)
+	(IP-SUB ...))
+
+</PRE>
+
+<LI> SE+TE (or other relative pronoun) introducing relative clauses
+
+<PRE>
+
+(NP-NOM (D^N $se)
+	(CP-REL (WNP 0)
+		(C $+te)
+                (CODE &lt;TEXT:se+te&gt;)
+		(IP-SUB ...)))
+
+(CP-REL (WNP-NOM (D^N $se)
+	(C +te)
+        (CODE &lt;TEXT:se+te&gt;)
+	(IP-SUB ...))
+
+</PRE>
+
+<a name="himself"></a>
+<LI> a pronoun plus SELF 
+
+<PRE>
+
+(NP-DAT (PRO^D $him)
+	(ADJP-DAT (ADJ^D $sylfum))
+        (CODE &lt;TEXT:himsylfum&gt;))
+
+</PRE>
+</ul></dl>
+
+<p><br>
+
+<a name="compound_tagging">
+<h2>Words given compound tags</h2></a>
+
+Compound tagging using a plus sign is used in two cases:
+
+<p>
+<dl><dt>
+<ul>
+
+<LI> cliticized negation
+
+<blockquote>
+<PRE>
+(NEG+MDDI noldon)
+
+(NEG+CONJ ne)
+
+(NEG+ADV^T n+afre)
+
+(NEG+Q naht)
+
+(NEG+VBPI nat)
+
+(NEG+BEPI Nis)
+
+</PRE>
+</blockquote>
+
+<LI> particle plus verb form
+
+<blockquote>
+<PRE>
+(RP+VBPI onliht)
+
+(RP+VB wi+dgripan)
+
+(RP+VBN oferswi+dod)
+
+(RP+VAG^N for+dst+appende)
+
+</PRE>
+</blockquote>
+
+</ul></dl>
+
+<p><br>
+
+<a name="words_sometimes_separate">
+<h2>Words treated as written</h2></a>
+
+The complex morphological structure of forms other than those discussed in
+the previous section is not marked. Phrases such as ON SUNDRUM, TO MIDDES,
+FOR +TAM are tagged literally when written apart and taken as a whole when
+written as one word. 
+
+<blockquote>
+<PRE>
+(PP (P tomiddes)
+    (NP-DAT (D^D +tam) (N^D mu+tan)))
+
+(PP (P to) (N^G middes)
+    (NP-DAT (D^D +tam) (N^D ise)))
+
+</PRE>
+</blockquote>
+
+However, when an orthographically independent word has no meaning outsidea
+particular phrase (NATES in NATES HWON), or when the literal tagging of the
+parts is misleading (tagging +T+AR in +T+AR RIHTE as locative when
++T+ARRIHTE is temporal), the PPCME2 numbering system is used to indicate
+that the parts belong together; the first number indicates the number of
+parts and the second number which part the tagged word is. These are quite
+rare in the corpus.
+
+<PRE>
+(NEG+ADV (NEG+ADV21 nates) (NEG+ADV22 hwon))  <I>not at all</I>     NATESHWON
+
+(ADV^T (ADV^T21 +t+ar) (ADV^T22 rihte))       <I>straightaway</I>   +T+ARRIHTE
+
+(ADV (ADV21 huru) (ADV22 +tinga))             <i>especially</i>     HURU+TINGA
+
+</PRE>
+
+<p><br>
+
+<a name="compounds">
+<h2>Compounds</h2></a>
+
+In general noun-noun compounds are written as single words in edited Old
+English texts. Sometimes however this convention is not followed and the
+two parts are orthographically separated. In "true" compounds, the first
+part of the compound is not inflected (WINTER SETL, SU+T RIMAN, NOR+T
+S+A), and it therefore is not labelled for case; the case of the whole
+compound is indicated on the second element.
+
+<blockquote>
+<PRE>
+(NP-ACC (N winter) (N^A setl))
+
+(NP-DAT (D^D +tam) (N su+t) (N^D riman))
+
+(NP-DAT (D^I +tan) (N arcebiscop) (N^D rice))
+
+</PRE>
+</blockquote>
+
+<a href="#names_of_people">The names of
+peoples</a> like EAST ENGLE, etc. are also treated as compounds.
+In this case both parts are tagged as
+proper nouns, but again only the second is labelled for case.
+
+<blockquote>
+<PRE>
+(NP-NOM (NR East) (NR^N Engle))
+
+</PRE>
+</blockquote>
+
+<p><br>
+<hr>
+<br>
+
+<a name="late_texts">
+<h1>Special rules for late texts</h1></a>
+
+<DL>
+<DT><a href="YcoePos.htm#unexpected_case">Unexpected case (-c)</a>
+<DT><a href="YcoePos.htm#late_texts_details">Details on individual late
+texts</a> 
+<DT><DL>
+    <DT><a href="YcoePos.htm#cochronE">cochronE.o34.psd</a>
+    <DT><a href="YcoePos.htm#lsigewB">colsigewB.psd</a>
+    <DT><a href="YcoePos.htm#vincent2">covinceB.psd</a>
+    </DL>
+<p>
+<DT><a href="YcoePosToc.htm">Table of Contents</a>
+</DL>
+
+A few of the texts included in the corpus are sufficiently late that the
+usual case and mood distinctions are starting to break down. Because of
+this our usual rules for determining case and mood need to be altered
+slightly in some cases. The texts involved to differing degrees are
+comargaT, comary, corood, colsigewB, covinceB, cochronE.o34, coeluc1,
+coeluc2, cojames, coneot, coaugust . These texts may include the following
+"late" trends, or have <a href="#unexpected_case">unexpected case</a>
+problems:
+
+<UL>
+<li>nominative +DE for SE, and sometimes also +DEO for SEO. We treat the
++D- form as a simple variant of the S- forms and label it the same way,
+i.e., D^N. Note that some earlier texts also have sporadic instances of the
++D- forms.
+
+<li>non-nominative +DE. In earlier texts in certain contexts
+(but never as the determiner in an NP), +DE stands for instrumental +DY,
+and in early texts is always labelled D^I. In the late texts +DE may be
+used as a determiner in non-nominative NPs, in which case it is not
+labelled for case, but just as D. This includes +DE in dative NPs where it
+might also be an alternative for +TY. The reason for this is that +DE
+doesn't occur as an instrumental form in NPs in early texts, and seems more
+likely to be an uninflected form in these cases.
+
+<li>like +DE, in some late texts the quantifier EAL(L) appears to be an
+uninflected form and receives no case-label.
+
+<li>dative forms for accusative; HEOM, HIM, and HIRE may be affected. In
+this case we treat these forms like other acc/dat ambiguous items (ME, +TE,
+US, EOW, etc.), and they are unlabelled for case except in the particular
+contexts where we normally resolve acc/dat ambiguities (see <a
+href="#oblique_ambiguities">Ambiguities among oblique cases</a>). This only
+applies if there are fairly clear examples of a particular dative in an
+accusative environment in the text. Details about which pronouns are
+affected in each text are given <a href="#late_texts_details">below</a>.
+
+<li>the use of -EN for non-subjunctive verb forms. For late texts -EN is
+considered an ambiguous ending and the forms are labelled VBD. This also
+affects the present subjunctive of preterite-present verbs.
+
+<li>the use of -EN as a noun ending. For weak nouns, this ending is
+considered ambiguous in most cases since it can be -AN or -UM. For
+strong nouns, it should stand for -UM, and when a dative plural is appropriate
+in context, is labelled as dative. If a dative plural is not appropriate,
+it is treated as ambiguous and not labelled for case.
+
+</ul>
+
+At least some of the above features also appear sporadically in non-late
+texts. However, where special rules are listed above, these rules apply
+only to the listed texts. For instance, cases of verbs in -EN that are
+extremely unlikely to be subjunctive are nonetheless labelled as
+subjunctive in non-late texts, all instances of HEOM and HIM are labelled
+as dative, etc.
+
+<p><br><br>
+
+<a name="unexpected_case">
+<h2>Unexpected case (-c)</h2></a>
+
+Case peculiarities, e.g., nominatives for accusatives/datives, etc. or
+apparently mixed case NPs are difficult to deal with. The majority of these
+are in Chronicle E, especially the interpolations, but they also appear
+sporadically elsewhere. In some cases at least, one or more words in the NP
+retains a marker of the expected case, the others having no ending or a
+sufficiently degraded one that it is possible to ignore it, and we
+generally assign the expected case to the whole NP. If this is not possible
+because the words have clear markers of an unexpected case or clear
+mismatches of case, we label the case literally on the words of the NP,
+and label the whole NP according to the expected case, with the -c
+extension NP(-CASE)-c. This is a last resort policy and is only done when
+no other option seems possible.
+
+<pre>
+(NODE (IP-SUB (NP-NOM (MAN^N man))
+              (VBD halgode)
+              (NP-ACC-c (D^N seo) (N^N mynstre)))
+      (ID cochronE-INTERPOLATION,ChronE_[Plummer]:656.27.408)) 
+
+(NODE (IP-SUB (ADVP *T*-1)
+              (NP-NOM (D^N +t+at) (N^N w+ater))
+              (VBPI renne+d)
+              (PP (P to)
+                  (NP-c (D^N seo) (RP+VBN^N forensprecone) (NR^N Nor+dburh))))
+      (ID cochronE-INTERPOLATION,ChronE_[Plummer]:656.57.437)) 
+
+(NODE (IP-MAT (PP (P On)
+                  (NP-ACC (NP-GEN-c (D^N +tes) (ADJ^N ilca) (NR^N Offa))
+                          (N^A d+ai)))
+              (, .)
+              (BEDI w+as)
+              (NP-NOM (NUM^N an) (N^N ealdorman)
+                      (IP-MAT-PRN (NP-NOM *pro*)
+                                  (NP-NOM-PRD (NR^N Brordan))
+                                  (BEDI w+as)
+                                  (VBN gehaten)))
+              (. .))
+      (ID cochronE-INTERPOLATION,ChronE_[Plummer]:777.14.825)) 
+
+(NODE (IP-SUB-0 (NP-NOM (D^N seo) (NR^N Cu+dbriht))
+                (VBDI geaf)
+                (NP-DAT-c (D^A +tone) (N^D abbote))
+                (NP-ACC (NUM L) (N^A punde))
+                (PP (ADVP-LOC (ADV^L +t+ar))
+                    (P fore)))
+      (ID cochronE-INTERPOLATION,ChronE_[Plummer]:777.5.823)) 
+
+</pre>
+
+
+<p><br>
+
+<a name="late_texts_details">
+<h2>Details on individual late texts</h2></a>
+
+<p>
+<a name="cochronE">
+<h2>cochronE.o34.psd</h2></a>
+
+The E manuscript of the Anglo-Saxon chronicle is treated in two parts: the
+basic text and the interpolations. The latter are indicated in the ID as
+follows <b>cochronE-INTERPOLATION</b>. In all parts of the chronicle the
+verb inflection -EN is treated as indicative/subjunctive ambiguous, and
+there are a fair number of cases of nominative +DE.
+
+<pre>
+(NODE (IP-MAT (ADVP-LOC (ADV^L Her))
+              (NP-NOM (NR^N Cantwara))
+              (VBD ge+dingoden)      <-- ind/subj ambiguous -EN
+              (PP (P wi+d)
+                  (NP (NR Ine))))
+      (ID cochronE,ChronE_[Plummer]:694.1.629))
+
+( (CODE &lt;T22060128000,1083.8&gt;)
+  (IP-MAT (NP-GEN-TMP (NUM^G Anes) (N^G d+ages))
+          (NP-NOM (D^N +te) (N^N abbot))  <-- +TE for SE
+          (VBD eode)
+          (PP (P into)
+              (NP (FW capitulan)))
+          (. .)) (ID cochronE,ChronE_[Plummer]:1083.8.2770))
+
+</pre>
+
+The vast majority of occurrences of HIM/HEOM in the basic text appear in
+environments where dative is the expected case. The one possible exception
+is the use of dative pronoun subjects with bare infinitives, which occurs
+twice as often as accusative (4:2). These are nevertheless labelled as
+datives in the basic text. 
+
+<pre>
+( (IP-MAT (CONJ &)
+          (NP-NOM *con*)
+          (VBDI heton)
+          (NP-DAT (PRO^D heom))
+          (IP-INF (VB secgan)
+                  (NP-ACC (NP-ACC (NP-GEN (NR^G Brytwalana))
+                                  (N^A nahtscipe))
+                          (, .)
+                          (CONJP (CONJ &)
+                                 (NP-ACC (NP-GEN (D^G +tes) (N^G landes))
+                                         (N^A cysta)))))
+          (. .))
+      (ID cochronE,ChronE_[Plummer]:449.9.130)) 
+
+</pre>
+
+In the interpolations all HIM/HEOM are unlabelled for case.
+
+<pre>
+( (IP-MAT (CONJ &)
+          (NP (PRO him)) 
+          (VBD luuede)
+          (NP-NOM (Q^N al) (N^N +teode))
+          (. .)) (ID cochronE-INTERPOLATION,ChronE_[Plummer]:654.12.381))
+
+( (IP-MAT (CONJ &)
+          (NP-NOM (D^N seo) (N^N kining))
+          (NP-ACC (PRO^A hit))
+          (NP (PRO him))
+          (VBD tydde)
+          (. .)) (ID cochronE-INTERPOLATION,ChronE_[Plummer]:656.68.444))
+
+( (IP-MAT (CONJ &)
+          (NP-NOM *con*)
+          (VBDI leot)
+          (IP-INF (NP-SBJ (PRO him))
+                  (VB locon)
+                  (NP-ACC (D^A +ta) (N^A gewrite)
+                          (CP-REL (WNP-NOM-1 0)
+                                  (C +te)
+                                  (IP-SUB (NP-NOM *T*-1)
+                                          (ADVP-TMP (ADV^T +ar))
+                                          (BEDI w+aron)
+                                          (VBN gefunden)))))
+          (. .)) (ID cochronE-INTERPOLATION,ChronE_[Plummer]:963.27.1413))
+
+( (IP-MAT (NP-NOM *con*) 
+          (VBD halgode)
+          (IP-SMC (NP-SBJ (PRO him))
+                  (ADVP-TMP (ADV^T +ta))
+                  (NP-ACC-PRD (N^A abbot)))
+          (. ,)) (ID cochronE-INTERPOLATION,ChronE_[Plummer]:963.12.1402))
+
+</pre>
+
+<p><BR>
+
+<a name="lsigewB">
+<h2>colsigewB.psd</h2></a>
+
+The B manuscript of Aelfric's letter to Sigeweard has the following
+properties. The verb inflection -EN is treated as indicative/subjunctive
+ambiguous.
+
+<pre>
+( (IP-MAT (CONJ &)
+          (NP-NOM (PRO^N heo))
+          (VBD si+doden)
+          (QP-NOM (Q^N ealle))
+          (PP (P to)
+              (NP-DAT (NP-GEN (NR Egypte))
+                      (N^D londe)
+                      (, ,)
+                      (CP-REL (WADVP-LOC-1 (ADV^L +ter))
+                              (C 0)
+                              (IP-SUB (ADVP-LOC *T*-1)
+                                      (NP-NOM (PRO^N heo))
+                                      (NP (N bileofen+a))
+                                      (VBDI fundon)))))
+          (. .))
+      (ID colsigewB,+ALet_4_[SigeweardB]:299.75)) 
+
+
+</pre>
+
+Nominative +DE for SE occurs.
+
+<pre>
+(NODE (IP-MAT (NP-NOM-PRD (NR^N Enohc))
+              (BEDI w+as)
+              (VBN is+ad)
+              (NP-NOM (D^N +te) (ADJ^N seofe+da) (N^N mon))
+              (PP (P from)
+                  (NP-DAT (NR^D Adame)))
+              (. :))
+      (ID colsigewB,+ALet_4_[SigeweardB]:183.36)) 
+
+</pre>
+
+Plural HEOM appears in both accusative and dative environments, while
+singular HIM is used only for dative. Thus HEOM is treated as acc/dat
+ambiguous, and HIM is dative only.
+
+<pre>
+( (IP-MAT-SPE (CONJ &)
+              (NP-NOM (PRO^N he))
+              (VBD bet+ahte)
+              (NP (PRO heom)) 
+              (PP (P on)
+                  (NP-DAT (NP-GEN (N^G h+a+denra))
+                          (N^D handum)))
+              (. ,)) (ID colsigewB,+ALet_4_[SigeweardB]:797.208))
+
+(NODE (IP-SUB-0 (NP-NOM (NUM^N +dry) (N^N delas))
+                (BEPI beo+d)
+                (VBN^N id+alede)
+                (PP (P +durh)
+                    (NP (PRO heom))))
+      (ID colsigewB,+ALet_4_[SigeweardB]:274.67)) 
+
+( (IP-MAT (CONJ &)
+          (PP (P of)
+              (NP-DAT (ADJ^D hearde) (N^D stanum)))
+          (NP (PRO heom))
+          (VBDI com)
+          (NP-NOM (VAG^N yrnende) (N^N water))
+          (. ,))
+      (ID colsigewB,+ALet_4_[SigeweardB]:359.98)) 
+
+</pre>
+
+<p><BR>
+
+<a name="vincent2">
+<h2>covinceB.psd</h2></a>
+
+The second half of the Vincent Life found in Bodley 343 has the following
+properties. The verb inflection -EN is treated as indicative/subjunctive
+ambiguous.
+
+<pre>
+( (IP-MAT (CONJ and)
+          (NP-NOM (PRO^N we))
+          (NP-ACC (PRO^A hine))
+          (VBD il+ahten)
+          (. ;)) (ID covinceB,:312.19))
+
+</pre>
+
+Nominative +TE and +TEO occur as well as a couple of cases of
+non-nominative +TE (which might be instrumental).
+
+<pre>
+(NODE (IP-MAT (NP-NOM-LFD (D^N +De)
+                          (CP-REL (WNP-NOM-1 0)
+                                  (C +de)
+                                  (IP-SUB (NP-NOM *T*-1)
+                                          (NP (PRO me))
+                                          (VBPI +den+a+d))))
+              (, ,)
+              (VBPS fylige)
+              (NP-NOM-RSP (PRO^N he))
+              (NP (PRO me))
+              (ADVP-TMP (ADV^T +tenne))
+              (. ;))
+       (ID covinceB,[Vincent]:293.8))
+
+( (CODE &lt;T03350009100,328&gt;)
+  (IP-MAT (ADVP-LOC (ADV^L Her))
+          (BEPI is)
+          (NP-NOM (D^N +deo) (N^N sawla))
+          (VBN iset)
+          (PP (P for)
+              (NP-DAT (D^D +tisse) (ADJ^D sceorte) (N^D life))) 
+          (. ,)) (ID covinceB,[Vincent]:328.28))
+
+( (IP-MAT (CONJ and)
+          (NP-NOM (PRO^N he))
+          (VBPI bring+a+d)
+          (NP-ACC (D^A +tone) (N^A w+astm))
+          (, ,)
+          (CP-ADV (C +t+at) 
+                  (IP-SUB (BEP beo)
+                          (NP-NOM (PRO^N we))
+                          (ADJP-NOM-PRD (ADJ^N synfulle))))
+          (, ,)
+          (PP (P into)
+              (NP-DAT (D +te) (ADJ^I wynsume) (N^D b+arne) <-- non-nominative +TE
+                      (NP-GEN (D^G +tare) (ADJ^G ecan) (N^G wununge))))
+          (. .)) (ID covinceB,[Vincent]:304.16))
+
+</pre>
+
+Both HIRE and HIM are acc/dat ambiguous, while HEOM, which occurs only
+twice appears to be dative only.
+
+<pre>
+( (IP-MAT (CONJ and)
+          (NP-NOM-LFD (D^N +te)
+                      (CP-REL (WNP-NOM-1 0)
+                              (C +de)
+                              (IP-SUB (NP-NOM *T*-1)
+                                      (NP-ACC (PRO$ his) (N^A sawl+a))
+                                      (VBPI hat+a+d)
+                                      (PP (P on)
+                                          (NP-DAT (D^D +tissere) (N^D weorulde))))))
+          (, ,)
+          (NP-NOM-RSP (D^N +te))
+          (VBPI heald)
+          (NP (PRO hire))
+          (PP (P on)
+              (NP-DAT (D^D +tam) (ADJ^D ecan) (N^D life)))
+          (. .)) (ID covinceB,[Vincent]:290.7))
+
+( (IP-MAT (CONJ and)
+          (NP-NOM-LFD (D^N +te)
+                      (CP-REL (WNP-NOM-1 0)
+                              (C +de)
+                              (IP-SUB (NP-NOM *T*-1)
+                                      (NP (PRO me))
+                                      (VBPI +dena+t))))
+          (, ,)
+          (NP-RSP (PRO him))
+          (ADVP-TMP (ADV^T +tonne))
+          (VBPI arwur+da+d)
+          (NP-NOM (PRO$^N min) (N^N f+ader) (ADJ^N almihtig+a)
+                  (CP-REL (WNP-NOM-2 (D^N +te))
+                          (C +de)
+                          (IP-SUB (NP-NOM *T*-2)
+                                  (BEPI is)
+                                  (PP (P on)
+                                      (NP-DAT (N^D heofenum))))))
+          (. .))
+      (ID covinceB,[Vincent]:293.10)) 
+
+( (CODE &lt;T03350009700,349&gt;)
+  (IP-MAT (CP-ADV (P Gif)
+		  (C 0)
+		  (IP-SUB (NP-NOM (PRO^N we))
+			  (NP-DAT (NR^D Criste))
+			  (VBPI +deni+a+d)))
+          (, ,)
+          (NP-NOM (PRO^N we))
+          (MDPS sceolen)
+          (NP (PRO him))
+          (VB fyligen)
+          (. .)) (ID covinceB,[Vincent]:349.39))
+
+</pre>
+

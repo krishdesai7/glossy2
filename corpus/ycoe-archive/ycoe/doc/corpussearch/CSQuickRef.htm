@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>CorpusSearch, Reference Page</TITLE>
+</HEAD>
+<BODY BGCOLOR = WHITE>
+<CENTER><H2>CorpusSearch Reference Page</H2></CENTER>
+<P>
+<br>
+<TABLE>
+<TR><TD WIDTH=55%><h3>search functions</h3></TD><TD><h3>logical operators</h3></TD>
+<TR ROWSPAN=2><TD>
+<TABLE>
+<TR><TD>exists</TD><TD>(exists anywhere in sentence)
+<TR><TD>precedes</TD><TD>(sister precedes)
+<TR><TD>iPrecedes</TD><TD>(immediately sister precedes) 
+<TR><TD>anyPrecedes</TD><TD>(precedes anywhere)
+<TR><TD>iDominates</TD><TD>(immediately dominates)
+<TR><TD>iDomsOnly</TD><TD>(immediately dominates only child)
+<TR><TD>iDomsNumber#</TD><TD>(immediately dominates first, second, etc. child)
+<TR><TD>iDomsLast#</TD><TD>(immediately dominates last, second-to-last, etc. child)
+<TR><TD>DomsWords#</TD><TD>(dominates # of words)
+<TR><TD>DomsWords&gt;#</TD><TD>(dominates more than # of words)
+<TR><TD>DomsWords&lt;#</TD><TD>(dominates less than # of words)
+<TR><TD>iDomsTotal#</TD><TD>(dominates # of daughters)
+<TR><TD>iDomsTotal&gt;#</TD><TD>(dominates more than # of daughters)
+<TR><TD>iDomsTotal&lt;#</TD><TD>(dominates less than # of daughters)
+<TR><TD>column#</TD><TD>(searches coding node)
+<TR><TD>inID</TD><TD>(searches ID node)
+</TABLE>
+</TD>
+<TD VALIGN=TOP>
+<TABLE>
+<TR><TD>AND</TD><TD>(and-condition)</TD>
+<TR><TD>!</TD><TD>(not-argument)</TD>
+<TR><TD>|</TD><TD>(or-argument)</TD>
+</TABLE>
+<P>
+<TABLE>
+<TR><B><h3>wild cards</h3></B>
+<TR><TD>*</TD><TD>matches 0 or more characters</TD>
+<TR><TD>#</TD><TD>matches any digit(s) (0, 1, ... 9)</TD>
+</TABLE>
+<TD>
+</TABLE>
+<br>
+
+<TABLE>
+<TR><TD WIDTH=70%><h3>search commands</h3></TD><TD><h3>printing commands</h3></TD>
+<TR><TD>
+<TABLE VALIGN=TOP>
+<TR><TH ALIGN=LEFT WIDTH=55%>command</TH><TH ALIGN=LEFT>default</TH>
+<TR><TD>node:</TD><TD>no default</TD>
+<TR><TD>query:</TD><TD>no default</TD>
+<TR><TD>ignore_nodes:</TD><TD>CODE|LB|'|\"|,|E_S
+<TR><TD>add_to_ignore:</TD>
+<TD>adds labels to default</TD>
+<TR><TD>define: &lt;my.def></TD><TD>includes definition file</TD>
+</TABLE>
+</TD>
+<TD>
+<TABLE VALIGN=TOP>
+<TR><TH ALIGN=LEFT WIDTH=75%>command</TH><TH ALIGN=LEFT>default</TH>
+<TR><TD>print_indices:</TD><TD>true
+<TR><TD>nodes_only:</TD><TD>true
+<TR><TD>remove_nodes:</TD><TD>false
+<TR><TD>only_ur_text:</TD><TD>false
+<TR><TD>print_complement:</TD><TD>false
+
+</TABLE>
+</TD>
+</TABLE>
+<P>
+<H3>to run CorpusSearch:</H3>
+<P>
+<DL>
+<DT>Windows/Mac: double-click on CSearch icon and follow directions on screen
+<p>
+<DT>unix/linux:
+<DT><DL>
+    <DT>automatic output file (command.out)
+    <DD><PRE>java CorpusSearch command.q input-files </PRE>
+    <DT>to redirect output (my_name.out)
+    <DD><PRE>java CorpusSearch command.q inputfile(s) -out my_name.out</PRE>
+    </DL>
+</DL>
+<P>
+Query file names must end in .q. Output file names always end in .out
+<P>
+</BODY>
+</HTML>

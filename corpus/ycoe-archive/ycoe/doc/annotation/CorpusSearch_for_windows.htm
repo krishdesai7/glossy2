@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<TITLE>CorpusSearch for Windows</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+
+<BASEFONT SIZE=4>
+
+<h1>How to work efficiently with CorpusSearch under Windows (up to version 98)</h1>
+Ann Taylor, July 2002
+
+<p><br>
+
+This is simply a step-by-step outline of how I set up to run CorpusSearch
+on my PC. I'm no windows guru and I can't guarentee what works for me will
+work for you. But it probably will. If you have problems, email me
+(at9@york.ac.uk) and I'll try to help.
+
+<p>
+The biggest problem people have working with CorpusSearch under Windows is
+converting back and forth from a word processor format to dos/ascii. You
+can avoid this by using a MS-DOS editor to write your query files. With a
+small amount of effort in setting up your desktop before you start,
+CorpusSearch can be run extremely easily and efficiently under Windows.
+
+<ol>
+<li> Make a folder inside the PPCME2-CS folder with a short easily typed
+name (I use qq). This is where the query and output files will reside.
+
+<p>
+<li>Open the PPCME2-CS folder so that the CorpusSearch program icon is
+visible in the window.
+
+<p>
+<li>Open the qq folder in another window.
+
+<p>
+<li>Open the MS-DOS window (under Start:Programs:)
+
+<p>
+<li>In the MS-DOS window the prompt will probably look like this:
+
+<blockquote>
+C:\WINDOWS
+</blockquote>
+
+Change to your qq folder/directory
+
+<blockquote>
+cd ..\PROGRA~1\PPCME2-CS\qq
+</blockquote>
+
+<li>Use the MS-DOS utility "edit" to make query files in the qq directory
+
+<blockquote>
+edit filename.q
+</blockquote>
+
+A window will open in which you can type your query. It has the usual
+obvious pull-down menus for saving and exiting and so on. When you're
+finished writing your query, leave the MS-DOS window open.
+
+<p>
+
+<li>Click on the CorpusSearch icon. At the prompt for a query file, type 
+
+<blockquote>
+qq\filename.q
+</blockquote>
+
+For the source file just use the files in the psd directory (it's shorter
+to type than search-files and there's no need to move files unless you want
+to search a combination of files that you can't specify using * as a wild
+card). 
+
+<blockquote>
+psd\*<br>
+psd\cm*.m2.psd      (for example)<br>
+psd\*m2*            (even shorter)<br>
+</blockquote>
+
+<li>The output file will be created in the qq folder. Since you have this
+folder open it will be easily accessible. The first time you make an output
+file, double-click on it to open it. You should get a window which asks you
+which application you want to use to open it. Pick your favourite word
+processor and tick the box that says to always open this type of file with
+this application.
+
+<p>
+For me, using Word Perfect, when I double-click the file it opens as a WP
+file, I hit RETURN to convert it from dos/ascii to WP so I can read
+it. When I'm finished I quit without saving and WP leaves the file in
+dos/ascii format (since I didn't save it). This means it's still searchable
+by CS. I don't use Word but I expect it will act much the same. Since the
+output file is in dos/ascii format, you can also read it using "edit" (just
+use "edit filename.out" as we did above). Often these utilities don't
+support very large files, however, so if you're doing large searches this
+might not work. If you're doing a lot of searching, before you open the
+first output file, set the default initial font on your word processor to a
+fixed-width font like courier new and the smallest font size you can read
+(I use 10). This avoids the skewing of the parses that occurs when the
+fixed-width font of the corpus is converted to a variable-width font like
+Times and gets as much of the parse on the screen as possible without
+wrapping. 
+
+<p>
+<li>And that's it. You have all the windows you need open at once and by
+using the MS-DOS editor "edit" to create the query files you don't have to
+be constantly changing back and forth between incompatible formats.
+
+</ol>
+
+<h2>A note on Windows 2000</h2>
+
+There is no MS-DOS prompt in Windows 2000. Instead go to Start | Run and
+type cmd.exe in the box to get the command window. Unfortunately the mouse
+doesn't seem to work with "edit" in Windows 2000, so you have to use
+keyboard commands.

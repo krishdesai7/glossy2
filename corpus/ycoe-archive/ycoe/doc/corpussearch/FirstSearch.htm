@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<TITLE>YCOE, Getting Started</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="WHITE">
+<BASEFONT SIZE=4>
+
+<h2>A first search using CorpusSearch in a Windows environment</h2>
+
+In order to run CorpusSearch you need a query file and one or more source
+files. You can use one or all of the corpus files in the psd folder as
+source files. To make a query file, first read <a
+href="CorpusSearch_for_windows.htm">CorpusSearch for windows</a> to
+find out how to use the DOS editor "edit". Then create your first query
+file. If you don't know what to search for, put the following in a file and
+call it <tt>query1.q</tt>.
+
+<pre>
+node: IP*
+query: (IP* iDoms RP)
+
+</pre>
+
+The following instructions assume that you have set up a <b>qq</b> folder
+as outlined in <a href="CorpusSearch_for_windows.htm">CorpusSearch for
+windows</a> to hold your query and output files.
+
+<ol>
+
+<li> Double-click on the CSearch icon <p>
+<li> When prompted for a query file, type: <tt>qq\query1.q</tt> <p>
+<li> When asked about the file name of the output file, type: <tt>y</tt> <p>
+<li> When asked for a source file, type: <tt>psd\*</tt> <p>
+<li> The program will then run and produce an output file named
+<tt>query1.out</tt> in the qq folder. Depending on the complexity of the
+query and the number of files searched, this could take some time. <p>
+<li> You must quit the CSearch program manually after running it. To run
+another search, restart the program by double-clicking on the icon.
+
+</ol>

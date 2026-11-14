@@ -1,0 +1,208 @@
+<HTML>
+<HEAD>
+<TITLE>CorpusSearch Lite, Table of contents</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="FFFFFF">
+<BASEFONT SIZE=4>
+
+<h1>CorpusSearch Lite:</h1>
+<h2>A beginner's guide to searching with CorpusSearch Version 1.1</h2>
+
+<hr>
+<p>
+
+<b>This manual includes some features which are not included in the Version
+1.0 (CD-rom) release. These are <a
+href="CSLite.htm#preference_files">preference files</a>, a new
+version of <a
+href="CSLite.htm#remove_nodes"><i>remove_nodes</i></a>, automatic
+searching of <a href="CSLite.htm#conjunction">conjunction
+structures</a> and the <a
+href="CSLite.htm#coding_function">coding function</a>.</b>
+
+<p><hr>
+<br>
+
+<h2>Table of Contents</h2>
+
+<blockquote>
+<table>
+<tr>
+<td valign=top width=50%>
+
+<DL><DT><a href="CSLite.htm#intro"><b>Introduction</b></a>
+    <DT><DL>
+	<DT><a href="CSLite.htm#structure_of_tokens">The
+	structure of tokens</a>
+        <DT><a href="CSLite.htm#annotation_system">Tree
+	Structure</a> 
+	<DT><a href="CSLite.htm#defining_relations">Defining
+	relations on trees</a> 
+        </DL>
+
+	<p>
+    <DT><a href="CSLite.htm#running_cs"><b>Running CorpusSearch</b></a>
+    <DT><DL>
+        <a href="CorpusSearch_for_windows.htm">Running CorpusSearch under
+Windows</a>
+        </DL>
+
+    <p>
+    <DT><a href="CSLite.htm#output"><b>CorpusSearch output</b></a>
+    <DT><DL>
+        <DT><a href="CSLite.htm#output_preface">The preface</a>
+	<DT><a href="CSLite.htm#output_body">The body</a>
+	<DT><a href="CSLite.htm#output_summary">The
+	summary</a>
+
+	<p>
+	</DL>
+    <DT><a href="CSLite.htm#structure_of_a_query"><b>The structure
+    of a query</b></a>
+    <DT><DL>
+        <DT><a href="CSLite.htm#the_query">The query</a>
+        <DT><a href="CSLite.htm#logical_operators">Logical
+	operators</a>
+	<DT><DL>
+	    <DT><a href="CSLite.htm#not">NOT (!)</a>
+	    <DT><a href="CSLite.htm#or">OR (|)</a>
+	    </DL>
+	</DL>
+
+	<p>
+     <DT><a href="CSLite.htm#basic_search_functions"><b>Basic Search
+     functions</b></a> 
+     <DT><DL>
+         <DT><a href="CSLite.htm#exists">Exists</a>
+         <DT><a href="CSLite.htm#precedes">Precedes</a>
+         <DT><a href="CSLite.htm#iDoms">Immediately Dominates
+	 (iDoms)</a> 
+         <DT><a href="CSLite.htm#iPrecedes">Immediately precedes
+	 (iPrecedes)</a> 
+         <DT><a href="CSLite.htm#iDomsOnly">Immediately Dominates
+	 Only (iDomsOnly)</a> 
+	 </DL>
+<p>
+<DT><a href="CSLite.htm#some_useful_commands"><b>Basic
+     commands</b></a>
+     <DT><DL>
+         <DT><a href="CSLite.htm#setting_the_node">Setting the
+	 NODE</a>
+         <DT><a href="CSLite.htm#remove_nodes">remove_nodes</a>
+         <DT><a href="CSLite.htm#add_to_ignore">ignore_nodes and
+	 add_to_ignore</a> 
+         <DT><a href="CSLite.htm#nodes_only">nodes_only</a>
+         <DT><a href="CSLite.htm#print_indices">print_indices</a>
+	 </DL>
+
+	 <p>
+     <DT><a href="CSLite.htm#multi-call_queries"><b>Multi-call
+     queries</b></a>
+     <DT><DL>
+         <DT><a
+	 href="CSLite.htm#multi-call_queries_and_AND">Multi-call
+	 queries and the logical operator AND</a>  
+	 <DT><DL>
+	     <DT><a href="CSLite.htm#same-instance">Same
+	     instance</a> 
+	     <DT><a href="CSLite.htm#prefix-indices">Prefix
+	     indices</a> 
+	     </DL>
+         <DT><a
+	 href="CSLite.htm#controlling_the_node_in_multi-call_queries"> 
+	 Controlling the NODE in multi-call queries</a> 
+	 </DL>
+</DL>
+</dt>
+
+<td valign=top>
+<DL>     
+      <DT><a href="CSLite.htm#how_cs_counts"><b>How CorpusSearch
+      counts</b></a> 
+
+      <p>
+      <DT><a
+      href="CSLite.htm#strategies_for_searching"><b>An algorithm for
+      successful searching</b> </a> 
+
+      <p>
+      <DT><a href="CSLite.htm#optional_command_files"><b>Optional
+      command files</b></a> 
+      <DT><DL>
+          <DT><a href="CSLite.htm#definition_files">Definition
+	  files</a> 
+	  <DT><a href="CSLite.htm#preference_files">Preference
+	  files</a> 
+	  </DL>
+<p>
+     <DT><a href="CSLite.htm#advanced_commands"><b>Advanced
+	 commands</b></a> 
+	  <DT><DL>
+	     <DT><a
+	     href="CSLite.htm#print_complement">print_complement</a>
+	     <DT><a
+	     href="CSLite.htm#advanced_use_of_add_to_ignore">Advanced uses of <i>add_to_ignore</i></a>  
+	     </DL>
+
+	     <p>
+
+     <DT><a href="CSLite.htm#advanced_search_functions"><b>Advanced
+     search functions</b></a>
+     <DT><DL>
+         <DT><a href="CSLite.htm#finding_constituents">Finding
+	 constituents in particular positions</a> 
+	 <DT><DL>
+	     <DT><a href="CSLite.htm#iDomsNumber">Immediately
+	     Dominates as first/second/etc. daughter (iDomsNumber#)</a> 
+	     <DT><a href="CSLite.htm#iDomsLast">Immediately
+	     Dominates as last/second last/etc. daughter (iDomsLast#)</a> 	     </DL>
+	 <DT><a href="CSLite.htm#counting">Counting
+	 constituents and words</a>
+	  <DT><DL>
+	     <DT><a href="CSLite.htm#counting_words">Counting
+	     words (domsWords#, domsWords&gt;#, domsWords&lt;#)</a> 
+	     <DT><a
+	     href="CSLite.htm#counting_constituents">Counting
+	     constituents (iDomsTotal#, iDomsTotal&gt;#,
+	     iDomsTotal&lt;#)</a> 
+ 	     </DL>
+        </DL>
+	     <p>
+      <DT><a href="CSLite.htm#conjunction"><b>Searching conjunction
+      structures</b></a> 
+      <p>
+      <DT><a href="CSLite.htm#coding_function"><b>The coding
+      function</b></a> 
+      <DT><DL>
+          <DT><a
+	  href="CSLite.htm#non-obvious_uses_of_coding">Some
+	  non-obvious uses of coding</a> 
+	  <DT><DL>
+          <DT><a href="CSLite.htm#hand-coding">Hand coding</a>
+          <DT><a
+	  href="CSLite.htm#storing_information_with_coding">Storing information</a>  
+          <DT><a
+	  href="CSLite.htm#simulating_or_with_coding">Simulating
+	  OR</a>  
+	  </DL></DL>
+      <p>
+      <DT><a
+	 href="CSLite.htm#searching_special_nodes"><b>Searching
+	 "special" nodes</b></a> 
+	 <DT><DL>
+	     <DT><a href="CSLite.htm#searching_id">Searching the
+	     ID node (inID)</a> 
+	     <DT><a href="CSLite.htm#searching_coding">Searching
+	     the CODING node (column#)</a>
+	     </DL>
+         </DL>
+    <p>
+
+<DT><a href="CSLiteEx.htm"><b>Some extended examples</b></a>
+</blockquote>
+    </DL>
+
+</table>
+
+<font size=3>&copy; 2003 Ann Taylor and University of York</font>
