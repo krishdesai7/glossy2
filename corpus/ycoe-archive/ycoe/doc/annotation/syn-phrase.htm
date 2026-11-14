@@ -1,55 +1,58 @@
 <HTML>
+
 <HEAD>
-<TITLE>PPCME2, Syntactic Annotation, Internal Structure of Phrases 
-(Nonclausal)</TITLE>
+      <TITLE>PPCME2, Syntactic Annotation, Internal Structure of Phrases
+            (Nonclausal)</TITLE>
 </HEAD>
 
 <BODY BGCOLOR="FFFFFF">
 
-<a name="internal_structure_of_phrases">
-<H2>Internal Structure of Phrases 
-(Nonclausal)</H2></a>
+      <a name="internal_structure_of_phrases">
+            <H2>Internal Structure of Phrases
+                  (Nonclausal)</H2>
+      </a>
 
-<DL><DT>
-<DL>
-<DT><a href="#advp">Adverb Phrase (ADVP)</a>
-<DT><a href="#adjp">Adjective Phrase (ADJP)</a>
-<DT><a href="#qp">Quantifier Phrase (QP)</a>
-<DT><a href="#nump">Number Phrase (NUMP)</a>
-<DT><a href="#np">Noun Phrase (NP)</a>
-<DT><a href="#pp">Prepositional Phrase (PP)</a>
-<DT><a href="#conjp">Conjunction Phrase (CONJP)</a>
-<DT><a href="#intjp">Interjection Phrase (INTJP)</a>
-<DT><a href="#wh_phrases">WH-phrases</a>
-<DT><a href="#frag">Fragment (FRAG)</a>
-<DT><a href="#qtp">Quotation Phrase (QTP)</a>
-<DT><a href="#ref">Reference (REF)</a>
-<DT><a href="#latin">Foreign language quotations and passages (LATIN,
-FRENCH, HEBREW)</a>
-<DT><a href="syn-detailed-toc.htm">Table of Contents</a>
-</DL></DL>
+      <DL>
+            <DT>
+                  <DL>
+                        <DT><a href="#advp">Adverb Phrase (ADVP)</a>
+                        <DT><a href="#adjp">Adjective Phrase (ADJP)</a>
+                        <DT><a href="#qp">Quantifier Phrase (QP)</a>
+                        <DT><a href="#nump">Number Phrase (NUMP)</a>
+                        <DT><a href="#np">Noun Phrase (NP)</a>
+                        <DT><a href="#pp">Prepositional Phrase (PP)</a>
+                        <DT><a href="#conjp">Conjunction Phrase (CONJP)</a>
+                        <DT><a href="#intjp">Interjection Phrase (INTJP)</a>
+                        <DT><a href="#wh_phrases">WH-phrases</a>
+                        <DT><a href="#frag">Fragment (FRAG)</a>
+                        <DT><a href="#qtp">Quotation Phrase (QTP)</a>
+                        <DT><a href="#ref">Reference (REF)</a>
+                        <DT><a href="#latin">Foreign language quotations and passages (LATIN,
+                                    FRENCH, HEBREW)</a>
+                        <DT><a href="syn-detailed-toc.htm">Table of Contents</a>
+                  </DL>
+      </DL>
 
-This section describes the internal structure of non-clausal
-constituents. The use of these constituents to make up a clause is
-described in Section <A
-HREF="syn-intern.htm#internal_structure_of_clauses">INTERNAL STRUCTURE OF
-CLAUSES</A>.  <TT>QTP, REF</TT> and <TT>LATIN/FRENCH/HEBREW</TT>, although
-non-linguistic, are used to label parts of the text. <TT>CODE</TT>, which
-is used to label editorial material, is discussed in Section <A
-HREF="general-intro.htm#parsed_files">PARSED FILES</A>.
+      This section describes the internal structure of non-clausal
+      constituents. The use of these constituents to make up a clause is
+      described in Section <A HREF="syn-intern.htm#internal_structure_of_clauses">INTERNAL STRUCTURE OF
+            CLAUSES</A>. <TT>QTP, REF</TT> and <TT>LATIN/FRENCH/HEBREW</TT>, although
+      non-linguistic, are used to label parts of the text. <TT>CODE</TT>, which
+      is used to label editorial material, is discussed in Section <A HREF="general-intro.htm#parsed_files">PARSED
+            FILES</A>.
 
-Verb phrases and determiner phrases are not included in the annotation.
-Within non-clausal constituents, the phrasal projection of a modifier are
-generally only indicated when they consist of more than a single word. The
-purpose of the phrasal label is to indicate what the grouping of the words
-within the constituent is. For single words this is not necessary, and so
-is omitted for reasons of simplicity and time (see Section <A
-HREF="syn-intro.htm#syntactic_annotation_intro">INTRODUCTION</A>). Thus,
-in the following examples, the adjective GRETE, as a single-word adjective
-phrase is left bare, while the containing ADJP is represented in the second
-example, since SO GRETE is a multi-word adjective phrase.
+      Verb phrases and determiner phrases are not included in the annotation.
+      Within non-clausal constituents, the phrasal projection of a modifier are
+      generally only indicated when they consist of more than a single word. The
+      purpose of the phrasal label is to indicate what the grouping of the words
+      within the constituent is. For single words this is not necessary, and so
+      is omitted for reasons of simplicity and time (see Section <A
+            HREF="syn-intro.htm#syntactic_annotation_intro">INTRODUCTION</A>). Thus,
+      in the following examples, the adjective GRETE, as a single-word adjective
+      phrase is left bare, while the containing ADJP is represented in the second
+      example, since SO GRETE is a multi-word adjective phrase.
 
-<PRE>
+      <PRE>
 (NODE (NP-OB1 (ADJ grete) (N pitee)) <--- single word: no ADJP
       (ID CMBRUT3,61.1799)) 
 
@@ -65,30 +68,29 @@ example, since SO GRETE is a multi-word adjective phrase.
 
 </PRE>
 
-There are two exceptions to this general rule: (1) in conjoined
-constructions; see Section <A
-HREF="syn-conj.htm#conjunction">CONJUNCTION </A>for details; and (2)
-when the phrasal label is not a direct projection of the word label. In the
-following example, <TT>(NUM half)</TT> is not further specified as a <TT>
-NUMP</TT> constituent because <TT>NUMP</TT> is a direct projection of
-<TT>NUM</TT> (nor is <TT>(ADV so)</TT> further specified as
-<TT>ADVP</TT>). However, the function of HALF in this constituent is
-indicated by the <TT>NP-MSR</TT> label, which is not a direct projection of
-<TT>NUM</TT>, and thus is included despite the fact that it contains a
-single word.
+      There are two exceptions to this general rule: (1) in conjoined
+      constructions; see Section <A HREF="syn-conj.htm#conjunction">CONJUNCTION </A>for details; and (2)
+      when the phrasal label is not a direct projection of the word label. In the
+      following example, <TT>(NUM half)</TT> is not further specified as a <TT>
+            NUMP</TT> constituent because <TT>NUMP</TT> is a direct projection of
+      <TT>NUM</TT> (nor is <TT>(ADV so)</TT> further specified as
+      <TT>ADVP</TT>). However, the function of HALF in this constituent is
+      indicated by the <TT>NP-MSR</TT> label, which is not a direct projection of
+      <TT>NUM</TT>, and thus is included despite the fact that it contains a
+      single word.
 
-<PRE>
+      <PRE>
 (NODE (ADVP (NP-MSR (NUM halffe))
             (ADVR so) (ADV sore))
       (ID CMMALORY-S0,46.1511)) 
                                 
 </PRE>
 
-For complements and post-modifiers, on the other hand, the phrasal level is
-always indicated. Thus for a single word complement the phrasal level is
-always indicated whether is occurs in pre- or post-head position.
+      For complements and post-modifiers, on the other hand, the phrasal level is
+      always indicated. Thus for a single word complement the phrasal level is
+      always indicated whether is occurs in pre- or post-head position.
 
-<PRE>
+      <PRE>
 (NODE (NP (D this) (N syde)
           (NP-COM (NPR$ Trente) (N watir)))
       (ID CMMALORY,19.579)) 
@@ -103,23 +105,26 @@ always indicated whether is occurs in pre- or post-head position.
 
 </PRE>
 
-<a name="advp">
-<H3>Adverb Phrase (ADVP)</H3></a>
+      <a name="advp">
+            <H3>Adverb Phrase (ADVP)</H3>
+      </a>
 
-<DL><DT>
-<DL>
-<DT><a href="#modifiers_of_adverbs">Modifiers of Adverbs</a>
-<DT><a href="#complements_of_adverbs">Complements of Adverbs</a>
-<DT><a href="#adverbial_free_relatives">Adverbial Free Relatives</a>
-<DT><a href="syn-detailed-toc.htm">Table of Contents</a>
-</DL></DL>
+      <DL>
+            <DT>
+                  <DL>
+                        <DT><a href="#modifiers_of_adverbs">Modifiers of Adverbs</a>
+                        <DT><a href="#complements_of_adverbs">Complements of Adverbs</a>
+                        <DT><a href="#adverbial_free_relatives">Adverbial Free Relatives</a>
+                        <DT><a href="syn-detailed-toc.htm">Table of Contents</a>
+                  </DL>
+      </DL>
 
-<P>
+      <P>
 
-Adverb Phrases (<TT>ADVP</TT>) consist of an adverb head, possibly accompanied
-by modifiers and/or complements. 
+            Adverb Phrases (<TT>ADVP</TT>) consist of an adverb head, possibly accompanied
+            by modifiers and/or complements.
 
-<PRE>
+      <PRE>
 (NODE (ADVP (ADV wel))
       (ID CMMALORY,2.12))
 
@@ -140,15 +145,16 @@ by modifiers and/or complements.
 
 </PRE>
 
-<a name="modifiers_of_adverbs">
-<H3>Modifiers of Adverbs</H3></a>
+      <a name="modifiers_of_adverbs">
+            <H3>Modifiers of Adverbs</H3>
+      </a>
 
-Adverbial modifiers are generally adverbs, quantifiers, or measure phrases
-(NP-MSR); see Section <A HREF="syn-const.htm#np_measure">NP MEASURE
-PHRASE</A>. (For types of adverb phrases (ADVP-TMP, ADVP-DIR, etc.), see
-Section <A HREF="syn-const.htm#clause_advp">ADVERB PHRASE</A>.)
+      Adverbial modifiers are generally adverbs, quantifiers, or measure phrases
+      (NP-MSR); see Section <A HREF="syn-const.htm#np_measure">NP MEASURE
+            PHRASE</A>. (For types of adverb phrases (ADVP-TMP, ADVP-DIR, etc.), see
+      Section <A HREF="syn-const.htm#clause_advp">ADVERB PHRASE</A>.)
 
-<PRE>
+      <PRE>
 (NODE (ADVP (ADV passynge) (ADV sore))
       (ID CMMALORY,6.172)) 
 
@@ -199,22 +205,23 @@ Section <A HREF="syn-const.htm#clause_advp">ADVERB PHRASE</A>.)
 
 </PRE>
 
-Note that numbers modifying adverbs are further characterized as NP measure
-phrases.
+      Note that numbers modifying adverbs are further characterized as NP measure
+      phrases.
 
-<PRE>
+      <PRE>
 (NODE (ADVP (NP-MSR (NUM halffe))
             (ADVR so) (ADV sore))
       (ID CMMALORY-S0,46.1511)) 
 
 </PRE>
 
-<a name="complements_of_adverbs">
-<H3>Complements of Adverbs</H3></a>
+      <a name="complements_of_adverbs">
+            <H3>Complements of Adverbs</H3>
+      </a>
 
-Complements include PPs, comparative clauses, and degree clauses.
+      Complements include PPs, comparative clauses, and degree clauses.
 
-<PRE>
+      <PRE>
 (NODE (ADVP (ADVR so) (ADV welle)
             (PP (P as)
                 (NP (PRO he))))
@@ -278,13 +285,14 @@ Complements include PPs, comparative clauses, and degree clauses.
 
 </PRE>
 
-<a name="adverbial_free_relatives">
-<H3>Adverbial Free Relatives</H3></a>
+      <a name="adverbial_free_relatives">
+            <H3>Adverbial Free Relatives</H3>
+      </a>
 
-Adverbial free relatives are labelled as ADVPs unless they function as an
-argument of the clause, in which case they are labelled appropriately.
+      Adverbial free relatives are labelled as ADVPs unless they function as an
+      argument of the clause, in which case they are labelled appropriately.
 
-<PRE>
+      <PRE>
 (NODE (ADVP-LOC (CP-FRL (WADVP-1 (WADV where))
                         (C 0)
                         (IP-SUB (ADVP-LOC *T*-1)
@@ -367,35 +375,40 @@ argument of the clause, in which case they are labelled appropriately.
   (ID CMANCRIW,II.190.2687))
 </PRE>
 
-<a name="adjp">
-<H3>Adjective Phrase (ADJP)</H3></a>
+      <a name="adjp">
+            <H3>Adjective Phrase (ADJP)</H3>
+      </a>
 
-<DL><DT>
-<DL>
-<DT><a href="#modifiers_of_adjectives">Modifiers of Adjectives</a>
-<DT><a href="#comparative_adjectives">Comparative Adjectives</a>
-        <DL>
-        <DT><a href="#comp_adj_in_copular_constructions">Comparative adjectives in copular constructions</a>
-        <DT><a href="#comp_adj_in_more_merrier">Comparative adjectives in THE MORE THE MERRIER construction</a>
-        <DT><a href="#d_qr">(THE) MORE, (THE) LESS</a>
-        </DL>
-<DT><a href="#superlative_adjectives">Superlative Adjectives</a>
-<DT><a href="#complements_of_adjectives">Complements of Adjectives</a>
-<DL>
-<DT><a href="#np_complement_of_adj">NP complements of adjectives</a>
-        <DT><a href="#pp_complement_of_adj">PP complements of adjectives</a>
-        <DT><a href="#clausal_complement_of_adj">Clausal complements of Adjectives</a>
-        </DL>
-<DT><a href="#adjp_such">SUCH</a>
-<DT><a href="syn-detailed-toc.htm">Table of Contents</a>
-</DL></DL>
+      <DL>
+            <DT>
+                  <DL>
+                        <DT><a href="#modifiers_of_adjectives">Modifiers of Adjectives</a>
+                        <DT><a href="#comparative_adjectives">Comparative Adjectives</a>
+                              <DL>
+                                    <DT><a href="#comp_adj_in_copular_constructions">Comparative adjectives in copular
+                                                constructions</a>
+                                    <DT><a href="#comp_adj_in_more_merrier">Comparative adjectives in THE MORE THE
+                                                MERRIER construction</a>
+                                    <DT><a href="#d_qr">(THE) MORE, (THE) LESS</a>
+                              </DL>
+                        <DT><a href="#superlative_adjectives">Superlative Adjectives</a>
+                        <DT><a href="#complements_of_adjectives">Complements of Adjectives</a>
+                              <DL>
+                                    <DT><a href="#np_complement_of_adj">NP complements of adjectives</a>
+                                    <DT><a href="#pp_complement_of_adj">PP complements of adjectives</a>
+                                    <DT><a href="#clausal_complement_of_adj">Clausal complements of Adjectives</a>
+                              </DL>
+                        <DT><a href="#adjp_such">SUCH</a>
+                        <DT><a href="syn-detailed-toc.htm">Table of Contents</a>
+                  </DL>
+      </DL>
 
-<P>
+      <P>
 
-Adjective Phrases (<TT>ADJP</TT>) consist of an adjectival head, possibly
-accompanied by modifiers and/or complements.
+            Adjective Phrases (<TT>ADJP</TT>) consist of an adjectival head, possibly
+            accompanied by modifiers and/or complements.
 
-<PRE> 
+      <PRE>
 (NODE (ADJP (ADJ trew))
       (ID CMCAPCHR,62.905)) 
 
@@ -413,15 +426,16 @@ accompanied by modifiers and/or complements.
 
 </PRE>
 
-<a name="modifiers_of_adjectives">
-<H3>Modifiers of Adjectives</H3></a>
+      <a name="modifiers_of_adjectives">
+            <H3>Modifiers of Adjectives</H3>
+      </a>
 
-Adjectival modifiers are generally adverbs, quantifiers or ADVPs (see Section
-<A HREF="#advp">ADVERB PHRASE</A>) or NP measure phrases (NP-MSR; see Section
-<A HREF="syn-const.htm#np_measure">NP MEASURE PHRASE</A>).  As usual, single
-word modifiers are not given a phrasal label.
+      Adjectival modifiers are generally adverbs, quantifiers or ADVPs (see Section
+      <A HREF="#advp">ADVERB PHRASE</A>) or NP measure phrases (NP-MSR; see Section
+      <A HREF="syn-const.htm#np_measure">NP MEASURE PHRASE</A>). As usual, single
+      word modifiers are not given a phrasal label.
 
-<PRE>
+      <PRE>
 
 (NODE (ADJP (ADV passynge) (ADJ wyse))
       (ID CMMALORY-S0,2.9)) 
@@ -490,27 +504,30 @@ word modifiers are not given a phrasal label.
 
 </PRE>
 
-When ENOUGH postmodifies an adjective, it also has a phrasal label ADVP,
-following the rule that single-word postmodifiers receive a phrase label.
+      When ENOUGH postmodifies an adjective, it also has a phrasal label ADVP,
+      following the rule that single-word postmodifiers receive a phrase label.
 
-<PRE>
+      <PRE>
 (NODE (ADJP (ADJ bygge)
             (ADVP (ADVR ynough)))
       (ID CMMALORY-S0,14.422))
 
 </PRE>
 
-<a name="comparative_adjectives">
-<H3>Comparative Adjectives</H3></a>
+      <a name="comparative_adjectives">
+            <H3>Comparative Adjectives</H3>
+      </a>
 
-Comparative adjectives accompanied by a determiner are labelled <TT>ADJP</TT>
-in THE MORE THE MERRIER construction and following a copular verb. In all
-other cases they are labelled <TT>NP</TT>. See Section <A HREF="#comparative_adjectives_as_nps">COMPARATIVE ADJECTIVES LABELLED AS NPs</A>.
+      Comparative adjectives accompanied by a determiner are labelled <TT>ADJP</TT>
+      in THE MORE THE MERRIER construction and following a copular verb. In all
+      other cases they are labelled <TT>NP</TT>. See Section <A HREF="#comparative_adjectives_as_nps">COMPARATIVE
+            ADJECTIVES LABELLED AS NPs</A>.
 
-<a name="comp_adj_in_copular_constructions">
-<H3>Comparative adjectives in copular constructions</H3></a>
+      <a name="comp_adj_in_copular_constructions">
+            <H3>Comparative adjectives in copular constructions</H3>
+      </a>
 
-<PRE>
+      <PRE>
 (NODE (IP-SUB (NP-SBJ (PRO$ oure) (N preyere))
               (MD mowe)
               (BE be)
@@ -567,10 +584,11 @@ other cases they are labelled <TT>NP</TT>. See Section <A HREF="#comparative_adj
 
 </PRE>
 
-<a name="comp_adj_in_more_merrier">
-<H3>Comparative adjectives in THE MORE THE MERRIER construction</H3></a>
+      <a name="comp_adj_in_more_merrier">
+            <H3>Comparative adjectives in THE MORE THE MERRIER construction</H3>
+      </a>
 
-<PRE>
+      <PRE>
 ( (IP-MAT-SPE (CONJ And)
               (, ,)
               (PP-PRN (P as)
@@ -632,15 +650,16 @@ other cases they are labelled <TT>NP</TT>. See Section <A HREF="#comparative_adj
 
 </PRE>
 
-<a name="d_qr">
-<H3>(THE) MORE, (THE) LESS</H3></a>
+      <a name="d_qr">
+            <H3>(THE) MORE, (THE) LESS</H3>
+      </a>
 
-(THE) MORE and (THE) LESS are labelled <TT>ADJP</TT> in copular
-constructions and <TT>NP</TT> elsewhere. See Section <A
-HREF="#comparative_adjectives_as_nps">COMPARATIVE ADJECTIVES LABELLED AS
-NPs</A>.
+      (THE) MORE and (THE) LESS are labelled <TT>ADJP</TT> in copular
+      constructions and <TT>NP</TT> elsewhere. See Section <A HREF="#comparative_adjectives_as_nps">COMPARATIVE
+            ADJECTIVES LABELLED AS
+            NPs</A>.
 
-<PRE>
+      <PRE>
 (NODE (IP-SUB (NP-SBJ (PRO$ his) (ADJ awen))
               (MD may)
               (VB seme)
@@ -742,16 +761,17 @@ NPs</A>.
 
 </PRE>
 
-<a name="superlative_adjectives">
-<H3>Superlative Adjectives</H3></a>
+      <a name="superlative_adjectives">
+            <H3>Superlative Adjectives</H3>
+      </a>
 
-Superlative adjectives are labelled <TT>ADJP</TT> when alone following a
-copular verb, and <TT>NP</TT> if accompanied by a determiner or other
-modifier, or when acting as an argument. See Section <A
-HREF="#superlative_adjectives_as_nps">SUPERLATIVE ADJECTIVES LABELLED AS
-NPs</A>.
+      Superlative adjectives are labelled <TT>ADJP</TT> when alone following a
+      copular verb, and <TT>NP</TT> if accompanied by a determiner or other
+      modifier, or when acting as an argument. See Section <A HREF="#superlative_adjectives_as_nps">SUPERLATIVE
+            ADJECTIVES LABELLED AS
+            NPs</A>.
 
-<PRE>
+      <PRE>
 
 ( (IP-MAT (NP-SBJ (D +te) (ADJ +tridde))
           (ADVP (ADV +get))
@@ -812,25 +832,27 @@ NPs</A>.
 
 </PRE>
 
-<a name="complements_of_adjectives">
-<H3>Complements of Adjectives</H3></a>
+      <a name="complements_of_adjectives">
+            <H3>Complements of Adjectives</H3>
+      </a>
 
-Adjectives take NP, PP and clausal complements.
+      Adjectives take NP, PP and clausal complements.
 
-<a name="np_complement_of_adj">
-<H3>NP complements of adjectives</H3></a>
+      <a name="np_complement_of_adj">
+            <H3>NP complements of adjectives</H3>
+      </a>
 
-Any bare NP (i.e., with no extended label) dominated by ADJP is a
-complement. If the complement is clearly a genitive it's part-of-speech
-label will reflect this, but it is not indicated at the phrase
-level. Modifying NPs (such as measure NPs) will be further characterized by
-an extended tag (e.g., NP-MSR).
+      Any bare NP (i.e., with no extended label) dominated by ADJP is a
+      complement. If the complement is clearly a genitive it's part-of-speech
+      label will reflect this, but it is not indicated at the phrase
+      level. Modifying NPs (such as measure NPs) will be further characterized by
+      an extended tag (e.g., NP-MSR).
 
-<OL>
-<LI> The adjectives NEAR, NIGH (and variations), LIKE, and WORTH, take bare
-NP complements in all periods.
- 
-<PRE>
+      <OL>
+            <LI> The adjectives NEAR, NIGH (and variations), LIKE, and WORTH, take bare
+                  NP complements in all periods.
+
+                  <PRE>
 (NODE (ADJP (ADV ri+gt) (ADJ ny)
             (NP (D +te) (N+N cheke-bon)))
       (ID CMHORSES,85.11)) 
@@ -909,15 +931,15 @@ NP complements in all periods.
 
 </PRE>
 
-<LI> In early texts, some adjectives (PLEASING, OBEDIENT, etc.) which
-  in Modern English take PP complements took (usually dative) NPs.
-  These NPs are contained within the ADJP whether they precede or
-  follow the head. Affected NPs are treated as separate constituents
-  and are labelled <TT>NP-OB2</TT>. See Section
-  <A HREF="syn-const.htm#first_and_second_objects">FIRST OBJECT AND
-SECOND OBJECT</A>.
+            <LI> In early texts, some adjectives (PLEASING, OBEDIENT, etc.) which
+                  in Modern English take PP complements took (usually dative) NPs.
+                  These NPs are contained within the ADJP whether they precede or
+                  follow the head. Affected NPs are treated as separate constituents
+                  and are labelled <TT>NP-OB2</TT>. See Section
+                  <A HREF="syn-const.htm#first_and_second_objects">FIRST OBJECT AND
+                        SECOND OBJECT</A>.
 
-<PRE>
+                  <PRE>
 (NODE (ADJP (NP (NPR assur))
             (ADJ iqueme))       <--- pleasing
             (ID CMANCRIW,II.115.1451))
@@ -951,12 +973,13 @@ SECOND OBJECT</A>.
       (ID CMTRINIT,201.2786)) 
 
 </PRE>
-</OL>
+      </OL>
 
-<a name="pp_complement_of_adj">
-<H3>PP complements of adjectives</H3></a>
+      <a name="pp_complement_of_adj">
+            <H3>PP complements of adjectives</H3>
+      </a>
 
-<PRE>
+      <PRE>
 (NODE (ADJP (ADJ myghty)
             (PP (P of)
                 (NP (NS men))))
@@ -979,13 +1002,14 @@ SECOND OBJECT</A>.
 
 </PRE>
 
-<a name="clausal_complement_of_adj">
-<H3>Clausal complements of Adjectives</H3></a>
+      <a name="clausal_complement_of_adj">
+            <H3>Clausal complements of Adjectives</H3>
+      </a>
 
-<OL>
+      <OL>
 
-<LI> infinitive complements
-<PRE>
+            <LI> infinitive complements
+                  <PRE>
 
 (NODE (ADJP (D the) (ADJR gladder)
             (IP-INF (TO to)
@@ -1024,9 +1048,9 @@ SECOND OBJECT</A>.
 
 </PRE>
 
-<LI> that complements
+            <LI> that complements
 
-<PRE>
+                  <PRE>
 (NODE (ADJP (ADJ glad)
             (CP-THT (C that)
                     (IP-SUB (NP-SBJ (PRO$ hys) (NS knyghtes))
@@ -1045,9 +1069,9 @@ SECOND OBJECT</A>.
 
 </PRE>
 
-<LI> comparative complements
+            <LI> comparative complements
 
-<PRE>
+                  <PRE>
 (NODE (ADJP (D +te) (ADJR schorter)
             (CP-CMP (WADJP-1 0)
                     (C 0)
@@ -1076,9 +1100,9 @@ SECOND OBJECT</A>.
 
 </PRE>
 
-<LI> degree complements
+            <LI> degree complements
 
-<PRE>
+                  <PRE>
 (NODE (ADJP (ADVR so) (ADJ currageous)
             (CP-DEG (C that)
                     (IP-SUB (IP-SUB (NP-SBJ (PRO$ their) (NS enemyes))
@@ -1113,15 +1137,16 @@ SECOND OBJECT</A>.
                                 (NP (N tyme))))))
       (ID CMCTPARS,298.C2.429))
 </PRE>
-</OL>
+      </OL>
 
-<a name="adjp_such">
-<H3>SUCH</H3></a>
+      <a name="adjp_such">
+            <H3>SUCH</H3>
+      </a>
 
-Note that the word SUCH, labelled <TT>SUCH</TT>, projects an ADJP when
-combined with other elements.
+      Note that the word SUCH, labelled <TT>SUCH</TT>, projects an ADJP when
+      combined with other elements.
 
-<PRE>
+      <PRE>
 (NODE (ADJP (SUCH such)
             (CP-DEG (C that)
                     (IP-SUB (NP-SBJ (PRO he))
@@ -1133,27 +1158,30 @@ combined with other elements.
 
 </PRE>
 
-<a name="qp">
-<H3>Quantifier Phrase (QP)</H3></a>
+      <a name="qp">
+            <H3>Quantifier Phrase (QP)</H3>
+      </a>
 
-<DL><DT>
-<DL>
-<DT><a href="#combos_with_ever">Combinations with EVER</a>
-<DT><a href="#phrasal_modifiers_of_qp">Phrasal modifiers of QP</a>
-<DT><a href="#alre_superlative">ALRE plus superlative</a>
-<DT><a href="#qps_as_np_msr">Quantifier phrases as Measure NPs</a>
-<DT><a href="syn-detailed-toc.htm">Table of Contents</a>
-</DL></DL>
+      <DL>
+            <DT>
+                  <DL>
+                        <DT><a href="#combos_with_ever">Combinations with EVER</a>
+                        <DT><a href="#phrasal_modifiers_of_qp">Phrasal modifiers of QP</a>
+                        <DT><a href="#alre_superlative">ALRE plus superlative</a>
+                        <DT><a href="#qps_as_np_msr">Quantifier phrases as Measure NPs</a>
+                        <DT><a href="syn-detailed-toc.htm">Table of Contents</a>
+                  </DL>
+      </DL>
 
-<P>
+      <P>
 
-Quantifier phrases are headed by quantifiers. The most common modifiers are
-TOO, AS, and SO, which are all labelled <TT>ADVR</TT> in this context, as well
-in some texts OVER. Other (non-comparative) modifiers (SWI+DE,
-RIGHT, FULL, THUS,  etc.) are labelled <TT>ADV</TT>. Non-adverbial modifiers
-include other quantifiers, NOT, the focus particle BUT, numbers, and THAT.
+            Quantifier phrases are headed by quantifiers. The most common modifiers are
+            TOO, AS, and SO, which are all labelled <TT>ADVR</TT> in this context, as well
+            in some texts OVER. Other (non-comparative) modifiers (SWI+DE,
+            RIGHT, FULL, THUS, etc.) are labelled <TT>ADV</TT>. Non-adverbial modifiers
+            include other quantifiers, NOT, the focus particle BUT, numbers, and THAT.
 
-<PRE>
+      <PRE>
 (NODE (QP (ADVR so) (Q moche))
       (ID CMMALORY,5.118)) 
 
@@ -1237,11 +1265,11 @@ include other quantifiers, NOT, the focus particle BUT, numbers, and THAT.
 
 </PRE>
 
-More than one modifier is uncommon but appears in the (N)EVER SO... and
-ALL TOO/SO... constructions, as well as a few others, all of which are
-left flat.
+      More than one modifier is uncommon but appears in the (N)EVER SO... and
+      ALL TOO/SO... constructions, as well as a few others, all of which are
+      left flat.
 
-<PRE>
+      <PRE>
 (NODE (QP (ADV never) (ADVR so) (Q much))
       (ID CMMALORY,658.4555)) 
 
@@ -1273,13 +1301,14 @@ left flat.
 
 </PRE>
 
-<a name="combos_with_ever">
-<H3>Combinations with EVER</H3></a>
+      <a name="combos_with_ever">
+            <H3>Combinations with EVER</H3>
+      </a>
 
-EVER-EACH/EVERY is treated as a single word. EVER in combination with other
-quantifiers is labelled <TT>ADV</TT>.
+      EVER-EACH/EVERY is treated as a single word. EVER in combination with other
+      quantifiers is labelled <TT>ADV</TT>.
 
-<PRE>
+      <PRE>
 (NODE (NP (Q (Q21 eauer) (Q22 vh))
           (N tide))
       (ID CMANCRIW,I.58.158)) 
@@ -1300,10 +1329,11 @@ quantifiers is labelled <TT>ADV</TT>.
       (ID CMEQUATO,18.3)) 
 </PRE>
 
-<a name="phrasal_modifiers_of_qp">
-<H3>Phrasal modifiers of QP</H3></a>
+      <a name="phrasal_modifiers_of_qp">
+            <H3>Phrasal modifiers of QP</H3>
+      </a>
 
-<PRE>
+      <PRE>
 (NODE (QP (NP-MSR (NUM+N +trisi+te))
           (QR more))
       (ID CMAYENBI,59.1090)) 
@@ -1338,23 +1368,24 @@ quantifiers is labelled <TT>ADV</TT>.
 
 </PRE>
 
-<a name="alre_superlative">
-<H3>ALRE plus superlative</H3></a>
+      <a name="alre_superlative">
+            <H3>ALRE plus superlative</H3>
+      </a>
 
-In the first period (M1), the pre-head (plural) possessive quantifier ALRE,
-etc. in combination with a superlative adjective/adverb/quantifier or
-FIRST/LAST is treated as a separate word. It is labelled as a complement of
-the adjective/adverb/quantifier or FIRST/LAST, i.e. <TT>NP</TT>. There are
-a small number of cases of ALRE written together with MOST in this period
-which are labelled <TT>Q$+QS</TT>. See Section <A
-HREF="pos-quant.htm#genitive-possessive_quantifiers">GENITIVE/POSSESSIVE
-QUANTIFIERS</A>.
+      In the first period (M1), the pre-head (plural) possessive quantifier ALRE,
+      etc. in combination with a superlative adjective/adverb/quantifier or
+      FIRST/LAST is treated as a separate word. It is labelled as a complement of
+      the adjective/adverb/quantifier or FIRST/LAST, i.e. <TT>NP</TT>. There are
+      a small number of cases of ALRE written together with MOST in this period
+      which are labelled <TT>Q$+QS</TT>. See Section <A
+            HREF="pos-quant.htm#genitive-possessive_quantifiers">GENITIVE/POSSESSIVE
+            QUANTIFIERS</A>.
 
-In the later periods, ALRE, etc. is treated as a prefix (cf. MED alder-)
-and the word is labelled simply <TT>ADJS, ADVS, QS</TT>. If separated it is
-still treated as a single word.
+      In the later periods, ALRE, etc. is treated as a prefix (cf. MED alder-)
+      and the word is labelled simply <TT>ADJS, ADVS, QS</TT>. If separated it is
+      still treated as a single word.
 
-<PRE>
+      <PRE>
 (NODE (QP (NP (Q$ alre))               <--- early texts
           (QS meast))
       (ID CMKATHE,50.490)) 
@@ -1392,15 +1423,16 @@ still treated as a single word.
 
 </PRE>
 
-<a name="qps_as_np_msr">
-<H3>Quantifier phrases as Measure NPs</H3></a>
+      <a name="qps_as_np_msr">
+            <H3>Quantifier phrases as Measure NPs</H3>
+      </a>
 
-At the sentential level, quantifier phrases are always further labelled as
-measure phrases (NP-MSR). As usual, when the QP consists of a single word,
-the QP label is omitted and the Q is dominated directly by the NP-MSR
-label.
+      At the sentential level, quantifier phrases are always further labelled as
+      measure phrases (NP-MSR). As usual, when the QP consists of a single word,
+      the QP label is omitted and the Q is dominated directly by the NP-MSR
+      label.
 
-<PRE>
+      <PRE>
 
 ( (IP-MAT-SPE (CONJ But)
               (NP-SBJ (PRO I))
@@ -1430,24 +1462,26 @@ label.
 
 </PRE>
 
-For floated quantifiers, see Section <A
-HREF="syn-const.htm#floated_quantifiers">FLOATED QUANTIFIERS</A>.
+      For floated quantifiers, see Section <A HREF="syn-const.htm#floated_quantifiers">FLOATED QUANTIFIERS</A>.
 
-<a name="nump">
-<H3>Number Phrase (NUMP)</H3></a>
+      <a name="nump">
+            <H3>Number Phrase (NUMP)</H3>
+      </a>
 
-<DL><DT>
-<DL>
-<DT><a href="#number_phrases_as_nps">Number phrases as NPs</a>
-</DL></DL>
+      <DL>
+            <DT>
+                  <DL>
+                        <DT><a href="#number_phrases_as_nps">Number phrases as NPs</a>
+                  </DL>
+      </DL>
 
-<P>
+      <P>
 
-A number phrase consists of either a multi-word number, or a number modified
-in some way. Note the lack of internal strucure when single numbers are
-written out in words (FOUR HUNDRED AND FOUR AND FIFTY = 454).
+            A number phrase consists of either a multi-word number, or a number modified
+            in some way. Note the lack of internal strucure when single numbers are
+            written out in words (FOUR HUNDRED AND FOUR AND FIFTY = 454).
 
-<PRE>
+      <PRE>
 (NODE (NUMP (NUM fyve) (NUM hondred))
       (ID CMMALORY,11.327)) 
 
@@ -1469,17 +1503,17 @@ fyffty))
 
 </PRE>
 
-In the phrases A HUNDRED, A THOUSAND, etc. the word A is labelled <TT>D</TT>
-(determiner), but is included as part of the NUMP.
+      In the phrases A HUNDRED, A THOUSAND, etc. the word A is labelled <TT>D</TT>
+      (determiner), but is included as part of the NUMP.
 
-<PRE>
+      <PRE>
         (NUMP (D a) (NUM +towsand))
 </PRE>
 
-As usual, single word modifiers are not given a dominating phrase, but
-multi-word modifiers are.
+      As usual, single word modifiers are not given a dominating phrase, but
+      multi-word modifiers are.
 
-<PRE>
+      <PRE>
 (NODE (NUMP (Q many) (D a) (NUM +tousand))
       (ID CMAELR3,51.791)) 
 
@@ -1544,10 +1578,10 @@ multi-word modifiers are.
 
 </PRE>
 
-Phrases such as AT LEAST A THOUSAND or MORE THAN A THOUSAND are
-also labelled as <TT>NUMP</TT>.
+      Phrases such as AT LEAST A THOUSAND or MORE THAN A THOUSAND are
+      also labelled as <TT>NUMP</TT>.
 
-<PRE>
+      <PRE>
 (NODE (NUMP (QR more)
             (PP (P +tan)
                 (NP (NUM v))))
@@ -1560,10 +1594,10 @@ also labelled as <TT>NUMP</TT>.
 
 </PRE>
 
-<TT>NUMP</TT> is used rather loosely in some instances to contain numerical
-constituents of unclear structure.
+      <TT>NUMP</TT> is used rather loosely in some instances to contain numerical
+      constituents of unclear structure.
 
-<PRE>
+      <PRE>
 (NODE (NUMP (NUM seoue)         <--- 7 x 10
             (PP (P si+de)
                 (NP (NUM tene))))
@@ -1591,14 +1625,15 @@ constituents of unclear structure.
 
 </PRE>
 
-<a name="number_phrases_as_nps">
-<H3>Number phrases as NPs</H3></a>
+      <a name="number_phrases_as_nps">
+            <H3>Number phrases as NPs</H3>
+      </a>
 
-Like quantifier phrases, number phrases are always contained within an NP
-at the sentential level. As usual, a single word number is not further
-labelled <TT>NUMP</TT>, but rather dominated immediately by <TT>NP</TT>.
+      Like quantifier phrases, number phrases are always contained within an NP
+      at the sentential level. As usual, a single word number is not further
+      labelled <TT>NUMP</TT>, but rather dominated immediately by <TT>NP</TT>.
 
-<PRE>
+      <PRE>
 ( (IP-IMP-SPE (PP (P a+gein)
                   (NP (ONE an)))
               (VBI +gef)
@@ -1655,50 +1690,54 @@ labelled <TT>NUMP</TT>, but rather dominated immediately by <TT>NP</TT>.
 
 </PRE>
 
-<a name="np">
-<H3>Noun Phrase (NP)</H3></a>
+      <a name="np">
+            <H3>Noun Phrase (NP)</H3>
+      </a>
 
-<DL><DT>
-<DT><a href="#nps_headed_by_nominals">NPs headed by nouns and pronouns</a>
-<DT><a href="#nps_with_empty_heads">NPs with empty heads</a>
-<DT><a href="#one_and_other">The words ONE and OTHER</a>
-<DT><a href="#noun_compounds">Noun compounds</a>
-<DT><a href="#comparative_adjectives_as_nps">Comparative adjectives labelled as NPs</a>
-<DT><a href="#superlative_adjectives_as_nps">Superlative adjectives labelled as NPs</a>
-<DT><a href="#modification_of_nouns">Modification of nouns</a>
-        <DL>
-        <DT><a href="#n_mod_by_adj">Noun modification by adjectives</a>
-        <DT><a href="#n_mod_by_num">Noun modification by numbers</a>
-        <DT><a href="#n_mod_by_q">Noun modification by quantifiers</a>
-        <DT><a href="#n_mod_by_np-msr">Noun modification by measure phrases</a>
-        <DT><a href="#n_mod_by_np-pos">Noun modification by possessive NPs (NP-POS)</a>
-        </DL>
-<DT><a href="#np_com">NP complements of nouns (NP-COM)</a>
-        <DL>
-        <DT><a href="#np-com_with_need_woe_etc">NP-COM with NEED, WOE, MANNER, HALF, MIDDLE, SIDE</a>
-        <DT><a href="#np-com_with_kind">NP-COM with KIND</a>
-        <DT><a href="#np-com_not_of">NP-COM in place of an OF-phrase</a>
-        <DT><a href="#qs_with_gen_comp">Quantifiers with genitive complements</a>
-        <DT><a href="#sup_adj_with_gen_comp">Superlative adjectives with genitive complements</a>
-        </DL>
-<DT><a href="#n_postmodifiers">Post-nominal modifiers</a>
-        <DL>
-        <DT><a href="#n_postmod_pp">PPs</a>
-        <DT><a href="#n_postmod_rel_clause">Relative clauses</a>
-        <DT><a href="#n_postmod_rrc">Reduced relative clauses</a>
-        <DT><a href="#appositives_and_parentheticals">Appositives and parentheticals</a>
-        </DL>
-<DT><a href="#scrambling_out_of_nps">Scrambling out of NPs</a>
-<DT><a href="syn-detailed-toc.htm">Table of Contents</a>
-</DL></DL>
+      <DL>
+            <DT>
+            <DT><a href="#nps_headed_by_nominals">NPs headed by nouns and pronouns</a>
+            <DT><a href="#nps_with_empty_heads">NPs with empty heads</a>
+            <DT><a href="#one_and_other">The words ONE and OTHER</a>
+            <DT><a href="#noun_compounds">Noun compounds</a>
+            <DT><a href="#comparative_adjectives_as_nps">Comparative adjectives labelled as NPs</a>
+            <DT><a href="#superlative_adjectives_as_nps">Superlative adjectives labelled as NPs</a>
+            <DT><a href="#modification_of_nouns">Modification of nouns</a>
+                  <DL>
+                        <DT><a href="#n_mod_by_adj">Noun modification by adjectives</a>
+                        <DT><a href="#n_mod_by_num">Noun modification by numbers</a>
+                        <DT><a href="#n_mod_by_q">Noun modification by quantifiers</a>
+                        <DT><a href="#n_mod_by_np-msr">Noun modification by measure phrases</a>
+                        <DT><a href="#n_mod_by_np-pos">Noun modification by possessive NPs (NP-POS)</a>
+                  </DL>
+            <DT><a href="#np_com">NP complements of nouns (NP-COM)</a>
+                  <DL>
+                        <DT><a href="#np-com_with_need_woe_etc">NP-COM with NEED, WOE, MANNER, HALF, MIDDLE, SIDE</a>
+                        <DT><a href="#np-com_with_kind">NP-COM with KIND</a>
+                        <DT><a href="#np-com_not_of">NP-COM in place of an OF-phrase</a>
+                        <DT><a href="#qs_with_gen_comp">Quantifiers with genitive complements</a>
+                        <DT><a href="#sup_adj_with_gen_comp">Superlative adjectives with genitive complements</a>
+                  </DL>
+            <DT><a href="#n_postmodifiers">Post-nominal modifiers</a>
+                  <DL>
+                        <DT><a href="#n_postmod_pp">PPs</a>
+                        <DT><a href="#n_postmod_rel_clause">Relative clauses</a>
+                        <DT><a href="#n_postmod_rrc">Reduced relative clauses</a>
+                        <DT><a href="#appositives_and_parentheticals">Appositives and parentheticals</a>
+                  </DL>
+            <DT><a href="#scrambling_out_of_nps">Scrambling out of NPs</a>
+            <DT><a href="syn-detailed-toc.htm">Table of Contents</a>
+      </DL>
+      </DL>
 
-<a name="nps_headed_by_nominals">
-<H3>NPs headed by nouns and pronouns</H3></a>
+      <a name="nps_headed_by_nominals">
+            <H3>NPs headed by nouns and pronouns</H3>
+      </a>
 
-Noun phrases are headed by a nominal element, most commonly a noun or a
-pronoun.
+      Noun phrases are headed by a nominal element, most commonly a noun or a
+      pronoun.
 
-<PRE>
+      <PRE>
 (NODE (NP-OB1 (N warre))
       (ID CMMALORY,2.6)) 
 
@@ -1716,16 +1755,17 @@ pronoun.
 
 </PRE>
 
-<a name="nps_with_empty_heads">
-<H3>NPs with empty heads</H3></a>
+      <a name="nps_with_empty_heads">
+            <H3>NPs with empty heads</H3>
+      </a>
 
-An NP with no nominal element (N, NS, NPR, PRO, etc.) is assumed to have an
-empty nominal head. This is not indicated in any way, however, except by the
-NP label.  The NP may consist entirely of a demonstrative, quantifier,
-number, adjective, or possessive pronoun acting pronominally, or of phrases
-containing these elements.
+      An NP with no nominal element (N, NS, NPR, PRO, etc.) is assumed to have an
+      empty nominal head. This is not indicated in any way, however, except by the
+      NP label. The NP may consist entirely of a demonstrative, quantifier,
+      number, adjective, or possessive pronoun acting pronominally, or of phrases
+      containing these elements.
 
-<PRE>
+      <PRE>
 (NODE (NP-SBJ (D that))
       (ID CMMALORY,2.26)) 
 
@@ -1788,10 +1828,10 @@ containing these elements.
 
 </PRE>
 
-Most commonly in such cases the head is some generic noun like ONE or
-THING, but it can be a specific noun usually elided under identity.
+      Most commonly in such cases the head is some generic noun like ONE or
+      THING, but it can be a specific noun usually elided under identity.
 
-<PRE>
+      <PRE>
 
 (NODE (NP (NP (D a) 
               (ADJP (ADV passyng) (ADJ true))
@@ -1808,13 +1848,14 @@ THING, but it can be a specific noun usually elided under identity.
 
 </PRE>
 
-<a name="one_and_other">
-<H3>The words ONE and OTHER</H3></a>
+      <a name="one_and_other">
+            <H3>The words ONE and OTHER</H3>
+      </a>
 
-The words ONE and OTHER, which have special tags applying to them alone,
-head NPs.
+      The words ONE and OTHER, which have special tags applying to them alone,
+      head NPs.
 
-<PRE>
+      <PRE>
 (NODE (NP-SBJ (ONE one))
       (ID CMMALORY,33.1060)) 
 
@@ -1838,17 +1879,18 @@ head NPs.
 
 </PRE>
 
-<a name="noun_compounds">
-<H3>Noun compounds</H3></a>
+      <a name="noun_compounds">
+            <H3>Noun compounds</H3>
+      </a>
 
-Normally a noun phrase will not immediately dominate more than one word
-labelled as a (non-genitive) noun, that is, the head. One exception to this
-rule is in the case of noun-noun compounds. If the compound is written
-together as a single word, it is tagged <TT>N+N</TT>, but if it is written as
-separate words, both parts are simply labelled <TT>N</TT>. In this case, both
-nouns are part of the head.
+      Normally a noun phrase will not immediately dominate more than one word
+      labelled as a (non-genitive) noun, that is, the head. One exception to this
+      rule is in the case of noun-noun compounds. If the compound is written
+      together as a single word, it is tagged <TT>N+N</TT>, but if it is written as
+      separate words, both parts are simply labelled <TT>N</TT>. In this case, both
+      nouns are part of the head.
 
-<PRE>
+      <PRE>
 (NODE (NP-SBJ (N somer) (N tyme))
        (ID CMBRUT3,106.3204))
 
@@ -1885,10 +1927,10 @@ nouns are part of the head.
 
 </PRE>
 
-Note that proper names are treated as compounds, as are similar non-proper
-forms of address such as SIR KNIGHT.
+      Note that proper names are treated as compounds, as are similar non-proper
+      forms of address such as SIR KNIGHT.
 
-<PRE>
+      <PRE>
 (NODE (NP (NPR Uther) (NPR Pendragon))
       (ID CMMALORY,2.6)) 
 
@@ -1909,15 +1951,15 @@ forms of address such as SIR KNIGHT.
 
 </PRE>
 
-Finally, because of the way we handle conjunction (see Section <A
-HREF="syn-conj.htm#single_word_conjunction">CONJUNCTION OF SINGLE
-WORDS</A>), NPs containing conjoined nouns (LORD AND MASTER, etc.) will
-dominate more than one N, each of which is a head. In the small number of
-cases where there is no overt conjunction in these cases, a CONJP is added
-to make the structure clear and distinguish these cases from noun
-compounds.
+      Finally, because of the way we handle conjunction (see Section <A
+            HREF="syn-conj.htm#single_word_conjunction">CONJUNCTION OF SINGLE
+            WORDS</A>), NPs containing conjoined nouns (LORD AND MASTER, etc.) will
+      dominate more than one N, each of which is a head. In the small number of
+      cases where there is no overt conjunction in these cases, a CONJP is added
+      to make the structure clear and distinguish these cases from noun
+      compounds.
 
-<PRE>
+      <PRE>
 (NODE (NP-SBJ (NS abbeyes) 
               (, .) 
               (CONJP (NS priories)) 
@@ -1934,20 +1976,21 @@ compounds.
 
 </PRE>
 
-<a name="comparative_adjectives_as_nps">
-<H3>Comparative adjectives labelled as NPs</H3></a>
+      <a name="comparative_adjectives_as_nps">
+            <H3>Comparative adjectives labelled as NPs</H3>
+      </a>
 
-Note that comparative adjectives accompanied by a determiner may be
-labelled either <TT>ADJP</TT> or <TT>NP</TT> depending on use. In nominal
-environments (e.g. as subject, object, etc.) they are labelled <TT>
-  NP</TT>, while in THE MORE THE MERRIER construction and following copular
-verbs they are labelled <TT>ADJP</TT>. See Section <A
-HREF="syn-intern.htm#comp_adj_in_copular_constructions">COMPARATIVE
-ADJECTIVES IN COPULAR CONSTRUCTIONS </A>and <A
-HREF="syn-intern.htm#comp_adj_in_more_merrier">COMPARATIVE ADJECTIVES
-IN THE MORE THE MERRIER CONSTRUCTION</A>.
+      Note that comparative adjectives accompanied by a determiner may be
+      labelled either <TT>ADJP</TT> or <TT>NP</TT> depending on use. In nominal
+      environments (e.g. as subject, object, etc.) they are labelled <TT>
+            NP</TT>, while in THE MORE THE MERRIER construction and following copular
+      verbs they are labelled <TT>ADJP</TT>. See Section <A
+            HREF="syn-intern.htm#comp_adj_in_copular_constructions">COMPARATIVE
+            ADJECTIVES IN COPULAR CONSTRUCTIONS </A>and <A HREF="syn-intern.htm#comp_adj_in_more_merrier">COMPARATIVE
+            ADJECTIVES
+            IN THE MORE THE MERRIER CONSTRUCTION</A>.
 
-<PRE>
+      <PRE>
 ( (IP-MAT (ALSO Alse)
           (MD schal)
           (NP-SBJ (CP-FRL (WNP-1 0)
@@ -2020,11 +2063,11 @@ IN THE MORE THE MERRIER CONSTRUCTION</A>.
 
 </PRE>
 
-In contexts where it is clear that the determiner plus comparative
-adjective picks out a particular entity, the phrase label is NP even with a
-copular verb.
+      In contexts where it is clear that the determiner plus comparative
+      adjective picks out a particular entity, the phrase label is NP even with a
+      copular verb.
 
-<PRE>
+      <PRE>
 But when Esav was goon, by techyng of hys modyr and sleght, Iacob +tat was
  +te +gongyr, gate hys fadyrys blessyng, (CMMIRK,93.2510)
 
@@ -2035,13 +2078,14 @@ But when Esav was goon, by techyng of hys modyr and sleght, Iacob +tat was
 
 </PRE>
 
-<a name="superlative_adjectives_as_nps">
-<H3>Superlative adjectives labelled as NPs</H3></a>
+      <a name="superlative_adjectives_as_nps">
+            <H3>Superlative adjectives labelled as NPs</H3>
+      </a>
 
-Superlative adjectives accompanied by a determiner or possessive are
-always labelled as NPs. 
+      Superlative adjectives accompanied by a determiner or possessive are
+      always labelled as NPs.
 
-<PRE>
+      <PRE>
 ( (IP-MAT (NP-SBJ (ADJ attri))
           (BEP is)
           (NP-OB1 (D +te) (ADJS wurste)) <--- D + ADJS labelled NP
@@ -2065,10 +2109,10 @@ always labelled as NPs.
 
 </PRE>
 
-When a superlative adjective alone clearly picks out a particular entity,
-it is labelled NP even with a copular verb.
+      When a superlative adjective alone clearly picks out a particular entity,
+      it is labelled NP even with a copular verb.
 
-<PRE>
+      <PRE>
 ( (IP-MAT (CONJ and)
           (ADVP (ADV so))
           (NP-SBJ (D +tis) (N secte))
@@ -2100,18 +2144,20 @@ it is labelled NP even with a copular verb.
 
 </PRE>
 
-<a name="modification_of_nouns">
-<H3>Modification of nouns</H3></a>
+      <a name="modification_of_nouns">
+            <H3>Modification of nouns</H3>
+      </a>
 
-NPs are premodified by adjective phrases (<TT>ADJP</TT>), number phrases
-(<TT> NUMP</TT>), quantifier phrases (<TT>QP</TT>), possessive NPs
-(<TT>NP-POS</TT>) and measure phrases (<TT>NP-MSR</TT>). As always, only
-constituents consisting of more than one word are given phrasal brackets.
+      NPs are premodified by adjective phrases (<TT>ADJP</TT>), number phrases
+      (<TT> NUMP</TT>), quantifier phrases (<TT>QP</TT>), possessive NPs
+      (<TT>NP-POS</TT>) and measure phrases (<TT>NP-MSR</TT>). As always, only
+      constituents consisting of more than one word are given phrasal brackets.
 
-<a name="n_mod_by_adj">
-<H3>Noun modification by adjectives</H3></a>
+      <a name="n_mod_by_adj">
+            <H3>Noun modification by adjectives</H3>
+      </a>
 
-<PRE>
+      <PRE>
 (NODE (NP-OB1 (ADJ solitarye) (N lyf))
       (ID CMAELR3,26.5)) 
 
@@ -2122,10 +2168,10 @@ constituents consisting of more than one word are given phrasal brackets.
 
 </PRE>
 
-Adjectives can postmodify, as well as premodify, the noun, in which case,
-like all post-modifiers, they are given a phrasal label.
+      Adjectives can postmodify, as well as premodify, the noun, in which case,
+      like all post-modifiers, they are given a phrasal label.
 
-<PRE>
+      <PRE>
 (NODE (NP (NPR God) 
           (ADJP (ADJ almyghty)))
       (ID CMMIRK,126.3381)) 
@@ -2144,13 +2190,14 @@ like all post-modifiers, they are given a phrasal label.
 
 </PRE>
 
-<a name="n_mod_by_num">
-<H3>Noun modification by numbers</H3></a>
+      <a name="n_mod_by_num">
+            <H3>Noun modification by numbers</H3>
+      </a>
 
-Note that number and quantifier phrases are not further specified as
-measure phrases within the NP.
+      Note that number and quantifier phrases are not further specified as
+      measure phrases within the NP.
 
-<PRE>
+      <PRE>
 (NODE (NP (D the) (NUM four) (NS Evangelistes))
       (ID CMMALORY,4.73)) 
 
@@ -2163,10 +2210,11 @@ measure phrases within the NP.
       (ID CMORM,I,14.239)) 
 </PRE>
 
-<a name="n_mod_by_q">
-<H3>Noun modification by quantifiers</H3></a>
+      <a name="n_mod_by_q">
+            <H3>Noun modification by quantifiers</H3>
+      </a>
 
-<PRE>
+      <PRE>
 (NODE (NP (Q all) (NPR Englond))
       (ID CMMALORY,2.6)) 
 
@@ -2197,10 +2245,11 @@ measure phrases within the NP.
 
 </PRE>
 
-<a name="n_mod_by_np-msr">
-<H3>Noun modification by measure phrases</H3></a>
+      <a name="n_mod_by_np-msr">
+            <H3>Noun modification by measure phrases</H3>
+      </a>
 
-<PRE>
+      <PRE>
 (NODE (NP-OB1 (NP-MSR (NUM fyftene) (NS dayes))
               (N journey))
       (ID CMMALORY,62.2091)) 
@@ -2220,10 +2269,11 @@ measure phrases within the NP.
 
 </PRE>
 
-<a name="n_mod_by_np-pos">
-<H3>Noun modification by possessive NPs (NP-POS)</H3></a>
+      <a name="n_mod_by_np-pos">
+            <H3>Noun modification by possessive NPs (NP-POS)</H3>
+      </a>
 
-<PRE>
+      <PRE>
 (NODE (NP-OB1 (PRO$ his) (N wyf))
       (ID CMMALORY,2.8)) 
 
@@ -2242,11 +2292,11 @@ measure phrases within the NP.
 
 </PRE>
 
-When the possessive is not grouped with a preceding word within the NP, the
-preceding word is a modifier of the genitive plus head complex, although
-this grouping is not indicated.
+      When the possessive is not grouped with a preceding word within the NP, the
+      preceding word is a modifier of the genitive plus head complex, although
+      this grouping is not indicated.
 
-<PRE>
+      <PRE>
 (NODE (NP-SBJ (Q euch) (N$ worldes) (N sauur))  <--- each [world's taste]
       (ID CMANCRIW,II.82.979))                        = each taste of the world
 
@@ -2264,9 +2314,9 @@ this grouping is not indicated.
 
 </PRE>
 
-Note the difference between the following two structures:
+      Note the difference between the following two structures:
 
-<PRE>
+      <PRE>
 (NODE (NP (PRO$ hire) (N$ meidene) (N wombe))  <--- her [maiden's womb]
       (ID CMANCRIW,II.62.634))
 
@@ -2275,22 +2325,24 @@ Note the difference between the following two structures:
 
 </PRE>
 
-<a name="np_com">
-<H3>NP complements of nouns (NP-COM)</H3></a>
+      <a name="np_com">
+            <H3>NP complements of nouns (NP-COM)</H3>
+      </a>
 
-All nominal complements of the head within an NP are labelled <TT>NP-COM</TT>,
-whether they are in pre- or post-head position, and whether they consist of
-one or more than one word.
+      All nominal complements of the head within an NP are labelled <TT>NP-COM</TT>,
+      whether they are in pre- or post-head position, and whether they consist of
+      one or more than one word.
 
-<a name="np-com_with_need_woe_etc">
-<H3>NP-COM with NEED, WOE, MANNER, HALF, MIDDLE, SIDE</H3></a>
+      <a name="np-com_with_need_woe_etc">
+            <H3>NP-COM with NEED, WOE, MANNER, HALF, MIDDLE, SIDE</H3>
+      </a>
 
-The bare NP complement of the following nouns is always labelled <TT>
-NP-COM</TT>, regardless of whether or not it is genitive in form: NEED, WOE,
-MANNER, HALF, MIDDLE, KIND, SIDE and any other noun which comes to take
-complements with OF in later English.
+      The bare NP complement of the following nouns is always labelled <TT>
+            NP-COM</TT>, regardless of whether or not it is genitive in form: NEED, WOE,
+      MANNER, HALF, MIDDLE, KIND, SIDE and any other noun which comes to take
+      complements with OF in later English.
 
-<PRE>
+      <PRE>
 (NODE (IP-SUB (NP-SBJ (N wa)      <--- woe
                       (NP-COM *ICH*-1))
               (BEP bi+d)
@@ -2340,32 +2392,33 @@ complements with OF in later English.
 
 </PRE>
 
-<a name="np-com_with_kind">
-<H3>NP-COM with KIND</H3></a>
+      <a name="np-com_with_kind">
+            <H3>NP-COM with KIND</H3>
+      </a>
 
-The word KIND creates special problems. In early texts a phrase such as
-ALLES CUNNES PINEN ``pains of every kind'', has the following structure,
-where ALLES CUNNES is a genitive complement of PINEN:
+      The word KIND creates special problems. In early texts a phrase such as
+      ALLES CUNNES PINEN ``pains of every kind'', has the following structure,
+      where ALLES CUNNES is a genitive complement of PINEN:
 
-<PRE>
+      <PRE>
 (NP (NP-COM (Q alles) (N$ cunnes))
     (NS pinen))
 
 </PRE>
 
-KIND was either singular CUNNES, etc. or plural CUNNE, etc. Some texts,
-such as the Ormulum and the Katherine Group maintain this distinction
-faithfully, while others, such as Ancrene Riwle and the Trinity Homilies
-are less consistent, either using both CUNNES and CUNNE in the same
-contexts, or not following any easily discernable pattern. The Lambeth
-Homilies seem to use the singular form in all contexts whether singular or
-plural. Therefore, in first period texts, KIND is marked as singular or
-plural by form not context. In later texts the few examples that occur
-without OF are treated like MANNER (see Section <A
-HREF="#np-com_with_need_woe_etc"> NP-COM WITH NEED, WOE, MANNER, HALF,
-MIDDLE, SIDE</A>).
+      KIND was either singular CUNNES, etc. or plural CUNNE, etc. Some texts,
+      such as the Ormulum and the Katherine Group maintain this distinction
+      faithfully, while others, such as Ancrene Riwle and the Trinity Homilies
+      are less consistent, either using both CUNNES and CUNNE in the same
+      contexts, or not following any easily discernable pattern. The Lambeth
+      Homilies seem to use the singular form in all contexts whether singular or
+      plural. Therefore, in first period texts, KIND is marked as singular or
+      plural by form not context. In later texts the few examples that occur
+      without OF are treated like MANNER (see Section <A HREF="#np-com_with_need_woe_etc"> NP-COM WITH NEED, WOE,
+            MANNER, HALF,
+            MIDDLE, SIDE</A>).
 
-<PRE>
+      <PRE>
 (NODE (NP (NP-COM (Q naness) (N$ kinness))     <--- early texts
           (N shaffte))
       (ID CMORM,DED.L257.54)) 
@@ -2401,13 +2454,14 @@ MIDDLE, SIDE</A>).
 
 </PRE>
 
-<a name="np-com_not_of">
-<H3>NP-COM in place of an OF-phrase</H3></a>
+      <a name="np-com_not_of">
+            <H3>NP-COM in place of an OF-phrase</H3>
+      </a>
 
-In early texts, genitive NPs are commonly used where Modern English
-would use an OF-phrase. These are always treated as complements.
+      In early texts, genitive NPs are commonly used where Modern English
+      would use an OF-phrase. These are always treated as complements.
 
-<PRE>
+      <PRE>
 (NODE (NP (N gewittnysse)
           (NP-COM (NP (PRO$ hire) (N$ m+age+dhades))
                   (CONJP (CONJ &)
@@ -2436,13 +2490,14 @@ would use an OF-phrase. These are always treated as complements.
 
 </PRE>
 
-<a name="qs_with_gen_comp">
-<H3>Quantifiers with genitive complements</H3></a>
+      <a name="qs_with_gen_comp">
+            <H3>Quantifiers with genitive complements</H3>
+      </a>
 
-In early texts, quantifiers often take bare genitive NP complements. When
-these are pronouns (or single words) they commonly precede the quantifier.
+      In early texts, quantifiers often take bare genitive NP complements. When
+      these are pronouns (or single words) they commonly precede the quantifier.
 
-<PRE>
+      <PRE>
 (NODE (NP-OB1 (Q nan)
               (NP-COM (D +ter) (NS$ +tinge)
                       (CP-REL (WNP-2 0)
@@ -2487,18 +2542,18 @@ these are pronouns (or single words) they commonly precede the quantifier.
 
 </PRE>
 
-<a name="sup_adj_with_gen_comp">
-<H3>Superlative adjectives with genitive complements</H3></a>
+      <a name="sup_adj_with_gen_comp">
+            <H3>Superlative adjectives with genitive complements</H3>
+      </a>
 
-Again in early texts, nouns modified by superlative adjectives (and
-superlative adjectives with a determiner) often take a genitive complement,
-which may precede or follow the head. The complements of superlative
-adjectives labelled <TT>ADJP</TT> rather then <TT>NP</TT>, are labelled
-only <TT> NP</TT> (not <TT>NP-COM</TT>; see Section <A
-HREF="syn-intern.htm#superlative_adjectives"> SUPERLATIVE
-ADJECTIVES</A>.
+      Again in early texts, nouns modified by superlative adjectives (and
+      superlative adjectives with a determiner) often take a genitive complement,
+      which may precede or follow the head. The complements of superlative
+      adjectives labelled <TT>ADJP</TT> rather then <TT>NP</TT>, are labelled
+      only <TT> NP</TT> (not <TT>NP-COM</TT>; see Section <A HREF="syn-intern.htm#superlative_adjectives"> SUPERLATIVE
+            ADJECTIVES</A>.
 
-<PRE>
+      <PRE>
 (NODE (NP-1 (D +te)
             (NP-COM (Q$ alre))
             (ADJS unwur+teste) (N wig))
@@ -2526,15 +2581,17 @@ ADJECTIVES</A>.
 
 </PRE>
 
-<a name="n_postmodifiers">
-<H3>Post-nominal modifiers</H3></a>
+      <a name="n_postmodifiers">
+            <H3>Post-nominal modifiers</H3>
+      </a>
 
-Post-nominal modifiers are attached as high as possible.
+      Post-nominal modifiers are attached as high as possible.
 
-<a name="n_postmod_pp">
-<H3>PPs</H3></a>
+      <a name="n_postmod_pp">
+            <H3>PPs</H3>
+      </a>
 
-<PRE>
+      <PRE>
 (NODE (NP (D the) (NS dayes)
           (PP (P of)
               (NP (NPR Uther) (NPR Pendragon))))
@@ -2566,13 +2623,14 @@ Post-nominal modifiers are attached as high as possible.
 
 </PRE>
 
-<a name="n_postmod_rel_clause">
-<H3>Relative clauses</H3></a>
+      <a name="n_postmod_rel_clause">
+            <H3>Relative clauses</H3>
+      </a>
 
-For the internal structure of relative clauses, see Section <A
-HREF="syn-sub.htm#relative_clauses">RELATIVE CLAUSES</A>.
+      For the internal structure of relative clauses, see Section <A HREF="syn-sub.htm#relative_clauses">RELATIVE
+            CLAUSES</A>.
 
-<PRE>
+      <PRE>
 (NODE (NP (D the) (ADJS byggest) (N castell)
           (CP-REL (WNP-1 0)
                   (C that)
@@ -2632,13 +2690,14 @@ HREF="syn-sub.htm#relative_clauses">RELATIVE CLAUSES</A>.
 
 </PRE>
 
-<a name="n_postmod_rrc">
-<H3>Reduced relative clauses</H3></a>
+      <a name="n_postmod_rrc">
+            <H3>Reduced relative clauses</H3>
+      </a>
 
-For the internal structure of reduced relative clauses, see Section 
-<A HREF="syn-sub.htm#reduced_relatives">REDUCED RELATIVES</A>. 
+      For the internal structure of reduced relative clauses, see Section
+      <A HREF="syn-sub.htm#reduced_relatives">REDUCED RELATIVES</A>.
 
-<PRE>
+      <PRE>
 (NODE (NP-OB1 (D the) (N child)
               (RRC (VAN bound)
                    (PP (P in)
@@ -2670,20 +2729,20 @@ For the internal structure of reduced relative clauses, see Section
 
 </PRE>
 
-It is sometimes difficult to distinguish reduced relatives from adjunct
-participial clauses (see Section <A
-HREF="syn-sub.htm#adjunct_participial_clauses">ADJUNCT PARTICIPIAL
-CLAUSES</A>) just as in other cases where a modifier can modify either a
-noun phrase or a sentence.
+      It is sometimes difficult to distinguish reduced relatives from adjunct
+      participial clauses (see Section <A HREF="syn-sub.htm#adjunct_participial_clauses">ADJUNCT PARTICIPIAL
+            CLAUSES</A>) just as in other cases where a modifier can modify either a
+      noun phrase or a sentence.
 
-<a name="appositives_and_parentheticals">
-<H3>Appositives and parentheticals</H3></a>
+      <a name="appositives_and_parentheticals">
+            <H3>Appositives and parentheticals</H3>
+      </a>
 
-Appositives and other parentheticals are indicated by adding <TT>-PRN</TT> to
-the constituent label. They follow the same attachment rules as PPs and
-relative clauses; that is, they are attached as high as possible.
+      Appositives and other parentheticals are indicated by adding <TT>-PRN</TT> to
+      the constituent label. They follow the same attachment rules as PPs and
+      relative clauses; that is, they are attached as high as possible.
 
-<PRE>
+      <PRE>
 (NODE (NP-SBJ (D the) (N kyng)
               (NP-PRN (NPR Uther)))
       (ID CMMALORY,3.41)) 
@@ -2742,15 +2801,16 @@ relative clauses; that is, they are attached as high as possible.
 
 </PRE>
 
-<a name="scrambling_out_of_nps">
-<H3>Scrambling out of NPs</H3></a>
+      <a name="scrambling_out_of_nps">
+            <H3>Scrambling out of NPs</H3>
+      </a>
 
-In NPs adjectives appear in both pre- and post-head position (see Section
-<A HREF="#n_mod_by_adj">NOUN MODIFICATION BY ADJECTIVES</A>). PPs, however,
-when they appear in pre-head position are shown to have scrambled to that
-position from a post-head position.
+      In NPs adjectives appear in both pre- and post-head position (see Section
+      <A HREF="#n_mod_by_adj">NOUN MODIFICATION BY ADJECTIVES</A>). PPs, however,
+      when they appear in pre-head position are shown to have scrambled to that
+      position from a post-head position.
 
-<PRE>
+      <PRE>
 (NODE (IP-SUB (NP-SBJ (PRO she))
               (MD shall)
               (VB blede)
@@ -2781,54 +2841,59 @@ position from a post-head position.
 
 </PRE>
 
-<a name="pp">
-<H3>Prepositional Phrase (PP)</H3></a>
+      <a name="pp">
+            <H3>Prepositional Phrase (PP)</H3>
+      </a>
 
-<DL><DT>
-<DL>
-<DT><a href="#preposition_with_np">Prepositions taking NP complements</a>
-        <DL>
-        <DT><a href="#pre-head_complements_in_pps">Pre-head complements in PPs</a>
-        </DL>
-<DT><a href="#scrambling_of_pp_complements">Scrambling of PP complements</a>
-<DT><a href="#preposition_with_clause">Prepositions taking clausal complements</a>
-        <DL>
-        <DT><a href="#preposition_plus_demonstrative_plus_clause">Prepositions with a demonstrative plus clause or NP</a>
-                <DL>
-                <DT><a href="#forwhi_plus_clause">FORWHI plus clause</a>
-                </DL>
-        </DL>
-<DT><a href="#p_advp">Prepositions with other complements</a>
-<DT><a href="#pp_specifiers">Specifiers of PPs</a>
-        <DL>
-        <DT><a href="#fronting_in_subordinate_clauses">Fronting in subordinate clauses</a>
-        <DT><a href="#specpp_dat_of_pos">Dative of possession in specPP</a>
-        </DL>
-<DT><a href="#pp_words">Treatment of individual words</a>
-        <DL>
-        <DT><a href="#pp_while">(THE) WHILE</a>
-        <DT><a href="#pp_for">FOR (Preposition)</a>
-        <DT><a href="#pp_so_that">SO THAT</a>
-        <DT><a href="#pp_because">BECAUSE</a>
-        <DT><a href="#pp_forasmuchas_etc">FOR AS MUCH AS, IN SO MUCH AS/THAT etc.</a>
-        </DL>
-<DT><a href="syn-detailed-toc.htm">Table of Contents</a>
-</DL></DL>
+      <DL>
+            <DT>
+                  <DL>
+                        <DT><a href="#preposition_with_np">Prepositions taking NP complements</a>
+                              <DL>
+                                    <DT><a href="#pre-head_complements_in_pps">Pre-head complements in PPs</a>
+                              </DL>
+                        <DT><a href="#scrambling_of_pp_complements">Scrambling of PP complements</a>
+                        <DT><a href="#preposition_with_clause">Prepositions taking clausal complements</a>
+                              <DL>
+                                    <DT><a href="#preposition_plus_demonstrative_plus_clause">Prepositions with a
+                                                demonstrative plus clause or NP</a>
+                                          <DL>
+                                                <DT><a href="#forwhi_plus_clause">FORWHI plus clause</a>
+                                          </DL>
+                              </DL>
+                        <DT><a href="#p_advp">Prepositions with other complements</a>
+                        <DT><a href="#pp_specifiers">Specifiers of PPs</a>
+                              <DL>
+                                    <DT><a href="#fronting_in_subordinate_clauses">Fronting in subordinate clauses</a>
+                                    <DT><a href="#specpp_dat_of_pos">Dative of possession in specPP</a>
+                              </DL>
+                        <DT><a href="#pp_words">Treatment of individual words</a>
+                              <DL>
+                                    <DT><a href="#pp_while">(THE) WHILE</a>
+                                    <DT><a href="#pp_for">FOR (Preposition)</a>
+                                    <DT><a href="#pp_so_that">SO THAT</a>
+                                    <DT><a href="#pp_because">BECAUSE</a>
+                                    <DT><a href="#pp_forasmuchas_etc">FOR AS MUCH AS, IN SO MUCH AS/THAT etc.</a>
+                              </DL>
+                        <DT><a href="syn-detailed-toc.htm">Table of Contents</a>
+                  </DL>
+      </DL>
 
-<P>
+      <P>
 
-PPs are headed by prepositions and take mostly NP and clausal
-complements. In the PPCME, subordinate clauses which begin with a
-subordinating conjunction are treated as PPs. The clausal complement is
-labelled <TT>CP-ADV</TT> for adverbial clauses and <TT>CP-CMP</TT> for
-comparatives. See Section <A HREF="#preposition_with_clause">PREPOSITIONS
-TAKING CLAUSAL COMPLEMENTS</A>. Prepositions sometimes also take
-complements of other categories, notably ADVP.
+            PPs are headed by prepositions and take mostly NP and clausal
+            complements. In the PPCME, subordinate clauses which begin with a
+            subordinating conjunction are treated as PPs. The clausal complement is
+            labelled <TT>CP-ADV</TT> for adverbial clauses and <TT>CP-CMP</TT> for
+            comparatives. See Section <A HREF="#preposition_with_clause">PREPOSITIONS
+                  TAKING CLAUSAL COMPLEMENTS</A>. Prepositions sometimes also take
+            complements of other categories, notably ADVP.
 
-<a name="preposition_with_np">
-<H3>Prepositions taking NP complements</H3></a>
+            <a name="preposition_with_np">
+                  <H3>Prepositions taking NP complements</H3>
+            </a>
 
-<PRE>
+      <PRE>
 (NODE (PP (P of)
           (NP (N beheste)))
       (ID CMMANDEV,1.2)) 
@@ -2859,24 +2924,25 @@ complements of other categories, notably ADVP.
 
 </PRE>
 
-<a name="pre-head_complements_in_pps">
-<H3>Pre-head complements in PPs</H3></a>
+      <a name="pre-head_complements_in_pps">
+            <H3>Pre-head complements in PPs</H3>
+      </a>
 
-Prepositional phrases occasionally have the complement of the preposition
-preceding the head. This is the standard order with R-pronouns
-(THEREOF, THEREFORE, etc.), and not infrequent with personal pronouns and
-demonstratives in early texts. Occasionally noun complements also occur in
-this position. All these structures are treated as single constituents and
-no movement is indicated within the constituent.
+      Prepositional phrases occasionally have the complement of the preposition
+      preceding the head. This is the standard order with R-pronouns
+      (THEREOF, THEREFORE, etc.), and not infrequent with personal pronouns and
+      demonstratives in early texts. Occasionally noun complements also occur in
+      this position. All these structures are treated as single constituents and
+      no movement is indicated within the constituent.
 
-R-pronouns are labelled <TT>ADV</TT> (see Section <A
-HREF="pos-prep.htm#prep_rpronouns">PREPOSITION WITH R-PRONOUN</A>). When
-the R-pronoun is not cliticized to the preposition, it has a phrase label
-(<TT>ADVP</TT>), but when cliticized to the preposition, the complex is
-labelled <TT>ADV+P</TT> and labelled only <TT>PP</TT>, following general
-principles.
+      R-pronouns are labelled <TT>ADV</TT> (see Section <A HREF="pos-prep.htm#prep_rpronouns">PREPOSITION WITH
+            R-PRONOUN</A>). When
+      the R-pronoun is not cliticized to the preposition, it has a phrase label
+      (<TT>ADVP</TT>), but when cliticized to the preposition, the complex is
+      labelled <TT>ADV+P</TT> and labelled only <TT>PP</TT>, following general
+      principles.
 
-<PRE>
+      <PRE>
 (NODE (PP (ADV+P +terfore))     <--- R-pronoun
       (ID CMAELR3,27.48)) 
 
@@ -2944,18 +3010,19 @@ principles.
 
 </PRE>
 
-<a name="scrambling_of_pp_complements">
-<H3>Scrambling of PP complements</H3></a>
+      <a name="scrambling_of_pp_complements">
+            <H3>Scrambling of PP complements</H3>
+      </a>
 
-The complement of a preposition which has been scrambled to the left is
-coindexed with a trace within the PP. If the complement has only moved as
-far as the immediately pre-head position, it is treated as still within the
-PP and no movement is indicated. See Section <A
-HREF="#pre-head_complements_in_pps">PRE-HEAD COMPLEMENTS IN PPs</A>. For
-other kinds of extraction out of PPs, see Section <A
-HREF="syn-const.htm#extraction_from_pps">EXTRACTION FROM PPs</A>.
+      The complement of a preposition which has been scrambled to the left is
+      coindexed with a trace within the PP. If the complement has only moved as
+      far as the immediately pre-head position, it is treated as still within the
+      PP and no movement is indicated. See Section <A HREF="#pre-head_complements_in_pps">PRE-HEAD COMPLEMENTS IN
+            PPs</A>. For
+      other kinds of extraction out of PPs, see Section <A HREF="syn-const.htm#extraction_from_pps">EXTRACTION FROM
+            PPs</A>.
 
-<PRE>
+      <PRE>
 (NODE (IP-SUB (NP-2 (PRO hemm))         <--- scrambled NP
               (ADVP (ADV (ADV21 +twerrt) (ADV22 ut)))
               (NP-SBJ-3 *exp*)
@@ -3004,15 +3071,15 @@ HREF="syn-const.htm#extraction_from_pps">EXTRACTION FROM PPs</A>.
 
 </PRE>
 
-<a name="preposition_with_clause">
-<H3>Prepositions taking clausal complements</H3></a>
+      <a name="preposition_with_clause">
+            <H3>Prepositions taking clausal complements</H3>
+      </a>
 
-Prepositions take adverbial clauses (<TT>CP-ADV</TT>) and comparative
-clauses (<TT>CP-CMP</TT>). See also Sections <A
-HREF="syn-sub.htm#adverbial_clauses">ADVERBIAL CLAUSES </A>and <A
-HREF="syn-sub.htm#comparatives">COMPARATIVE CLAUSES</A>.
+      Prepositions take adverbial clauses (<TT>CP-ADV</TT>) and comparative
+      clauses (<TT>CP-CMP</TT>). See also Sections <A HREF="syn-sub.htm#adverbial_clauses">ADVERBIAL CLAUSES </A>and <A
+            HREF="syn-sub.htm#comparatives">COMPARATIVE CLAUSES</A>.
 
-<PRE>
+      <PRE>
 (NODE (PP (P whan)
           (CP-ADV (C 0)
                   (IP-SUB (NP-SBJ (NP (D the) (N duke))
@@ -3076,16 +3143,18 @@ HREF="syn-sub.htm#comparatives">COMPARATIVE CLAUSES</A>.
 
 </PRE>
 
-<a name="preposition_plus_demonstrative_plus_clause">
-<H3>Prepositions with a demonstrative plus clause or NP</H3></a>
+      <a name="preposition_plus_demonstrative_plus_clause">
+            <H3>Prepositions with a demonstrative plus clause or NP</H3>
+      </a>
 
-FOR +TI, FOR+TAN, FOR +TAT, IN +TAT, WI+T +TON, ER +TANNE, etc. are often 
-used to introduce adverbial clauses. Originally these clauses were probably 
-that-complements of the NP headed by the demonstrative, but their overall 
-function is adverbial and we have annotated them as such. The demonstrative 
-is labelled as such but no additional structure is shown. Note that occasionally the preposition plus demonstrative combination may take an NP complement.
+      FOR +TI, FOR+TAN, FOR +TAT, IN +TAT, WI+T +TON, ER +TANNE, etc. are often
+      used to introduce adverbial clauses. Originally these clauses were probably
+      that-complements of the NP headed by the demonstrative, but their overall
+      function is adverbial and we have annotated them as such. The demonstrative
+      is labelled as such but no additional structure is shown. Note that occasionally the preposition plus
+      demonstrative combination may take an NP complement.
 
-<PRE>
+      <PRE>
 ( (IP-MAT (CONJ And)
           (PP (P for) (D +ti)
               (CP-ADV (C +tat)
@@ -3157,10 +3226,10 @@ is labelled as such but no additional structure is shown. Note that occasionally
 
 </PRE>
 
-In <I> The Book of Margery Kempe</I>, the form LES +TAN in the meaning UNLESS
- is also treated in the same way.
+      In <I> The Book of Margery Kempe</I>, the form LES +TAN in the meaning UNLESS
+      is also treated in the same way.
 
-<PRE>
+      <PRE>
 (NODE (IP-SUB (NP-SBJ (D +te) (N+N reedspyr)
                       (CP-REL (WNP-1 (WPRO whech))
                               (C 0)
@@ -3179,13 +3248,15 @@ In <I> The Book of Margery Kempe</I>, the form LES +TAN in the meaning UNLESS
 
 </PRE>
 
-<a name="forwhi_plus_clause">
-<H3>FORWHI plus clause</H3></a>
+      <a name="forwhi_plus_clause">
+            <H3>FORWHI plus clause</H3>
+      </a>
 
-FORWHI introducing an adverbial clause is treated in the same way as the 
-demonstrative cases (see Section <A HREF="#preposition_plus_demonstrative_plus_clause">PREPOSITIONS WITH A DEMONSTRATIVE PLUS CLAUSE OR NP</A>).
+      FORWHI introducing an adverbial clause is treated in the same way as the
+      demonstrative cases (see Section <A HREF="#preposition_plus_demonstrative_plus_clause">PREPOSITIONS WITH A
+            DEMONSTRATIVE PLUS CLAUSE OR NP</A>).
 
-<PRE>
+      <PRE>
 ( (IP-MAT-SPE (CONJ and)
               (NP-SBJ-1 (PRO$ +goure) (NS hondis))
               (BEP be)
@@ -3239,12 +3310,14 @@ demonstrative cases (see Section <A HREF="#preposition_plus_demonstrative_plus_c
 
 </PRE>
 
-<a name="p_advp">
-<H3>Prepositions with other complements</H3></a>
+      <a name="p_advp">
+            <H3>Prepositions with other complements</H3>
+      </a>
 
-Prepositions also take complements of other categories, most commonly ADVP, but also PPs, infinitives, participials, etc.
+      Prepositions also take complements of other categories, most commonly ADVP, but also PPs, infinitives,
+      participials, etc.
 
-<PRE>
+      <PRE>
 (NODE (PP (P for)
           (ADVP (ADV euere)))
       (ID CMAELR3,51.791)) 
@@ -3346,13 +3419,14 @@ Prepositions also take complements of other categories, most commonly ADVP, but 
 
 </PRE>
 
-<a name="fronting_in_subordinate_clauses">
-<H3>Fronting in subordinate clauses</H3></a>
+      <a name="fronting_in_subordinate_clauses">
+            <H3>Fronting in subordinate clauses</H3>
+      </a>
 
-Constituents fronted out of a subordinate clause appear in the
-specifier position. They are coindexed to a trace within the clause.
- 
-<PRE>
+      Constituents fronted out of a subordinate clause appear in the
+      specifier position. They are coindexed to a trace within the clause.
+
+      <PRE>
 (NODE (PP (PP-1 (P in)
                 (NP (NPR$ godis) (N trouht)))
           (P yef)
@@ -3373,19 +3447,19 @@ specifier position. They are coindexed to a trace within the clause.
 
 </PRE>
 
-<a name="specpp_dat_of_pos">
-<H3>Dative of possession in specPP</H3></a>
+      <a name="specpp_dat_of_pos">
+            <H3>Dative of possession in specPP</H3>
+      </a>
 
-There appear to be a few cases of the dative of possession in the early
-texts. The clear cases always appear immediately preceding a PP with the
-"possessed" NP being the object of the preposition. These are labelled <TT>
-NP-DPS</TT> and put in the specifier of the PP. Potential datives of
-possesion in other positions are labelled <TT>NP-OB2</TT> as with other
-oblique pronouns. See also Section <A
-HREF="syn-const.htm#first_and_second_objects"> FIRST OBJECT AND SECOND
-OBJECT</A>.
+      There appear to be a few cases of the dative of possession in the early
+      texts. The clear cases always appear immediately preceding a PP with the
+      "possessed" NP being the object of the preposition. These are labelled <TT>
+            NP-DPS</TT> and put in the specifier of the PP. Potential datives of
+      possesion in other positions are labelled <TT>NP-OB2</TT> as with other
+      oblique pronouns. See also Section <A HREF="syn-const.htm#first_and_second_objects"> FIRST OBJECT AND SECOND
+            OBJECT</A>.
 
-<PRE>
+      <PRE>
 (NODE (IP-SUB (NP-SBJ (PRO he))
               (VBP falle)
               (PP (NP-DPS (NPR defle))
@@ -3428,15 +3502,16 @@ OBJECT</A>.
 
 </PRE>
 
-<a name="pp_specifiers">
-<H3>Specifiers of PPs</H3></a>
+      <a name="pp_specifiers">
+            <H3>Specifiers of PPs</H3>
+      </a>
 
-Specifiers of prepositional phrases, such as particles, adverbs and measure
-phrases, are included in the PP constituent in the specifier position,
-although this position is not specially indicated in our system, apart from
-being within the PP before the head.
+      Specifiers of prepositional phrases, such as particles, adverbs and measure
+      phrases, are included in the PP constituent in the specifier position,
+      although this position is not specially indicated in our system, apart from
+      being within the PP before the head.
 
-<PRE>
+      <PRE>
 (NODE (PP (RP vp) (P to)
           (NP (NPR heuene)))
       (ID CMAELR3,26.17)) 
@@ -3538,17 +3613,19 @@ being within the PP before the head.
 
 </PRE>
 
-<a name="pp_words">
-<H3>Treatment of individual words</H3></a>
+      <a name="pp_words">
+            <H3>Treatment of individual words</H3>
+      </a>
 
-<a name="pp_while">
-<H3>(THE) WHILE</H3></a>
+      <a name="pp_while">
+            <H3>(THE) WHILE</H3>
+      </a>
 
-Note that WHILE(S) (THAT) is treated as a preposition taking an adverbial
-clause, but THE WHILE(S) (THAT) is treated as a temporal taking a relative
-clause.
+      Note that WHILE(S) (THAT) is treated as a preposition taking an adverbial
+      clause, but THE WHILE(S) (THAT) is treated as a temporal taking a relative
+      clause.
 
-<PRE>
+      <PRE>
 ( (IP-IMP (CONJ and)
           (PP (P whil)
               (CP-ADV (C 0)
@@ -3611,19 +3688,20 @@ clause.
 
 </PRE>
 
-<a name="pp_for">
-<H3>FOR (Preposition)</H3></a>
+      <a name="pp_for">
+            <H3>FOR (Preposition)</H3>
+      </a>
 
-FOR is marked as a preposition taking an adverbial clause in the following
-cases:
+      FOR is marked as a preposition taking an adverbial clause in the following
+      cases:
 
-<OL>
-  
-<LI> when that reading is forced by the presence of a complementizer
-  THAT, in FORTHI, FORTHAN, FORWHON constructions or if it is clause
-  internal and thus clearly subordinate
+      <OL>
 
-<PRE>
+            <LI> when that reading is forced by the presence of a complementizer
+                  THAT, in FORTHI, FORTHAN, FORWHON constructions or if it is clause
+                  internal and thus clearly subordinate
+
+                  <PRE>
 ( (IP-MAT (CONJ And)
           (PP (P for) (D +ti)   <--- for thi that
               (CP-ADV (C +tat)
@@ -3710,9 +3788,9 @@ cases:
 
 </PRE>
 
-<LI> when it means SO THAT
+            <LI> when it means SO THAT
 
-<PRE>
+                  <PRE>
 ( (IP-MAT (CONJ And)
           (NP-OB1 (D +tis))
           (NP-SBJ (PRO he))
@@ -3735,13 +3813,13 @@ cases:
 
 </PRE>
 
-<LI> when the clause is incomplete without the FOR clause because the
-  cause is an integral part of the meaning. This is most common in
-  copular constructions (MARY IS SO TALL FOR SHE GROWS SIX INCHES A
-  YEAR), when giving the reason for the naming of something (IT IS
-  CALLED A ROSE FOR IT SMELLS SO SWEET)
+            <LI> when the clause is incomplete without the FOR clause because the
+                  cause is an integral part of the meaning. This is most common in
+                  copular constructions (MARY IS SO TALL FOR SHE GROWS SIX INCHES A
+                  YEAR), when giving the reason for the naming of something (IT IS
+                  CALLED A ROSE FOR IT SMELLS SO SWEET)
 
-<PRE>
+                  <PRE>
 ( (IP-MAT (PP (P In)
               (NP (D +te) (N hei+gt)))
           (NP-SBJ (PRO it))
@@ -3806,22 +3884,22 @@ cases:
 
 </PRE>
 
-</OL>
+      </OL>
 
-In all other cases it is treated as a conjunction like AND or BUT (see Section
-<A HREF="pos-other.htm#coordinating_conjunctions">COORDINATING
-CONJUNCTIONS</A>).  In infinitival FOR TO constructions it has its own
-label <TT>FOR</TT> (see Section <A
-HREF="pos-verbs.htm#infinitive_markers">INFINITIVE MARKERS</A>).
+      In all other cases it is treated as a conjunction like AND or BUT (see Section
+      <A HREF="pos-other.htm#coordinating_conjunctions">COORDINATING
+            CONJUNCTIONS</A>). In infinitival FOR TO constructions it has its own
+      label <TT>FOR</TT> (see Section <A HREF="pos-verbs.htm#infinitive_markers">INFINITIVE MARKERS</A>).
 
-<a name="pp_so_that">
-<H3>SO THAT</H3></a>
+      <a name="pp_so_that">
+            <H3>SO THAT</H3>
+      </a>
 
-SO introducing purpose and result clauses is labelled as a preposition
-taking an adverbial clause. For SO... THAT degree clauses, see Section
-<A HREF="syn-sub.htm#degree_complements">DEGREE COMPLEMENTS</A>.
+      SO introducing purpose and result clauses is labelled as a preposition
+      taking an adverbial clause. For SO... THAT degree clauses, see Section
+      <A HREF="syn-sub.htm#degree_complements">DEGREE COMPLEMENTS</A>.
 
-<PRE>
+      <PRE>
 (NODE (IP-SUB (NP-SBJ (PRO we))
               (VBP adden)
               (NP-OB1 (N clernesse)
@@ -3860,18 +3938,19 @@ taking an adverbial clause. For SO... THAT degree clauses, see Section
 
 </PRE>
 
-<a name="pp_because">
-<H3>BECAUSE</H3></a>
+      <a name="pp_because">
+            <H3>BECAUSE</H3>
+      </a>
 
-BECAUSE is tagged <TT>P+N</TT> when written together (see Section <A
-HREF="pos-prep.htm#because_amid_beside">BECAUSE, AMID(DES), BESIDE(S)</A>)
- and <TT>by_P cause_N</TT> when phrasal. When BECAUSE is written as a
-single word, its clausal complement is labelled <TT>CP-ADV</TT>, that is,
-as an adverbial clause; when BECAUSE is phrasal, a complement clause is
-treated as a THAT CLAUSE complement of the noun CAUSE (see Section <A
-HREF="syn-sub.htm#that_clauses">THAT CLAUSES</A>).
+      BECAUSE is tagged <TT>P+N</TT> when written together (see Section <A
+            HREF="pos-prep.htm#because_amid_beside">BECAUSE, AMID(DES), BESIDE(S)</A>)
+      and <TT>by_P cause_N</TT> when phrasal. When BECAUSE is written as a
+      single word, its clausal complement is labelled <TT>CP-ADV</TT>, that is,
+      as an adverbial clause; when BECAUSE is phrasal, a complement clause is
+      treated as a THAT CLAUSE complement of the noun CAUSE (see Section <A HREF="syn-sub.htm#that_clauses">THAT
+            CLAUSES</A>).
 
-<PRE>
+      <PRE>
 ( (IP-MAT (CONJ but)
           (NP-SBJ (NPR$ Balynes) (N oste))
           (MD myght)
@@ -3924,14 +4003,15 @@ HREF="syn-sub.htm#that_clauses">THAT CLAUSES</A>).
 
 </PRE>
 
-<a name="pp_forasmuchas_etc">
-<H3>FOR AS MUCH AS, IN SO MUCH AS/THAT etc.</H3></a>
+      <a name="pp_forasmuchas_etc">
+            <H3>FOR AS MUCH AS, IN SO MUCH AS/THAT etc.</H3>
+      </a>
 
-The clause or PP in these cases is complement to the QP AS MUCH, SO MUCH, etc.
-When these phrases are written together they are not separated and the whole 
-phrase is treated as the head of the prepositional phrase.
+      The clause or PP in these cases is complement to the QP AS MUCH, SO MUCH, etc.
+      When these phrases are written together they are not separated and the whole
+      phrase is treated as the head of the prepositional phrase.
 
-<PRE>
+      <PRE>
 (NODE (IP-SUB (NP-SBJ (PRO +tu))
               (BEP be)
               (NP-OB1 (NP-POS (D +te) (N$ kynges)
@@ -4080,36 +4160,39 @@ phrase is treated as the head of the prepositional phrase.
 
 </PRE>
 
-For ALL BE IT, etc. see Section <A
-HREF="syn-clause.htm#all_be_it_etc">ALL BE IT, ETC.</A>
+      For ALL BE IT, etc. see Section <A HREF="syn-clause.htm#all_be_it_etc">ALL BE IT, ETC.</A>
 
-<a name="conjp">
-<H3>Conjunction Phrase (CONJP)</H3></a>
+      <a name="conjp">
+            <H3>Conjunction Phrase (CONJP)</H3>
+      </a>
 
-<DL><DT>
-<DL>
-<DT><a href="#conjunction_of_phrases">Conjunction of phrases</a>
-<DT><a href="#conjp_shared_modifiers">Shared modifiers</a>
-</DL>
-</DL></DL>
+      <DL>
+            <DT>
+                  <DL>
+                        <DT><a href="#conjunction_of_phrases">Conjunction of phrases</a>
+                        <DT><a href="#conjp_shared_modifiers">Shared modifiers</a>
+                  </DL>
+      </DL>
+      </DL>
 
-<a name="conjunction_of_phrases">
-<H3>Conjunction of phrases</H3></a>
+      <a name="conjunction_of_phrases">
+            <H3>Conjunction of phrases</H3>
+      </a>
 
-All conjoined phrases have the same structure with the second conjunct
-headed by the conjunction and adjoined to the first conjunct at the phrasal
-level.
+      All conjoined phrases have the same structure with the second conjunct
+      headed by the conjunction and adjoined to the first conjunct at the phrasal
+      level.
 
-<PRE>
+      <PRE>
 (XP (XP (X firstconjunct))
     (CONJP (CONJ conjunction)
            (YP (Y secondconjunct))))
 </PRE>
 
-Some simple examples are given here. For more details on how conjunction is
-treated see Section <A HREF="syn-conj.htm#conjunction">CONJUNCTION</A>.
+      Some simple examples are given here. For more details on how conjunction is
+      treated see Section <A HREF="syn-conj.htm#conjunction">CONJUNCTION</A>.
 
-<PRE>
+      <PRE>
 (NODE (NP-SBJ (NP (D the) (N duke))
               (CONJP (CONJ and)
                      (NP (PRO$ his) (N wyf))))
@@ -4190,19 +4273,19 @@ treated see Section <A HREF="syn-conj.htm#conjunction">CONJUNCTION</A>.
 
 </PRE>
 
-For conjunction of single words, see Section <A
-HREF="syn-conj.htm#single_word_conjunction">CONJUNCTION OF SINGLE
-WORDS</A>.
+      For conjunction of single words, see Section <A HREF="syn-conj.htm#single_word_conjunction">CONJUNCTION OF SINGLE
+            WORDS</A>.
 
-<a name="conjp_shared_modifiers">
-<H3>Shared modifiers</H3></a>
+      <a name="conjp_shared_modifiers">
+            <H3>Shared modifiers</H3>
+      </a>
 
-In cases in which the second conjunct may share a modifier with the first
-conjunct, the second conjunct is labelled YX, rather than YP (i.e., NX
-rather NP, ADJX rather then ADJP, etc.) to indicate the ambiguity of the
-phrasal level (Y, Y' or YP).
+      In cases in which the second conjunct may share a modifier with the first
+      conjunct, the second conjunct is labelled YX, rather than YP (i.e., NX
+      rather NP, ADJX rather then ADJP, etc.) to indicate the ambiguity of the
+      phrasal level (Y, Y' or YP).
 
-<PRE>
+      <PRE>
 (NODE (NP-OB1 (Q many) (NS yssues)
               (CONJP (CONJ and)
                      (NX (NS posternes))))
@@ -4235,13 +4318,14 @@ phrasal level (Y, Y' or YP).
 
 </PRE>
 
-<a name="intjp">
-<H3>Interjection Phrase (INTJP)</H3></a>
+      <a name="intjp">
+            <H3>Interjection Phrase (INTJP)</H3>
+      </a>
 
-Single word interjections part-of-speech tagged as such (i.e., <TT>INTJ</TT>)
-in a sentential context do not project an <TT>INTJP</TT>.
+      Single word interjections part-of-speech tagged as such (i.e., <TT>INTJ</TT>)
+      in a sentential context do not project an <TT>INTJP</TT>.
 
-<PRE>
+      <PRE>
 ( (IP-IMP-SPE (' ')
               (INTJ A)
               (, ,)
@@ -4295,14 +4379,14 @@ in a sentential context do not project an <TT>INTJP</TT>.
 
 </PRE>
 
-The label INTJP is used in four cases. 
+      The label INTJP is used in four cases.
 
-<OL>
+      <OL>
 
-<LI> when the interjection takes a complement, which can be an NP, PP, or
-clause
+            <LI> when the interjection takes a complement, which can be an NP, PP, or
+                  clause
 
-<PRE>
+                  <PRE>
 ( (INTJP (INTJ Allas)
          (NP (D +te) (N sorwe))
          (E_S !))
@@ -4415,9 +4499,9 @@ clause
 
 </PRE>
 
-<LI> with multiword interjections
+            <LI> with multiword interjections
 
-<PRE>
+                  <PRE>
 ( (IP-MAT-SPE (' ')
               (INTJP (INTJ A) (INTJ ha))
               (, ,)
@@ -4440,13 +4524,12 @@ clause
   (ID CMANCRIW,II.199.2832))
 
 </PRE>
-  
-<LI> when the interjection is not labelled INTJ at the word level;
-  see Section <A
-HREF="pos-other.htm#interjections">INTERJECTIONS</A>. This can apply to
-  single words or phrases.
 
-<PRE>
+            <LI> when the interjection is not labelled INTJ at the word level;
+                  see Section <A HREF="pos-other.htm#interjections">INTERJECTIONS</A>. This can apply to
+                  single words or phrases.
+
+                  <PRE>
 ( (CP-QUE (IP-SUB (INTJP (WPRO What))
                   (, ,)
                   (NP-VOC (N woman))
@@ -4548,41 +4631,45 @@ HREF="pos-other.htm#interjections">INTERJECTIONS</A>. This can apply to
 
 </PRE>
 
-<LI> when the interjection makes up a separate token. This is commonly the
-case with the word AMEN at the end of sermons.
+            <LI> when the interjection makes up a separate token. This is commonly the
+                  case with the word AMEN at the end of sermons.
 
-<PRE>
+                  <PRE>
 ( (INTJP (INTJ Amen)
          (E_S .))
   (ID CMAELR3,60.1033)) 
 
 </PRE>
-</OL>
+      </OL>
 
-<a name="wh_phrases">
-<H3>WH-phrases</H3></a>
+      <a name="wh_phrases">
+            <H3>WH-phrases</H3>
+      </a>
 
-<DL><DT>
-<DL>
-<DT><a href="#wadjp">WADJP</a>
-<DT><a href="#wadvp">WADVP</a>
-<DT><a href="#wnp">WNP</a>
-<DT><a href="#wpp">WPP</a>
-<DT><a href="#wqp">WQP</a>
-</DL></DL>
+      <DL>
+            <DT>
+                  <DL>
+                        <DT><a href="#wadjp">WADJP</a>
+                        <DT><a href="#wadvp">WADVP</a>
+                        <DT><a href="#wnp">WNP</a>
+                        <DT><a href="#wpp">WPP</a>
+                        <DT><a href="#wqp">WQP</a>
+                  </DL>
+      </DL>
 
-The internal structure of wh-phrases is the same as that of their non-wh
-counterparts. The content of the wh-phrase may be <TT>0</TT> (ZERO) however,
-indicating an empty operator.
+      The internal structure of wh-phrases is the same as that of their non-wh
+      counterparts. The content of the wh-phrase may be <TT>0</TT> (ZERO) however,
+      indicating an empty operator.
 
-<a name="wadjp">
-<H3>WADJP</H3></a>
+      <a name="wadjp">
+            <H3>WADJP</H3>
+      </a>
 
-A WADJP may consist of an empty operator <TT>(WADJP 0)</TT> (only in
-comparatives) or an adjective modified by HOW.  WADJPs may also modify
-nouns, in which case they are contained within a WNP.
+      A WADJP may consist of an empty operator <TT>(WADJP 0)</TT> (only in
+      comparatives) or an adjective modified by HOW. WADJPs may also modify
+      nouns, in which case they are contained within a WNP.
 
-<PRE>
+      <PRE>
 (NODE (ADJP (QR more) (ADJ welcom)
             (PP (P than)
                 (CP-CMP (WADJP-1 0)     <--- empty operator in comparatives
@@ -4685,13 +4772,14 @@ nouns, in which case they are contained within a WNP.
 
 </PRE>
 
-<a name="wadvp">
-<H3>WADVP</H3></a>
+      <a name="wadvp">
+            <H3>WADVP</H3>
+      </a>
 
-A WADVP consists either of an empty operator <TT>(WADVP 0)</TT> or is headed by
-a wh-adverb.
+      A WADVP consists either of an empty operator <TT>(WADVP 0)</TT> or is headed by
+      a wh-adverb.
 
-<PRE>
+      <PRE>
 ( (CP-QUE-SPE (' ')
               (WADVP-1 (WADV Where))
               (IP-SUB-SPE (ADVP-LOC *T*-1)
@@ -4742,14 +4830,15 @@ a wh-adverb.
 
 </PRE>
 
-<a name="wnp">
-<H3>WNP</H3></a>
+      <a name="wnp">
+            <H3>WNP</H3>
+      </a>
 
-A WNP may consist of an empty operator <TT>(WNP 0)</TT>, a wh-pronoun WHAT or
-WHICH (<TT>WPRO</TT>), or a noun modified by the wh-determiner WHICH (<TT>
-WD</TT>).
+      A WNP may consist of an empty operator <TT>(WNP 0)</TT>, a wh-pronoun WHAT or
+      WHICH (<TT>WPRO</TT>), or a noun modified by the wh-determiner WHICH (<TT>
+            WD</TT>).
 
-<PRE>
+      <PRE>
 (NODE (NP (D the) (N Astrelabie)
           (CP-REL (WNP-1 0)
                   (C that)
@@ -4806,16 +4895,17 @@ WD</TT>).
 
 </PRE>
 
-<a name="wpp">
-<H3>WPP</H3></a>
+      <a name="wpp">
+            <H3>WPP</H3>
+      </a>
 
-WPP is used in the case of pied-piping. There are no empty WPPs in the
-PPCME2 (unlike the PPCME1). These cases are now treated as extraction of
-the wh-nominal and deletion of the stranded preposition. See Section <A
-HREF="syn-empty.htm#deletion_of_stranded_prepositions">DELETION OF
-STRANDED PREPOSITIONS</A>.
+      WPP is used in the case of pied-piping. There are no empty WPPs in the
+      PPCME2 (unlike the PPCME1). These cases are now treated as extraction of
+      the wh-nominal and deletion of the stranded preposition. See Section <A
+            HREF="syn-empty.htm#deletion_of_stranded_prepositions">DELETION OF
+            STRANDED PREPOSITIONS</A>.
 
-<PRE>
+      <PRE>
 (NODE (CP-QUE-SPE (WPP-1 (P For)
                          (WNP (WD what) (N Cause)))
                   (IP-SUB-SPE (PP *T*-1)
@@ -4859,13 +4949,14 @@ STRANDED PREPOSITIONS</A>.
 
 </PRE>
 
-<a name="wqp">
-<H3>WQP</H3></a>
+      <a name="wqp">
+            <H3>WQP</H3>
+      </a>
 
-A WQP consists of a quantifier modified by HOW. It is always contained
-within a WNP, in the same way as a QP is always contained within an NP.
+      A WQP consists of a quantifier modified by HOW. It is always contained
+      within a WNP, in the same way as a QP is always contained within an NP.
 
-<PRE>
+      <PRE>
 ( (CP-EXL (CONJ &)
           (WNP-1 (WQP (WADV hu) (Q muche))
                  (N wunder))
@@ -4913,13 +5004,14 @@ within a WNP, in the same way as a QP is always contained within an NP.
 
 </PRE>
 
-<a name="frag">
-<H3>Fragment (FRAG)</H3></a>
+      <a name="frag">
+            <H3>Fragment (FRAG)</H3>
+      </a>
 
-Fragments are grammatical utterances consisting of at least two
-constituents, for which there is not enough material to construct an IP.
+      Fragments are grammatical utterances consisting of at least two
+      constituents, for which there is not enough material to construct an IP.
 
-<PRE>
+      <PRE>
 ( (FRAG (INTJ Nay)
         (, ,)
         (ADVP (ADV dredeles))
@@ -4956,18 +5048,19 @@ constituents, for which there is not enough material to construct an IP.
 
 </PRE>
 
-<a name="qtp">
-<H3>Quotation Phrase (QTP)</H3></a>
+      <a name="qtp">
+            <H3>Quotation Phrase (QTP)</H3>
+      </a>
 
-The label <TT>QTP</TT> surrounds non-sentential and foreign language
-quotations and is used to distinguish ``mention'' from ``use''. It is like
-a black box which indicates that the interior structure of a string is not
-relevant to the clause. Direct speech sentence fragments are labelled QTP
-rather than FRAG.  Sentential quotations (IP and CP) are labelled as
-direct speech with the extension <TT>-SPE</TT>; see Section 
-<A HREF="syn-const.htm#clause_direct_speech">DIRECT SPEECH</A>.
+      The label <TT>QTP</TT> surrounds non-sentential and foreign language
+      quotations and is used to distinguish ``mention'' from ``use''. It is like
+      a black box which indicates that the interior structure of a string is not
+      relevant to the clause. Direct speech sentence fragments are labelled QTP
+      rather than FRAG. Sentential quotations (IP and CP) are labelled as
+      direct speech with the extension <TT>-SPE</TT>; see Section
+      <A HREF="syn-const.htm#clause_direct_speech">DIRECT SPEECH</A>.
 
-<PRE>
+      <PRE>
 ( (QTP (INTJP (INTJ loo)
               (CP-QUE-SPE (WADVP-1 (WADV wher))
 			  (C 0)
@@ -5098,15 +5191,16 @@ direct speech with the extension <TT>-SPE</TT>; see Section
 
 </PRE>
 
-<a name="ref">
-<H3>Reference (REF)</H3></a>
+      <a name="ref">
+            <H3>Reference (REF)</H3>
+      </a>
 
-The label <TT>REF</TT> is used to indicate the source or reference for a
-statement when it is simply stated without any explicit connection to the
-statement itself. The reference is separated from the statement when
-possible.
+      The label <TT>REF</TT> is used to indicate the source or reference for a
+      statement when it is simply stated without any explicit connection to the
+      statement itself. The reference is separated from the statement when
+      possible.
 
-<PRE>
+      <PRE>
 ( (IP-MAT (NP-SBJ (D The) (N appostle))
           (NP-OB1 (D this))
           (VBP declareth)
@@ -5175,16 +5269,17 @@ possible.
 
 </PRE>
 
-<a name="latin">
-<H3>Foreign language quotations and passages (LATIN, FRENCH, HEBREW)</H3></a>
+      <a name="latin">
+            <H3>Foreign language quotations and passages (LATIN, FRENCH, HEBREW)</H3>
+      </a>
 
-Foreign language passages longer than a single word are labelled with the
-name of the language. This is most commonly <TT>LATIN</TT> but occasionally
-<TT>FRENCH</TT> and <TT>HEBREW</TT> are used. When the foreign language passage
-takes a role in the sentence, it is also labelled for function. Quotations
-are labelled QTP; see Section <A HREF="#qtp">QUOTATION PHRASE</A>.
+      Foreign language passages longer than a single word are labelled with the
+      name of the language. This is most commonly <TT>LATIN</TT> but occasionally
+      <TT>FRENCH</TT> and <TT>HEBREW</TT> are used. When the foreign language passage
+      takes a role in the sentence, it is also labelled for function. Quotations
+      are labelled QTP; see Section <A HREF="#qtp">QUOTATION PHRASE</A>.
 
-<PRE>
+      <PRE>
 
 ( (LATIN (FW Narracio) (FW valde) (FW deuota) (FW contra) (FW $temptacionem))
   (ID CMAELR3,29.95))
@@ -5217,4 +5312,3 @@ DAMASUS))))
   (ID CMMANDEV,46.1136))
 
 </PRE>
-

@@ -1,43 +1,47 @@
 <HTML>
+
 <HEAD>
-<TITLE>PPCME2, Syntactic Annotation, Internal Structure of Clauses</TITLE>
+        <TITLE>PPCME2, Syntactic Annotation, Internal Structure of Clauses</TITLE>
 </HEAD>
 
 <BODY BGCOLOR="FFFFFF">
 
-<a name="internal_structure_of_clauses">
-<H2>Internal Structure of Clauses</H2></a>
+        <a name="internal_structure_of_clauses">
+                <H2>Internal Structure of Clauses</H2>
+        </a>
 
-<DL><DT>
-<DL>
-<DT><a href="#internal_structure_IP">Internal Structure of Matrix Clauses (IP-MAT)</a>
         <DL>
-        <DT><a href="#imperatives">Imperatives</a>
+                <DT>
+                        <DL>
+                                <DT><a href="#internal_structure_IP">Internal Structure of Matrix Clauses (IP-MAT)</a>
+                                        <DL>
+                                                <DT><a href="#imperatives">Imperatives</a>
+                                        </DL>
+                                <DT><a href="#internal_structure_CP">Internal Structure of Subordinate Clauses (CP)</a>
+                                        <DL>
+                                                <DT><a href="#non-wh_cps">Non-wh CPs</a>
+                                                        <DL>
+                                                                <DT><a href="#spec_cp">The specCP position</a>
+                                                                <DT><a href="#all_be_it_etc">ALL BE IT etc.</a>
+                                                        </DL>
+                                                <DT><a href="#wh_cps">Wh-CPs</a>
+                                        </DL>
+                                <DT><a href="syn-detailed-toc.htm">Table of Contents</a>
+                        </DL>
         </DL>
-<DT><a href="#internal_structure_CP">Internal Structure of Subordinate Clauses (CP)</a>
-        <DL>
-        <DT><a href="#non-wh_cps">Non-wh CPs</a>
-                <DL>
-                <DT><a href="#spec_cp">The specCP position</a>
-                <DT><a href="#all_be_it_etc">ALL BE IT etc.</a>
-                </DL>
-        <DT><a href="#wh_cps">Wh-CPs</a>
-        </DL>
-<DT><a href="syn-detailed-toc.htm">Table of Contents</a>
-</DL></DL>
 
-<P>
+        <P>
 
-Clauses are labelled either <TT>IP</TT> or <TT>CP</TT> with an extended
-label in every case indicating type. Declarative matrix IPs are labelled
-<TT>IP-MAT</TT>, imperatives <TT>IP-IMP</TT>, and subordinate IPs, that is,
-those dominated by a CP, <TT> IP-SUB</TT>. Subordinate clauses with neither
-a complementizer nor wh- position are labelled IP with an extended label
-indicating type (e.g. infinitive <TT> IP-INF</TT>, small clause
-<TT>IP-SMC</TT>, etc. All CPs are also labelled for type. The basic types
-are as follows:
+                Clauses are labelled either <TT>IP</TT> or <TT>CP</TT> with an extended
+                label in every case indicating type. Declarative matrix IPs are labelled
+                <TT>IP-MAT</TT>, imperatives <TT>IP-IMP</TT>, and subordinate IPs, that is,
+                those dominated by a CP, <TT> IP-SUB</TT>. Subordinate clauses with neither
+                a complementizer nor wh- position are labelled IP with an extended label
+                indicating type (e.g. infinitive <TT> IP-INF</TT>, small clause
+                <TT>IP-SMC</TT>, etc. All CPs are also labelled for type. The basic types
+                are as follows:
 
-<PRE>
+        <PRE>
 IP clauses                              CP clauses
 
 IP-MAT          declarative matrix IP   CP-ADV       adverbial clause
@@ -53,26 +57,25 @@ IP-SMC          small clause            CP-TMC       tough-movement complement
 IP-IMP          imperative              CP-EOP       empty-operator CP
 </PRE>
 
-<a name="internal_structure_IP">
-<H3>Internal Structure of Matrix Clauses (IP-MAT)</H3></a>
+        <a name="internal_structure_IP">
+                <H3>Internal Structure of Matrix Clauses (IP-MAT)</H3>
+        </a>
 
-All clauses except infinitives and imperatives without an overt subject
-have a subject indicated. See Sections <a
-href="syn-sub.htm#infinitives">INFINITIVAL CLAUSES</a> and <a
-href="#imperatives">IMPERATIVES</a>. If the subject is not overt, an empty
-subject is added (see Section <a
-href="syn-empty.htm#empty_subjects">EMPTY SUBJECTS</a>). The PPCME2,
-like the PPCME1, does not generally include a VP level (but see Section <A
-HREF="syn-const.htm#vp">VERB PHRASE</A>). This follows from our
-decision not to make controversial decisions, since in many cases the
-boundaries of the VP are not clear.  Thus, generally, within the clause
-constituents are phrasal with the exception of all verbal material
-(auxiliaries, modals, verbs, participles). In addition, particles,
-sentential conjunctions (including ELSE and ALSO in matrix clauses,
-single-word interjections within a clause, and floated quantifiers appear
-without a containing phrasal category.
+        All clauses except infinitives and imperatives without an overt subject
+        have a subject indicated. See Sections <a href="syn-sub.htm#infinitives">INFINITIVAL CLAUSES</a> and <a
+                href="#imperatives">IMPERATIVES</a>. If the subject is not overt, an empty
+        subject is added (see Section <a href="syn-empty.htm#empty_subjects">EMPTY SUBJECTS</a>). The PPCME2,
+        like the PPCME1, does not generally include a VP level (but see Section <A HREF="syn-const.htm#vp">VERB
+                PHRASE</A>). This follows from our
+        decision not to make controversial decisions, since in many cases the
+        boundaries of the VP are not clear. Thus, generally, within the clause
+        constituents are phrasal with the exception of all verbal material
+        (auxiliaries, modals, verbs, participles). In addition, particles,
+        sentential conjunctions (including ELSE and ALSO in matrix clauses,
+        single-word interjections within a clause, and floated quantifiers appear
+        without a containing phrasal category.
 
-<PRE>
+        <PRE>
 ( (IP-MAT-SPE (' ')
               (INTJ Yes)  <--- interjection
               (, ,)
@@ -146,13 +149,14 @@ without a containing phrasal category.
 
 </PRE>
 
-<a name="imperatives">
-<H3>Imperatives (IP-IMP)</H3></a>
+        <a name="imperatives">
+                <H3>Imperatives (IP-IMP)</H3>
+        </a>
 
-Imperatives are labelled <TT>IP-IMP</TT>. They contain a subject only if
-an overt subject is present.
+        Imperatives are labelled <TT>IP-IMP</TT>. They contain a subject only if
+        an overt subject is present.
 
-<PRE>
+        <PRE>
 ( (IP-IMP-SPE (CONJ but)
               (VBI saye)
               (CP-THT-SPE (C 0)
@@ -176,24 +180,26 @@ an overt subject is present.
 
 </PRE>
 
-<a name="internal_structure_CP">
-<H3>Internal Structure of Subordinate Clauses (CP)</H3></a>
+        <a name="internal_structure_CP">
+                <H3>Internal Structure of Subordinate Clauses (CP)</H3>
+        </a>
 
-<a name="non-wh_cps">
-<H3>Non-wh CPs</H3></a>
+        <a name="non-wh_cps">
+                <H3>Non-wh CPs</H3>
+        </a>
 
-Degree complements (<TT>CP-DEG</TT>), THAT complements (<TT>CP-THT</TT>), and
-some adverbial clauses (<TT>CP-ADV</TT>), have the following structure:
+        Degree complements (<TT>CP-DEG</TT>), THAT complements (<TT>CP-THT</TT>), and
+        some adverbial clauses (<TT>CP-ADV</TT>), have the following structure:
 
-<PRE>
+        <PRE>
 (CP (C THAT/0)
     (IP ...))
 </PRE>
 
-That is, the complementizer position is always indicated, whether or not it
-is filled. The empty position is indicated by <TT>(C 0)</TT>. 
+        That is, the complementizer position is always indicated, whether or not it
+        is filled. The empty position is indicated by <TT>(C 0)</TT>.
 
-<PRE>
+        <PRE>
 (NODE (PP (P so)
           (CP-ADV (C that)
                   (IP-SUB (NP-MSR (NP (NUM thre) (NS dayes))
@@ -287,22 +293,23 @@ is filled. The empty position is indicated by <TT>(C 0)</TT>.
 
 </PRE>
 
-<a name="spec_cp">
-<H3>The specCP position</H3></a>
+        <a name="spec_cp">
+                <H3>The specCP position</H3>
+        </a>
 
-The specifier position is not explicitly indicated in our annotation system
-for any phrasal category; constituents filling this position appear within
-the phrase in pre-head position (but note that this is not the only use of
-this position; see below). In adverbial clauses, fronting out of the clause
-is to the specPP position since the fronted element precedes the
-preposition (subordinating conjunction) (see Section <A
-HREF="syn-phrases.htm#fronting_in_subordinate_clauses">FRONTING IN
-SUBORDINATE CLAUSES</A>).  Apart from left-dislocated elements,
-constituents fronted out of the IP are coindexed to a trace in the IP. In
-subordinate clauses not headed by a preposition, fronted elements appear in
-specCP before the complementizer position.
+        The specifier position is not explicitly indicated in our annotation system
+        for any phrasal category; constituents filling this position appear within
+        the phrase in pre-head position (but note that this is not the only use of
+        this position; see below). In adverbial clauses, fronting out of the clause
+        is to the specPP position since the fronted element precedes the
+        preposition (subordinating conjunction) (see Section <A
+                HREF="syn-phrases.htm#fronting_in_subordinate_clauses">FRONTING IN
+                SUBORDINATE CLAUSES</A>). Apart from left-dislocated elements,
+        constituents fronted out of the IP are coindexed to a trace in the IP. In
+        subordinate clauses not headed by a preposition, fronted elements appear in
+        specCP before the complementizer position.
 
-<PRE>
+        <PRE>
 (NODE (IP-SUB (NP-SBJ (PRO hie))
               (VBP make+d)
               (CP-THT (NP-LFD (D +danne) (N man)  <--- left-dislocated NP in specCP
@@ -346,11 +353,10 @@ specCP before the complementizer position.
 
 </PRE>
 
-Similar cases with a complementizer before and after the fronted element
-are treated as CP-recursion. See Section <A
-HREF="syn-sub.htm#cp_recursion">CP RECURSION</A>.
+        Similar cases with a complementizer before and after the fronted element
+        are treated as CP-recursion. See Section <A HREF="syn-sub.htm#cp_recursion">CP RECURSION</A>.
 
-<PRE>
+        <PRE>
 ( (IP-MAT (CONJ for)
           (NP-SBJ (NPR sain) (NPR paul))
           (VBP sais)
@@ -400,11 +406,11 @@ HREF="syn-sub.htm#cp_recursion">CP RECURSION</A>.
 
 </PRE>
 
-In wh- clauses, material can appear before the wh-element, although in this
-case, it is to be interpreted as adjoined to CP rather than filling the
-specifier position (since the wh-element is in that position).
+        In wh- clauses, material can appear before the wh-element, although in this
+        case, it is to be interpreted as adjoined to CP rather than filling the
+        specifier position (since the wh-element is in that position).
 
-<PRE>
+        <PRE>
 (NODE (IP-SUB (NP-SBJ (D tes) (ADJ unseli))
               (NEG ne)
               (MD +turue)
@@ -506,11 +512,11 @@ specifier position (since the wh-element is in that position).
 
 </PRE>
 
-Verbs are also sometimes fronted to this position. See Section <A
-HREF="syn-sub.htm#verb_fronting_in_free_relatives">VERB FRONTING IN
-FREE RELATIVE CLAUSES</A>.
+        Verbs are also sometimes fronted to this position. See Section <A
+                HREF="syn-sub.htm#verb_fronting_in_free_relatives">VERB FRONTING IN
+                FREE RELATIVE CLAUSES</A>.
 
-<PRE>
+        <PRE>
 ( (IP-MAT-SPE (CONJ for)
               (NP-SBJ (D +tt))
               (VBP stont)
@@ -560,16 +566,17 @@ FREE RELATIVE CLAUSES</A>.
 
 </PRE>
 
-<a name="all_be_it_etc">
-<H3>ALL BE IT etc.</H3></a>
+        <a name="all_be_it_etc">
+                <H3>ALL BE IT etc.</H3>
+        </a>
 
-The phrase ALL BE IT THAT, SO BE IT THAT, etc. are treated in the same way
-as V1 conditionals (Section <A HREF="syn-sub.htm#v1_conditionals">V1
-CONDITIONALS</A>), except that ALL/SO is immediately dominated by
-CP-ADV. This is not meant to be a correct analysis of this construction,
-but rather one which fits with they way we annotate V1 conditionals.
+        The phrase ALL BE IT THAT, SO BE IT THAT, etc. are treated in the same way
+        as V1 conditionals (Section <A HREF="syn-sub.htm#v1_conditionals">V1
+                CONDITIONALS</A>), except that ALL/SO is immediately dominated by
+        CP-ADV. This is not meant to be a correct analysis of this construction,
+        but rather one which fits with they way we annotate V1 conditionals.
 
-<PRE>
+        <PRE>
 ( (IP-MAT (CONJ and)
           (PP (P atte)
               (NP (N risyng)
@@ -649,30 +656,30 @@ but rather one which fits with they way we annotate V1 conditionals.
 
 </PRE>
 
-For CP-recursion, see above and section <A
-HREF="syn-sub.htm#cp_recursion">CP RECURSION</A>.
+        For CP-recursion, see above and section <A HREF="syn-sub.htm#cp_recursion">CP RECURSION</A>.
 
-<a name="wh_cps">
-<H3>Wh-CPs</H3></a>
+        <a name="wh_cps">
+                <H3>Wh-CPs</H3>
+        </a>
 
-Comparative clauses (<TT>CP-CMP</TT>), relative clauses (<TT>CP-REL</TT>),
-free relatives (<TT>CP-FRL</TT>), clause-adjoined relatives
-(<TT>CP-CAR</TT>), questions (<TT>CP-QUE</TT>), it-clefts
-(<TT>CP-CLF</TT>), tough-movement complements (<TT>CP-TMC</TT>), and a
-certain type of adverbial (<TT>CP-ADV</TT>) have both a wh- position and
-the complementizer position indicated in every clause. This is to allow for
-the case in which both positions are filled. An empty position is indicated
-by <TT>0</TT> (ZERO). The wh-operator is coindexed to a trace of the same
-category. By convention this trace is always the first element in the IP
-complement, unless it has been extracted from a lower constituent (PP,
-IP-INF, etc.), in which case it appears within that constituent (see
-Section <A HREF="syn-empty.htm#position_of_traces">POSITION OF TRACES</A>).
+        Comparative clauses (<TT>CP-CMP</TT>), relative clauses (<TT>CP-REL</TT>),
+        free relatives (<TT>CP-FRL</TT>), clause-adjoined relatives
+        (<TT>CP-CAR</TT>), questions (<TT>CP-QUE</TT>), it-clefts
+        (<TT>CP-CLF</TT>), tough-movement complements (<TT>CP-TMC</TT>), and a
+        certain type of adverbial (<TT>CP-ADV</TT>) have both a wh- position and
+        the complementizer position indicated in every clause. This is to allow for
+        the case in which both positions are filled. An empty position is indicated
+        by <TT>0</TT> (ZERO). The wh-operator is coindexed to a trace of the same
+        category. By convention this trace is always the first element in the IP
+        complement, unless it has been extracted from a lower constituent (PP,
+        IP-INF, etc.), in which case it appears within that constituent (see
+        Section <A HREF="syn-empty.htm#position_of_traces">POSITION OF TRACES</A>).
 
-<OL>
+        <OL>
 
-<LI> both positions filled
+                <LI> both positions filled
 
-<PRE>
+                        <PRE>
 ( (CP-QUE (WADVP-1 (WADV how))
           (C that)
           (IP-SUB (ADVP *T*-1)
@@ -734,9 +741,9 @@ Section <A HREF="syn-empty.htm#position_of_traces">POSITION OF TRACES</A>).
 
 </PRE>
 
-<LI> neither position filled
+                <LI> neither position filled
 
-<PRE>
+                        <PRE>
 (NODE (NP-OB1 (D the) (N despite)
               (CP-REL (WNP-3 0)
                       (C 0)
@@ -781,9 +788,9 @@ Section <A HREF="syn-empty.htm#position_of_traces">POSITION OF TRACES</A>).
 
 </PRE>
 
-<LI> complementizer position only filled
+                <LI> complementizer position only filled
 
-<PRE>
+                        <PRE>
 (NODE (NP (D the) (ADJS byggest) (N castell)
           (CP-REL (WNP-1 0)
                   (C that)
@@ -830,9 +837,9 @@ Section <A HREF="syn-empty.htm#position_of_traces">POSITION OF TRACES</A>).
 
 </PRE>
 
-<LI> wh-position only filled
+                <LI> wh-position only filled
 
-<PRE>
+                        <PRE>
 (NODE (NP (D a) (ADJ new) (N batayle)
           (CP-REL (WNP-1 (WPRO whych))
                   (C 0)
@@ -885,4 +892,4 @@ Section <A HREF="syn-empty.htm#position_of_traces">POSITION OF TRACES</A>).
       (ID CMMALORY,6.149))
 
 </PRE>
-</OL>
+        </OL>

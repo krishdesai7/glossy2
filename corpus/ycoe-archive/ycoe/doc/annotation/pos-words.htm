@@ -1,40 +1,45 @@
 <HTML>
+
 <HEAD>
-<TITLE>PPCME2, POS Annotation, Special Words</TITLE>
+        <TITLE>PPCME2, POS Annotation, Special Words</TITLE>
 </HEAD>
 
 <BODY BGCOLOR="FFFFFF">
 
-<a name="word_tags">
-<H2>Special Words</H2></a>
+        <a name="word_tags">
+                <H2>Special Words</H2>
+        </a>
 
-<DL><DT>
-<DL>
-<DT><a href="#else">ELSE</a>
-<DT><a href="#one">ONE</a>
-	<DL>
-	<DT><a href="#possessive_one">Possessive ONE (ONE$)</a>
-	<DT><a href="#tone">TONE</a>
-	</DL>
-<DT><a href="#other">OTHER (OTHER$, OTHERS, OTHERS$)</a>
-	<DL>
-	<DT><a href="#another">ANOTHER, TOTHER</a>
-	</DL>
-<DT><a href="#such">SUCH</a>
-<DT><a href="#also">ALSO</a>
-<DT><a href="#man">MAN</a>
-<DT><a href="#ward">WARD</a>
-<DT><a href="pos-toc.htm">Table of Contents</a>
-</DL></DL>
+        <DL>
+                <DT>
+                        <DL>
+                                <DT><a href="#else">ELSE</a>
+                                <DT><a href="#one">ONE</a>
+                                        <DL>
+                                                <DT><a href="#possessive_one">Possessive ONE (ONE$)</a>
+                                                <DT><a href="#tone">TONE</a>
+                                        </DL>
+                                <DT><a href="#other">OTHER (OTHER$, OTHERS, OTHERS$)</a>
+                                        <DL>
+                                                <DT><a href="#another">ANOTHER, TOTHER</a>
+                                        </DL>
+                                <DT><a href="#such">SUCH</a>
+                                <DT><a href="#also">ALSO</a>
+                                <DT><a href="#man">MAN</a>
+                                <DT><a href="#ward">WARD</a>
+                                <DT><a href="pos-toc.htm">Table of Contents</a>
+                        </DL>
+        </DL>
 
-<a name="else">
-<H3>ELSE</H3></a>
+        <a name="else">
+                <H3>ELSE</H3>
+        </a>
 
-The word ELSE in the sequence OR ELSE is tagged <TT>ELSE</TT>. When it
-clearly means something like OTHERWISE or OTHER, it is tagged <TT>
-  ADV</TT> or <TT>ADJ</TT>.
+        The word ELSE in the sequence OR ELSE is tagged <TT>ELSE</TT>. When it
+        clearly means something like OTHERWISE or OTHER, it is tagged <TT>
+                ADV</TT> or <TT>ADJ</TT>.
 
-<PRE>
+        <PRE>
         that_D shall_MD be_BE with_P a_D sherpe_ADJ spere_N 
         othir_CONJ ellis_ELSE with_P a_D sherpe_ADJ swerde_N
 
@@ -50,22 +55,23 @@ clearly means something like OTHERWISE or OTHER, it is tagged <TT>
 
 </PRE>
 
-<a name="one">
-<H3>ONE</H3></a>
+        <a name="one">
+                <H3>ONE</H3>
+        </a>
 
-The word ONE is tagged <TT>ONE</TT> in all meanings except
+        The word ONE is tagged <TT>ONE</TT> in all meanings except
 
-<OL>
-  
-<LI> as a focus particle equivalent to ONLY (see Section
-  <A HREF="pos-other.htm#focus_particle_one">ONE AS A FOCUS PARTICLE</A>)
+        <OL>
 
-<LI> as an adjective equivalent to ALONE (see Section
-  <A HREF="pos-adj-adv.htm#adj_adv_one">ANE/ONE (ADJECTIVE)</A>)
+                <LI> as a focus particle equivalent to ONLY (see Section
+                        <A HREF="pos-other.htm#focus_particle_one">ONE AS A FOCUS PARTICLE</A>)
 
-</OL>
+                <LI> as an adjective equivalent to ALONE (see Section
+                        <A HREF="pos-adj-adv.htm#adj_adv_one">ANE/ONE (ADJECTIVE)</A>)
 
-<PRE>
+        </OL>
+
+        <PRE>
         the_D one_ONE hyght_VBD Tyntagil_NPR and_CONJ the_D '
         other_OTHER castel_N hyght_VBD Terrabyl_NPR
 
@@ -78,27 +84,29 @@ The word ONE is tagged <TT>ONE</TT> in all meanings except
 
 </PRE>
 
-When it is not clear whether the word is ONE or AN (i.e., the indefinite
-determiner) the default is to tag it as a determiner.
+        When it is not clear whether the word is ONE or AN (i.e., the indefinite
+        determiner) the default is to tag it as a determiner.
 
-<a name="possessive_one">
-<H3>Possessive ONE (ONE$)</H3></a>
+        <a name="possessive_one">
+                <H3>Possessive ONE (ONE$)</H3>
+        </a>
 
-ONE occurs occasionally in the possessive and in these cases is tagged <TT>ONE$</TT>.
+        ONE occurs occasionally in the possessive and in these cases is tagged <TT>ONE$</TT>.
 
-<PRE>
+        <PRE>
         and_CONJ in_P +tat_D onys_ONE$ wombe_N honoure_VBI 
 	+tyn_PRO$ husbonde_N Criste_NPR ,_,
 
 </PRE>
 
-<a name="tone">
-<H3>TONE</H3></a>
+        <a name="tone">
+                <H3>TONE</H3>
+        </a>
 
-TONE (i.e., THE + ONE) is tagged <TT>D+ONE</TT> even when another determiner
-is present.
+        TONE (i.e., THE + ONE) is tagged <TT>D+ONE</TT> even when another determiner
+        is present.
 
-<PRE>
+        <PRE>
         and_CONJ zygge+t_VBP ofte_ADV ._, on+tank_N +tan_D+ONE :_, 
         and_CONJ +te_D o+tren_OTHER |_, '_' huet_WPRO wyle_MD god_NPR 
         me_PRO do_DO ._.
@@ -108,18 +116,18 @@ is present.
 
 </PRE>
 
-<a name="other">
-<H3>OTHER, OTHER$, OTHERS, OTHERS$</H3></a>
+        <a name="other">
+                <H3>OTHER, OTHER$, OTHERS, OTHERS$</H3>
+        </a>
 
-Forms of the word OTHER are tagged as follows. If modifying a noun, OTHER
-is used in all cases. When being used nominally, four forms are
-distinguished: OTHER (singular), OTHER$ (genitive singular), OTHERS
-(plural) and OTHERS$ (genitive plural). In its conjunctive use, OTHER is
-tagged <TT>CONJ</TT> (see Section <A
-HREF="pos-other.htm#coordinating_conjunctions">COORDINATING
-CONJUNCTIONS</A>).
+        Forms of the word OTHER are tagged as follows. If modifying a noun, OTHER
+        is used in all cases. When being used nominally, four forms are
+        distinguished: OTHER (singular), OTHER$ (genitive singular), OTHERS
+        (plural) and OTHERS$ (genitive plural). In its conjunctive use, OTHER is
+        tagged <TT>CONJ</TT> (see Section <A HREF="pos-other.htm#coordinating_conjunctions">COORDINATING
+                CONJUNCTIONS</A>).
 
-<PRE>
+        <PRE>
         In_P o+tir_OTHER stede_N
 
         His_PRO$ dedis_NS az_HVP at_TO be_BE suilke_SUCH 
@@ -139,13 +147,14 @@ CONJUNCTIONS</A>).
 
 </PRE>
 
-<a name="another">
-<H3>ANOTHER, TOTHER</H3></a>
+        <a name="another">
+                <H3>ANOTHER, TOTHER</H3>
+        </a>
 
-ANOTHER and TOTHER are tagged <TT>D+OTHER</TT> even when another
-determiner is present.
+        ANOTHER and TOTHER are tagged <TT>D+OTHER</TT> even when another
+        determiner is present.
 
-<PRE>
+        <PRE>
         tay_PRO +tat_C may_MD noght_NEG ete_VB of_P +te_D tane_D+ONE ,_, 
         lat_VBI +taim_PRO ete_VB of_P +te_D to+tir_D+OTHER
 
@@ -155,12 +164,13 @@ determiner is present.
         +te_D to+tir_D+OTHER maner_N +tan_ADV ere_BEP ermites_NS
 </PRE>
 
-<a name="such">
-<H3>SUCH</H3></a>
+        <a name="such">
+                <H3>SUCH</H3>
+        </a>
 
-The word SUCH in all uses is tagged <TT>SUCH</TT>.
+        The word SUCH in all uses is tagged <TT>SUCH</TT>.
 
-<PRE>
+        <PRE>
         of_P such_SUCH condicions_NS
 
         in_P soche_SUCH a_D maner_N
@@ -175,15 +185,16 @@ The word SUCH in all uses is tagged <TT>SUCH</TT>.
         &_CONJ soche_SUCH as_P +te_D Englisshemen_NPRS wolde_MD axen_VB
 </PRE>
 
-<a name="also">
-<H3>ALSO</H3></a>
+        <a name="also">
+                <H3>ALSO</H3>
+        </a>
 
-The words ALSO (ALSWA, ALSE, etc.) and EKE are tagged <TT>ALSO</TT> in
-conjunctive use. ALSO in all other cases is tagged according to
-function. See Sections <A HREF="pos-adj-adv.htm#adj_adv_so_as">SO,
-AS</A>, and <A HREF="pos-prep.htm#preposition_also">ALSWA ETC.</A>
+        The words ALSO (ALSWA, ALSE, etc.) and EKE are tagged <TT>ALSO</TT> in
+        conjunctive use. ALSO in all other cases is tagged according to
+        function. See Sections <A HREF="pos-adj-adv.htm#adj_adv_so_as">SO,
+                AS</A>, and <A HREF="pos-prep.htm#preposition_also">ALSWA ETC.</A>
 
-<PRE>
+        <PRE>
         lordes_NS of_P gret_ADJ honour_N ,_, &_CONJ 
         Also_ALSO power_N
 
@@ -205,16 +216,17 @@ AS</A>, and <A HREF="pos-prep.htm#preposition_also">ALSWA ETC.</A>
 
 </PRE>
 
-<a name="man">
-<H3>MAN</H3></a>
+        <a name="man">
+                <H3>MAN</H3>
+        </a>
 
-The pronominal use of ME as indefinite ONE is tagged <TT>MAN</TT>. If a
-given text clearly uses MAN as a pronominal, then all unmodified uses
-of MAN as a subject are tagged <TT>MAN</TT>. For MEN, however, which also
-has a pronominal use, it is too difficult to distinguish this use from
-other uses, and so it is never tagged <TT>MAN</TT>, but rather <TT>NS</TT>.
+        The pronominal use of ME as indefinite ONE is tagged <TT>MAN</TT>. If a
+        given text clearly uses MAN as a pronominal, then all unmodified uses
+        of MAN as a subject are tagged <TT>MAN</TT>. For MEN, however, which also
+        has a pronominal use, it is too difficult to distinguish this use from
+        other uses, and so it is never tagged <TT>MAN</TT>, but rather <TT>NS</TT>.
 
-<PRE>
+        <PRE>
         for_P +dan_D +de_C me_MAN nett_VBD hem_PRO to_P +dan_D a+de_N ._.
 
         +Teih_P me_MAN niede_VBP me_PRO to_P +dan_D a+de_N ,_, 
@@ -228,25 +240,27 @@ other uses, and so it is never tagged <TT>MAN</TT>, but rather <TT>NS</TT>.
 
 </PRE>
 
-<a name="ward">
-<H3>WARD</H3></a>
+        <a name="ward">
+                <H3>WARD</H3>
+        </a>
 
-The morpheme WARD(S) is tagged <TT>WARD</TT> whether attached or separated
-from the preceding word. The two exceptions are
+        The morpheme WARD(S) is tagged <TT>WARD</TT> whether attached or separated
+        from the preceding word. The two exceptions are
 
-<OL>
-  
-<LI> prepositions including WARD (e.g. TOWARD, etc.)  which are
-  tagged simply as prepositions (see Section <A HREF="pos-prep.htm#prepositions_in_ward">  PREPOSITIONS IN -WARD</A>)
-  
-<LI> INWARD and OUTWARD used as adjectives (INWARD BEAUTY, etc.),
-  which are tagged as adjectives (see Section
-  <A HREF="pos-adj-adv.htm#adj_adv_inward_outward">INWARD, OUTWARD
-(ADJECTIVE)</A>)
+        <OL>
 
-</OL>
+                <LI> prepositions including WARD (e.g. TOWARD, etc.) which are
+                        tagged simply as prepositions (see Section <A HREF="pos-prep.htm#prepositions_in_ward">
+                                PREPOSITIONS IN -WARD</A>)
 
-<PRE>
+                <LI> INWARD and OUTWARD used as adjectives (INWARD BEAUTY, etc.),
+                        which are tagged as adjectives (see Section
+                        <A HREF="pos-adj-adv.htm#adj_adv_inward_outward">INWARD, OUTWARD
+                                (ADJECTIVE)</A>)
+
+        </OL>
+
+        <PRE>
         So_ADV as_P they_PRO rode_VBD to_P the_D justes_NS ward_WARD 
         sir_NPR Kay_NPR had_HVD lost_VBN his_PRO$ suerd_N
 
@@ -263,4 +277,3 @@ from the preceding word. The two exceptions are
         both_CONJ towarde_RP+WARD and_CONJ frowarde_ADV+WARD
 
 </PRE>
-

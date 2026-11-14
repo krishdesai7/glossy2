@@ -1,76 +1,84 @@
 <HTML>
+
 <HEAD>
-<TITLE>PPCME2, POS Annotation, Splitting and Joining Parts of Words</TITLE>
+        <TITLE>PPCME2, POS Annotation, Splitting and Joining Parts of Words</TITLE>
 </HEAD>
 
 <HTML>
+
 <BODY BGCOLOR="FFFFFF">
 
-<a name="splitting_and_joining">
-<H2>Splitting and Joining Parts of Words</H2></a>
+        <a name="splitting_and_joining">
+                <H2>Splitting and Joining Parts of Words</H2>
+        </a>
 
-<DL><DT>
-<DL>
-<DT><a href="#words_always_separate">Words that are always treated as
-separate parts</a>
-<DT><a href="#words_sometimes_separate">Words that are sometimes treated as separate parts</a>
-<DT><a href="#words_always_unitary">Words which are always treated as
-unitary</a>
-<DT><a href="#collocations_treated_as_written">Collocations which are treated as written</a>
-<DT><a href="pos-toc.htm">Table of Contents</a>
-</DL></DL>
+        <DL>
+                <DT>
+                        <DL>
+                                <DT><a href="#words_always_separate">Words that are always treated as
+                                                separate parts</a>
+                                <DT><a href="#words_sometimes_separate">Words that are sometimes treated as separate
+                                                parts</a>
+                                <DT><a href="#words_always_unitary">Words which are always treated as
+                                                unitary</a>
+                                <DT><a href="#collocations_treated_as_written">Collocations which are treated as
+                                                written</a>
+                                <DT><a href="pos-toc.htm">Table of Contents</a>
+                        </DL>
+        </DL>
 
-<a name="words_always_separate">
-<H3>Words that are always treated as separate parts</H3></a>
+        <a name="words_always_separate">
+                <H3>Words that are always treated as separate parts</H3>
+        </a>
 
-There are two ways in which it may be indicated that we consider a
-single written sequence as two words.
+        There are two ways in which it may be indicated that we consider a
+        single written sequence as two words.
 
-<OL>
-  
-<LI> The parts may be physically separated. This is done in cases
-  where the two parts belong to different constituents (as defined by
-  the PPCME2). It is done mainly to facilitate the syntactic parsing
-  but appears in the POS and text files as well to preserve
-  compatibility. In this case a note is always added indicating what
-  the form was in the original text and the parts are marked as
-  emendations. Some combinations, such as a pronoun and verb are
-  always separated, since they always belong to different
-  constituents. Others, such as determiner-adjective combinations, may
-  or may not be split depending on whether the adjective belongs to a
-  separate constituent (again as defined by the PPCME2). One exception
-  to this rule is the case of a preposition taking a single word
-  complement. These are so commonly written as single words in the
-  early texts that it is not feasible to separate them all. Therefore
-  in this case the combination is tagged with multiple tags and the
-  whole constituent is labelled as a PP. See below.
+        <OL>
 
-The following types of cases are always separated:
+                <LI> The parts may be physically separated. This is done in cases
+                        where the two parts belong to different constituents (as defined by
+                        the PPCME2). It is done mainly to facilitate the syntactic parsing
+                        but appears in the POS and text files as well to preserve
+                        compatibility. In this case a note is always added indicating what
+                        the form was in the original text and the parts are marked as
+                        emendations. Some combinations, such as a pronoun and verb are
+                        always separated, since they always belong to different
+                        constituents. Others, such as determiner-adjective combinations, may
+                        or may not be split depending on whether the adjective belongs to a
+                        separate constituent (again as defined by the PPCME2). One exception
+                        to this rule is the case of a preposition taking a single word
+                        complement. These are so commonly written as single words in the
+                        early texts that it is not feasible to separate them all. Therefore
+                        in this case the combination is tagged with multiple tags and the
+                        whole constituent is labelled as a PP. See below.
 
-<OL TYPE="a">
+                        The following types of cases are always separated:
 
-<LI>  pronoun plus modal or verb
+                        <OL TYPE="a">
 
-<PRE>
+                                <LI> pronoun plus modal or verb
+
+                                        <PRE>
         $ich_PRO $challe_MD {TEXT:ichalle}_CODE
         $me_PRO $thynketh_VBP {TEXT:methynketh}_CODE
 
 </PRE>
 
-<LI> modal or verb plus pronoun
+                                <LI> modal or verb plus pronoun
 
-<PRE>
+                                        <PRE>
         $maist_MD $tow_PRO {TEXT:maistow}_CODE
         $grin_VBI $it_PRO {TEXT:grinit}_CODE
 </PRE>
 
-</OL>
+                        </OL>
 
-A preposition taking a single word complement, however, is not split.
-See above.  A very common type is the combination of an R-pronoun plus
-preposition.
+                        A preposition taking a single word complement, however, is not split.
+                        See above. A very common type is the combination of an R-pronoun plus
+                        preposition.
 
-<PRE>
+                        <PRE>
         therefore_ADV+P
         heretofore_ADV+P
         wherefore_WADV+P
@@ -82,19 +90,19 @@ preposition.
 
 </PRE>
 
-Some common types that may be split depending on the syntactic
-configuration that they occur in are:
+                        Some common types that may be split depending on the syntactic
+                        configuration that they occur in are:
 
-<OL TYPE="a">
+                        <OL TYPE="a">
 
-<LI> preposition plus determiner
-  
-  This type is split when the determiner is followed by a noun or
-  adjective, etc., but not if the determiner itself is the head of the
-  NP (following the rule that prepositions plus single word
-  complements are not split).
+                                <LI> preposition plus determiner
 
-<PRE>
+                                        This type is split when the determiner is followed by a noun or
+                                        adjective, etc., but not if the determiner itself is the head of the
+                                        NP (following the rule that prepositions plus single word
+                                        complements are not split).
+
+                                        <PRE>
         hu_WADV god_NPR seolf_N wes_BED i+tis_P+D iderued_VAN
 
         +Te_D blake_ADJ cros_N limpe+d_VBP to_P +teo_D +te_C 
@@ -103,12 +111,13 @@ configuration that they occur in are:
 
 </PRE>
 
-<LI> determiner plus noun, adjective, or adverb
+                                <LI> determiner plus noun, adjective, or adverb
 
-This type is not split if the noun or adjective (or other element) does not form a constituent with
-any following words.
+                                        This type is not split if the noun or adjective (or other element) does not form
+                                        a constituent with
+                                        any following words.
 
-<PRE>
+                                        <PRE>
         thestaat_D+N
         thilke_D+ADJ
 
@@ -116,36 +125,36 @@ any following words.
 
 </PRE>
 
-</OL>
+                        </OL>
 
-<LI> In cases in which the two parts do not belong to different
-  constituents (again as defined by the PPCME2), the sequence is
-  tagged with all the appropriate tags, joined by <TT>+</TT>.
+                <LI> In cases in which the two parts do not belong to different
+                        constituents (again as defined by the PPCME2), the sequence is
+                        tagged with all the appropriate tags, joined by <TT>+</TT>.
 
-The following are some common cases which are given multiple tags:
+                        The following are some common cases which are given multiple tags:
 
-<OL TYPE="a">
+                        <OL TYPE="a">
 
-<LI> negation plus modal or verb
+                                <LI> negation plus modal or verb
 
-<PRE>
+                                        <PRE>
         nolde_NEG+MD
         nave_NEG+HVP
 
 </PRE>
 
-<LI> infinitival TO plus verb
+                                <LI> infinitival TO plus verb
 
-<PRE>
+                                        <PRE>
         toslenne_TO+VB
         tappeal_TO+VB
         toffrenn_TO+VB
         for_FOR tabyde_TO+VB
 </PRE>
 
-<LI> pronoun plus SELF   
+                                <LI> pronoun plus SELF
 
-<PRE>
+                                        <PRE>
         meself_PRO+N
         myself_PRO$+N 
         himself_PRO+N 
@@ -153,22 +162,22 @@ The following are some common cases which are given multiple tags:
         themselves_PRO+N
 </PRE>
 
-Note that SELF is always tagged <TT>N</TT> whether it appears to be singular
-or plural.
+                                        Note that SELF is always tagged <TT>N</TT> whether it appears to be singular
+                                        or plural.
 
-<LI> AS plus comparative
+                                <LI> AS plus comparative
 
-<PRE>
+                                        <PRE>
         a-swythe_ADVR+ADV       = as swythe (quickly)
         assone_ADVR+ADV         = as soon
 
 </PRE>
 
-<LI> noun compounds
+                                <LI> noun compounds
 
-The parts of noun compounds when written together are both tagged.
+                                        The parts of noun compounds when written together are both tagged.
 
-<PRE>
+                                        <PRE>
         lifetime_N+N                    alderman_N+N
         eortheware_N+N                  godfather_N+N
         bishopric_N+N                   household_N+N
@@ -176,22 +185,22 @@ The parts of noun compounds when written together are both tagged.
 
 </PRE>
 
-Compounds like EVIL-DOERS are tagged <TT>N+NS</TT>, if the first part can be
-interpreted as a noun.  If not, as in WELL-DOERS, it is tagged
-appropriately: <TT>ADV+NS</TT>.
+                                        Compounds like EVIL-DOERS are tagged <TT>N+NS</TT>, if the first part can be
+                                        interpreted as a noun. If not, as in WELL-DOERS, it is tagged
+                                        appropriately: <TT>ADV+NS</TT>.
 
-<LI> WHAT SO EVER, etc.
+                                <LI> WHAT SO EVER, etc.
 
-<PRE>
+                                        <PRE>
         whatsoever_WPRO+ADV+ADV
         whoso_WPRO+ADV
         wheresomever_WADV+ADV+ADV
 
 </PRE>
 
-<LI> Modifier plus noun
+                                <LI> Modifier plus noun
 
-<PRE>
+                                        <PRE>
         vainglory_ADJ+N                 othergates_OTHER+NS
         Halichurche_ADJ+NPR             otherwise_OTHER+N
         hidercume_ADV+N                 grandsire_ADJ+N
@@ -205,9 +214,9 @@ appropriately: <TT>ADV+NS</TT>.
 
 </PRE>
 
-<LI> Adverb plus past participle
+                                <LI> Adverb plus past participle
 
-<PRE>
+                                        <PRE>
         aforn-seyd_ADV+VAN
         aboven-seyde_ADV+VAN
         abouesaide_ADV+VAN
@@ -217,15 +226,15 @@ appropriately: <TT>ADV+NS</TT>.
 
 </PRE>
 
-<LI> Combinations involving WARD
-  
-Combinations involving WARD used as prepositions are tagged <TT>P</TT> (see
-Section <A HREF="pos-prep.htm#prepositions_in_ward">PREPOSITIONS IN
--WARD</A>) and those used adjectivally (INWARD, OUTWARD) (see Section <A
-HREF="pos-adj-adv.htm#adj_adv_inward_outward">INWARD, OUTWARD
-(ADJECTIVE)</A> are tagged <TT>ADJ</TT>. All others are tagged by parts.
+                                <LI> Combinations involving WARD
 
-<PRE>
+                                        Combinations involving WARD used as prepositions are tagged <TT>P</TT> (see
+                                        Section <A HREF="pos-prep.htm#prepositions_in_ward">PREPOSITIONS IN
+                                                -WARD</A>) and those used adjectivally (INWARD, OUTWARD) (see Section <A
+                                                HREF="pos-adj-adv.htm#adj_adv_inward_outward">INWARD, OUTWARD
+                                                (ADJECTIVE)</A> are tagged <TT>ADJ</TT>. All others are tagged by parts.
+
+                                        <PRE>
         toward_P                   inward_ADJ beauty_N 
         froward_P
         afterward_P
@@ -246,61 +255,60 @@ HREF="pos-adj-adv.htm#adj_adv_inward_outward">INWARD, OUTWARD
 
 </PRE>
 
-<LI> Quantifier plus anything
+                                <LI> Quantifier plus anything
 
-<PRE>
+                                        <PRE>
         ilkane_Q+ONE            echone_Q+ONE            someone_Q+ONE
         something_Q+N
         somdel_Q+N
         somewhat_Q+WPRO
 </PRE>
 
-<LI> Noun plus participle
+                                <LI> Noun plus participle
 
-<PRE>
+                                        <PRE>
         god-fearing_NPR+VAG 
         alms-willing_N+VAG
         wind-driven_N+VAN 
 
 </PRE>
 
-</OL>
-</OL>
+                        </OL>
+        </OL>
 
-<a name="words_sometimes_separate">
-<H3>Words that are sometimes treated as separate parts</H3></a>
+        <a name="words_sometimes_separate">
+                <H3>Words that are sometimes treated as separate parts</H3>
+        </a>
 
-Certain words of later English are fusions of earlier multi-word
-phrases. Given the time coverage of the corpus and the fact that word
-division in early texts is not always well represented, this is very
-difficult to deal with in a consistent way. The solution we have
-adopted is as follows. With a few exceptions outlined below, if a
-`phrasal word' (i.e., a word which was once a phrase) ever occurs in
-our corpus as a phrase, then it is always tagged as a phrase, whether
-it is written as two words or not. Phrases that had fused before the
-beginning of the Middle English period are treated as single words.
+        Certain words of later English are fusions of earlier multi-word
+        phrases. Given the time coverage of the corpus and the fact that word
+        division in early texts is not always well represented, this is very
+        difficult to deal with in a consistent way. The solution we have
+        adopted is as follows. With a few exceptions outlined below, if a
+        `phrasal word' (i.e., a word which was once a phrase) ever occurs in
+        our corpus as a phrase, then it is always tagged as a phrase, whether
+        it is written as two words or not. Phrases that had fused before the
+        beginning of the Middle English period are treated as single words.
 
-The following are some common categories of `words' tagged as phrases.
+        The following are some common categories of `words' tagged as phrases.
 
-<OL>
+        <OL>
 
-<LI> A- words, where A $<$ ON
+                <LI> A- words, where A $<$ ON <PRE>
+                                a morwe amorwe_P+N
+                                a two atwo_P+NUM
+                                a +tre a+tre_P+NUM
+                                a foure afoure_P+NUM
+                                a fire afire_P+N
+                                a backward abackward_P+ADV+WARD
+                                a doun adoun_P+RP
+                                a fishing afishing_P+N
+                                a sunder asunder_P+ADJ
+                                </PRE>
 
-<PRE>
-        a morwe         amorwe_P+N
-        a two           atwo_P+NUM
-        a +tre          a+tre_P+NUM
-        a foure         afoure_P+NUM
-        a fire          afire_P+N
-        a backward      abackward_P+ADV+WARD
-        a doun          adoun_P+RP
-        a fishing       afishing_P+N
-        a sunder        asunder_P+ADJ
-</PRE>
+                <LI> miscellaneous
 
-<LI> miscellaneous
-
-<PRE>
+                        <PRE>
         for ever        forever_P+ADV
         on live         onlive_P+N
         in deed         indeed_P+N
@@ -310,24 +318,25 @@ The following are some common categories of `words' tagged as phrases.
         at once         atonce_P+ADV
         by times        betimes_P+N
 </PRE>
-</OL>
+        </OL>
 
-<a name="words_always_unitary">
-<H3>Words which are always treated as unitary</H3></a>
+        <a name="words_always_unitary">
+                <H3>Words which are always treated as unitary</H3>
+        </a>
 
-In general the words in this category do not have (obviously) compositional
-semantics. They also tend to occur written together or separately stably
-over centuries.
+        In general the words in this category do not have (obviously) compositional
+        semantics. They also tend to occur written together or separately stably
+        over centuries.
 
-<OL>
+        <OL>
 
-<LI> <a name="unitary_adverbs">Adverbs</a>
+                <LI> <a name="unitary_adverbs">Adverbs</a>
 
-<P>
+                        <P>
 
-At least the following list of adverbs are treated as unitary.
+                                At least the following list of adverbs are treated as unitary.
 
-<PRE>
+                        <PRE>
         above                      henseforward
         about                      la(n)hure
         abroad                     nevermore and variants
@@ -350,13 +359,13 @@ At least the following list of adverbs are treated as unitary.
 
 </PRE>
 
-<LI><a name="unitary_prepositions">Prepositions</a>
+                <LI><a name="unitary_prepositions">Prepositions</a>
 
-<P>
+                        <P>
 
-The following list of prepositions is treated as unitary.
+                                The following list of prepositions is treated as unitary.
 
-<PRE>
+                        <PRE>
         about               forto               tofore
         a+det               fromward            togains
         agains              intil               toward
@@ -375,31 +384,31 @@ The following list of prepositions is treated as unitary.
 
 </PRE>
 
-<LI> <a name="unitary_verbs">Verbs</a>
+                <LI> <a name="unitary_verbs">Verbs</a>
 
-<OL TYPE="a">
+                        <OL TYPE="a">
 
-<LI> verbs with separable/inseparable prefixes
-  
-  We do not (because we cannot easily) distinguish between separable
-  and inseparable prefixes preceding the verb. All verbal prefixes are
-  joined to the verb. When separable prefixes follow the verb, they
-  are tagged RP.
+                                <LI> verbs with separable/inseparable prefixes
 
-<PRE>
+                                        We do not (because we cannot easily) distinguish between separable
+                                        and inseparable prefixes preceding the verb. All verbal prefixes are
+                                        joined to the verb. When separable prefixes follow the verb, they
+                                        are tagged RP.
+
+                                        <PRE>
         with_VB21 say_VB22
         to_VBD21 brake_VBD22
         by_VBD21 shone_VBD22
         fore_VAN21 said_VAN22
 </PRE>
 
-<LI> verbs with prefix A-
-  
-  In most verbs with A, the A is originally a prefix (adding
-  "intensity"), although ADO is from AT DO where AT is originally the
-  northern infinitive marker.
+                                <LI> verbs with prefix A-
 
-<PRE>
+                                        In most verbs with A, the A is originally a prefix (adding
+                                        "intensity"), although ADO is from AT DO where AT is originally the
+                                        northern infinitive marker.
+
+                                        <PRE>
         a_VBP21 kel+t_VBP22
         a_VBD21 resunede_VBD22
         a_VBD21 seide_VBD22
@@ -407,22 +416,22 @@ The following list of prepositions is treated as unitary.
 
 </PRE>
 
-<LI> verbs with GE-, Y-, I-, etc.
+                                <LI> verbs with GE-, Y-, I-, etc.
 
-<PRE>
+                                        <PRE>
         i_VBN21 onswered_VBN22
         i_VB21 heren_VB22
         +ge_VBP21 bette_VBP22
 
 </PRE>
-</OL>
+                        </OL>
 
-<LI> <a name="unitary_adjectives">Adjectives</a>
+                <LI> <a name="unitary_adjectives">Adjectives</a>
 
-If a clearly bipartite adjective cannot be accurately tagged according
-to its parts, it is tagged ADJ.
+                        If a clearly bipartite adjective cannot be accurately tagged according
+                        to its parts, it is tagged ADJ.
 
-<PRE>
+                        <PRE>
         mild_ADJ21 heorted_ADJ22
         tweie_ADJ21 to+ted_ADJ22
         fe+der_ADJ21 fotetd_ADJ22
@@ -433,49 +442,50 @@ to its parts, it is tagged ADJ.
         un_ADJ21 seli_ADJ22
 </PRE>
 
-</OL>
+        </OL>
 
-<a name="collocations_treated_as_written">
-<H3>Collocations which are treated as written</H3></a>
+        <a name="collocations_treated_as_written">
+                <H3>Collocations which are treated as written</H3>
+        </a>
 
-This category is tagged as written. That is, as a phrase when separate, as
-a single word when together.
+        This category is tagged as written. That is, as a phrase when separate, as
+        a single word when together.
 
-<OL>
+        <OL>
 
-<LI> <a name="time_words_with_to">Time words with TO</a>
+                <LI> <a name="time_words_with_to">Time words with TO</a>
 
-<PRE>
+                        <PRE>
         to_P day_N      today_N 
         to_P morrow_N   tomorrow_N
 
 </PRE>
 
-<LI> <a name="other_time_words">Other time words</a>
+                <LI> <a name="other_time_words">Other time words</a>
 
-<PRE>
+                        <PRE>
         yester_ADJ day_N        yesterday_N
         after_P noon_N          afternoon_N
         seteres_NPR day_NPR     Saturday_NPR
 
 </PRE>
 
-<LI> <a name="adj_and_adv_modification">Modification of adjectives and adverbs</a>
+                <LI> <a name="adj_and_adv_modification">Modification of adjectives and adverbs</a>
 
-<PRE>
+                        <PRE>
         welcome_ADJ
         almighty_ADJ            all_Q mighty_ADJ
         derworthy_ADJ
 
 </PRE>
 
-<LI> <a name="double_prepositions">Double prepositions (particle plus preposition)</a>
+                <LI> <a name="double_prepositions">Double prepositions (particle plus preposition)</a>
 
-<PRE>
+                        <PRE>
         into_P                  in_RP to_P
         up-on_P                 up_RP on_P
         etc.
 
 </PRE>
 
-</OL>
+        </OL>
